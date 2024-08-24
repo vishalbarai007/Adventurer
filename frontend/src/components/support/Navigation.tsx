@@ -10,7 +10,7 @@ const variants = {
   },
 };
 
-const menuItems = ["Home", "Signup", "Accounts", "Profile", "Settings"];
+const menuItems = ["Home", "Blogs", "About us", "Contact us", "SignUp/SignIn"];
 
 export const Navigation = () => (
   <motion.ul variants={variants}>
