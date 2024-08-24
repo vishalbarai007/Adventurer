@@ -2,11 +2,13 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  /* color: #f3ebff; */
 }
 
 /* scrollslider */
 .progress-bar {
   transform-origin: 0%;
+  background: #112c1d;
 }
 
 
@@ -25,7 +27,8 @@ nav {
   left: 0;
   bottom: 0;
   width: 300px;
-  background: #d8d8d8;
+  background: #262b15;
+  color: aliceblue;
 }
 
 button {
@@ -94,3 +97,62 @@ li {
   align-items: center;
   cursor: pointer;
 }
+
+
+
+.headline {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 10vw;
+}
+
+.inset {
+  position: absolute;
+  inset: 0;
+}
+.white {
+  color: white;
+}
+.gray {
+  color: #446;
+}
+
+.full {
+  height: 100vh;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient {
+  background: linear-gradient(rgba(14, 62, 151, 0.5) 50%, black);
+}
+
+
+
+/* 
+18392b
+dad7cd
+14452f
+#b5eedf
+
+#001b2e
+#1d3f58
+#537692
+#b3cde4
+#eef3f9
+
+#262b15
+#3f3f3f
+#464b37
+#848871
+#afb4ad
+
+#112c1d used in slider
+#496729
+#507d7a
+#94c48a
+#b5eedf */

@@ -1,9 +1,15 @@
 import './App.css'
 import './index.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Pre_login_homepage from './pages/Pre_login_homepage';
 
 const App = () => {
   return (
-    <div className='w-full h-screen bg-zinc-800'>App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Pre_login_homepage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
