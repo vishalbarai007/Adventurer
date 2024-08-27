@@ -27,7 +27,8 @@ nav {
   left: 0;
   bottom: 0;
   width: 300px;
-  background: #262b15;
+  /* background: #262b15; */
+  background: #0b61ca;
   color: aliceblue;
 }
 
@@ -129,6 +130,12 @@ li {
 
 .gradient {
   background: linear-gradient(rgba(14, 62, 151, 0.5) 50%, black);
+}
+
+
+.Pre_login_homepage_content{
+  background-image: url("./assets/pexels-dreamypixel-580151.jpg");
+  background-size: cover;
 }
 
 

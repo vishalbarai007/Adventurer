@@ -6,9 +6,9 @@ export default function App() {
   return (
     <ParallaxProvider>
       <AdvancedBannerTop />
-      <div className="center full">
+      {/* <div className="center full">
         <h1 className="headline gray">Let's gooooo.</h1>
-      </div>
+      </div> */}
     </ParallaxProvider>
   );
 }
