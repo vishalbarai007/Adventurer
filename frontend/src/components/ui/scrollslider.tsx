@@ -12,9 +12,6 @@ export default function App() {
   return (
     <>
       <motion.div className="progress-bar fixed top-0 left-0 right-0 h-3" style={{ scaleX }} />
-      <h1>
-        <code>useScroll</code> with spring smoothing
-      </h1>
     </>
   );
 }
