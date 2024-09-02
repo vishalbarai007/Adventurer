@@ -17,7 +17,7 @@ const variants = {
   },
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+const colors = ["#E5E4E2", "#DCDBD8", "#D3D3CE", "#CACAC4", "#C1C1BA"];
 
 // Define the props interface
 interface MenuItemProps {

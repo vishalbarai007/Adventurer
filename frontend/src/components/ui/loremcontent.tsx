@@ -2,7 +2,7 @@
 
 const Loremcontent = () => {
   return (
-    <div className="flex w-1/2 my-10">
+    <div className="flex w-1/2 my-10 text-[#112c1d]">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Omnis, incidunt porro. Ipsum maxime possimus doloribus, 
         dolorum corporis ipsam vero repellat. Nostrum quisquam velit, 

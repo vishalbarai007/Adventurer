@@ -3,6 +3,8 @@ import Scrollslider from '../components/ui/scrollslider'
 import Pre_login_menubar from '../components/ui/pre_login_menubar'
 import Parallax from '../components/ui/Parallax'
 import Pre_login_homepage_content from '../components/ui/Pre_login_homepage_content'
+import Pre_homepage_cards from '../components/ui/Pre_homepage_cards'
+
 
 
 const Pre_login_homepage = () => {
@@ -13,7 +15,8 @@ const Pre_login_homepage = () => {
         <Pre_login_menubar/>
         {/* <Loremcontent/> */}
         <Pre_login_homepage_content/>
-
+        <Pre_homepage_cards/>
+        
 
        
 

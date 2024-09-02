@@ -6,7 +6,7 @@ const Pre_login_homepage_content = () => {
   return (
     <>
        <div className="Pre_login_homepage_content h-screen w-full pl-10 pt-10">
-       <h1 className="text-8xl text-[#112c1d]">
+       <h1 className="text-8xl text-[#496729]">
             YOUR ULTIMATE 
             <h2>
                 <span className="text-[#fff]"><i> Guide </i> </span>
