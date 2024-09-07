@@ -32,7 +32,7 @@ nav {
   color: aliceblue;
 }
 
-button {
+.menu_toggle_button {
   outline: none;
   border: none;
   -webkit-user-select: none;

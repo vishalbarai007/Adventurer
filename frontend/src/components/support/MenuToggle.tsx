@@ -22,7 +22,7 @@ interface MenuToggleProps {
 
 // Define the MenuToggle component with typed props
 export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
-  <button onClick={toggle}>
+  <button onClick={toggle} className="menu_toggle_button">
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{
