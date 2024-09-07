@@ -5,8 +5,9 @@ import Loremcontent from "./loremcontent"
 const Pre_login_homepage_content = () => {
   return (
     <>
-       <div className="Pre_login_homepage_content h-screen w-full pl-10 pt-10">
-       <h1 className="text-8xl text-[#496729]">
+       <div className="Pre_login_homepage_content h-screen w-fit pl-10 pt-10 contain-content ">
+        <div className=" h-screen w-fit">
+        <h1 className="text-7xl text-[#496729]">
             YOUR ULTIMATE 
             <h2>
                 <span className="text-[#fff]"><i> Guide </i> </span>
@@ -18,6 +19,9 @@ const Pre_login_homepage_content = () => {
         <Loremcontent/>
 
         {/* <Button>Button</Button> */}
+
+
+        </div>
        </div>
     
     </>
