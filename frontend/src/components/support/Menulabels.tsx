@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { MenuItem } from './MenuItem';
 
 const Menulabels = () => {
@@ -12,10 +12,12 @@ const Menulabels = () => {
         <ul>
         {menuItems.map((item, index) => (
         <MenuItem key={index} i={index} label={item} />
-      ))}
-    </ul>
+        ))}
+        </ul>
     </div>
   )
+  // onclick call function 
+  // function will contain some values like if return is "blog" then route to blogspage.
 }
 
 export default Menulabels;

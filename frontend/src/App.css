@@ -138,6 +138,47 @@ li {
   background-size: cover;
 }
 
+.loginform{
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.19);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(7.1px);
+-webkit-backdrop-filter: blur(7.1px);
+border: 0px solid rgba(255, 255, 255, 0.99);
+}
+
+.loginpagebackground{
+  background-size: cover;
+  background-position: center;
+  animation: image 30s infinite alternate;
+ 
+}
+
+@keyframes image {
+  0% {
+    background-image: url("../src/assets/IND/Image1.jpg");
+  }
+  20% {
+    background-image: url("../src/assets/IND/image2.jpg");
+
+  }
+  40% {
+    background-image: url("../src/assets/IND/image3.jpg");
+
+  }
+  60% {
+    background-image: url("../src/assets/IND/image4.jpg");
+
+  }
+  80% {
+    background-image: url("../src/assets/IND/image5.jpg");
+  }
+  100% {
+    background-image: url("../src/assets/IND//image6.jpg");
+  }
+}
+
 
 
 /* 
