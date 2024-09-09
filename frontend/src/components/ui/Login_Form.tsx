@@ -36,13 +36,13 @@ const Login_form: React.FC = () => {
     if (Mode == "SignUp") {
     return (
         <div className="min-h-screen flex items-center justify-center  ">
-        <div className="loginform p-8 rounded-lg shadow-lg w-full max-w-fit flex gap-10">
+        <div className="loginform inset-0 bg-white bg-opacity-20 p-8 rounded-lg shadow-lg w-full max-w-fit flex gap-10">
 
         <div className="Formlogo p-8 rounded-lg shadow-lg w-full max-w-md text-center ">
-          <h1 className="text-4xl font-bold text-green-800">ADVENTURER</h1>
-          <p className="text-sm text-gray-600">Plan your destination with Adventurer</p>
+          <h1 className="text-5xl font-bold text-[#233115]">ADVENTURER</h1>
+          <p className="text-sm text-gray-900">"Plan your destination with Adventurer."</p>
 
-          <div className=' z-20 my-10 h-1/2 w-[100%] flex justify-center align-middle'>
+          <div className=' z-20 my-10 flex justify-center align-middle'>
             <CarouselPlugin/>
           </div>
         </div>
@@ -53,7 +53,7 @@ const Login_form: React.FC = () => {
             <input 
               type="text" 
               {...register("username", { required: "Username is required" })} 
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+              className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
             />
             {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
           </div>
@@ -63,7 +63,7 @@ const Login_form: React.FC = () => {
             <input 
               type="password" 
               {...register("password", { required: "Password is required" })} 
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+              className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
             />
             {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
           </div>
@@ -76,12 +76,12 @@ const Login_form: React.FC = () => {
                 required: "Please confirm your password", 
                 validate: value => value === password || "Passwords do not match"
               })} 
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+              className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
             />
             {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
           </div>
 
-          <button type="submit" className="w-full py-2 px-4 bg-green-800 text-white font-semibold rounded-md">
+          <button type="submit" className="w-full py-2 px-4 bg-[#233115] text-white font-semibold rounded-md">
             Continue
           </button>
 
@@ -96,7 +96,7 @@ const Login_form: React.FC = () => {
           <button type="button" className="w-full px-4 py-2 flex justify-center bg-white my-2 text-zinc-950 rounded-md flex gap-2"><FcGoogle size={40}/><h1>Sign up with Google</h1></button>
           
           <p className="text-sm text-center mt-4">
-            Already have an account? <a href="#" onClick={changeMode} className="text-green-800 font-semibold">Sign In</a>
+            Already have an account? <a href="#" onClick={changeMode} className=" text-[#233115] font-semibold">Sign In</a>
           </p>
         </form>
         </div>
@@ -108,8 +108,8 @@ const Login_form: React.FC = () => {
 
             <div className=" loginform p-8 rounded-lg shadow-lg w-full max-w-fit flex gap-10">
             <div className="Formlogo p-8 rounded-lg shadow-lg w-full max-w-md text-center ">
-          <h1 className="text-4xl font-bold text-green-800">ADVENTURER</h1>
-          <p className="text-sm text-gray-600">Plan your destination with Adventurer</p>
+          <h1 className="text-5xl font-bold text-[#233115]">ADVENTURER</h1>
+          <p className="text-sm text-gray-900">"Plan your destination with Adventurer."</p>
 
           <div className=' z-20 my-10 h-1/2 w-[100%] flex justify-center align-middle'>
             <CarouselPlugin/>
@@ -118,28 +118,28 @@ const Login_form: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 w-full max-w-fit">
               
               <div>
-                <label className="block text-sm font-medium text-gray-700">Create Username</label>
+                <label className="block text-sm font-medium text-gray-700">Enter Username</label>
                 <input 
                   type="text" 
                   {...register("username", { required: "Username is required" })} 
-                  className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+                  className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
                 />
                 {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
               </div>
     
               <div>
-                <label className="block text-sm font-medium text-gray-700">Create Password</label>
+                <label className="block text-sm font-medium text-gray-700">Enter Password</label>
                 <input 
                   type="password" 
                   {...register("password", { required: "Password is required" })} 
-                  className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+                  className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
                 />
                 {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
               </div>
     
              
     
-              <button type="submit" className="w-full py-2 px-4 bg-green-800 text-white font-semibold rounded-md">
+              <button type="submit" className="w-full py-2 px-4 bg-[#233115] text-white font-semibold rounded-md">
                 Continue
               </button>
     
@@ -154,7 +154,7 @@ const Login_form: React.FC = () => {
           <button type="button" className="w-full px-4 py-2 flex justify-center bg-white my-2 text-zinc-950 rounded-md flex gap-2"><FcGoogle size={40}/><h1>Sign up with Google</h1></button>
               
               <p className="text-sm text-center mt-4">
-                Didn't have an account? <a href="#" onClick={changeMode} className="text-green-800 font-semibold">Sign Up</a>
+                Didn't have an account? <a href="#" onClick={changeMode} className="text-[#233115] font-semibold">Sign Up</a>
               </p>
             </form>
             </div>

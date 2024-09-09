@@ -152,6 +152,7 @@ border: 0px solid rgba(255, 255, 255, 0.99);
   background-size: cover;
   background-position: center;
   animation: image 30s infinite alternate;
+  object-fit: cover;
  
 }
 
@@ -175,7 +176,7 @@ border: 0px solid rgba(255, 255, 255, 0.99);
     background-image: url("../src/assets/IND/image5.jpg");
   }
   100% {
-    background-image: url("../src/assets/IND//image6.jpg");
+    background-image: url("../src/assets/IND/image6.jpg");
   }
 }
 

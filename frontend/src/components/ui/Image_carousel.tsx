@@ -5,8 +5,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "../support/carousel";
 
 
@@ -31,9 +31,8 @@ export function CarouselPlugin() {
             <div className="p-1">
               <Card>
                 <CardContent
-                  className="flex aspect-square items-center justify-center p-6"
+                  className="flex aspect-square items-center justify-center p-6 h-[350px]"
                   backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
-
                 >
                   {/* <span className="text-4xl font-semibold text-white">{index + 1}</span> */}
                 </CardContent>
@@ -42,8 +41,8 @@ export function CarouselPlugin() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      {/* <CarouselPrevious /> */}
+      {/* <CarouselNext /> */}
     </Carousel>
   );
 }
