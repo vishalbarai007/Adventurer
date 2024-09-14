@@ -13,11 +13,8 @@ const Pre_login_homepage = () => {
         <Parallax/>
         <Scrollslider/>
         <Pre_login_menubar/>
-        {/* <Loremcontent/> */}
         <Pre_login_homepage_content/>
         <Pre_homepage_cards/>
-        
-
        
 
        

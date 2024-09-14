@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MenuItem } from "../support/MenuItem";
+import { Link } from "react-router-dom";
 
 const variants = {
   open: {
@@ -10,12 +11,41 @@ const variants = {
   },
 };
 
-const menuItems = ["Home", "Blogs", "About us", "Contact us", "SignUp/SignIn"];
+// const menuItems = ["Home", "Blogs", "About us", "Contact us", "SignUp/SignIn"];
+const menuItems = [
+        {
+          label: "Home",
+          link: "/",
+        },
+        {
+          label: "Blogs",
+          link: "/blogs",
+        },
+        {
+          label: "Destinations",
+          link: "/destination",
+        },
+        {
+          label: "About us",
+          link: "/about",
+        },
+        {
+          label: "Contact us",
+          link: "/contact",
+        },
+        {
+          label: "Signup/SignIn",
+          link: "/login",
+        },
+      ]
+
 
 export const Navigation = () => (
   <motion.ul variants={variants}>
     {menuItems.map((item, i) => (
-      <MenuItem i={i} key={i} label={item} />
+      <Link to={item.link} >
+        <MenuItem i={i} key={i} label={item.label}  />
+      </Link>
     ))}
   </motion.ul>
 );

@@ -17,12 +17,13 @@ const variants = {
   },
 };
 
-const colors = ["#E5E4E2", "#DCDBD8", "#D3D3CE", "#CACAC4", "#C1C1BA"];
+const colors = ["#E5E4E2", "#DCDBD8", "#D3D3CE", "#CACAC4", "#C1C1BA","#C1C1BA"];
 
 // Define the props interface
 interface MenuItemProps {
   i: number; // i should be a number
   label: string; // New prop for the label
+  // type of icons
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({ i, label }) => {
@@ -45,7 +46,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({ i, label }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="icon-placeholder" style={style1} />
+      <div className="icon-placeholder" style={style1} /> 
       <div className="text-placeholder" style={style1}>
       <label style={style2}>                                          
         {label}
