@@ -14,7 +14,7 @@ const Carousel: React.FC = () => {
   const [items, setItems] = useState<CarouselItem[]>([
     {
       image: '/assets/IND/image1.jpg',
-      author: 'MUMBAI',
+      author: 'SUMMER',
       title: 'Create Memories for a Lifetime',
       topic: 'Taj Hotel',
       url: 'https://adventurer-omega.vercel.app/',
@@ -22,7 +22,7 @@ const Carousel: React.FC = () => {
     },
     {
       image: '/assets/IND/image2.jpg',
-      author: 'CESS',
+      author: 'MONSOON',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/BaseContent',
@@ -30,7 +30,7 @@ const Carousel: React.FC = () => {
     },
     {
       image: '/assets/IND/image3.jpg',
-      author: 'PANDA',
+      author: 'WINTER',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/Account',
@@ -38,7 +38,7 @@ const Carousel: React.FC = () => {
     },
     {
       image: '/assets/IND/image4.jpg',
-      author: 'BATMAN',
+      author: 'SPRING',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/',
@@ -46,7 +46,15 @@ const Carousel: React.FC = () => {
     },
     {
       image: '/assets/IND/image5.jpg',
-      author: 'vishal',
+      author: 'AUTUMN',
+      title: 'DESIGN SLIDER',
+      topic: 'ANIMAL',
+      url: 'https://adventurer-omega.vercel.app/',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+    },
+    {
+      image: '/assets/IND/image6.jpg',
+      author: 'AUTUMN',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/',
@@ -55,27 +63,17 @@ const Carousel: React.FC = () => {
   ]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeIn, setFadeIn] = useState(false);
   const [sliding, setSliding] = useState(false);
   const thumbnailRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    setFadeIn(false);
-    const timer = setTimeout(() => {
-      setFadeIn(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [currentIndex]);
-
-  useEffect(() => {
     const autoNext = () => {
       nextSlide();
-      timeoutRef.current = setTimeout(autoNext, 3000);
+      timeoutRef.current = setTimeout(autoNext, 20000);
     };
 
-    timeoutRef.current = setTimeout(autoNext, 3000);
+    timeoutRef.current = setTimeout(autoNext, 20000);
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -100,7 +98,7 @@ const Carousel: React.FC = () => {
   const slideThumbnails = (direction: number) => {
     if (thumbnailRef.current) {
       const itemWidth = thumbnailRef.current.children[0].clientWidth;
-      const gap = 20; // Adjust this value to match your gap between items
+      const gap = 25; // Adjust this value to match your gap between items
       thumbnailRef.current.style.transition = 'transform 0.3s ease-in-out';
       thumbnailRef.current.style.transform = `translateX(${direction * (itemWidth + gap)}px)`;
 
@@ -129,11 +127,22 @@ const Carousel: React.FC = () => {
 
   return (
     <div className="carousel relative h-screen w-full overflow-hidden">
+      {/* Background image matching the first card */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
+        style={{ backgroundImage: `url(${items[0].image})` }}
+      ></div>
+
       <div className="list absolute inset-0">
         {items.map((item, index) => (
           <div
             key={index}
-            className={`item absolute inset-0 transition-opacity duration-500 ${index === currentIndex ? 'z-10 opacity-100' : 'opacity-0'}`}
+            className={`item absolute inset-0 duration-1000 ${
+              index === currentIndex ? 'z-10 opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              zIndex: index === 0 && index !== currentIndex ? -1 : 'auto',
+            }}
           >
             <img
               src={item.image}
@@ -142,7 +151,7 @@ const Carousel: React.FC = () => {
             />
             <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-white">
               <div className="author font-bold">{item.author}</div>
-              <div className={`title text-5xl font-bold leading-tight transition-opacity duration-500 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="title text-5xl font-bold leading-tight">
                 {item.title}
               </div>
               <div className="topic text-5xl font-bold leading-tight text-[#000000]">
@@ -158,7 +167,7 @@ const Carousel: React.FC = () => {
         ))}
       </div>
 
-      <div ref={thumbnailRef} className="thumbnail absolute bottom-[50px] left-[40%] z-20 flex gap-5">
+      <div ref={thumbnailRef} className="thumbnail absolute bottom-[50px] left-[40%] z-10 flex gap-5">
         {items.map((item, index) => (
           <div
             key={index}
