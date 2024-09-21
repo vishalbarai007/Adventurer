@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
 
 interface CarouselItem {
@@ -10,7 +10,7 @@ interface CarouselItem {
   description: string;
 }
 
-const Carousel: React.FC = () => {
+const Carousel: FC = () => {
   const [items, setItems] = useState<CarouselItem[]>([
     {
       image: '/assets/IND/image1.jpg',
