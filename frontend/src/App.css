@@ -5,6 +5,11 @@
   /* color: #f3ebff; */
 }
 
+*::selection{
+  background-color: #000;
+  color: #fff;
+}
+
 /* scrollslider */
 .progress-bar {
   transform-origin: 0%;
@@ -287,4 +292,8 @@ dad7cd
 .arrows button:hover {
     background-color: #fff;
     color: #000;
+}
+
+.BookButton:hover{
+  background-color: #000;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
+import Pre_login_menubar from './pre_login_menubar';
 
 interface CarouselItem {
   image: string;
@@ -128,6 +129,7 @@ const Carousel: FC = () => {
   return (
     <div className="carousel relative h-screen w-full overflow-hidden">
       {/* Background image matching the first card */}
+      <Pre_login_menubar/>
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{ backgroundImage: `url(${items[0].image})` }}
@@ -160,7 +162,7 @@ const Carousel: FC = () => {
               <div className="description mt-4">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
                 <button className="bg-gray-900">SEE MORE</button>
-                <button className="bg-transparent">SUBSCRIBE</button>
+                <button className="BookButton bg-zinc-300">BOOK NOW</button>
               </div>
             </div>
           </div>
@@ -188,11 +190,11 @@ const Carousel: FC = () => {
         ))}
       </div>
 
-      <div className="arrows absolute top-3/4 left-[17%] z-20 flex gap-5">
-        <button onClick={prevSlide} className="w-10 h-10 bg-gray-900 rounded-full text-white font-bold">
+      <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
+        <button onClick={prevSlide} className="w-16 h-16 bg-gray-900 rounded-full text-white font-bold">
           &lt;
         </button>
-        <button onClick={nextSlide} className="w-10 h-10 bg-gray-200 rounded-full text-white font-bold">
+        <button onClick={nextSlide} className="w-16 h-16 bg-gray-200 rounded-full text-white font-bold">
           &gt;
         </button>
       </div>
