@@ -35,7 +35,7 @@ export const Pre_login_menubar = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      style={{ position: "fixed", zIndex: 10 }}
+      style={{ position: "fixed", zIndex: 2 }}
     >
       <motion.div className="background" variants={sidebar} />
       <Navigation />

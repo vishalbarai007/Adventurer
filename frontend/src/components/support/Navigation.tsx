@@ -23,7 +23,7 @@ const menuItems = [
         },
         {
           label: "Destinations",
-          link: "/destination",
+          link: "/seasonal_destinations",
         },
         {
           label: "About us",

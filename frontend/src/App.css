@@ -247,7 +247,7 @@ dad7cd
     transition: all 2s ease-in-out;
 }
 
-.carousel .list .item .buttons button:nth-child(2) {
+.carousel .list .item .buttons button:hover {
     background-color: transparent;
     border: 1px solid #fff;
     color: #eee;
@@ -294,6 +294,3 @@ dad7cd
     color: #000;
 }
 
-.BookButton:hover{
-  background-color: #000;
-}

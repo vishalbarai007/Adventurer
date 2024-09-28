@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
-import Pre_login_menubar from './pre_login_menubar';
+// import Pre_login_menubar from './pre_login_menubar';
+// import ass from '../../assets/Seasons/Summer1.jpg'
 
 interface CarouselItem {
   image: string;
@@ -14,7 +15,7 @@ interface CarouselItem {
 const Carousel: FC = () => {
   const [items, setItems] = useState<CarouselItem[]>([
     {
-      image: '/assets/IND/image1.jpg',
+      image: '/assets/Seasons/Summer1.jpg',
       author: 'SUMMER',
       title: 'Create Memories for a Lifetime',
       topic: 'Taj Hotel',
@@ -22,23 +23,31 @@ const Carousel: FC = () => {
       description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
     },
     {
-      image: '/assets/IND/image2.jpg',
-      author: 'MONSOON',
+      image: '/assets/Seasons/Winter1.jpg',
+      author: 'WINTER',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/BaseContent',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
     {
-      image: '/assets/IND/image3.jpg',
-      author: 'WINTER',
+      image: '/assets/Seasons/Spring1.jpg',
+      author: 'SPRING',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
       url: 'https://adventurer-omega.vercel.app/Account',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
     {
-      image: '/assets/IND/image4.jpg',
+      image: '/assets/Seasons/Summer1.jpg',
+      author: 'SUMMER',
+      title: 'Create Memories for a Lifetime',
+      topic: 'Taj Hotel',
+      url: 'https://adventurer-omega.vercel.app/',
+      description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
+    },
+    {
+      image: '/assets/Seasons/Autumn1.jpg',
       author: 'SPRING',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
@@ -46,7 +55,7 @@ const Carousel: FC = () => {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
     {
-      image: '/assets/IND/image5.jpg',
+      image: '/assets/Seasons/Summer2.jpg',
       author: 'AUTUMN',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
@@ -54,7 +63,7 @@ const Carousel: FC = () => {
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
     {
-      image: '/assets/IND/image6.jpg',
+      image: '/assets/Seasons/winter2.jpg',
       author: 'AUTUMN',
       title: 'DESIGN SLIDER',
       topic: 'ANIMAL',
@@ -65,10 +74,13 @@ const Carousel: FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliding, setSliding] = useState(false);
+  const [backgroundIndex, setBackgroundIndex] = useState(0);
   const thumbnailRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    // Comment out the auto-change functionality
+    /*
     const autoNext = () => {
       nextSlide();
       timeoutRef.current = setTimeout(autoNext, 20000);
@@ -80,19 +92,22 @@ const Carousel: FC = () => {
         clearTimeout(timeoutRef.current);
       }
     };
+    */
   }, []);
 
   const nextSlide = () => {
     if (sliding) return;
     setSliding(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+    setCurrentIndex((prevIndex) => (prevIndex) % items.length);
+    setBackgroundIndex((prevIndex) => (prevIndex) % items.length);
     slideThumbnails(-1);
   };
 
   const prevSlide = () => {
     if (sliding) return;
     setSliding(true);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+    setCurrentIndex((prevIndex) => (prevIndex + items.length) % items.length);
+    setBackgroundIndex((prevIndex) => (prevIndex + items.length) % items.length);
     slideThumbnails(1);
   };
 
@@ -128,11 +143,10 @@ const Carousel: FC = () => {
 
   return (
     <div className="carousel relative h-screen w-full overflow-hidden">
-      {/* Background image matching the first card */}
-      <Pre_login_menubar/>
+      {/* <Pre_login_menubar/> */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
-        style={{ backgroundImage: `url(${items[0].image})` }}
+        style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}
       ></div>
 
       <div className="list absolute inset-0">
@@ -162,7 +176,7 @@ const Carousel: FC = () => {
               <div className="description mt-4">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
                 <button className="bg-gray-900">SEE MORE</button>
-                <button className="BookButton bg-zinc-300">BOOK NOW</button>
+                <button className="BookButton bg-zinc-800">BOOK NOW</button>
               </div>
             </div>
           </div>
@@ -211,7 +225,7 @@ const Destinations: React.FC = () => {
   return (
     <div className="destinations-page">
       <Carousel />
-      {/* Add any additional content for the Destinations page here */}
+      {/* <Pre_login_menubar/> */}
     </div>
   );
 };

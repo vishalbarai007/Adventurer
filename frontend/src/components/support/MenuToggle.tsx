@@ -18,6 +18,7 @@ const Path = (
 // Define the MenuToggle props interface
 interface MenuToggleProps {
   toggle: MouseEventHandler<HTMLButtonElement>; // Type for the toggle function
+  
 }
 
 // Define the MenuToggle component with typed props
