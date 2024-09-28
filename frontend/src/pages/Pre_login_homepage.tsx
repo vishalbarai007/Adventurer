@@ -17,7 +17,6 @@ const Pre_login_homepage = () => {
         <Pre_login_homepage_content/>
         <ImageGallery/>
         <Pre_homepage_cards/>
-        {/* <ImageGallery/> */}
        
 
        

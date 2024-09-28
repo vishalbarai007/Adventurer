@@ -183,7 +183,8 @@ const Carousel: FC = () => {
         ))}
       </div>
 
-      <div ref={thumbnailRef} className="thumbnail absolute bottom-[50px] left-[40%] z-10 flex gap-5">
+      <div className='thumbnail overflow-hidden absolute bottom-[50px] left-[40%] p-5'>
+      <div ref={thumbnailRef} className=" flex gap-5">
         {items.map((item, index) => (
           <div
             key={index}
@@ -202,6 +203,7 @@ const Carousel: FC = () => {
             </Link>
           </div>
         ))}
+      </div>
       </div>
 
       <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
