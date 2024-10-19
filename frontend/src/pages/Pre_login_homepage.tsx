@@ -4,8 +4,8 @@ import Pre_login_menubar from '../components/ui/pre_login_menubar'
 import Parallax from '../components/ui/Parallax'
 import Pre_login_homepage_content from '../components/ui/Pre_login_homepage_content'
 import Pre_homepage_cards from '../components/ui/Pre_homepage_cards'
-import ImageGallery from '../components/ui/ImageGallery'
-import Categories from '../components/ui/Categories'
+// import ImageGallery from '../components/ui/ImageGallery'
+// import Categories from '../components/ui/Categories'
 import CouponsAndDeals from '../components/ui/Coupons'
 
 
@@ -17,9 +17,9 @@ const Pre_login_homepage = () => {
         <Scrollslider/>
         <Pre_login_menubar/>
         <Pre_login_homepage_content/>
-        <ImageGallery/>
+        {/* <ImageGallery/> */}
         <Pre_homepage_cards/>
-        <Categories/>
+        {/* <Categories/> */}
         <CouponsAndDeals/>
        
 
