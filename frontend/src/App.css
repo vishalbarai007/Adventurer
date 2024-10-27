@@ -282,7 +282,8 @@ dad7cd
 }
 
 .arrows button {
-    background-color: rgba(67, 62, 62, 0.614);
+    /* background-color: rgba(67, 62, 62, 0.614); */
+    background-color: #000;
     border: none;
     color: #fff;
     font-family: monospace;

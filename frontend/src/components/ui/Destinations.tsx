@@ -18,7 +18,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Summer1.jpg',
       author: 'SUMMER',
       title: 'Create Memories for a Lifetime',
-      topic: 'Taj Hotel',
+      topic: 'Summer',
       url: 'https://adventurer-omega.vercel.app/',
       description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
     },
@@ -26,7 +26,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Winter1.jpg',
       author: 'WINTER',
       title: 'DESIGN SLIDER',
-      topic: 'ANIMAL',
+      topic: 'Winter',
       url: 'https://adventurer-omega.vercel.app/BaseContent',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
@@ -34,7 +34,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Spring1.jpg',
       author: 'SPRING',
       title: 'DESIGN SLIDER',
-      topic: 'ANIMAL',
+      topic: 'Spring',
       url: 'https://adventurer-omega.vercel.app/Account',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
@@ -42,7 +42,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Summer1.jpg',
       author: 'SUMMER',
       title: 'Create Memories for a Lifetime',
-      topic: 'Taj Hotel',
+      topic: 'TSummer',
       url: 'https://adventurer-omega.vercel.app/',
       description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
     },
@@ -50,7 +50,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Autumn1.jpg',
       author: 'SPRING',
       title: 'DESIGN SLIDER',
-      topic: 'ANIMAL',
+      topic: 'Spring',
       url: 'https://adventurer-omega.vercel.app/',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
@@ -58,7 +58,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/Summer2.jpg',
       author: 'AUTUMN',
       title: 'DESIGN SLIDER',
-      topic: 'ANIMAL',
+      topic: 'Autumn',
       url: 'https://adventurer-omega.vercel.app/',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
@@ -66,7 +66,7 @@ const Carousel: FC = () => {
       image: '/assets/Seasons/winter2.jpg',
       author: 'AUTUMN',
       title: 'DESIGN SLIDER',
-      topic: 'ANIMAL',
+      topic: 'Autumn',
       url: 'https://adventurer-omega.vercel.app/',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
     },
@@ -207,10 +207,10 @@ const Carousel: FC = () => {
       </div>
 
       <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
-        <button onClick={prevSlide} className="w-16 h-16 bg-gray-900 rounded-full text-white font-bold">
+        <button onClick={prevSlide} className="w-16 h-16 rounded-full text-white font-bold">
           &lt;
         </button>
-        <button onClick={nextSlide} className="w-16 h-16 bg-gray-200 rounded-full text-white font-bold">
+        <button onClick={nextSlide} className="w-16 h-16 rounded-full text-white font-bold">
           &gt;
         </button>
       </div>

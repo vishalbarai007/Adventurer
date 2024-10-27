@@ -41,7 +41,13 @@ const CouponsAndDeals = () => {
             logo:"/assets/BrandLogos/OYO/Oyo.png",
             description:"Get Flat 33% Off on All OYO Hotel bookings in USA",
             code:"OYOGOUSA"
-        }
+        },
+        {
+          title:"Trivago",
+          logo:"/assets/BrandLogos/Trivago/Trivago_Logo_1.png",
+          description:"Get Flat 33% Off on All OYO Hotel bookings in USA",
+          code:"OYOGOUSA"
+       },
     ])
 
 
@@ -50,7 +56,7 @@ const CouponsAndDeals = () => {
       <h2 className="text-2xl font-bold mb-6 text-center text-white text-[100px] p-10">Coupons & Deals</h2>
       <div className="flex space-x-4 overflow-x-auto">
         {items.map((item) => (
-            <div className="bg-white shadow-md rounded-md p-4 w-64">
+            <div className="bg-white shadow-md rounded-md p-4 w-72">
             <div className="h-32 w-40">
               <img src={item.logo} />
             </div>
