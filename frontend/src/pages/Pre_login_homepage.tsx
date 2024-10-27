@@ -6,7 +6,8 @@ import Pre_login_homepage_content from '../components/ui/Pre_login_homepage_cont
 import Pre_homepage_cards from '../components/ui/Pre_homepage_cards'
 // import ImageGallery from '../components/ui/ImageGallery'
 // import Categories from '../components/ui/Categories'
-import CouponsAndDeals from '../components/ui/Coupons'
+import CouponsAndDeals from '../components/ui/CouponsAndDeals'
+import Footer from '../components/ui/Footer'
 
 
 
@@ -21,6 +22,7 @@ const Pre_login_homepage = () => {
         <Pre_homepage_cards/>
         {/* <Categories/> */}
         <CouponsAndDeals/>
+        <Footer/>
        
 
        

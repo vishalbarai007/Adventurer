@@ -81,7 +81,7 @@ const Categories = () => {
   return (
     <>
        <h1 className="font-extrabold text-center text-[60px]">Your Travel Categories</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 bg-white">
+      <div className="justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 mx-20 bg-white">
         {items.map((item, Seasonsex) => (
           <div
             key={Seasonsex}
