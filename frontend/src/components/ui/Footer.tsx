@@ -6,12 +6,14 @@ const Footer = () => {
       <div className="h-fit w-full bg-zinc-950">
 
         <footer className="h-fit w-full flex justify-center align-middle">
-          <div className="left-block  bg-red-700 h-fit w-[60%] p-20">
+          <div className="left-block  bg-red-700 h-fit w-[70%] p-20">
             
           </div>
 
-          <div className="right-block h-fit w-[40%] bg-violet-900">
-            <h1 className="text-center font-bold">Lets Talk to you.</h1>
+          <div className="right-block h-fit w-[30%] bg-violet-900">
+          <h1 className="text-center font-bold text-[50px]">
+            <span className="text-blue-600">Let's</span> Talk to you.
+          </h1>
 
             <form action="" className="h-fit w-[100%] p-10 ">
               
