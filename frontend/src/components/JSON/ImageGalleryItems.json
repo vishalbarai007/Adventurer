@@ -1,0 +1,33 @@
+[
+    {
+      "image": "/assets/IND/image1.jpg",
+      "like": 0,
+      "name": "Gateway Of India"
+    },
+    {
+      "image": "/assets/IND/image2.jpg",
+      "like": 0,
+      "name": "Taj Mahal"
+    },
+    {
+      "image": "/assets/IND/image3.jpg",
+      "like": 0,
+      "name": "Banaras"
+    },
+    {
+      "image": "/assets/IND/image4.jpg",
+      "like": 0,
+      "name": "Konark Temple"
+    },
+    {
+      "image": "/assets/IND/image5.jpg",
+      "like": 0,
+      "name": "Hawa Mahal"
+    },
+    {
+      "image": "/assets/IND/image1.jpg",
+      "like": 0,
+      "name": "Qutub Minar"
+    }
+  ]
+  

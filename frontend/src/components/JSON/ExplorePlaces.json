@@ -1,0 +1,35 @@
+[
+    {
+      "name": "Australia",
+      "imgSrc": "/assets/Seasons/Summer1.jpg"
+    },
+    {
+      "name": "Maldives",
+      "imgSrc": "/assets/Seasons/Winter1.jpg"
+    },
+    {
+      "name": "Paris",
+      "imgSrc": "/assets/Seasons/Spring1.jpg"
+    },
+    {
+      "name": "Dubai",
+      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+    },
+    {
+      "name": "India",
+      "imgSrc": "/assets/Seasons/Summer2.jpg"
+    },
+    {
+      "name": "Italy",
+      "imgSrc": "/assets/Seasons/Winter1.jpg"
+    },
+    {
+      "name": "Dubai",
+      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+    },
+    {
+      "name": "Dubai",
+      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+    }
+  ]
+  

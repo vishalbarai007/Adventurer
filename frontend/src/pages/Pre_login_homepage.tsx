@@ -8,6 +8,8 @@ import Pre_homepage_cards from '../components/ui/Pre_homepage_cards'
 // import Categories from '../components/ui/Categories'
 import CouponsAndDeals from '../components/ui/CouponsAndDeals'
 import Footer from '../components/ui/Footer'
+// import Recommendation_cards from '../components/ui/ExplorePlaces'
+import ExplorePlaces from '../components/ui/ExplorePlaces'
 
 
 
@@ -22,6 +24,7 @@ const Pre_login_homepage = () => {
         <Pre_homepage_cards/>
         {/* <Categories/> */}
         <CouponsAndDeals/>
+        <ExplorePlaces/>
         <Footer/>
        
 
