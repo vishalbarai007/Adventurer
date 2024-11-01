@@ -22,12 +22,13 @@ const Categories: React.FC = () => {
 
   return (
     <>
-      <h1 className="font-extrabold text-center text-[60px]">Your Travel Categories</h1>
+      <h1 className="font-extrabold text-center text-[60px]" data-aos="fade-up">Your Travel Categories</h1>
       <div className="justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 mx-20 bg-white">
         {items.map((item, index) => (
           <div
             key={index}
             className="rounded-xl relative w-[335px] h-[256px] bg-zinc-700"
+            data-aos="fade-up"
           >
             {item.image && (
               <div className="overflow-hidden rounded-xl w-full h-full">

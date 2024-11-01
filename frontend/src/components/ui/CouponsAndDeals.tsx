@@ -37,7 +37,7 @@ const CouponsAndDeals = () => {
   const [items] = useState<Coupon[]>(couponsData);
 
   return (
-    <div className="bg-gray-900 p-8 my-10">
+    <div className="bg-gray-900 p-8 my-10" data-aos="fade-up">
       <h2 className="text-2xl font-bold mb-6 text-center text-white text-[100px] p-10">Coupons & Deals</h2>
       <div className="flex space-x-4 overflow-x-auto">
         {items.map((item, index) => (

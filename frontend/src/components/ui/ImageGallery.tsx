@@ -20,7 +20,7 @@ const ImageGallery: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-2 image-gallery h-screen w-full bg-white">
+    <div className="flex gap-2 image-gallery h-screen w-full bg-white" id="target-section">
       <div className="left-section relative h-full w-[50%] bg-white flex flex-col justify-center items-center">
         <div className="grid grid-cols-2 gap-4 p-10">
           {items.map((item, index) => (

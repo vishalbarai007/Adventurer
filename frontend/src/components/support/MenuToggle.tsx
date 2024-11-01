@@ -2,26 +2,22 @@ import { motion, SVGMotionProps } from "framer-motion";
 import { RefAttributes, MouseEventHandler } from "react";
 import { JSX } from "react/jsx-runtime";
 
-// Define the Path component with correct props
 const Path = (
   props: JSX.IntrinsicAttributes & SVGMotionProps<SVGPathElement> & RefAttributes<SVGPathElement>
 ) => (
   <motion.path
     fill="transparent"
     strokeWidth="3"
-    stroke="#f3ebff" // Updated the stroke color
+    stroke="#f3ebff"
     strokeLinecap="round"
     {...props}
   />
 );
 
-// Define the MenuToggle props interface
 interface MenuToggleProps {
-  toggle: MouseEventHandler<HTMLButtonElement>; // Type for the toggle function
-  
+  toggle: MouseEventHandler<HTMLButtonElement>;
 }
 
-// Define the MenuToggle component with typed props
 export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle }) => (
   <button onClick={toggle} className="menu_toggle_button">
     <svg width="23" height="23" viewBox="0 0 23 23">

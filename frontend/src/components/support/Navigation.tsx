@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MenuItem } from "../support/MenuItem";
+import { MenuItem } from "./MenuItem";
 import { Link } from "react-router-dom";
 
 const variants = {
@@ -11,40 +11,31 @@ const variants = {
   },
 };
 
-// const menuItems = ["Home", "Blogs", "About us", "Contact us", "SignUp/SignIn"];
 const menuItems = [
-        {
-          label: "Home",
-          link: "/",
-        },
-        {
-          label: "Blogs",
-          link: "/blogs",
-        },
-        {
-          label: "Destinations",
-          link: "/seasonal_destinations",
-        },
-        {
-          label: "About us",
-          link: "/about",
-        },
-        {
-          label: "Contact us",
-          link: "/contact",
-        },
-        {
-          label: "Signup/SignIn",
-          link: "/login",
-        },
-      ]
+  { label: "Home", link: "/" },
+  { label: "Blogs", link: "/blogs" },
+  { label: "Destinations", link: "/seasonal_destinations" },
+  { label: "About us", link: "/about" },
+  { label: "Contact us", link: "/contact" },
+  { label: "Signup/SignIn", link: "/login" },
+];
 
+interface NavigationProps {
+  isOpen: boolean;
+}
 
-export const Navigation = () => (
-  <motion.ul variants={variants}>
+export const Navigation: React.FC<NavigationProps> = ({ isOpen }) => (
+  <motion.ul
+    variants={variants}
+    className={`menu_items ${isOpen ? "block" : "hidden"}`}
+  >
     {menuItems.map((item, i) => (
-      <Link to={item.link} >
-        <MenuItem i={i} key={i} label={item.label}  />
+      <Link
+        to={item.link}
+        key={i}
+        className={`menu_link ${!isOpen ? "pointer-events-none opacity-50" : ""}`}
+      >
+        <MenuItem i={i} label={item.label} />
       </Link>
     ))}
   </motion.ul>

@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      scale: {
+        180: '1.8',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -26,12 +29,17 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        bounceSlow: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'bounce-slow': 'bounceSlow 1.5s ease-in-out infinite',
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

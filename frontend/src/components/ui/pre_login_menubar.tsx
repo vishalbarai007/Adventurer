@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion , useCycle } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../support/useDimension";
 import { MenuToggle } from "../support/MenuToggle";
 import { Navigation } from "../support/Navigation";
@@ -10,8 +10,8 @@ const sidebar = {
     transition: {
       type: "spring",
       stiffness: 20,
-      restDelta: 2
-    }
+      restDelta: 2,
+    },
   }),
   closed: {
     clipPath: "circle(30px at 40px 40px)",
@@ -19,15 +19,20 @@ const sidebar = {
       delay: 0.5,
       type: "spring",
       stiffness: 400,
-      damping: 40
-    }
-  }
+      damping: 40,
+    },
+  },
 };
 
-export const Pre_login_menubar = () => {
-  const [isOpen, toggleOpen] = useCycle(false, true);
+export const PreLoginMenuBar = () => {
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+
+  // useCycle provides a toggle function to switch between 'open' and 'closed' states
+  const [isOpen, toggleOpen] = useCycle(false, true);
+
+  // Additional toggleMenu function
+  const toggleMenu = () => toggleOpen(); // Or you can use: setIsOpen((prev) => !prev)
 
   return (
     <motion.nav
@@ -38,10 +43,11 @@ export const Pre_login_menubar = () => {
       style={{ position: "fixed", zIndex: 2 }}
     >
       <motion.div className="background" variants={sidebar} />
-      <Navigation />
-      <MenuToggle toggle={() => toggleOpen()} />
+
+      <MenuToggle toggle={toggleMenu} />
+      {isOpen && <Navigation isOpen={isOpen} />}
     </motion.nav>
   );
 };
 
-export default Pre_login_menubar;
+export default PreLoginMenuBar;

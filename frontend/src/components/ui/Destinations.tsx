@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
+import ScrollDownButton from './ScrollDownButton';
 // import Pre_login_menubar from './pre_login_menubar';
 // import ass from '../../assets/Seasons/Summer1.jpg'
 
@@ -76,23 +77,23 @@ const Carousel: FC = () => {
   const [sliding, setSliding] = useState(false);
   const [backgroundIndex, setBackgroundIndex] = useState(0);
   const thumbnailRef = useRef<HTMLDivElement>(null);
-  // const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     // Comment out the auto-change functionality
-    /*
+    
     const autoNext = () => {
       nextSlide();
-      timeoutRef.current = setTimeout(autoNext, 20000);
+      timeoutRef.current = setTimeout(autoNext, 5000);
     };
 
-    timeoutRef.current = setTimeout(autoNext, 20000);
+    timeoutRef.current = setTimeout(autoNext, 5000);
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
-    */
+    
   }, []);
 
   const nextSlide = () => {
@@ -143,7 +144,6 @@ const Carousel: FC = () => {
 
   return (
     <div className="carousel relative h-screen w-full overflow-hidden">
-      {/* <Pre_login_menubar/> */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}
@@ -165,6 +165,7 @@ const Carousel: FC = () => {
               alt={item.title}
               className="w-full h-full object-cover"
             />
+            
             <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-white">
               <div className="author font-bold">{item.author}</div>
               <div className="title text-5xl font-bold leading-tight">
@@ -227,7 +228,7 @@ const Destinations: React.FC = () => {
   return (
     <div className="destinations-page">
       <Carousel />
-      {/* <Pre_login_menubar/> */}
+      <ScrollDownButton/>
     </div>
   );
 };

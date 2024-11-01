@@ -11,7 +11,7 @@ const ExplorePlaces: React.FC = () => {
   const explores: Explore[] = ExploreData;
 
   const handleImageClick = (index: number) => {
-    setSelectedImage(index === selectedImage ? null : index); // Toggle selected image
+    setSelectedImage(index === selectedImage ? null : index);
   };
 
   return (
