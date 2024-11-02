@@ -226,7 +226,7 @@ const Carousel: FC = () => {
 
 const Destinations: React.FC = () => {
   return (
-    <div className="destinations-page">
+    <div className="destinations-page ">
       <Carousel />
       <ScrollDownButton/>
     </div>

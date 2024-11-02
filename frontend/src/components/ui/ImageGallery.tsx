@@ -20,7 +20,10 @@ const ImageGallery: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-2 image-gallery h-screen w-full bg-white" id="target-section">
+    <>
+    <h1 className="text-center font-bold text-[60px] pb-1 pt-10" id="target-section">Travel in Maharashtra </h1>
+    <p className="text-center text-[30px]">Experience popular destinations without leaving home</p>
+    <div className="flex gap-2 image-gallery h-screen w-full bg-white">
       <div className="left-section relative h-full w-[50%] bg-white flex flex-col justify-center items-center" data-aos="fade-up">
         <div className="grid grid-cols-2 gap-4 p-10">
           {items.map((item, index) => (
@@ -51,9 +54,10 @@ const ImageGallery: React.FC = () => {
         autoPlay
         loop
         muted
-        
+
       />
     </div>
+    </>
   );
 };
 

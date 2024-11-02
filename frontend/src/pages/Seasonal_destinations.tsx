@@ -1,4 +1,3 @@
-import { Carousel } from "../components/support/carousel";
 import Categories from "../components/ui/Categories";
 import CouponsAndDeals from "../components/ui/CouponsAndDeals";
 import Destination from "../components/ui/Destinations";
@@ -19,7 +18,6 @@ const Seasonal_destinations = () => {
     <div className="Seasonal_destinations">
       <Pre_login_menubar />
       <Destination data-aos="fade-up" />
-      <Carousel data-aos="fade-up" />
       <ImageGallery data-aos="fade-up" />
       <Categories data-aos="fade-up" />
       <ExplorePlaces data-aos="fade-up" />
