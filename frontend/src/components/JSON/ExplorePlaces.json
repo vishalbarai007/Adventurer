@@ -1,35 +1,48 @@
 [
     {
       "name": "Australia",
-      "imgSrc": "/assets/Seasons/Summer1.jpg"
+      "imgSrc": "/assets/Seasons/Summer1.jpg",
+      "desc": "Description."
     },
     {
       "name": "Maldives",
-      "imgSrc": "/assets/Seasons/Winter1.jpg"
+      "imgSrc": "/assets/Seasons/Winter1.jpg",
+      "desc": "Description."
+
     },
     {
       "name": "Paris",
-      "imgSrc": "/assets/Seasons/Spring1.jpg"
+      "imgSrc": "/assets/Seasons/Spring1.jpg",
+      "desc": "Description."
+
     },
     {
       "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "desc": "Description."
+
     },
     {
       "name": "India",
-      "imgSrc": "/assets/Seasons/Summer2.jpg"
+      "imgSrc": "/assets/Seasons/Summer2.jpg",
+      "desc": "Description."
+
     },
     {
       "name": "Italy",
-      "imgSrc": "/assets/Seasons/Winter1.jpg"
+      "imgSrc": "/assets/Seasons/Winter1.jpg",
+      "desc": "Description."
     },
     {
       "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "desc": "Description."
+
     },
     {
       "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg"
+      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "desc": "Description."
     }
   ]
   
