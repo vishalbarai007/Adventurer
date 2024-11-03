@@ -21,8 +21,8 @@ const ImageGallery: React.FC = () => {
 
   return (
     <>
-    <h1 className="text-center font-bold text-[60px] pb-1 pt-10" id="target-section">Travel in Maharashtra </h1>
-    <p className="text-center text-[30px]">Experience popular destinations without leaving home</p>
+    <h1 className="text-5xl font-light text-center capitalize" id="target-section" data-aos="fade-up">Travel in Maharashtra </h1>
+    <p className="w-1/2 min-w-[300px] block mx-auto mt-8 text-center leading-[25px] opacity-60 pb-10" data-aos="fade-up">Experience popular Adventurers. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nesciunt, rerum dolorum laudantium optio tempore, reiciendis quod obcaecati architecto fugit neque vitae cum est maiores nulla provident, enim magni illo.</p>
     <div className="flex gap-2 image-gallery h-screen w-full bg-white">
       <div className="left-section relative h-full w-[50%] bg-white flex flex-col justify-center items-center" data-aos="fade-up">
         <div className="grid grid-cols-2 gap-4 p-10">

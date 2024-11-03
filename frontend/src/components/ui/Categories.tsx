@@ -22,7 +22,8 @@ const Categories: React.FC = () => {
 
   return (
     <>
-      <h1 className="font-extrabold text-center text-[60px]" data-aos="fade-up">Your Travel Categories</h1>
+      <h1 className="text-5xl font-light text-center capitalize pt-10" data-aos="fade-up">Your Travel Categories</h1>
+      <p className="w-1/2 min-w-[300px] block mx-auto mt-8 text-center leading-[25px] opacity-60" data-aos="fade-up">Experience popular Adventurers. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nesciunt, rerum dolorum laudantium optio tempore, reiciendis quod obcaecati architecto fugit neque vitae cum est maiores nulla provident, enim magni illo.</p>
       <div className="justify-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 mx-20 bg-white">
         {items.map((item, index) => (
           <div

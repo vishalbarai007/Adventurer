@@ -14,10 +14,10 @@ const ExplorePlaces: React.FC = () => {
   const handleImageClick = (index: number) => {
     setSelectedImage(index === selectedImage ? null : index);
   };
-
+  
   return (
     <section className="relative w-full py-20 px-[10vw] text-black" id="explore-section">
-      <h1 className="text-2xl font-light text-center capitalize" data-aos="fade-up">
+      <h1 className="text-5xl font-light text-center capitalize" data-aos="fade-up">
         Explore Your Place
       </h1>
       <p
