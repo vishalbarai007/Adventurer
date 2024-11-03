@@ -143,8 +143,8 @@ const Carousel: FC = () => {
   };
 
   return (
-    <div className="carousel relative h-screen w-full overflow-hidden">
-      <div 
+<div className="carousel relative h-screen w-full overflow-hidden ">
+        <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}
       ></div>
