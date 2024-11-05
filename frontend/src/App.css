@@ -299,6 +299,16 @@ dad7cd
     color: #000;
 }
 
+.BlogsLanding{
+  background-image: url("../public//assets/BlogsTemplate.jpg");
+  background-size: cover;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px black;
+}
+
+
 /* Custom scrollbar styling */
 .scrollbar-thin::-webkit-scrollbar {
   width: 8px;
@@ -312,3 +322,4 @@ dad7cd
 .scrollbar-thin::-webkit-scrollbar-track {
   background-color: #edf2f7; /* Customize as needed */
 }
+
