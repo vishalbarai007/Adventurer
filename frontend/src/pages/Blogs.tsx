@@ -1,9 +1,14 @@
-
+import BlogLandingTemplate from "../components/ui/BlogLandingTemplate";
+import BlogsData from "../components/ui/BlogsData";
 
 const Blogs = () => {
   return (
-    <div>Blogs</div>
+   <>
+      <BlogLandingTemplate/>
+      <BlogsData/>
+
+   </> 
   )
-}
+};
 
 export default Blogs;
