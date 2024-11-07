@@ -4,10 +4,12 @@ import Destination from "../components/ui/Destinations";
 import ImageGallery from "../components/ui/ImageGallery";
 import Pre_login_menubar from "../components/ui/pre_login_menubar";
 import ExplorePlaces from '../components/ui/ExplorePlaces';
-
+import Scrollslider from "../components/ui/scrollslider";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+
 
 const Seasonal_destinations = () => {
   useEffect(() => {
@@ -17,6 +19,7 @@ const Seasonal_destinations = () => {
   return (
     <div className="Seasonal_destinations">
       <Pre_login_menubar />
+      <Scrollslider/>
       <Destination data-aos="fade-up" />
       <ImageGallery data-aos="fade-up" />
       <Categories data-aos="fade-up" />
