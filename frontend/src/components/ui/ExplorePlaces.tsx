@@ -35,7 +35,7 @@ const ExplorePlaces: React.FC = () => {
             className={`relative rounded-2xl overflow-hidden flex items-end p-2 transition-all duration-300 cursor-pointer 
             ${
               selectedImage === index
-                ? 'fixed top-[50%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] z-50 shadow-[2px_2px_10px_10px_gray]'
+                ? ' z-50 shadow-[2px_2px_10px_10px_gray]'
                 : ' grid grid-cols-5 grid-rows-2 gap-5'
             } ${
               index === 1 ? 'row-span-2' : ''
@@ -53,7 +53,9 @@ const ExplorePlaces: React.FC = () => {
             />
             <div className="relative z-10 text-white p-2">
               <h3 className="font-light">{explore.name}</h3>
-              <p className="ml-5 text-sm relative before:content-[''] before:absolute before:left-[-20px] before:top-1 before:bg-[url('/img/pin.png')] before:w-[15px] before:h-[15px] before:bg-contain">
+              <p className="ml-5 text-sm relative before:content-['']
+               before:absolute before:left-[-20px] before:top-1 before:bg-[url('/img/pin.png')] before:w-[15px] 
+               before:h-[15px] before:bg-contain">
                 View city
               </p>
               {selectedImage === index && (

@@ -5,7 +5,7 @@ import blogData from '../JSON/BlogsData.json'; // Adjust the path based on your 
 const BlogsDataRight = () => {
     return (
         <>
-            <div className="BlogsContainerRight w-[30%] p-10 bg-gray-400 overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300">
+            <div className="BlogsContainerRight mt-5 w-[30%] p-10 bg-gray-400 overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300">
                 <div className="h-fit grid grid-cols-1 gap-8">
                     {blogData.map((blog, index) => (
                         <div key={index} className="blog-item relative bg-white shadow-lg rounded-lg overflow-hidden">
