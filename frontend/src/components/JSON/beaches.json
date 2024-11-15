@@ -1,0 +1,212 @@
+[
+    {
+        "Id": 1,
+        "PlaceName": "Juhu Beach",
+        "Title": "Popular Beach in Mumbai",
+        "Location": "Mumbai, Maharashtra",
+        "Description": "Juhu Beach is one of the most famous beaches in Mumbai, known for its street food and vibrant atmosphere."
+    },
+    {
+        "Id": 2,
+        "PlaceName": "Alibaug Beach",
+        "Title": "Scenic Beach in Raigad",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Alibaug Beach is popular for its clean sands and water sports activities."
+    },
+    {
+        "Id": 3,
+        "PlaceName": "Tarkarli Beach",
+        "Title": "Beautiful Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Tarkarli Beach is known for its crystal-clear waters and coral reefs, making it ideal for snorkeling."
+    },
+    {
+        "Id": 4,
+        "PlaceName": "Ganpatipule Beach",
+        "Title": "Beach with Temples in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Ganpatipule Beach is famous for its serene environment and the Ganpati Temple."
+    },
+    {
+        "Id": 5,
+        "PlaceName": "Kashid Beach",
+        "Title": "Peaceful Beach in Raigad",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Kashid Beach offers white sands and clear waters, perfect for a quiet getaway."
+    },
+    {
+        "Id": 6,
+        "PlaceName": "Diveagar Beach",
+        "Title": "Secluded Beach in Raigad",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Diveagar Beach is known for its peaceful surroundings and coconut groves."
+    },
+    {
+        "Id": 7,
+        "PlaceName": "Harihareshwar Beach",
+        "Title": "Beach with a Sacred Temple",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Harihareshwar Beach is known for its temples and beautiful views of the ocean."
+    },
+    {
+        "Id": 8,
+        "PlaceName": "Girgaum Chowpatty",
+        "Title": "Popular City Beach",
+        "Location": "Mumbai, Maharashtra",
+        "Description": "Girgaum Chowpatty is a popular spot for locals to enjoy sunsets and street food."
+    },
+    {
+        "Id": 9,
+        "PlaceName": "Mandwa Beach",
+        "Title": "Beach near Mumbai",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Mandwa Beach is a favorite getaway spot for Mumbaikars, known for its ferry services and water sports."
+    },
+    {
+        "Id": 10,
+        "PlaceName": "Kihim Beach",
+        "Title": "Quiet Beach with Flora",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Kihim Beach is known for its natural beauty and variety of flora."
+    },
+    {
+        "Id": 11,
+        "PlaceName": "Nagaon Beach",
+        "Title": "Popular Beach for Water Sports",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Nagaon Beach is famous for water sports and family outings."
+    },
+    {
+        "Id": 12,
+        "PlaceName": "Shrivardhan Beach",
+        "Title": "Historic Beach in Raigad",
+        "Location": "Raigad, Maharashtra",
+        "Description": "Shrivardhan Beach is known for its historical significance and beautiful sands."
+    },
+    {
+        "Id": 13,
+        "PlaceName": "Kelshi Beach",
+        "Title": "Quiet Beach in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Kelshi Beach offers tranquility and scenic beauty, ideal for a peaceful retreat."
+    },
+    {
+        "Id": 14,
+        "PlaceName": "Velneshwar Beach",
+        "Title": "Secluded Beach in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Velneshwar Beach is known for its clean sands and calm environment."
+    },
+    {
+        "Id": 15,
+        "PlaceName": "Guhagar Beach",
+        "Title": "Pristine Beach in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Guhagar Beach is popular for its scenic views and calm waters."
+    },
+    {
+        "Id": 16,
+        "PlaceName": "Dapoli Beach",
+        "Title": "Beach Town in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Dapoli Beach is known for its coastal beauty and nearby dolphin-watching spots."
+    },
+    {
+        "Id": 17,
+        "PlaceName": "Murud Beach",
+        "Title": "Beach with Historical Fort",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Murud Beach is famous for its fort views and water activities."
+    },
+    {
+        "Id": 18,
+        "PlaceName": "Harnai Beach",
+        "Title": "Beach with Fish Market",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Harnai Beach is known for its fish market and scenic sunset views."
+    },
+    {
+        "Id": 19,
+        "PlaceName": "Malgund Beach",
+        "Title": "Quiet Beach near Pune",
+        "Location": "Pune, Maharashtra",
+        "Description": "Malgund Beach is a peaceful location, away from the crowds."
+    },
+    {
+        "Id": 20,
+        "PlaceName": "Vengurla Beach",
+        "Title": "Beautiful Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Vengurla Beach is known for its scenic surroundings and serene environment."
+    },
+    {
+        "Id": 21,
+        "PlaceName": "Dahanu Beach",
+        "Title": "Beach in Palghar",
+        "Location": "Palghar, Maharashtra",
+        "Description": "Dahanu Beach is a long stretch known for its peaceful atmosphere and beautiful views."
+    },
+    {
+        "Id": 22,
+        "PlaceName": "Bordi Beach",
+        "Title": "Quiet Beach in Palghar",
+        "Location": "Palghar, Maharashtra",
+        "Description": "Bordi Beach offers calm waters and a peaceful environment."
+    },
+    {
+        "Id": 23,
+        "PlaceName": "Anjarle Beach",
+        "Title": "Beach in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Anjarle Beach is known for its scenic beauty and cleanliness."
+    },
+    {
+        "Id": 24,
+        "PlaceName": "Karde Beach",
+        "Title": "Peaceful Beach in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Karde Beach is popular for dolphin spotting and serene surroundings."
+    },
+    {
+        "Id": 25,
+        "PlaceName": "Kunkeshwar Beach",
+        "Title": "Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Kunkeshwar Beach is known for its clean sands and beautiful views."
+    },
+    {
+        "Id": 26,
+        "PlaceName": "Talashil Tondavali Beach",
+        "Title": "Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Talashil Tondavali Beach is a secluded beach with scenic beauty."
+    },
+    {
+        "Id": 27,
+        "PlaceName": "Arey Ware Beach",
+        "Title": "Twin Beaches in Ratnagiri",
+        "Location": "Ratnagiri, Maharashtra",
+        "Description": "Arey Ware Beach is known for its twin beaches and beautiful scenery."
+    },
+    {
+        "Id": 28,
+        "PlaceName": "Devbagh Beach",
+        "Title": "Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Devbagh Beach offers scenic beauty and a quiet atmosphere."
+    },
+    {
+        "Id": 29,
+        "PlaceName": "Bhogwe Beach",
+        "Title": "Quiet Beach in Sindhudurg",
+        "Location": "Sindhudurg, Maharashtra",
+        "Description": "Bhogwe Beach is known for its clear waters and beautiful sunsets."
+    },
+    {
+        "Id": 30,
+        "PlaceName": "Manori Beach",
+        "Title": "Beach in Mumbai",
+        "Location": "Mumbai, Maharashtra",
+        "Description": "Manori Beach is a quiet getaway near Mumbai, known for its calm atmosphere."
+    }
+]
