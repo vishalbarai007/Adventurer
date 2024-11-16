@@ -1,0 +1,72 @@
+import { Link } from "react-router-dom";
+import item from "../JSON/CarousalData.json";
+import { useRef } from "react";
+
+const Carousel = () => {
+  const thumbnailRef = useRef<HTMLDivElement>(null);
+
+  const slideThumbnails = (direction: number) => {
+    console.log(`Sliding thumbnails by ${direction}`); // Debug log for button click
+    if (thumbnailRef.current) {
+      const scrollAmount = thumbnailRef.current.clientWidth / 2; // Scroll by half the width
+      thumbnailRef.current.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth", // Smooth scrolling
+      });
+    }
+  };
+
+  return (
+    <div className="bg-gray-900 h-max p-10 text-white rounded-xl relative" style={{ boxShadow: "0 -5px 40px black" }}>
+      <div className=" justify-between items-center mb-4">
+        <h2 className="text-3xl font-semibold">Recommended Destinations for You</h2>
+        <Link to="/destinations" className="text-sm underline">
+          See more
+        </Link>
+      </div>
+
+      {/* Carousel Container */}
+      <div className="relative">
+        <div
+          ref={thumbnailRef}
+          className="flex gap-5 overflow-x-auto scrollbar-hide scroll-smooth"
+        >
+          {item.map((item, index) => (
+            <div
+              key={index}
+              className="relative min-w-[200px] max-w-[320px] h-[450px] shrink-0 bg-gray-800 rounded-xl overflow-hidden"
+            >
+              <Link to={item.url}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-sm">
+                  <div className="font-semibold">{item.title}</div>
+                  <div className="text-gray-400">{item.topic}</div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={() => slideThumbnails(-1)}
+          className="absolute h-16 w-16 z-10 left-0 top-1/2 -translate-y-1/2 bg-gray-700 p-3 rounded-full hover:bg-gray-600"
+        >
+          &#8249;
+        </button>
+        <button
+          onClick={() => slideThumbnails(1)}
+          className="absolute h-16 w-16 z-10 right-0 top-1/2 -translate-y-1/2 bg-gray-700 p-3 rounded-full hover:bg-gray-600"
+        >
+          &#8250;
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Carousel;

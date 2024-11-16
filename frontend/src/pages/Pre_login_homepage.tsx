@@ -10,6 +10,7 @@ import CouponsAndDeals from '../components/ui/CouponsAndDeals'
 import Footer from '../components/ui/Footer'
 // import Recommendation_cards from '../components/ui/ExplorePlaces'
 import ExplorePlaces from '../components/ui/ExplorePlaces'
+import Carousel from '../components/ui/Carousel'
 
 
 
@@ -22,6 +23,7 @@ const Pre_login_homepage = () => {
         <Pre_login_homepage_content/>
         {/* <ImageGallery/> */}
         <Pre_homepage_cards/>
+        <Carousel/>
         {/* <Categories/> */}
         <CouponsAndDeals/>
         <ExplorePlaces/>

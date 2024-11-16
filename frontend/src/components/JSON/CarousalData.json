@@ -48,6 +48,22 @@
       "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde."
     },
     {
+      "image": "/assets/Seasons/Winter1.jpg",
+      "author": "WINTER",
+      "title": "DESIGN SLIDER",
+      "topic": "Winter",
+      "url": "https://adventurer-omega.vercel.app/BaseContent",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde."
+    },
+    {
+      "image": "/assets/Seasons/Spring1.jpg",
+      "author": "SPRING",
+      "title": "DESIGN SLIDER",
+      "topic": "Spring",
+      "url": "https://adventurer-omega.vercel.app/Account",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde."
+    },
+    {
       "image": "/assets/Seasons/winter2.jpg",
       "author": "AUTUMN",
       "title": "DESIGN SLIDER",
