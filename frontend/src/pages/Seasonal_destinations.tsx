@@ -8,6 +8,7 @@ import Scrollslider from "../components/ui/scrollslider";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Carousel from "../components/ui/Carousel";
 
 
 
@@ -22,6 +23,7 @@ const Seasonal_destinations = () => {
       <Scrollslider/>
       <Destination data-aos="fade-up" />
       <ImageGallery data-aos="fade-up" />
+      <Carousel/>
       <Categories data-aos="fade-up" />
       <ExplorePlaces data-aos="fade-up" />
       <CouponsAndDeals data-aos="fade-up" />

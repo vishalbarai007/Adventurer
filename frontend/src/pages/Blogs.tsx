@@ -5,6 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import PreLoginMenuBar from "../components/ui/pre_login_menubar";
 import Scrollslider from "../components/ui/scrollslider";
+import ScrollDownButton from "../components/ui/ScrollDownButton";
 
 
 
@@ -19,6 +20,7 @@ const Blogs = () => {
       <PreLoginMenuBar/>
       <Scrollslider/>
       <BlogLandingTemplate data-aos = "fade-up"/>
+      <ScrollDownButton/>
       <BlogsData/>
 
    </> 
