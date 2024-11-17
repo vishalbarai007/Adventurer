@@ -17,7 +17,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="bg-gray-900 h-max p-10 text-white rounded-xl relative" style={{ boxShadow: "0 -5px 40px black" }}>
+    <div className="bg-[#1F3D3B] h-max p-10 mt-28 text-white rounded-xl relative" style={{ boxShadow: "0 -5px 40px black" }}>
       <div className=" justify-between items-center mb-4">
         <h2 className="text-3xl font-semibold">Recommended Destinations for You</h2>
         <Link to="/destinations" className="text-sm underline">
@@ -54,13 +54,13 @@ const Carousel = () => {
         {/* Navigation Buttons */}
         <button
           onClick={() => slideThumbnails(-1)}
-          className="absolute h-16 w-16 z-10 left-0 top-1/2 -translate-y-1/2 bg-gray-700 p-3 rounded-full hover:bg-gray-600"
+          className="arrows absolute w-12  left-0 top-1/2 -translate-y-1/2 bg-zinc-900 p-3 rounded-full hover:bg-white"
         >
           &#8249;
         </button>
         <button
           onClick={() => slideThumbnails(1)}
-          className="absolute h-16 w-16 z-10 right-0 top-1/2 -translate-y-1/2 bg-gray-700 p-3 rounded-full hover:bg-gray-600"
+          className="arrows absolute w-12  right-0 top-1/2 -translate-y-1/2 bg-zinc-900 p-3 rounded-full hover:bg-white"
         >
           &#8250;
         </button>

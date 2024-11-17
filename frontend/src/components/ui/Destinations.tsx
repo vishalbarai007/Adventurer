@@ -166,7 +166,7 @@ const Carousel: FC = () => {
               className="w-full h-full object-cover"
             />
             
-            <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-white">
+            <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-[#EADED0]">
               <div className="author font-bold">{item.author}</div>
               <div className="title text-5xl font-bold leading-tight">
                 {item.title}
@@ -176,8 +176,8 @@ const Carousel: FC = () => {
               </div>
               <div className="description mt-4">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
-                <button className="bg-gray-900">SEE MORE</button>
-                <button className="BookButton bg-zinc-800">BOOK NOW</button>
+                <button className="bg-[#1F3D3B]">SEE MORE</button>
+                <button className="BookButton bg-[#233115]">BOOK NOW</button>
               </div>
             </div>
           </div>
@@ -197,7 +197,7 @@ const Carousel: FC = () => {
                 alt={item.title}
                 className="w-full h-full object-cover rounded-xl"
               />
-              <div className="content absolute bottom-2 left-2 right-2 text-white">
+              <div className="content absolute bottom-2 left-2 right-2 text-[#EADED0]">
                 <div className="title font-medium">{item.title}</div>
                 <div className="description font-light">{item.topic}</div>
               </div>
@@ -208,10 +208,10 @@ const Carousel: FC = () => {
       </div>
 
       <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
-        <button onClick={prevSlide} className="w-16 h-16 rounded-full text-white font-bold">
+        <button onClick={prevSlide} className="w-16 h-16 rounded-full text-[#EADED0] font-bold">
           &lt;
         </button>
-        <button onClick={nextSlide} className="w-16 h-16 rounded-full text-white font-bold">
+        <button onClick={nextSlide} className="w-16 h-16 rounded-full text-[#EADED0] font-bold">
           &gt;
         </button>
       </div>
@@ -226,7 +226,7 @@ const Carousel: FC = () => {
 
 const Destinations: React.FC = () => {
   return (
-    <div className="destinations-page ">
+    <div className="destinations-page">
       <Carousel />
       <ScrollDownButton/>
     </div>

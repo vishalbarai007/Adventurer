@@ -17,6 +17,7 @@
 }
 
 
+
 /* pre-login-menubar */
 nav {
   position: absolute;
@@ -33,8 +34,8 @@ nav {
   bottom: 0;
   width: 300px;
   /* background: #262b15; */
-  background: #0b61ca;
-  color: aliceblue;
+  background: #233115;
+  color: #EADED0;
 }
 
 .menu_toggle_button {
@@ -117,7 +118,7 @@ li {
   inset: 0;
 }
 .white {
-  color: white;
+  color: #EADED0;
 }
 .gray {
   color: #446;
@@ -253,8 +254,8 @@ dad7cd
 
 .carousel .list .item .buttons button:hover {
     background-color: transparent;
-    border: 1px solid #fff;
-    color: #eee;
+    border: 1px solid #EADED0;
+    color: #EADED0;
 }
 
 /* Thumbnail styles */
@@ -279,23 +280,25 @@ dad7cd
 
 /* Arrows styles */
 .arrows {
-    z-index: 100;
+    z-index: 2;
     width: 300px;
     max-width: 30%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .arrows button {
     /* background-color: rgba(67, 62, 62, 0.614); */
     background-color: #000;
     border: none;
-    color: #fff;
+    color: #EADED0;
     font-family: monospace;
     transition: .5s;
 }
 
 .arrows button:hover {
-    background-color: #fff;
+    background-color: #EADED0;
     color: #000;
 }
 

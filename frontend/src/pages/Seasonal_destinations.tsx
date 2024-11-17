@@ -18,7 +18,7 @@ const Seasonal_destinations = () => {
   }, []);
 
   return (
-    <div className="Seasonal_destinations">
+    <div className="Seasonal_destinations bg-[#EADED0]">
       <Pre_login_menubar />
       <Scrollslider/>
       <Destination data-aos="fade-up" />

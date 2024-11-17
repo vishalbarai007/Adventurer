@@ -1,52 +1,65 @@
-
+import { Link } from "react-router-dom";
+import ContactForm from "../support/ContactForm";
+import { FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <>
-      <div className="h-fit w-full bg-zinc-950">
+      <div className="h-fit w-full bg-[#1F3D3B] p-10 text-[#EADED0]">
 
-        <footer className="h-fit w-full flex justify-center align-middle">
-          <div className="left-block  bg-red-700 h-fit w-[70%] p-20">
-            
+        <footer className="h-fit w-full grid gap-3 grid-cols-3 grid-rows-1">
+          <div className="p-20">
+            <h1 className="text-center mb-4">Quick Links</h1>
+            <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-2 gap-x-40 gap-y-1 ">
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Offers</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Organizations</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Quick Bookings</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Login</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Destinations</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"/blogs"}>Blogs</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>About us</Link>
+              </li>
+              <li className="rounded min-w-[150px]">
+                <Link to={"#"}>Contact us</Link>
+              </li>
+            </ul>
           </div>
 
-          <div className="right-block h-fit w-[30%] bg-violet-900">
-          <h1 className="text-center font-bold text-[50px]">
-            <span className="text-blue-600">Let's</span> Talk to you.
-          </h1>
-
-            <form action="" className="h-fit w-[100%] p-10 ">
-              
-            <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white">Name</label>
-            <input type="text" id="name" name="name" required 
-                   className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/>
-        </div>
-        
-        <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
-            <input type="email" id="email" name="email" required 
-                   className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/>
-        </div>
-
-        <div>
-            <label htmlFor="message" className="block text-sm font-medium text-white">Your Message</label>
-            <textarea id="message" name="message" rows="4" required 
-                      className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-            </textarea>
-        </div>
-
-        <button type="submit" 
-                className="w-1/4 px-4 py-2 font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            Contact us
-        </button>
-
-            </form>
+          <div className="relative p-20">
+            <h1 className="text-center mb-4">Social Media</h1>
+            <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-3 gap-x-40 gap-y-1">
+              <li><Link to={""} className="flex justify-center items-center gap-2"><FaInstagram />Instagram</Link></li>
+              <li><Link to={""} className="flex justify-center items-center gap-2"><FaXTwitter /> Twitter </Link></li>
+              <li><Link to={""} className="flex justify-center items-center gap-2"><FaFacebookSquare /> Facebook</Link></li>
+            </ul>
           </div>
+          <div className="relative p-20">
+            <ContactForm />
+          </div>
+
 
 
 
         </footer>
+        <div className="w-full flex items-center justify-center border-t border-t-[#EADED0]">
+        <h1 className="">@2024 Copyright Vishal All Rights Reserved </h1>
+
+          </div>
       </div>
     </>
   )
