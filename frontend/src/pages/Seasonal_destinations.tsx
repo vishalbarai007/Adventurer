@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Carousel from "../components/ui/Carousel";
+import Footer from "../components/ui/Footer";
 
 
 
@@ -27,6 +28,7 @@ const Seasonal_destinations = () => {
       <Categories data-aos="fade-up" />
       <ExplorePlaces data-aos="fade-up" />
       <CouponsAndDeals data-aos="fade-up" />
+      <Footer/>
     </div>
   );
 };

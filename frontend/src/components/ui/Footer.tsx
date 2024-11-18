@@ -7,11 +7,11 @@ import { FaFacebookSquare } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <div className="h-fit w-full bg-[#1F3D3B] p-10 text-[#EADED0]">
+      <div className="h-fit w-full bg-[#1F3D3B] p-10 mt-10  text-[#EADED0]">
 
         <footer className="h-fit w-full grid gap-3 grid-cols-3 grid-rows-1">
           <div className="p-20">
-            <h1 className="text-center mb-4">Quick Links</h1>
+            <h1 className="text-center font-bold mb-4">Quick Links</h1>
             <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-2 gap-x-40 gap-y-1 ">
               <li className="rounded min-w-[150px]">
                 <Link to={"#"}>Offers</Link>
@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
 
           <div className="relative p-20">
-            <h1 className="text-center mb-4">Social Media</h1>
+            <h1 className="text-center mb-4 font-bold">Social Media</h1>
             <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-3 gap-x-40 gap-y-1">
               <li><Link to={""} className="flex justify-center items-center gap-2"><FaInstagram />Instagram</Link></li>
               <li><Link to={""} className="flex justify-center items-center gap-2"><FaXTwitter /> Twitter </Link></li>
