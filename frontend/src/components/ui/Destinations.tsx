@@ -16,62 +16,79 @@ interface CarouselItem {
 const Carousel: FC = () => {
   const [items, setItems] = useState<CarouselItem[]>([
     {
-      image: '/assets/Seasons/Summer1.jpg',
-      author: 'SUMMER',
-      title: 'Create Memories for a Lifetime',
-      topic: 'Summer',
-      url: 'https://adventurer-omega.vercel.app/',
-      description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
+      "image": "/assets/forts/Rajmachi.png",
+      "author": "FORTS",
+      "title": "Freedom Begins from Here",
+      "topic": "Trekking",
+      "url": "https://adventurer-omega.vercel.app/",
+      "description": "Uncover the spirit of freedom as you trek across historic forts. Each step brings you closer to breathtaking views and unforgettable experiences."
     },
     {
-      image: '/assets/Seasons/Winter1.jpg',
-      author: 'WINTER',
-      title: 'DESIGN SLIDER',
-      topic: 'Winter',
-      url: 'https://adventurer-omega.vercel.app/BaseContent',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+      "image": "/assets/Seasons/Summer2.jpg",
+      "author": "BEACHES",
+      "title": "Ride the Waves",
+      "topic": "Water Sports",
+      "url": "https://adventurer-omega.vercel.app/BaseContent",
+      "description": "Dive into adventure with thrilling water sports. From jet skiing to surfing, feel the rush of adrenaline on serene beaches."
     },
     {
-      image: '/assets/Seasons/Spring1.jpg',
-      author: 'SPRING',
-      title: 'DESIGN SLIDER',
-      topic: 'Spring',
-      url: 'https://adventurer-omega.vercel.app/Account',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+      "image": "/assets/waterfalls/thoseghar.jpg",
+      "author": "WATERFALLS",
+      "title": "Dive Deep in Nature",
+      "topic": "Plunging Adventures",
+      "url": "https://adventurer-omega.vercel.app/Account",
+      "description": "Experience the exhilarating plunge into nature’s wonders. Conquer waterfalls with a heart-pounding jump that connects you to the wild."
     },
     {
-      image: '/assets/Seasons/Summer1.jpg',
-      author: 'SUMMER',
-      title: 'Create Memories for a Lifetime',
-      topic: 'TSummer',
-      url: 'https://adventurer-omega.vercel.app/',
-      description: "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime."
+      "image": "/assets/Seasons/Summer1.jpg",
+      "author": "SANCTUARY",
+      "title": "Create Memories for a Lifetime",
+      "topic": "Wildlife Safari",
+      "url": "https://adventurer-omega.vercel.app/",
+      "description": "Explore the untamed beauty of sanctuaries. Witness majestic animals in their natural habitats and create memories you’ll cherish forever."
     },
     {
-      image: '/assets/Seasons/Autumn1.jpg',
-      author: 'SPRING',
-      title: 'DESIGN SLIDER',
-      topic: 'Spring',
-      url: 'https://adventurer-omega.vercel.app/',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+      "image": "/assets/forts/Kalsubai_Peak.jpeg",
+      "author": "HILL STATIONS",
+      "title": "Serene Escapes",
+      "topic": "Family & Friends",
+      "url": "https://adventurer-omega.vercel.app/",
+      "description": "Rejuvenate in the tranquil beauty of hill stations. Perfect for bonding with loved ones amidst picturesque landscapes."
     },
     {
-      image: '/assets/Seasons/Summer2.jpg',
-      author: 'AUTUMN',
-      title: 'DESIGN SLIDER',
-      topic: 'Autumn',
-      url: 'https://adventurer-omega.vercel.app/',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+      "image": "/assets/forts/irshalgadfort.jpg",
+      "author": "THE SOLO EXPLORER",
+      "title": "Find Your Path",
+      "topic": "Solo Adventures",
+      "url": "https://adventurer-omega.vercel.app/",
+      "description": "Embark on a journey of self-discovery. Perfect for independent adventurers seeking solitude and the thrill of uncharted paths."
     },
     {
-      image: '/assets/Seasons/winter2.jpg',
-      author: 'AUTUMN',
-      title: 'DESIGN SLIDER',
-      topic: 'Autumn',
-      url: 'https://adventurer-omega.vercel.app/',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.',
+      "image": "/assets/Seasons/Winter1.jpg",
+      "author": "THE THRILL SEEKER",
+      "title": "Chasing Adrenaline",
+      "topic": "Extreme Sports",
+      "url": "https://adventurer-omega.vercel.app/BaseContent",
+      "description": "For those who crave the extreme. Take on challenges that push your limits and leave you with unforgettable stories."
     },
-  ]);
+    {
+      "image": "/assets/Seasons/Spring1.jpg",
+      "author": "THE NATURE LOVER",
+      "title": "Harmony with Nature",
+      "topic": "Eco Trails",
+      "url": "https://adventurer-omega.vercel.app/Account",
+      "description": "Connect with the earth on peaceful eco trails. Immerse yourself in flora and fauna that will soothe your soul."
+    },
+    {
+      "image": "/assets/Seasons/Winter1.jpg",
+      "author": "THE FAMILY TRAVELER",
+      "title": "Adventures for All Ages",
+      "topic": "Group Adventures",
+      "url": "https://adventurer-omega.vercel.app/",
+      "description": "Perfect for family bonding. Discover activities and destinations that cater to every member of your tribe."
+    }
+  ]
+  );
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sliding, setSliding] = useState(false);
@@ -167,8 +184,8 @@ const Carousel: FC = () => {
             />
             
             <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-[#EADED0]">
-              <div className="author font-bold">{item.author}</div>
-              <div className="title text-5xl font-bold leading-tight">
+              <div className="author font-bold text-[#EADED0]">{item.author}</div>
+              <div className="title text-5xl text-[#EADED0] font-bold leading-tight">
                 {item.title}
               </div>
               <div className="topic text-5xl font-bold leading-tight text-[#000000]">

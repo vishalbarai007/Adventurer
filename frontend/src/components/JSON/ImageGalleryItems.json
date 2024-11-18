@@ -1,33 +1,33 @@
 [
     {
-      "image": "/assets/IND/image1.jpg",
+      "image": "/assets/IND/MarineDrive.png",
       "like": 0,
-      "name": "Gateway Of India"
+      "name": "Marine Lines"
     },
     {
-      "image": "/assets/IND/image2.jpg",
+      "image": "/assets/IND/rajgad_fort.jpg",
       "like": 0,
-      "name": "Taj Mahal"
+      "name": "Rajgad Fort"
     },
     {
-      "image": "/assets/IND/image3.jpg",
+      "image": "/assets/IND/Alibaug.png",
       "like": 0,
-      "name": "Banaras"
+      "name": "Aulibaugh Beaches"
     },
     {
-      "image": "/assets/IND/image4.jpg",
+      "image": "/assets/IND/Sahyadri.png",
       "like": 0,
-      "name": "Konark Temple"
+      "name": "Sahyadri Hill Station"
     },
     {
-      "image": "/assets/IND/image5.jpg",
+      "image": "/assets/IND/AjantaCaves.png",
       "like": 0,
-      "name": "Hawa Mahal"
+      "name": "Ajanta Caves"
     },
     {
-      "image": "/assets/IND/image1.jpg",
+      "image": "/assets/IND/SanjayGandhiNationalPark.png",
       "like": 0,
-      "name": "Qutub Minar"
+      "name": "Wildlife & Sanctuary"
     }
   ]
   

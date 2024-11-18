@@ -1,48 +1,48 @@
 [
+  {
+    "name": "Bungee Jumping",
+    "imgSrc": "/assets/Sports/Bungee_Jumping.png",
+    "desc": "Description."
+
+  },
     {
-      "name": "Australia",
-      "imgSrc": "/assets/Seasons/Summer1.jpg",
+      "name": "Trekking",
+      "imgSrc": "/assets/Sports/Trekking.png",
       "desc": "Description."
     },
     {
-      "name": "Maldives",
-      "imgSrc": "/assets/Seasons/Winter1.jpg",
+      "name": "Scuba Diving",
+      "imgSrc": "/assets/Sports/Scuba_Diving.png",
       "desc": "Description."
 
     },
     {
-      "name": "Paris",
-      "imgSrc": "/assets/Seasons/Spring1.jpg",
+      "name": "Waterfall Rappelling",
+      "imgSrc": "/assets/Sports/WaterFall_Rappeling.png",
       "desc": "Description."
 
     },
     {
-      "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "name": "Wildlife Safari",
+      "imgSrc": "/assets/Sports/Wildlife.png",
       "desc": "Description."
-
+      
     },
     {
-      "name": "India",
-      "imgSrc": "/assets/Seasons/Summer2.jpg",
-      "desc": "Description."
-
-    },
-    {
-      "name": "Italy",
-      "imgSrc": "/assets/Seasons/Winter1.jpg",
+      "name": "Cycling",
+      "imgSrc": "/assets/Sports/Cycling.png",
       "desc": "Description."
     },
     {
-      "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "name": "Paragliding",
+      "imgSrc": "/assets/Sports/ParaGliding.png",
       "desc": "Description."
-
     },
     {
-      "name": "Dubai",
-      "imgSrc": "/assets/Seasons/Autumn1.jpg",
+      "name": "Forest camping",
+      "imgSrc": "/assets/Sports/Night_forest_camping.png",
       "desc": "Description."
-    }
+    
+  }
   ]
   

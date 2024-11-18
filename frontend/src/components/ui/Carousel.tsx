@@ -43,8 +43,8 @@ const Carousel = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-sm">
-                  <div className="font-semibold">{item.title}</div>
-                  <div className="text-gray-400">{item.topic}</div>
+                  <div className="font-semibold">{item.title} </div>
+                  <div className="text-gray-400">{item.location}</div>
                 </div>
               </Link>
             </div>
