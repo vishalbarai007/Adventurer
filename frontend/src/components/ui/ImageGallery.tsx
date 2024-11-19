@@ -37,12 +37,12 @@ const ImageGallery: React.FC = () => {
                     title={item.name}
                     className="w-full h-[200px] object-cover rounded-xl transition-all duration-400 hover:scale-125"
                   />
-                  <h2 className="text-center text-2xl font-bold absolute top-[80%] left-[25%] text-[#EADED0]">
+                  <h2 className="text-center text-2xl font-bold absolute top-[80%] left-[25%] text-[#EADED0] text-stroke">
                     {item.name}
                   </h2>
                   <button
                     onClick={() => handleLike(index)}
-                    className="bg-[#EADED0] absolute bottom-2 left-2 text-black px-2 py-1 rounded-full"
+                    className="bg-[#EADED0] absolute flex justify-center items-center gap-2 bottom-2 left-2 text-black px-2 py-1 rounded-full"
                   >
                     <FcLike /> {item.like}
                   </button>

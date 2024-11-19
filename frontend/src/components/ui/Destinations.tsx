@@ -98,7 +98,7 @@ const Carousel: FC = () => {
 
   useEffect(() => {
     // Comment out the auto-change functionality
-    
+
     const autoNext = () => {
       nextSlide();
       timeoutRef.current = setTimeout(autoNext, 5000);
@@ -110,7 +110,7 @@ const Carousel: FC = () => {
         clearTimeout(timeoutRef.current);
       }
     };
-    
+
   }, []);
 
   const nextSlide = () => {
@@ -160,8 +160,8 @@ const Carousel: FC = () => {
   };
 
   return (
-<div className="carousel relative h-screen w-full overflow-hidden ">
-        <div 
+    <div className="carousel relative h-screen w-full overflow-hidden ">
+      <div
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}
       ></div>
@@ -170,9 +170,8 @@ const Carousel: FC = () => {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`item absolute inset-0 duration-1000 ${
-              index === currentIndex ? 'z-10 opacity-100' : 'opacity-0'
-            }`}
+            className={`item absolute inset-0 duration-1000 ${index === currentIndex ? 'z-10 opacity-100' : 'opacity-0'
+              }`}
             style={{
               zIndex: index === 0 && index !== currentIndex ? -1 : 'auto',
             }}
@@ -182,16 +181,16 @@ const Carousel: FC = () => {
               alt={item.title}
               className="w-full h-full object-cover"
             />
-            
+
             <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-[#EADED0]">
-              <div className="author font-bold text-[#EADED0] text-stroke">{item.author}</div>
+              <div className="author font-bold text-[#EADED0] ">{item.author}</div>
               <div className="title text-5xl text-[#EADED0] text-stroke font-bold leading-tight">
                 {item.title}
               </div>
               <div className="topic text-5xl font-bold leading-tight text-[#000000]">
                 {item.topic}
               </div>
-              <div className="description mt-4">{item.description}</div>
+              <div className="description mt-4 text-xl text-stroke">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
                 <button className="bg-[#1F3D3B]">SEE MORE</button>
                 <button className="BookButton bg-[#233115]">BOOK NOW</button>
@@ -202,26 +201,26 @@ const Carousel: FC = () => {
       </div>
 
       <div className='thumbnail overflow-hidden absolute bottom-[50px] left-[40%] p-5'>
-      <div ref={thumbnailRef} className=" flex gap-5">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="item w-40 h-60 shrink-0 relative"
-          >
-            <Link to={item.url}>
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover rounded-xl"
-              />
-              <div className="content absolute bottom-2 left-2 right-2 text-[#EADED0]">
-                <div className="title font-medium">{item.title}</div>
-                <div className="description font-light">{item.topic}</div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+        <div ref={thumbnailRef} className=" flex gap-5">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="item w-40 h-60 shrink-0 relative"
+            >
+              <Link to={item.url}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover rounded-xl"
+                />
+                <div className="content absolute bottom-2 left-2 right-2 text-[#EADED0]">
+                  <div className="title font-medium">{item.title}</div>
+                  <div className="description font-light">{item.topic}</div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
@@ -245,7 +244,7 @@ const Destinations: React.FC = () => {
   return (
     <div className="destinations-page">
       <Carousel />
-      <ScrollDownButton/>
+      <ScrollDownButton />
     </div>
   );
 };

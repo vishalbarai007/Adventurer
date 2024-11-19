@@ -45,7 +45,7 @@ const Categories: React.FC = () => {
                   />
                 </div>
               )}
-              <h2 className="text-center text-2xl font-bold absolute top-[80%] left-[25%] text-white">
+              <h2 className="text-center text-2xl font-bold absolute top-[80%] left-[25%] text-white text-stroke">
                 {item.heading}
               </h2>
               <button

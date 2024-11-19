@@ -40,7 +40,7 @@ const Carousel = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-all duration-400 hover:scale-125"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-sm">
                   <div className="font-semibold">{item.title} </div>

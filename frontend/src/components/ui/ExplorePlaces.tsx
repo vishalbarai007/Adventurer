@@ -57,7 +57,7 @@ const ExplorePlaces: React.FC = () => {
                     }`}
                 />
                 <div className="relative z-10 text-[#EADED0] p-2">
-                  <h1 className="font-bold">{explore.name}</h1>
+                  <h1 className="font-bold ">{explore.name}</h1>
                   <p
                     className="ml-5 text-sm relative before:content-['']
                   before:absolute before:left-[-20px] before:top-1 before:bg-[url('/img/pin.png')] 
