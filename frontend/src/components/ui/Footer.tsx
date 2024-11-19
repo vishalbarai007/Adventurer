@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ContactForm from "../support/ContactForm";
+import ContactForm from "../support/ContactFormFooter";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
