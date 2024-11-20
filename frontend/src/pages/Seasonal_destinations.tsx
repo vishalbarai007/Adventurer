@@ -28,7 +28,7 @@ const Seasonal_destinations = () => {
       <Categories data-aos="fade-up" />
       <ExplorePlaces data-aos="fade-up" />
       <CouponsAndDeals data-aos="fade-up" />
-      <Footer/>
+      <Footer color={undefined}/>
     </div>
   );
 };
