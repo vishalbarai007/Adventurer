@@ -27,7 +27,7 @@ const Pre_login_homepage = () => {
         {/* <Categories/> */}
         <CouponsAndDeals/>
         <ExplorePlaces/>
-        <Footer/>
+        <Footer color={undefined}/>
        
 
        
