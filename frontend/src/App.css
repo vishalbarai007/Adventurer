@@ -2,7 +2,6 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
-  /* color: #f3ebff; */
 }
 
 *::selection{
@@ -219,6 +218,11 @@ dad7cd
   transition: all 2s;
   box-shadow: 0 5px 40px  black; /* Adds a 5px black shadow at the bottom */
   /* border-bottom: 5px solid black; Adds a 5px black border at the bottom */
+}
+.FooterBlock{
+  
+  background-image: url("https://adventor.wpengine.com/wp-content/themes/adventor/modules/footer/assets/images/footer-bg.jpg");
+  background-position-y: -25em;
 }
 
 

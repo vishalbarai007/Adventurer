@@ -78,17 +78,6 @@ const AboutUs: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="p-4 bg-white shadow-lg rounded-full w-16 h-16 mx-auto">
-                <i className="fas fa-headset text-blue-600 text-2xl"></i>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-700 mt-4">
-                Support
-              </h3>
-              <p className="text-gray-600">
-                24/7 assistance for a convenient and hassle-free experience.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="p-4 bg-white shadow-lg rounded-full w-16 h-16 mx-auto">
                 <i className="fas fa-tags text-blue-600 text-2xl"></i>
               </div>
               <h3 className="text-lg font-semibold text-gray-700 mt-4">
@@ -96,6 +85,17 @@ const AboutUs: React.FC = () => {
               </h3>
               <p className="text-gray-600">
                 Competitive pricing without compromising quality.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="p-4 bg-white shadow-lg rounded-full w-16 h-16 mx-auto">
+                <i className="fas fa-headset text-blue-600 text-2xl"></i>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-700 mt-4">
+                Support
+              </h3>
+              <p className="text-gray-600">
+                24/7 assistance for a convenient and hassle-free experience.
               </p>
             </div>
           </div>

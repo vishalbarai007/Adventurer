@@ -2,17 +2,19 @@ import { Link } from "react-router-dom";
 import ContactForm from "../support/ContactFormFooter";
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+// import CouponsAndDeals from "./CouponsAndDeals";
 
 const Footer = (props: { color: any; }) => {
   return (
     <div
-      className="h-fit w-full p-10 mt-10 text-[#EADED0]"
+      className="FooterBlock h-fit w-full p-10 mt-10 text-[#EADED0]"
       style={{ backgroundColor: props.color || "#1F3D3B" }}
     >
+      {/* <CouponsAndDeals/> */}
       <footer className="h-fit w-full grid gap-3 grid-cols-3 grid-rows-1">
         <div className="p-20">
-          <h1 className="text-center font-bold mb-4">Quick Links</h1>
-          <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-2 gap-x-40 gap-y-1">
+          <h1 className="text-center font-bold text-2xl mb-4">Useful Links</h1>
+          <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-2 gap-x-40 gap-y-1 ">
             <li className="rounded min-w-[150px]">
               <Link to={"#"}>Offers</Link>
             </li>
@@ -23,24 +25,24 @@ const Footer = (props: { color: any; }) => {
               <Link to={"#"}>Quick Bookings</Link>
             </li>
             <li className="rounded min-w-[150px]">
-              <Link to={"#"}>Login</Link>
+              <Link to={"/login"}>Login</Link>
             </li>
             <li className="rounded min-w-[150px]">
-              <Link to={"#"}>Destinations</Link>
+              <Link to={"/seasonal_destinations"}>Destinations</Link>
             </li>
             <li className="rounded min-w-[150px]">
               <Link to={"/blogs"}>Blogs</Link>
             </li>
             <li className="rounded min-w-[150px]">
-              <Link to={"#"}>About us</Link>
+              <Link to={"/about"}>About us</Link>
             </li>
             <li className="rounded min-w-[150px]">
-              <Link to={"#"}>Contact us</Link>
+              <Link to={"/contact"}>Contact us</Link>
             </li>
           </ul>
         </div>
         <div className="relative p-20">
-          <h1 className="text-center mb-4 font-bold">Social Media</h1>
+          <h1 className="text-center mb-4 text-2xl font-bold">Social Media</h1>
           <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-3 gap-x-40 gap-y-1">
             <li>
               <Link
