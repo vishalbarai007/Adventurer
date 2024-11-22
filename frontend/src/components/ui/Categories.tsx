@@ -36,7 +36,7 @@ const Categories: React.FC = () => {
               data-aos="fade-up"
             >
               {item.image && (
-                <div className="overflow-hidden rounded-xl w-full h-full">
+                <div className=" overflow-hidden rounded-xl w-full h-full inset-0 bg-black bg-opacity-50 ">
                   <img
                     src={item.image}
                     alt={`Image ${index + 1}`}

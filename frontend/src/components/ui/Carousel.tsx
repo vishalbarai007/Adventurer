@@ -37,15 +37,20 @@ const Carousel = () => {
               className="relative min-w-[200px] max-w-[320px] h-[450px] shrink-0 bg-gray-800 rounded-xl overflow-hidden"
             >
               <Link to={item.url}>
+              <div className="h-full w-full inset-0 bg-black bg-opacity-50">
+
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-all duration-400 hover:scale-125"
+                  className="inset-0 w-full h-full object-cover transition-all duration-400 hover:scale-125"
                 />
+                </div>
+              
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-sm">
                   <div className="font-semibold">{item.title} </div>
                   <div className="text-gray-400">{item.location}</div>
                 </div>
+                
               </Link>
             </div>
           ))}

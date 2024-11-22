@@ -7,11 +7,11 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = (props: { color: any; }) => {
   return (
     <div
-      className="FooterBlock h-fit w-full p-10 mt-10 text-[#EADED0]"
+      className="FooterBlock h-fit w-full  mt-10 text-[#EADED0] bg-cover "
       style={{ backgroundColor: props.color || "#1F3D3B" }}
     >
-      {/* <CouponsAndDeals/> */}
-      <footer className="h-fit w-full grid gap-3 grid-cols-3 grid-rows-1">
+      <div className="h-full w-full p-10 inset-0 bg-black bg-opacity-50">
+      <footer className="h-fit w-full grid gap-3 grid-cols-3 grid-rows-1 ">
         <div className="p-20">
           <h1 className="text-center font-bold text-2xl mb-4">Useful Links</h1>
           <ul className="QuickLinks relative -mt-10 z-20 grid grid-cols-2 gap-x-40 gap-y-1 ">
@@ -78,6 +78,9 @@ const Footer = (props: { color: any; }) => {
       <div className="w-full flex items-center justify-center border-t border-t-[#EADED0]">
         <h1 className="">@2024 Copyright Vishal All Rights Reserved</h1>
       </div>
+      </div>
+      {/* <CouponsAndDeals/> */}
+     
     </div>
   );
 };

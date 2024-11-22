@@ -35,7 +35,7 @@ const ExplorePlaces: React.FC = () => {
         </p>
 
 
-        <div className="relative w-full h-[600px] grid grid-cols-5 grid-rows-2 gap-5 mt-24">
+        <div className="relative w-full h-[600px] grid grid-cols-5 grid-rows-2 gap-5 mt-24 " >
           {explores.map((explore, index) => {
             const isSelected = selectedImage === index;
             const isBlurred = selectedImage !== null && !isSelected;
@@ -50,12 +50,15 @@ const ExplorePlaces: React.FC = () => {
                   } ${isBlurred ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}
                 onClick={() => handleImageClick(index)}
               >
-                <img
-                  src={explore.imgSrc}
-                  alt={`${explore.name}-image`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 z-[-1] ${isSelected ? 'scale-[1.1]' : 'hover:opacity-80 hover:scale-105'
-                    }`}
-                />
+                <div className="absolute inset-0 bg-black bg-opacity-50">
+                  <img
+                    src={explore.imgSrc}
+                    alt={`${explore.name}-image`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 z-[-1] ${isSelected ? 'scale-[1.1]' : 'hover:opacity-80 hover:scale-105 '
+                      }`}
+                  />
+                </div>
+
                 <div className="relative z-10 text-[#EADED0] p-2">
                   <h1 className="font-bold ">{explore.name}</h1>
                   <p

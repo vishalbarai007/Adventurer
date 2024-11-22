@@ -9,7 +9,7 @@ import Pre_homepage_cards from '../components/ui/Pre_homepage_cards'
 import CouponsAndDeals from '../components/ui/CouponsAndDeals'
 import Footer from '../components/ui/Footer'
 // import Recommendation_cards from '../components/ui/ExplorePlaces'
-import ExplorePlaces from '../components/ui/ExplorePlaces'
+import ExplorePlaces from '../components/ui/ExploreAdventurers'
 import Carousel from '../components/ui/Carousel'
 
 
