@@ -3,7 +3,7 @@ import Contactusimg from "../../../public/assets/IND/ContactUs.png";
 const ContactUsImage = () => {
   return (
     <div>
-         <div className="relative w-full h-64 md:h-auto rounded-lg overflow-hidden">
+         <div className="relative w-full h-fit md:h-auto rounded-lg overflow-hidden">
             <img
               src={Contactusimg}
               alt="Contact Us"
@@ -16,4 +16,4 @@ const ContactUsImage = () => {
   )
 }
 
-export default ContactUsImage
+export default ContactUsImage;

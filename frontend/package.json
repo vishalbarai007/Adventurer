@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.1",
     "@radix-ui/react-menubar": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "aos": "^2.3.4",
