@@ -221,7 +221,7 @@ dad7cd
 }
 .FooterBlock{
   
-  background-image: url("https://adventor.wpengine.com/wp-content/themes/adventor/modules/footer/assets/images/footer-bg.jpg");
+  /* background-image: url("https://adventor.wpengine.com/wp-content/themes/adventor/modules/footer/assets/images/footer-bg.jpg"); */
   background-position-y: -25em;
 }
 

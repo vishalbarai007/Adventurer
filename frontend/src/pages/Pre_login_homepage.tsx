@@ -17,20 +17,20 @@ import Carousel from '../components/ui/Carousel'
 const Pre_login_homepage = () => {
   return (
     <>
-        <Parallax/>
-        <Scrollslider/>
-        <Pre_login_menubar/>
-        <Pre_login_homepage_content/>
-        {/* <ImageGallery/> */}
-        <Pre_homepage_cards/>
-        <Carousel/>
-        {/* <Categories/> */}
-        <CouponsAndDeals/>
-        <ExplorePlaces/>
-        <Footer color={undefined}/>
-       
+      <Parallax />
+      <Scrollslider />
+      <Pre_login_menubar />
+      <Pre_login_homepage_content />
+      {/* <ImageGallery/> */}
+      <Pre_homepage_cards />
+      <Carousel />
+      {/* <Categories/> */}
+      <CouponsAndDeals />
+      <ExplorePlaces />
+      <Footer color={undefined} />
 
-       
+
+
 
     </>
   )

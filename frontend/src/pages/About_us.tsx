@@ -2,10 +2,13 @@ import AboutUsTitle from "../components/support/AboutUsTitle";
 import AboutUsLeftContent from "../components/support/AboutUsLeftContent";
 import AboutUsContentRight from "../components/support/AboutUsContentRight";
 import AboutUsFeatures from "../components/support/AboutUsFeatures";
+import PreLoginMenuBar from "../components/ui/pre_login_menubar";
+import Footer from "../components/ui/Footer";
 
 const AboutUs: React.FC = () => {
   return (
     <div className="bg-[#95714f] min-h-screen">
+      <PreLoginMenuBar/>
       <div className="container mx-auto px-6 py-16">
         {/* Title Section */}
         <AboutUsTitle/>
@@ -22,6 +25,7 @@ const AboutUs: React.FC = () => {
         {/* Features Section */}
         <AboutUsFeatures/>
       </div>
+      <Footer color={undefined}/>
     </div>
   );
 };
