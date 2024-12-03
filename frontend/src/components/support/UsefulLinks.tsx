@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const UsefulLinks = () => {
   return (
-<div className="relative p-8 rounded-lg shadow-md h-auto mb-10 ">
+<div className="relative p-8 rounded-lg shadow-md h-auto mb-10">
 <h1 className="text-center font-bold text-3xl mb-6 ">Useful Links</h1>
       <ul className="QuickLinks grid grid-cols-2 gap-y-4 gap-x-6 md:gap-x-10 md:gap-y-6 justify-items-start">
         <li className="rounded min-w-[150px] hover:text-blue-600 transition-colors">
