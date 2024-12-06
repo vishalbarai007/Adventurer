@@ -7,7 +7,7 @@ import Footer from "../components/ui/Footer";
 
 const AboutUs: React.FC = () => {
   return (
-    <div className="bg-[#95714f] min-h-screen">
+    <div className="bg-[rgb(149,113,79)] min-h-screen">
       <PreLoginMenuBar/>
       <div className="container mx-auto px-6 py-16">
         {/* Title Section */}

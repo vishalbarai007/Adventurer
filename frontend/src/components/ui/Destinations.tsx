@@ -232,10 +232,10 @@ const Carousel: FC = () => {
         </button>
       </div>
 
-      <div
+      {/* <div
         className={`time absolute top-0 left-0 h-1 bg-orange-500 transition-all duration-[3000ms] ease-linear`}
         style={{ width: `${(currentIndex + 1) / items.length * 100}%` }}
-      ></div>
+      ></div> */}
     </div>
   );
 };

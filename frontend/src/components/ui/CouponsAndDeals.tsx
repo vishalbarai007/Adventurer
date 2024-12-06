@@ -38,7 +38,7 @@ const CouponsAndDeals = () => {
 
   return (
 <div className="Coupons&Deals bg-[#1F3D3B] p-8 rounded-t-[100px]" style={{ boxShadow: "0 -5px 40px black" }} data-aos="fade-up">
-      <h2 className="text-5xl font-light mb-6 text-center capitalize text-white text-[100px] p-10">Coupons & Deals</h2>
+      <h2 className="text-5xl font-light mb-6 text-center capitalize text-white text-[70px] p-10">Coupons & Deals</h2>
       <div className="flex space-x-4 overflow-x-auto">
         {items.map((item, index) => (
           <CouponCard

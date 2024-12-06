@@ -10,6 +10,17 @@
     "desc": "Embark on scenic trails, explore rugged terrains, and connect with nature on unforgettable trekking adventures."
   },
   {
+    "name": "Bungee Jumping",
+    "imgSrc": "/assets/Sports/Bungee_Jumping.png",
+    "desc": "Experience the ultimate adrenaline rush as you leap off a towering platform in breathtaking locations."
+  },
+  {
+    "name": "Trekking",
+    "imgSrc": "/assets/Sports/Trekking.png",
+    "desc": "Embark on scenic trails, explore rugged terrains, and connect with nature on unforgettable trekking adventures."
+  },
+  
+  {
     "name": "Scuba Diving",
     "imgSrc": "/assets/Sports/Scuba_Diving.png",
     "desc": "Dive into crystal-clear waters to explore vibrant marine life and mesmerizing underwater landscapes."
