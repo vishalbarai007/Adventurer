@@ -16,10 +16,10 @@ const UsefulLinks = () => {
   return (
     <Card className="w-full bg-transparent border-none shadow-none">
       
-      <CardContent className="relative flex justify-center ">
+      <CardContent className="relative flex p-0 justify-center ">
       <CardTitle className="text-center text-white text-2xl md:text-3xl font-bold">Useful Links</CardTitle>
 
-        <ul className="flex flex-wrap gap-4 justify-center md:justify-start ">
+        <ul className="flex flex-wrap gap-4 justify-center  md:justify-start ">
           {links.map((link, index) => (
             <li key={index} className="w-[calc(50%-0.5rem)] text-white md:w-auto">
               <Link

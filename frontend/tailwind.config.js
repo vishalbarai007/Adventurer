@@ -20,6 +20,9 @@ module.exports = {
       scale: {
         180: '1.8',
       },
+      gridTemplateRows: {
+        'custom': '400px auto',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
