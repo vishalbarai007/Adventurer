@@ -182,7 +182,21 @@ const Carousel: FC = () => {
               className="w-full h-full object-cover"
             />
 
-            <div className="content absolute top-1/4 w-4/5 max-w-screen-lg left-1/2 transform -translate-x-1/2 text-[#EADED0]">
+            <div className="
+    content 
+    absolute 
+    top-[10%]
+    left-1/2 
+    transform 
+    -translate-x-1/2 
+    w-11/12 
+    max-w-screen-lg 
+    text-[#EADED0] 
+    sm:top-[10%] 
+    md:top-[20%] 
+    lg:top-1/4 
+    xl:top-[30%] 
+  ">
               <div className="author font-bold text-[#EADED0] ">{item.author}</div>
               <div className="title text-5xl text-[#EADED0] text-stroke font-bold leading-tight">
                 {item.title}
@@ -193,19 +207,19 @@ const Carousel: FC = () => {
               <div className="description mt-4 text-xl text-stroke">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
                 <button className="bg-[#1F3D3B]">SEE MORE</button>
-                <button className="BookButton bg-[#233115]">BOOK NOW</button>
+                {/* <button className="BookButton bg-[#233115]">BOOK NOW</button> */}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className='thumbnail overflow-hidden absolute bottom-[50px] left-[40%] p-5'>
+      <div className='thumbnail overflow-hidden absolute bottom-[50px] left-[40%] p-5 md:bottom-[10px]'>
         <div ref={thumbnailRef} className=" flex gap-5">
           {items.map((item, index) => (
             <div
               key={index}
-              className="item w-40 h-60 shrink-0 relative"
+              className="item w-40 h-60 shrink-0 relative rounded-xl"
             >
               <Link to={item.url}>
                 <img
@@ -223,7 +237,17 @@ const Carousel: FC = () => {
         </div>
       </div>
 
-      <div className="arrows absolute top-3/4 left-[25%] z-20 flex gap-5">
+      <div className="arrows 
+    absolute 
+    top-3/4 
+    left-[5%] 
+    md:left-[10%] 
+    lg:left-[20%] 
+    z-20 
+    flex 
+    gap-3 
+    sm:gap-4 
+    lg:gap-5">
         <button onClick={prevSlide} className="w-16 h-16 rounded-full text-[#EADED0] font-bold">
           &lt;
         </button>
@@ -231,11 +255,6 @@ const Carousel: FC = () => {
           &gt;
         </button>
       </div>
-
-      {/* <div
-        className={`time absolute top-0 left-0 h-1 bg-orange-500 transition-all duration-[3000ms] ease-linear`}
-        style={{ width: `${(currentIndex + 1) / items.length * 100}%` }}
-      ></div> */}
     </div>
   );
 };

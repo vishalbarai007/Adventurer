@@ -12,7 +12,8 @@ const ScrollDownButton: React.FC = () => {
   return (
     <button
       onClick={handleScroll}
-      className="relative group absolute bottom-10 left-[50%] w-14 h-14 rounded-full bg-transparent hover:bg-[#1F3D3B] flex items-center justify-center shadow-lg border-2 border-dotted border-black transition duration-300 transform hover:scale-110 animate-bounce-slow"
+      className="relative group  bottom-10 left-[45%] md:left-[50%] 
+    lg:left-[50%]  w-14 h-14 rounded-full bg-transparent hover:bg-[#1F3D3B] flex items-center justify-center shadow-lg border-2 border-dotted border-black transition duration-300 transform hover:scale-110 animate-bounce-slow"
     >
       <FaArrowCircleDown className="h-8 w-8 text-[#EADED0]" />
 

@@ -96,3 +96,13 @@ const ExplorePlaces: React.FC = () => {
 };
 
 export default ExplorePlaces;
+
+
+
+
+
+
+
+
+
+
