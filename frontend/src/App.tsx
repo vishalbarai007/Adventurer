@@ -1,5 +1,6 @@
 import './App.css'
 import './index.css'
+import './styles/custom-scrollbar.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pre_login_homepage from './pages/Pre_login_homepage';
 import Login_page from './pages/Login_page';

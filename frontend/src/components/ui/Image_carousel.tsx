@@ -34,15 +34,12 @@ export function CarouselPlugin() {
                   className="flex aspect-square items-center justify-center p-6 h-[350px]"
                   backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
                 >
-                  {/* <span className="text-4xl font-semibold text-white">{index + 1}</span> */}
                 </CardContent>
               </Card>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
-      {/* <CarouselPrevious /> */}
-      {/* <CarouselNext /> */}
     </Carousel>
   );
 }

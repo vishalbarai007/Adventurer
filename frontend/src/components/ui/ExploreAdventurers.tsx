@@ -1,4 +1,4 @@
-
+'use client'
 
 import React, { useState } from "react";
 import ExploreData from "../JSON/ExplorePlaces.json";
@@ -48,12 +48,7 @@ const ExplorePlaces: React.FC = () => {
               const isSelected = selectedImage === index;
               const isBlurred = selectedImage !== null && !isSelected;
 
-              // Special classes for Trekking and Forest Camping
-              /* const isTrekking = explore.name === "Trekking"; */
-              /* const isForestCamping = explore.name === "Forest Camping"; */
-
               return (
-
                 <div
                   key={`${explore.name}-${index}`}
                   className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-300
@@ -63,26 +58,27 @@ const ExplorePlaces: React.FC = () => {
                   onClick={() => handleImageClick(index)}
                 >
                   {/* Black Overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-50 ">
+                  <div className={`absolute inset-0 bg-black ${isSelected ? 'bg-opacity-70' : 'bg-opacity-50'} transition-opacity duration-300`}>
                     {/* Image */}
                     <img
                       src={explore.imgSrc}
                       alt={`${explore.name}-image`}
-                      className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500
-                      ${isSelected ? "scale-110 opacity-50 bg-opacity-1" : "hover:opacity-80 hover:scale-105"}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-500
+                      ${isSelected ? "scale-110 opacity-50" : "hover:opacity-80 hover:scale-105"}
+                      ${isBlurred ? "blur-[2px]" : ""}`}
                     />
                   </div>
 
-
                   {/* Content */}
-                  <div className="absolute flex flex-col justify-end p-6 text-[#EADED0]">
-                    <h2 className="text-2xl font-bold mb-2">{explore.name}</h2>
-                    <p className="text-sm opacity-90 flex items-center gap-2">
+                  <div className={`absolute inset-0 flex flex-col justify-end p-6 text-[#EADED0] transition-all duration-300
+                    ${isSelected ? "bg-gradient-to-t from-black to-transparent" : ""}`}>
+                    <h2 className="text-2xl font-bold mb-2 drop-shadow-lg">{explore.name}</h2>
+                    <p className="text-sm opacity-90 flex items-center gap-2 drop-shadow-md">
                       <span className="w-1.5 h-1.5 bg-white rounded-full"></span>
                       View more
                     </p>
                     {isSelected && (
-                      <p className="mt-4 text-sm">{explore.desc}</p>
+                      <p className="mt-4 text-sm leading-relaxed drop-shadow-lg">{explore.desc}</p>
                     )}
                   </div>
                 </div>
@@ -96,13 +92,4 @@ const ExplorePlaces: React.FC = () => {
 };
 
 export default ExplorePlaces;
-
-
-
-
-
-
-
-
-
 

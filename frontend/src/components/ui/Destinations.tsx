@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollDownButton from './ScrollDownButton';
-// import Pre_login_menubar from './pre_login_menubar';
-// import ass from '../../assets/Seasons/Summer1.jpg'
+
 
 interface CarouselItem {
   image: string;
@@ -71,22 +70,7 @@ const Carousel: FC = () => {
       "url": "https://adventurer-omega.vercel.app/Account",
       "description": "Connect with the earth on peaceful eco trails. Immerse yourself in flora and fauna that will soothe your soul."
     },
-    // {
-    //   "image": "/assets/Seasons/Winter1.jpg",
-    //   "author": "THE THRILL SEEKER",
-    //   "title": "Chasing Adrenaline",
-    //   "topic": "Extreme Sports",
-    //   "url": "https://adventurer-omega.vercel.app/BaseContent",
-    //   "description": "For those who crave the extreme. Take on challenges that push your limits and leave you with unforgettable stories."
-    // },
-    // {
-    //   "image": "/assets/Seasons/Winter1.jpg",
-    //   "author": "THE FAMILY TRAVELER",
-    //   "title": "Adventures for All Ages",
-    //   "topic": "Group Adventures",
-    //   "url": "https://adventurer-omega.vercel.app/",
-    //   "description": "Perfect for family bonding. Discover activities and destinations that cater to every member of your tribe."
-    // }
+   
   ]
   );
 
@@ -97,8 +81,6 @@ const Carousel: FC = () => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    // Comment out the auto-change functionality
-
     const autoNext = () => {
       nextSlide();
       timeoutRef.current = setTimeout(autoNext, 5000);
