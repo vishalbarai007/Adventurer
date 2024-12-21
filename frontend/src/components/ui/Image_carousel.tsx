@@ -12,7 +12,7 @@ import {
 
 export function CarouselPlugin() {
   const plugin = React.useRef(
-    Autoplay({ delay: 2500, stopOnInteraction: true }) // Autoplay with 3-second delay
+    Autoplay({ delay: 2000, stopOnInteraction: true }) // Autoplay with 3-second delay
   );
 
 

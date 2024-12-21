@@ -2,7 +2,8 @@ import blogData from '../JSON/BlogsData.json';
 
 const BlogsDataRight = () => {
     return (
-        <div className="BlogsContainerRight mt-5 w-full md:w-[30%] p-4 md:p-6 lg:p-10 bg-gray-400 h-[calc(100vh-5rem)] md:h-screen relative">
+        <>
+        <div className="BlogsContainerRight w-full md:w-[30%] p-4 md:p-6 lg:p-10 bg-gray-400 h-[calc(100vh-5rem)] md:h-screen relative">
             <div className="absolute inset-y-0 left-0 w-3 bg-gray-300"></div>
             <div className="h-full overflow-y-auto pr-4 pl-7 scrollbar-left">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 md:gap-6 lg:gap-8">
@@ -25,6 +26,12 @@ const BlogsDataRight = () => {
                 </div>
             </div>
         </div>
+
+        <div className='bg-red-600'>
+
+        </div>
+        
+        </>
     )
 }
 
