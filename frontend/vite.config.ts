@@ -4,6 +4,16 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    open: true,
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

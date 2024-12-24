@@ -12,6 +12,7 @@ import Footer from '../components/ui/Footer'
 import ExplorePlaces from '../components/ui/ExploreAdventurers'
 import Carousel from '../components/ui/Carousel'
 import FindYourWay from '../components/ui/FindYourWay'
+import PostLoginHomepage from './Post_Login_Homepage'
 
 
 
@@ -21,6 +22,7 @@ const Pre_login_homepage = () => {
       <Parallax />
       <Scrollslider />
       <Pre_login_menubar />
+      <PostLoginHomepage/>
       <FindYourWay/>
       <Pre_login_homepage_content />
       {/* <ImageGallery/> */}

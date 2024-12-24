@@ -32,7 +32,9 @@ export function CarouselPlugin() {
               <Card>
                 <CardContent
                   className="flex aspect-square items-center justify-center p-6 h-[350px]"
-                  backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
+                  // backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
+                  backgroundImage={`/assets/BrandLogos/Adventurer.jpg`} // Replace with actual images ${index + 1}
+
                 >
                 </CardContent>
               </Card>

@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
 import galleryItemsData from '../JSON/ImageGalleryItems.json';

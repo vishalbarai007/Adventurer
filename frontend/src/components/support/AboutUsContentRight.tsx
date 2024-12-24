@@ -1,4 +1,4 @@
-import AdventurerTeam from '../../../public/assets/pexels-ofir-eliav-2397652-6938309.jpg'
+import AdventurerTeam from '../../../public/assets/BrandLogos/Adventurer.jpg'
 
 
 const AboutUsContentRight = () => {
