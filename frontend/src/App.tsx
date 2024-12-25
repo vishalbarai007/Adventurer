@@ -9,19 +9,21 @@ import Contact_us from './pages/Contact_us';
 import Blogs from './pages/Blogs';
 import Seasonal_destinations from './pages/Seasonal_destinations';
 import PostLoginHomepage from './pages/Post_Login_Homepage';
+import SplashScreen from './components/ui/SplashScreen';
 
 const App = () => {
   return (
     <BrowserRouter>
 
       <Routes>
-        <Route path='/' element={<Pre_login_homepage />} />
+        <Route path='/' element={<SplashScreen />} />
+        <Route path='/pre-login-homepage' element={<Pre_login_homepage />} />
         <Route path="/post-login-homepage" element={<PostLoginHomepage />} />
         <Route path='/about' element={<About_us />} />
         <Route path='/contact' element={<Contact_us />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login_page />} />
-        <Route path='/seasonal_destinations' element={<Seasonal_destinations/>} />
+        <Route path='/seasonal_destinations' element={<Seasonal_destinations />} />
       </Routes>
 
     </BrowserRouter>
