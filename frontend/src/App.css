@@ -334,3 +334,10 @@ dad7cd
 .scrollbar-thin::-webkit-scrollbar-track {
   background-color: #edf2f7; /* Customize as needed */
 }
+/* 
+.splashscreen{
+  background-image: url("/assets/BrandLogos/Adventurer/Adventurer_yellow.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -50px;
+} */

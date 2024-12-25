@@ -8,7 +8,6 @@ import { TfiMapAlt } from "react-icons/tfi";
 import { MdTravelExplore } from "react-icons/md";
 import { GiMountains } from "react-icons/gi";
 import { Button } from './button'
-// import { Button } from "@/components/ui/button"
 
 const useLoading = (duration: number = 3000): boolean => {
     const [isLoading, setIsLoading] = useState(true)
@@ -65,12 +64,12 @@ export default function SplashScreen() {
     }, [exitAnimation, navigate])
 
     return (
-        <div className="min-h-screen bg-[#112c1d] text-[#EADED0] flex flex-col items-center justify-center overflow-hidden">
+        <div className="min-h-screen bg-[#112c1d] text-[#EADED0] flex items-center justify-center overflow-hidden">
             <AnimatePresence>
                 {isLoading && (
                     <motion.div
                         key="loading"
-                        className="flex flex-wrap justify-center items-center "
+                        className="flex flex-wrap justify-center items-center mt-20"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -102,7 +101,7 @@ export default function SplashScreen() {
                 {showWelcome && (
                     <motion.div
                         key="welcome"
-                        className="text-center"
+                        className="text-center mt-20"
                         initial={{ opacity: 0, y: -50 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 50 }}
@@ -129,7 +128,21 @@ export default function SplashScreen() {
                         transition={{ duration: 1 }}
                     />
                 )}
+
             </AnimatePresence>
+            {/* <motion.div
+                className="relative bottom-0 w-full flex justify-center "
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+            >
+                <img
+                    src="/assets/BrandLogos/Adventurer/Adventurer_yellow.png"
+                    alt="Adventurer Logo"
+                    className="w-[50%] h-auto"
+                />
+            </motion.div> */}
+
         </div>
     )
 }
