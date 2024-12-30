@@ -15,11 +15,11 @@ const AboutUs: React.FC = () => {
 
         {/* Content Section */}
         <div className="mt-12 grid md:grid-cols-2 gap-10">
+          {/* Right Section - Image */}
+         <AboutUsContentRight/>
           {/* Left Section - Description */}
           <AboutUsLeftContent/>
 
-          {/* Right Section - Image */}
-         <AboutUsContentRight/>
         </div>
 
         {/* Features Section */}
