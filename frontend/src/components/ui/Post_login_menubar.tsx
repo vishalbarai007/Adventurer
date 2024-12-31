@@ -8,7 +8,7 @@ const Post_login_menubar = () => {
         <div className="w-full bg-zinc-950 p-4">
           {/* logo  */}
           {/* <img src="assets/BrandLogos/Adventurer/adventurer_green.png" className="h-[100%] w-[70%]"/> */}
-          <h1 className="text-white text-3xl">Adventurer</h1>
+          <h1 className="text-white font-merienda text-3xl">Adventurer</h1>
 
         </div>
         <div className="w-full bg-zinc-950 p-4">
