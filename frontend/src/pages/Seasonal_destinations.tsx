@@ -1,15 +1,15 @@
-import Categories from "../components/ui/Categories";
-import CouponsAndDeals from "../components/ui/CouponsAndDeals";
-import Destination from "../components/ui/Destinations";
-import ImageGallery from "../components/ui/ImageGallery";
-import Pre_login_menubar from "../components/ui/pre_login_menubar";
-import ExplorePlaces from '../components/ui/ExploreAdventurers';
-import Scrollslider from "../components/ui/scrollslider";
+import Categories from "../components/Developer/main/Categories";
+import CouponsAndDeals from "../components/Developer/main/CouponsAndDeals";
+import Destination from "../components/Developer/main/Destinations";
+import ImageGallery from "../components/Developer/main/ImageGallery";
+import Pre_login_menubar from "../components/Shadcn/main/pre_login_menubar";
+import ExplorePlaces from '../components/Developer/main/ExploreAdventurers';
+import Scrollslider from "../components/Developer/main/scrollslider";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Carousel from "../components/ui/Carousel";
-import Footer from "../components/ui/Footer";
+import Carousel from "../components/Shadcn/main/Carousel";
+import Footer from "../components/Developer/support/Footer";
 
 
 

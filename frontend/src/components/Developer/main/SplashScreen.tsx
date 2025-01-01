@@ -7,7 +7,7 @@ import { GiCompass } from "react-icons/gi";
 import { TfiMapAlt } from "react-icons/tfi";
 import { MdTravelExplore } from "react-icons/md";
 import { GiMountains } from "react-icons/gi";
-import { Button } from './button'
+import { Button } from '../../Shadcn/main/button'
 
 const useLoading = (duration: number = 3000): boolean => {
     const [isLoading, setIsLoading] = useState(true)

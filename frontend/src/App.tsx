@@ -9,7 +9,7 @@ import Contact_us from './pages/Contact_us';
 import Blogs from './pages/Blogs';
 import Seasonal_destinations from './pages/Seasonal_destinations';
 import PostLoginHomepage from './pages/Post_Login_Homepage';
-import SplashScreen from './components/ui/SplashScreen';
+import SplashScreen from './components/Developer/main/SplashScreen';
 
 const App = () => {
   return (

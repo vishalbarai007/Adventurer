@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../support/card"
 
 const SocialMedia = () => {
   const socialLinks = [

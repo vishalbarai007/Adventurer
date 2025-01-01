@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FcLike } from "react-icons/fc";
-import galleryItemsData from '../JSON/ImageGalleryItems.json';
+import galleryItemsData from '../../JSON/ImageGalleryItems.json';
 
 type GalleryItem = {
   video: string | undefined;

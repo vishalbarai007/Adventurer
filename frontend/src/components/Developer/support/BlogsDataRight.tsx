@@ -1,4 +1,4 @@
-import blogData from '../JSON/BlogsData.json';
+import blogData from '../../JSON/BlogsData.json';
 
 const BlogsDataRight = () => {
     return (

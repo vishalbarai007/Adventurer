@@ -1,4 +1,4 @@
-import Post_login_menubar from "../components/ui/Post_login_menubar";
+import Post_login_menubar from "../components/Developer/main/Post_login_menubar";
 
 export default function PostLoginHomepage() {
     return (

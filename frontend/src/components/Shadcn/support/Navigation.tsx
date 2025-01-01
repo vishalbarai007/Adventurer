@@ -12,7 +12,7 @@ const variants = {
 };
 
 const menuItems = [
-  { label: "Home", link: "/" },
+  { label: "Home", link: "/pre-login-homepage" },
   { label: "Blogs", link: "/blogs" },
   { label: "Destinations", link: "/seasonal_destinations" },
   { label: "About us", link: "/about" },

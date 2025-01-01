@@ -1,4 +1,4 @@
-import Contactusimg from "../../../public/assets/IND/ContactUs.png";
+import Contactusimg from "/assets/IND/ContactUs.png";
 
 const ContactUsImage = () => {
   return (

@@ -1,4 +1,4 @@
-import data from '../JSON/CatagoriesData.json';
+import data from '../../JSON/CatagoriesData.json'
 
 const TravelCategories = () => {
   return (

@@ -1,4 +1,4 @@
-import { Card, CardContent, CardTitle } from "../ui/card"
+import { Card, CardContent, CardTitle } from "../support/card"
 import { Link } from "react-router-dom"
 
 const UsefulLinks = () => {

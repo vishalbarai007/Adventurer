@@ -1,5 +1,5 @@
 
-import Login_page_background_animation from "../components/ui/Login_page_background_animation";
+import Login_page_background_animation from "../components/Developer/main/Login_page_background_animation";
 
 
 const Login_page = () => {

@@ -1,5 +1,5 @@
 
-import Loremcontent from "./loremcontent"
+import Loremcontent from "../main/loremcontent"
 
 
 const Pre_login_homepage_content = () => {

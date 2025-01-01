@@ -1,13 +1,13 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { Card, CardContent } from "../support/card";
+import { Card, CardContent } from "../../Developer/support/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   // CarouselNext,
   // CarouselPrevious,
-} from "../support/carousel";
+} from "../../Developer/support/carousel";
 
 
 export function CarouselPlugin() {

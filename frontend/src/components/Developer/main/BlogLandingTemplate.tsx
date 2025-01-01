@@ -1,4 +1,4 @@
-import a from "../../../public/assets/BrandLogos//Adventurer/Adventurer_yellow.png";
+import a from "/assets/BrandLogos/Adventurer/Adventurer_yellow.png";
 
 const BlogLandingTemplate = () => {
   return (

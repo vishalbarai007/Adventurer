@@ -1,5 +1,5 @@
-import FindYourWayLeft from "./FindYourWayLeft";
-import FindYourWayRight from "./FindYourWayRight";
+import FindYourWayLeft from "../support/FindYourWayLeft";
+import FindYourWayRight from "../support/FindYourWayRight";
 
 const FindYourWay = () => {
     return (

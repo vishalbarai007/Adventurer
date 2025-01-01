@@ -1,5 +1,5 @@
 import { ParallaxProvider } from "react-scroll-parallax";
-import { AdvancedBannerTop } from "../support/pre_homepage_parallax";
+import { AdvancedBannerTop } from "../../Shadcn/support/pre_homepage_parallax";
 // import "./styles.css";
 
 export default function App() {

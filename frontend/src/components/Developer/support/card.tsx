@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   backgroundImage?: string; // New prop for background image

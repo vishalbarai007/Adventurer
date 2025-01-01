@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ExploreData from "../JSON/ExplorePlaces.json";
+import ExploreData from "../../JSON/ExplorePlaces.json";
 
 type Explore = {
   name: string;

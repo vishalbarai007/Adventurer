@@ -1,4 +1,4 @@
-import AdventurerTeam from '../../../public/assets/BrandLogos/Adventurer/Adventurer.jpg'
+import AdventurerTeam from '/assets/BrandLogos/Adventurer/Adventurer.jpg'
 
 
 const AboutUsContentRight = () => {

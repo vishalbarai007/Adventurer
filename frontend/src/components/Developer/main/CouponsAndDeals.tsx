@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaCopy } from "react-icons/fa";
-import couponsData from '../JSON/CouponsData.json';
+import couponsData from '../../JSON/CouponsData.json';
 
 type Coupon = {
   title: string;

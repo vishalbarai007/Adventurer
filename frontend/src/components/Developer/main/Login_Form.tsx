@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { FaApple } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { CarouselPlugin } from "./Image_carousel";
+import { CarouselPlugin } from "../../Shadcn/main/Image_carousel";
 import { useNavigate } from 'react-router-dom';
-import { registerUser, signInUser } from '../../services/authService';
+import { registerUser, signInUser } from '../../../services/authService';
 
 interface FormInputs {
   username: string;
