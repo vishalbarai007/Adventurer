@@ -1,9 +1,9 @@
-import AboutUsTitle from "../components/support/AboutUsTitle";
-import AboutUsLeftContent from "../components/support/AboutUsLeftContent";
-import AboutUsContentRight from "../components/support/AboutUsContentRight";
-import AboutUsFeatures from "../components/support/AboutUsFeatures";
-import PreLoginMenuBar from "../components/ui/pre_login_menubar";
-import Footer from "../components/ui/Footer";
+import AboutUsTitle from "../components/Developer/support/AboutUsTitle";
+import AboutUsLeftContent from "../components/Developer/support/AboutUsLeftContent";
+import AboutUsContentRight from "../components/Developer/support/AboutUsContentRight";
+import AboutUsFeatures from "../components/Developer/support/AboutUsFeatures";
+import PreLoginMenuBar from "../components/Shadcn/main/pre_login_menubar";
+import Footer from "../components/Developer/support/Footer";
 
 const AboutUs: React.FC = () => {
   return (

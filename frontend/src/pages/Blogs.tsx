@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import BlogLandingTemplate from "../components/ui/BlogLandingTemplate";
-import BlogsData from "../components/ui/BlogsData";
+import BlogLandingTemplate from "../components/Developer/main/BlogLandingTemplate";
+import BlogsData from "../components/Developer/main/BlogsData";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import PreLoginMenuBar from "../components/ui/pre_login_menubar";
-import Scrollslider from "../components/ui/scrollslider";
-import ScrollDownButton from "../components/ui/ScrollDownButton";
-import Footer from "../components/ui/Footer";
+import PreLoginMenuBar from "../components/Shadcn/main/pre_login_menubar";
+import Scrollslider from "../components/Developer/main/scrollslider";
+import ScrollDownButton from "../components/Developer/main/ScrollDownButton";
+import Footer from "../components/Developer/support/Footer";
 
 
 

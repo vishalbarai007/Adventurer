@@ -12,20 +12,13 @@
 /* scrollslider */
 .progress-bar {
   transform-origin: 0%;
-  background: #112c1d;
 }
 
 
 
 /* pre-login-menubar */
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-}
 
+/* 
 .background {
   position: absolute;
   top: 0;
@@ -33,11 +26,11 @@ nav {
   bottom: 0;
   width: 300px;
   /* background: #262b15; */
-  background: #233115;
-  color: #EADED0;
-}
+  /* background: #233115; */
+  /* color: #EADED0; */
+/* } */ 
 
-.menu_toggle_button {
+/* .menu_toggle_button {
   outline: none;
   border: none;
   -webkit-user-select: none;
@@ -53,8 +46,7 @@ nav {
   background: transparent;
 }
 
-ul,
-li {
+ul,li {
   margin: 0;
   padding: 0;
 }
@@ -72,7 +64,7 @@ li {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
+} */
 
 .icon-placeholder {
   width: 40px;
@@ -334,10 +326,3 @@ dad7cd
 .scrollbar-thin::-webkit-scrollbar-track {
   background-color: #edf2f7; /* Customize as needed */
 }
-/* 
-.splashscreen{
-  background-image: url("/assets/BrandLogos/Adventurer/Adventurer_yellow.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: -50px;
-} */
