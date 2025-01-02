@@ -8,7 +8,8 @@ import Footer from '../components/Developer/support/Footer'
 import ExplorePlaces from '../components/Developer/main/ExploreAdventurers'
 import Carousel from '../components/Shadcn/main/Carousel'
 import FindYourWay from '../components/Developer/main/FindYourWay'
-import PostLoginHomepage from './Post_Login_Homepage'
+// import { ModeToggle } from '../components/Shadcn/support/PostLoginHome/modetoggle'
+// import PostLoginHomepage from './Post_Login_Homepage'
 
 
 
@@ -18,7 +19,8 @@ const Pre_login_homepage = () => {
       <Parallax />
       <Scrollslider />
       <Pre_login_menubar />
-      <PostLoginHomepage/>
+      {/* <PostLoginHomepage/> */}
+      {/* <ModeToggle/> */}
       <FindYourWay/>
       <Pre_login_homepage_content />
       <Pre_homepage_cards />

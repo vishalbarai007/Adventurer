@@ -36,6 +36,7 @@ export const PreLoginMenuBar = () => {
 
   return (
     <motion.nav
+    className="absolute top-0 left-0 bottom-0 w-[300px]"
       initial={false}
       animate={isOpen ? "open" : "closed"}
       custom={height}
