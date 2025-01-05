@@ -1,0 +1,353 @@
+[
+
+    {
+
+      "Id": 1,
+
+      "PlaceName": "Koyna Wildlife Sanctuary",
+
+      "Title": "Koyna Wildlife Sanctuary",
+
+      "Location": "Satara District, Maharashtra",
+
+      "Description": "Koyna Wildlife Sanctuary, part of the Sahyadri range, is a UNESCO World Heritage site known for its diverse wildlife and lush forests. It is home to tigers, leopards, and a variety of birds, making it a prime location for wildlife enthusiasts."
+
+    },
+
+    {
+
+      "Id": 2,
+
+      "PlaceName": "Bhima Shankar Wildlife Sanctuary",
+
+      "Title": "Bhima Shankar Wildlife Sanctuary",
+
+      "Location": "Pune District, Maharashtra",
+
+      "Description": "Located in the Western Ghats, Bhima Shankar Wildlife Sanctuary is renowned for its rich biodiversity, including the Indian Giant Squirrel. The sanctuary is also a popular spot for trekkers and nature lovers."
+
+    },
+
+    {
+
+      "Id": 3,
+
+      "PlaceName": "Mayureshwar Wildlife Sanctuary",
+
+      "Title": "Mayureshwar Wildlife Sanctuary",
+
+      "Location": "Pune District, Maharashtra",
+
+      "Description": "Mayureshwar Wildlife Sanctuary is famous for being a habitat of the Indian Peafowl (Peacock). It is located in the semi-arid region and is home to various species of animals and birds."
+
+    },
+
+    {
+
+      "Id": 4,
+
+      "PlaceName": "Chandoli National Park",
+
+      "Title": "Chandoli National Park",
+
+      "Location": "Sangli District, Maharashtra",
+
+      "Description": "Chandoli National Park is a significant part of the Sahyadri range and a UNESCO World Heritage site. The park is home to tigers, leopards, and several species of birds, making it a key wildlife sanctuary in Maharashtra."
+
+    },
+
+    {
+
+      "Id": 5,
+
+      "PlaceName": "Mayani Bird Sanctuary",
+
+      "Title": "Mayani Bird Sanctuary",
+
+      "Location": "Satara District, Maharashtra",
+
+      "Description": "Mayani Bird Sanctuary is an important bird sanctuary located on the banks of the Mayani Dam. It is known for its migratory bird population, including various species of waterfowl and waders."
+
+    },
+
+    {
+
+      "Id": 6,
+
+      "PlaceName": "Mansingdeo Wildlife Sanctuary",
+
+      "Title": "Mansingdeo Wildlife Sanctuary",
+
+      "Location": "Nagpur District, Maharashtra",
+
+      "Description": "Mansingdeo Wildlife Sanctuary is located near Nagpur and is known for its rich wildlife, including leopards, tigers, and several species of deer. It is also known for its dense forests and scenic landscapes."
+
+    },
+
+    {
+
+      "Id": 7,
+
+      "PlaceName": "Malvan Marine Wildlife Sanctuary",
+
+      "Title": "Malvan Marine Wildlife Sanctuary",
+
+      "Location": "Sindhudurg District, Maharashtra",
+
+      "Description": "Malvan Marine Wildlife Sanctuary is a coastal sanctuary located in the Konkan region. It is known for its diverse marine life, including corals, fish, and turtles, making it an ideal destination for marine life enthusiasts."
+
+    },
+
+    {
+
+      "Id": 8,
+
+      "PlaceName": "Lonar Wildlife Sanctuary",
+
+      "Title": "Lonar Wildlife Sanctuary",
+
+      "Location": "Buldhana District, Maharashtra",
+
+      "Description": "Lonar Wildlife Sanctuary surrounds the Lonar Lake, a unique meteorite impact crater. The sanctuary is home to a variety of species of wildlife, including birds, mammals, and reptiles."
+
+    },
+
+    {
+
+      "Id": 9,
+
+      "PlaceName": "Katepurna Wildlife Sanctuary",
+
+      "Title": "Katepurna Wildlife Sanctuary",
+
+      "Location": "Akola District, Maharashtra",
+
+      "Description": "Katepurna Wildlife Sanctuary is located in the Vidarbha region and is known for its wildlife diversity, including a variety of bird species and mammals. The sanctuary also serves as an important conservation area for the region."
+
+    },
+
+    {
+
+      "Id": 10,
+
+      "PlaceName": "Kalsubai Harishchandragad Wildlife Sanctuary",
+
+      "Title": "Kalsubai Harishchandragad Wildlife Sanctuary",
+
+      "Location": "Ahmednagar District, Maharashtra",
+
+      "Description": "Kalsubai Harishchandragad Wildlife Sanctuary encompasses the Kalsubai Peak, the highest point in Maharashtra. It is rich in flora and fauna, and trekkers often visit for the scenic views and diverse wildlife."
+
+    },
+
+    {
+
+      "Id": 11,
+
+      "PlaceName": "Jaikwadi Wildlife Sanctuary",
+
+      "Title": "Jaikwadi Wildlife Sanctuary",
+
+      "Location": "Aurangabad District, Maharashtra",
+
+      "Description": "Jaikwadi Wildlife Sanctuary is located around the Jaikwadi Dam and is an important habitat for migratory birds, especially during the winter months. It is home to several species of ducks and waders."
+
+    },
+
+    {
+
+      "Id": 12,
+
+      "PlaceName": "Dnyanganga Wildlife Sanctuary",
+
+      "Title": "Dnyanganga Wildlife Sanctuary",
+
+      "Location": "Nashik District, Maharashtra",
+
+      "Description": "Dnyanganga Wildlife Sanctuary is located in the Sahyadri hills, and it is known for its lush green forests and rich biodiversity, including tigers, leopards, and various bird species."
+
+    },
+
+    {
+
+      "Id": 13,
+
+      "PlaceName": "Chaprala Wildlife Sanctuary",
+
+      "Title": "Chaprala Wildlife Sanctuary",
+
+      "Location": "Gadchiroli District, Maharashtra",
+
+      "Description": "Chaprala Wildlife Sanctuary is located in the eastern part of Maharashtra and is known for its rich biodiversity. The sanctuary is home to tigers, leopards, and various species of deer and birds."
+
+    },
+
+    {
+
+      "Id": 14,
+
+      "PlaceName": "Bhamragarh Wildlife Sanctuary",
+
+      "Title": "Bhamragarh Wildlife Sanctuary",
+
+      "Location": "Gadchiroli District, Maharashtra",
+
+      "Description": "Bhamragarh Wildlife Sanctuary is a protected area located in the eastern Maharashtra region, famous for its natural beauty and wildlife. It is home to tigers, leopards, and a variety of birds and reptiles."
+
+    },
+
+    {
+
+      "Id": 15,
+
+      "PlaceName": "Aner Dam Wildlife Sanctuary",
+
+      "Title": "Aner Dam Wildlife Sanctuary",
+
+      "Location": "Yavatmal District, Maharashtra",
+
+      "Description": "Aner Dam Wildlife Sanctuary is located near the Aner Dam and is known for its rich flora and fauna, including various species of birds, mammals, and reptiles."
+
+    },
+
+    {
+
+      "Id": 16,
+
+      "PlaceName": "Andheri Wildlife Sanctuary",
+
+      "Title": "Andheri Wildlife Sanctuary",
+
+      "Location": "Mumbai, Maharashtra",
+
+      "Description": "Andheri Wildlife Sanctuary is a small urban sanctuary located in Mumbai. It is home to several species of birds and small mammals and provides a green retreat in the city."
+
+    },
+
+    {
+
+      "Id": 17,
+
+      "PlaceName": "Amba Barwa Wildlife Sanctuary",
+
+      "Title": "Amba Barwa Wildlife Sanctuary",
+
+      "Location": "Sindhudurg District, Maharashtra",
+
+      "Description": "Amba Barwa Wildlife Sanctuary is located in the Sahyadri hills and is known for its rich wildlife, including tigers, leopards, and various species of birds and reptiles."
+
+    },
+
+    {
+
+      "Id": 18,
+
+      "PlaceName": "Bhigwan Bird Sanctuary",
+
+      "Title": "Bhigwan Bird Sanctuary",
+
+      "Location": "Pune District, Maharashtra",
+
+      "Description": "Bhigwan Bird Sanctuary is a key bird sanctuary located on the backwaters of the Ujjani Dam. It is a popular destination for birdwatching, particularly for migratory birds like flamingos and waterfowl."
+
+    },
+
+    {
+
+      "Id": 19,
+
+      "PlaceName": "Rehekuri Blackbuck Sanctuary",
+
+      "Title": "Rehekuri Blackbuck Sanctuary",
+
+      "Location": "Solapur District, Maharashtra",
+
+      "Description": "Rehekuri Blackbuck Sanctuary is dedicated to the conservation of the endangered Blackbuck. The sanctuary provides a safe haven for these graceful creatures and is also home to a variety of other animals and birds."
+
+    },
+
+    {
+
+      "Id": 20,
+
+      "PlaceName": "Bor Wildlife Sanctuary",
+
+      "Title": "Bor Wildlife Sanctuary",
+
+      "Location": "Wardha District, Maharashtra",
+
+      "Description": "Bor Wildlife Sanctuary is located in the Vidarbha region and is home to tigers, leopards, and various species of deer. It is known for its lush forests and diverse flora and fauna."
+
+    },
+
+    {
+
+      "Id": 21,
+
+      "PlaceName": "Narnala Wildlife Sanctuary",
+
+      "Title": "Narnala Wildlife Sanctuary",
+
+      "Location": "Amravati District, Maharashtra",
+
+      "Description": "Narnala Wildlife Sanctuary is located near the Narnala Fort and is known for its rich biodiversity. It is home to several species of birds and animals, including leopards and tigers."
+
+    },
+
+    {
+
+      "Id": 22,
+
+      "PlaceName": "Karnala Bird Sanctuary",
+
+      "Title": "Karnala Bird Sanctuary",
+
+      "Location": "Raigad District, Maharashtra",
+
+      "Description": "Karnala Bird Sanctuary is a popular bird sanctuary located near Panvel. It is home to over 150 species of birds, making it an ideal spot for birdwatching, and is also known for the historic Karnala Fort."
+
+    },
+
+    {
+
+      "Id": 23,
+
+      "PlaceName": "Sagareshwar Wildlife Sanctuary",
+
+      "Title": "Sagareshwar Wildlife Sanctuary",
+
+      "Location": "Sangli District, Maharashtra",
+
+      "Description": "Sagareshwar Wildlife Sanctuary is located near the Sangli region. It is home to a variety of wildlife, including leopards, wild boar, and several species of birds."
+
+    },
+
+    {
+
+      "Id": 24,
+
+      "PlaceName": "Phansad Bird Sanctuary",
+
+      "Title": "Phansad Bird Sanctuary",
+
+      "Location": "Raigad District, Maharashtra",
+
+      "Description": "Phansad Bird Sanctuary is a sanctuary dedicated to bird conservation and is home to a variety of species, including several migratory birds. The sanctuary is surrounded by dense forests and provides a peaceful retreat for nature lovers."
+
+    },
+
+    {
+
+      "Id": 25,
+
+      "PlaceName": "Great Indian Bustard Wildlife Sanctuary",
+
+      "Title": "Great Indian Bustard Wildlife Sanctuary",
+
+      "Location": "Solapur District, Maharashtra",
+
+      "Description": "The Great Indian Bustard Wildlife Sanctuary is dedicated to the conservation of the critically endangered Great Indian Bustard. The sanctuary is located in the semi-arid regions and is a key site for bustard conservation."
+
+    }
+
+  ]

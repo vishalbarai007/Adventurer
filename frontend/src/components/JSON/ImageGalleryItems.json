@@ -1,0 +1,38 @@
+[
+  {
+    "image": "/assets/IND/MarineDrive.png",
+    "like": 0,
+    "name": "Marine Lines",
+    "video": "/assets/Videos/MarineDrive.mp4"
+  },
+  {
+    "image": "/assets/IND/rajgad_fort.jpg",
+    "like": 0,
+    "name": "Rajgad Fort",
+    "video": "/assets/Videos/GatewayOfIndia.mp4"
+  },
+  {
+    "image": "/assets/IND/Alibaug.png",
+    "like": 0,
+    "name": "Aulibaugh Beaches",
+    "video": "/assets/Videos/GatewayOfIndia.mp4"
+  },
+  {
+    "image": "/assets/IND/Sahyadri.png",
+    "like": 0,
+    "name": "Sahyadri Hill Station",
+    "video": "/assets/Videos/GatewayOfIndia.mp4"
+  },
+  {
+    "image": "/assets/IND/AjantaCaves.png",
+    "like": 0,
+    "name": "Ajanta Caves",
+    "video": "/assets/Videos/GatewayOfIndia.mp4"
+  },
+  {
+    "image": "/assets/IND/SanjayGandhiNationalPark.png",
+    "like": 0,
+    "name": "National Park",
+    "video": "/assets/Videos/GatewayOfIndia.mp4"
+  }
+]
