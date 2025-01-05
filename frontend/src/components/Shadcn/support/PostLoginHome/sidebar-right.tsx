@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Plus } from "lucide-react"
-
+// import avatar from "/assets/BrandLogos/Adventurer/Favicon.png"
 import { Calendars } from "./calendars"
 import { DatePicker } from "./date-picker"
 import { NavUser } from "./nav-user"
@@ -19,9 +19,9 @@ import {
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "ADVENTURER",
+    email: "adventurersupport01@gmail.com",
+    avatar: "/assets/BrandLogos/Adventurer/Favicon.png",
   },
   calendars: [
     {
