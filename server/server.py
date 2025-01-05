@@ -11,13 +11,17 @@ import google.auth.transport.requests
 import os
 import pathlib
 import requests
+import json
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 app.secret_key = "Adventurer"  # Make sure this is secure in production
 
+clientSecretjson = json.load(open("client_secret.json"))
+clientSecretjson_web = clientSecretjson["web"]
+
 # Google OAuth Configuration
-GOOGLE_CLIENT_ID = "1054460118828-kromde1lk5cps25caauvm4dtgggohemv.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = clientSecretjson_web["client_id"]
 client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # Remove this in production
 
