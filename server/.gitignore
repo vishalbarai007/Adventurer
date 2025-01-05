@@ -170,10 +170,4 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-
-.env
-venv
-instance/
 client_secret.json
-
-__pycache__
