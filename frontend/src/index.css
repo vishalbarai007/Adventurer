@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -24,13 +25,27 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+
     /* Scrollbar variables */
     --scrollbar-track: #f1f1f1;
     --scrollbar-thumb: #888;
     --scrollbar-thumb-hover: #555;
+
+    /* Sidebar variables */
+    --sidebar-width: 16rem;
+    --sidebar-width-icon: 3rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
+    /* Dark mode colors */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -50,70 +65,28 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-     /* Dark mode scrollbar variables */
-     --scrollbar-track-dark: #2d2d2d;
-     --scrollbar-thumb-dark: #666;
-     --scrollbar-thumb-hover-dark: #888;
-  }
-}
 
-@layer base {
+    /* Dark mode scrollbar variables */
+    --scrollbar-track: #2d2d2d;
+    --scrollbar-thumb: #666;
+    --scrollbar-thumb-hover: #888;
+
+    /* Dark mode sidebar variables */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-
-@layer base {
-    :root {
-      --sidebar-width: 16rem;
-      --sidebar-width-icon: 3rem;
-      --sidebar-background: 0 0% 98%;
-      --sidebar-foreground: 240 5.3% 26.1%;
-      --sidebar-primary: 240 5.9% 10%;
-      --sidebar-primary-foreground: 0 0% 98%;
-      --sidebar-accent: 240 4.8% 95.9%;
-      --sidebar-accent-foreground: 240 5.9% 10%;
-      --sidebar-border: 220 13% 91%;
-      --sidebar-ring: 217.2 91.2% 59.8%;
-    }
-  
-    .dark {
-      --sidebar-background: 240 5.9% 10%;
-      --sidebar-foreground: 240 4.8% 95.9%;
-      --sidebar-primary: 0 0% 98%;
-      --sidebar-primary-foreground: 240 5.9% 10%;
-      --sidebar-accent: 240 3.7% 15.9%;
-      --sidebar-accent-foreground: 240 4.8% 95.9%;
-      --sidebar-border: 240 3.7% 15.9%;
-      --sidebar-ring: 217.2 91.2% 59.8%;
-    }
-  }
-
-  @layer base {
-    :root {
-      --sidebar-width: 16rem;
-      --sidebar-width-icon: 3rem;
-      --sidebar-background: 0 0% 98%;
-      --sidebar-foreground: 240 5.3% 26.1%;
-      --sidebar-primary: 240 5.9% 10%;
-      --sidebar-primary-foreground: 0 0% 98%;
-      --sidebar-accent: 240 4.8% 95.9%;
-      --sidebar-accent-foreground: 240 5.9% 10%;
-      --sidebar-border: 220 13% 91%;
-      --sidebar-ring: 217.2 91.2% 59.8%;
-    }
-  
-    .dark {
-      --sidebar-background: 240 5.9% 10%;
-      --sidebar-foreground: 240 4.8% 95.9%;
-      --sidebar-primary: 0 0% 98%;
-      --sidebar-primary-foreground: 240 5.9% 10%;
-      --sidebar-accent: 240 3.7% 15.9%;
-      --sidebar-accent-foreground: 240 4.8% 95.9%;
-      --sidebar-border: 240 3.7% 15.9%;
-      --sidebar-ring: 217.2 91.2% 59.8%;
-    }
-  }
