@@ -15,7 +15,6 @@ import json
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
-app.secret_key = "Adventurer"  # Make sure this is secure in production
 
 clientSecretjson = json.load(open("client_secret.json"))
 clientSecretjson_web = clientSecretjson["web"]
