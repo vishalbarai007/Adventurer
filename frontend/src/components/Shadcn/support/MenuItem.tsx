@@ -32,8 +32,8 @@ export const MenuItem: React.FC<MenuItemProps> = ({ i, label }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className="icon-placeholder" style={style1} />
-      <div className="text-placeholder" style={style1}>
+      <div className="icon-placeholder w-10 h-10 rounded-full flex mr-5" style={style1} />  
+      <div className="text-placeholder rounded-sm w-[200] h-[20] flex" style={style1}>
         <label style={style2}>{label}</label>
       </div>
     </motion.li>

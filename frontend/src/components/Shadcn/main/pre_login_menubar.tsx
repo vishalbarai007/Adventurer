@@ -1,4 +1,4 @@
-import "../../../CSS/preloginmenubar.css"
+// import "../../../CSS/preloginmenubar.css"
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../support/useDimension";
@@ -44,7 +44,7 @@ export const PreLoginMenuBar = () => {
       ref={containerRef}
       style={{ position: "fixed", zIndex: 2 }}
     >
-      <motion.div className="background" variants={sidebar} />
+      <motion.div className="absolute top-0 left-0 bottom-0 w-[300px] bg-[#233115] text-[#EADED0]" variants={sidebar} />
 
       <MenuToggle toggle={toggleMenu} />
       {isOpen && <Navigation isOpen={isOpen} />}

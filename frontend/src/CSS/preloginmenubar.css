@@ -1,16 +1,6 @@
 
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  background: #262b15;
-  background: #233115;
-  color: #EADED0;
-} 
 
-.menu_toggle_button {
+/* .menu_toggle_button {
   outline: none;
   border: none;
   -webkit-user-select: none;
@@ -24,19 +14,13 @@
   height: 50px;
   border-radius: 50%;
   background: transparent;
-}
-
+} */
+/* 
 ul,li {
   margin: 0;
   padding: 0;
 }
 
-ul {
-  padding: 25px;
-  position: absolute;
-  top: 100px;
-  width: 280px;
-}
 
 li {
   list-style: none;
@@ -44,7 +28,7 @@ li {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
+} */
 
 
 

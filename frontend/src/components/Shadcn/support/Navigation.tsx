@@ -27,7 +27,7 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ isOpen }) => (
   <motion.ul
     variants={variants}
-    className={`menu_items ${isOpen ? "block" : "hidden"}`}
+    className={`menu_items m-0 p-6 absolute top-[100px] w-[280px] ${isOpen ? "block" : "hidden"}`}
   >
     {menuItems.map((item, i) => (
       <Link

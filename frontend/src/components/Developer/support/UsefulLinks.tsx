@@ -5,10 +5,10 @@ const UsefulLinks = () => {
   const links = [
     { to: "#", text: "Offers" },
     { to: "#", text: "Organizations" },
+    { to: "/blogs", text: "Blogs" },
     { to: "#", text: "Quick Bookings" },
     { to: "/login", text: "Login" },
     { to: "/seasonal_destinations", text: "Destinations" },
-    { to: "/blogs", text: "Blogs" },
     { to: "/about", text: "About us" },
     { to: "/contact", text: "Contact us" },
   ]
@@ -16,12 +16,12 @@ const UsefulLinks = () => {
   return (
     <Card className="w-full bg-transparent border-none shadow-none">
       
-      <CardContent className="relative flex p-0 justify-center ">
+      <CardContent className="relative p-0">
       <CardTitle className="text-center text-white text-2xl md:text-3xl font-bold">Useful Links</CardTitle>
 
-        <ul className="flex flex-wrap gap-4 justify-center  md:justify-start ">
+        <ul className="grid grid-cols-2 mt-5 ">
           {links.map((link, index) => (
-            <li key={index} className="w-[calc(50%-0.5rem)] text-white md:w-auto">
+            <li key={index} className="w-[calc(10%-0.5rem)] text-white md:w-fit ">
               <Link
                 to={link.to}
                 className="block w-full p-2 rounded-md hover:bg-white/10 transition-colors duration-200 ease-in-out text-center md:text-left"
