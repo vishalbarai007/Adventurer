@@ -1,10 +1,11 @@
+
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FaApple } from "react-icons/fa";
+import { FaApple, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { CarouselPlugin } from "../../Shadcn/main/Image_carousel";
 import { useNavigate } from "react-router-dom";
-import httpClient from "../../../services/httpClient"; // Import your simple httpClient
+import httpClient from "../../../services/httpClient";
 
 interface FormInputs {
 	email: string;
@@ -15,14 +16,9 @@ interface FormInputs {
 const Login_form: React.FC = () => {
 	const [mode, setFormMode] = useState<"SignUp" | "SignIn">("SignUp");
 	const [error, setError] = useState<string>("");
+	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const navigate = useNavigate();
-
-	// Function to handle form mode changes
-	const changeMode = () => {
-		setFormMode(mode === "SignUp" ? "SignIn" : "SignUp");
-		setError("");
-		reset();
-	};
 
 	const {
 		register,
@@ -32,19 +28,20 @@ const Login_form: React.FC = () => {
 		reset,
 	} = useForm<FormInputs>();
 
-	// Handle form submission
+	const changeMode = () => {
+		setFormMode(mode === "SignUp" ? "SignIn" : "SignUp");
+		setError("");
+		reset();
+	};
+
 	const onSubmit: SubmitHandler<FormInputs> = async (data) => {
 		try {
 			setError("");
 
 			if (mode === "SignUp") {
-				// Registration request
 				const response = await httpClient.post(
 					"http://localhost:5000/register",
-					{
-						email: data.email,
-						password: data.password,
-					},
+					{ email: data.email, password: data.password }
 				);
 
 				if (response.status === 200) {
@@ -53,13 +50,9 @@ const Login_form: React.FC = () => {
 					reset();
 				}
 			} else {
-				// Login request
 				const response = await httpClient.post(
 					"http://localhost:5000/login",
-					{
-						email: data.email,
-						password: data.password,
-					},
+					{ email: data.email, password: data.password }
 				);
 
 				if (response.status === 200) {
@@ -67,14 +60,13 @@ const Login_form: React.FC = () => {
 				}
 			}
 		} catch (err: any) {
-			// Handle different types of errors
 			if (err.response?.data?.error) {
 				setError(err.response.data.error);
 			} else {
 				setError(
 					mode === "SignUp"
 						? "Registration failed. Please try again."
-						: "Login failed. Please check your credentials.",
+						: "Login failed. Please check your credentials."
 				);
 			}
 		}
@@ -83,13 +75,13 @@ const Login_form: React.FC = () => {
 	const password = watch("password");
 
 	return (
-		<div className="min-h-screen flex items-center justify-center p-4">
-			<div className="loginform bg-white bg-opacity-20 p-4 sm:p-8 rounded-lg shadow-lg w-full max-w-6xl flex flex-col lg:flex-row gap-6 lg:gap-10">
+		<div className="min-h-screen bg-[#112c1d] flex items-center justify-center p-4">
+			<div className="loginform bg-white text-[#EADED0] bg-opacity-20 p-4 sm:p-8 rounded-lg shadow-lg w-full max-w-6xl flex flex-col lg:flex-row gap-6 lg:gap-10">
 				<div className="Formlogo p-4 sm:p-8 rounded-lg shadow-lg w-full lg:w-1/2 text-center">
 					<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#233115]">
 						ADVENTURER
 					</h1>
-					<p className="text-sm text-gray-900 mt-2">
+					<p className="text-sm text-[#EADED0] mt-2">
 						"Plan your destination with Adventurer."
 					</p>
 					<div className="z-20 my-6 sm:my-10 flex justify-center align-middle">
@@ -108,7 +100,7 @@ const Login_form: React.FC = () => {
 					)}
 
 					<div>
-						<label className="block text-sm font-medium text-gray-700">
+						<label className="block text-sm font-medium text-[#EADED0]">
 							{mode === "SignUp" ? "Create Email" : "Enter Email"}
 						</label>
 						<input
@@ -120,50 +112,55 @@ const Login_form: React.FC = () => {
 									message: "Invalid email address",
 								},
 							})}
-							className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+							className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
 						/>
 						{errors.email && (
-							<p className="text-red-500 text-sm">
-								{errors.email.message}
-							</p>
+							<p className="text-red-500 text-sm">{errors.email.message}</p>
 						)}
 					</div>
 
-					<div>
-						<label className="block text-sm font-medium text-gray-700">
-							{mode === "SignUp"
-								? "Create Password"
-								: "Enter Password"}
+					<div className="relative">
+						<label className="block text-sm font-medium text-[#EADED0]">
+							{mode === "SignUp" ? "Create Password" : "Enter Password"}
 						</label>
 						<input
-							type="password"
+							type={showPassword ? "text" : "password"}
 							{...register("password", {
 								required: "Password is required",
 							})}
-							className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+							className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] text-zinc-900 rounded-md focus:ring-green-500 focus:border-green-500"
 						/>
+						<span
+							onClick={() => setShowPassword((prev) => !prev)}
+							className="absolute right-3 top-10 cursor-pointer text-gray-500"
+						>
+							{showPassword ? <FaEyeSlash /> : <FaEye />}
+						</span>
 						{errors.password && (
-							<p className="text-red-500 text-sm">
-								{errors.password.message}
-							</p>
+							<p className="text-red-500 text-sm">{errors.password.message}</p>
 						)}
 					</div>
 
 					{mode === "SignUp" && (
-						<div>
-							<label className="block text-sm font-medium text-gray-700">
+						<div className="relative">
+							<label className="block text-sm font-medium text-[#EADED0]">
 								Confirm Password
 							</label>
 							<input
-								type="password"
+								type={showConfirmPassword ? "text" : "password"}
 								{...register("confirmPassword", {
 									required: "Please confirm your password",
 									validate: (value) =>
-										value === password ||
-										"Passwords do not match",
+										value === password || "Passwords do not match",
 								})}
-								className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+								className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] text-zinc-900 rounded-md focus:ring-green-500 focus:border-green-500"
 							/>
+							<span
+								onClick={() => setShowConfirmPassword((prev) => !prev)}
+								className="absolute right-3 top-10 cursor-pointer text-gray-500"
+							>
+								{showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+							</span>
 							{errors.confirmPassword && (
 								<p className="text-red-500 text-sm">
 									{errors.confirmPassword.message}
@@ -218,6 +215,7 @@ const Login_form: React.FC = () => {
 							{mode === "SignUp" ? "Sign In" : "Sign Up"}
 						</a>
 					</p>
+
 				</form>
 			</div>
 		</div>

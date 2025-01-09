@@ -266,7 +266,7 @@ export function SidebarLeft({
     <Sidebar className="border-r-0" {...props}>
       <SidebarHeader>
         <div className="absolute  left-52 z-50">
-        <ModeToggle/>
+          <ModeToggle />
         </div>
         <TeamSwitcher teams={data.teams} />
         <NavMain items={data.navMain} />
