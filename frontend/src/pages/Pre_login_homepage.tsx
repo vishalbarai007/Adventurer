@@ -18,10 +18,11 @@ import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu'
 const Pre_login_homepage = () => {
   return (
     <>
+          <NavigationMenuDemo/>
+          <Scrollslider />
+
       <Parallax />
-      <Scrollslider />
       {/* <Pre_login_menubar /> */}
-      <NavigationMenuDemo/>
 
       {/* <PostLoginHomepage/> */}
       {/* <ModeToggle/> */}

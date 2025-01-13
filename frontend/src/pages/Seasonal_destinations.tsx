@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Carousel from "../components/Shadcn/main/Carousel";
 import Footer from "../components/Developer/support/Footer";
+import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
 
 
 
@@ -20,7 +21,8 @@ const Seasonal_destinations = () => {
 
   return (
     <div className="Seasonal_destinations bg-[#EADED0]">
-      <Pre_login_menubar />
+      {/* <Pre_login_menubar /> */}
+      <NavigationMenuDemo/>
       <Scrollslider/>
       <Destination data-aos="fade-up" />
       <ImageGallery data-aos="fade-up" />
