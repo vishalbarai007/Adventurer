@@ -2,7 +2,7 @@ import Categories from "../components/Developer/main/Categories";
 import CouponsAndDeals from "../components/Developer/main/CouponsAndDeals";
 import Destination from "../components/Developer/main/Destinations";
 import ImageGallery from "../components/Developer/main/ImageGallery";
-import Pre_login_menubar from "../components/Shadcn/main/pre_login_menubar";
+// import Pre_login_menubar from "../components/Shadcn/main/pre_login_menubar";
 import ExplorePlaces from '../components/Developer/main/ExploreAdventurers';
 import Scrollslider from "../components/Developer/main/scrollslider";
 import { useEffect } from 'react';

@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <>
-      <motion.div className="progress-bar z-50 fixed top-0 left-0 right-0 h-3 bg-[#112c1d]" style={{ scaleX }} />
+      <motion.div className="progress-bar z-50 fixed top-0 left-0 right-0 h-3 bg-[#ffaa1c]" style={{ scaleX }} />
     </>
   );
 }

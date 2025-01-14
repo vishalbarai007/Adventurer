@@ -3,10 +3,10 @@ import BlogLandingTemplate from "../components/Developer/main/BlogLandingTemplat
 import BlogsData from "../components/Developer/main/BlogsData";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import PreLoginMenuBar from "../components/Shadcn/main/pre_login_menubar";
 import Scrollslider from "../components/Developer/main/scrollslider";
 import ScrollDownButton from "../components/Developer/main/ScrollDownButton";
 import Footer from "../components/Developer/support/Footer";
+import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
 
 
 
@@ -17,15 +17,15 @@ const Blogs = () => {
   }, []);
 
   return (
-   <>
-      <PreLoginMenuBar/>
-      <Scrollslider/>
-      <BlogLandingTemplate data-aos = "fade-up"/>
-      <ScrollDownButton/>
-      <BlogsData/>
-      <Footer color={undefined}/>
+    <>
+      <NavigationMenuDemo />
+      <Scrollslider />
+      <BlogLandingTemplate data-aos="fade-up" />
+      <ScrollDownButton />
+      <BlogsData />
+      <Footer color={undefined} />
 
-   </> 
+    </>
   )
 };
 

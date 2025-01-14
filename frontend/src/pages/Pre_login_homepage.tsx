@@ -1,5 +1,5 @@
 import Scrollslider from '../components/Developer/main/scrollslider'
-import Pre_login_menubar from '../components/Shadcn/main/pre_login_menubar'
+// import Pre_login_menubar from '../components/Shadcn/main/pre_login_menubar'
 import Parallax from '../components/Developer/main/Parallax'
 import Pre_login_homepage_content from '../components/Developer/support/Pre_login_homepage_content'
 import Pre_homepage_cards from '../components/Developer/support/Pre_homepage_cards'

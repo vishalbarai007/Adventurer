@@ -9,28 +9,23 @@ import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
 const AboutUs: React.FC = () => {
   return (
     <div className="bg-[rgb(149,113,79)] min-h-screen">
-      {/* <PreLoginMenuBar/>
-      
-      */}
-            <NavigationMenuDemo/>
-      
+      <NavigationMenuDemo />
+
       <div className="container mx-auto px-6 py-16">
         {/* Title Section */}
-        <AboutUsTitle/>
-
-        {/* Content Section */}
-        <div className="mt-12 grid md:grid-cols-2 gap-10">
-          {/* Right Section - Image */}
-         <AboutUsContentRight/>
-          {/* Left Section - Description */}
-          <AboutUsLeftContent/>
-
-        </div>
-
-        {/* Features Section */}
-        <AboutUsFeatures/>
+        <AboutUsTitle />
       </div>
-      <Footer color={undefined}/>
+      {/* Content Section */}
+      <div className="mt-12 px-20 grid md:grid-cols-2 gap-10">
+        {/* Right Section - Image */}
+        <AboutUsContentRight />
+        {/* Left Section - Description */}
+        <AboutUsLeftContent />
+      </div>
+
+      <AboutUsFeatures />
+
+      <Footer color={undefined} />
     </div>
   );
 };

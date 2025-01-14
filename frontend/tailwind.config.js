@@ -1,29 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	// darkMode: ["class"],
+	darkMode: 'class',
 	content: [
 	  './pages/**/*.{ts,tsx}',
 	  './components/**/*.{ts,tsx}',
 	  './app/**/*.{ts,tsx}',
 	  './src/**/*.{ts,tsx}',
 	],
-	darkMode: 'class', // This enables dark mode
-	theme: {
-	  extend: {
-		colors: {
-		  sidebar: {
-			background: 'var(--sidebar-background)',
-			foreground: 'var(--sidebar-foreground)',
-			primary: 'var(--sidebar-primary)',
-			'primary-foreground': 'var(--sidebar-primary-foreground)',
-			accent: 'var(--sidebar-accent)',
-			'accent-foreground': 'var(--sidebar-accent-foreground)',
-			border: 'var(--sidebar-border)',
-			ring: 'var(--sidebar-ring)',
-		  },
-		},
-	  },
-	},
 	prefix: "",
 	theme: {
 	  container: {
@@ -128,4 +111,5 @@ module.exports = {
 	  require("tailwind-scrollbar-hide"),
 	],
   };
+  
   
