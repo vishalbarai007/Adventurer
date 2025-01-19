@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session, redirect, abort
+from flask import Flask, request, jsonify, session, redirect, abort, url_for
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
@@ -8,6 +8,7 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
+from google.auth.transport import requests as google_requests
 import os
 import pathlib
 import requests
@@ -33,9 +34,11 @@ db.init_app(app)
 # Initialize Google OAuth flow
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile",
-            "https://www.googleapis.com/auth/userinfo.email",
-            "openid"],
+    scopes=[
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+        "openid"
+    ],
     redirect_uri="http://localhost:5000/google/callback"
 )
 
@@ -75,48 +78,73 @@ def login_user():
 # Google OAuth routes
 @app.route("/google/login")
 def google_login():
-    authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true',
+        prompt='consent'
+    )
     session["state"] = state
     return jsonify({"url": authorization_url})
 
 @app.route("/google/callback")
 def google_callback():
-    flow.fetch_token(authorization_response=request.url)
+    try:
+        flow.fetch_token(authorization_response=request.url)
 
-    if not session["state"] == request.args["state"]:
-        abort(500)
+        if not session.get("state") == request.args.get("state", None):
+            abort(500, "State mismatch in OAuth callback")
 
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
+        credentials = flow.credentials
+        request_session = requests.session()
+        cached_session = cachecontrol.CacheControl(request_session)
+        token_request = google_requests.Request(session=cached_session)
 
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID
-    )
-
-    # Check if user exists, if not create new user
-    email = id_info.get("email")
-    user = User.query.filter_by(email=email).first()
-
-    if not user:
-        # Create new user with Google info
-        new_user = User(
-            email=email,
-            password=None  # Google authenticated users don't need a password
+        id_info = id_token.verify_oauth2_token(
+            id_token=credentials._id_token,
+            request=token_request,
+            audience=GOOGLE_CLIENT_ID
         )
-        db.session.add(new_user)
-        db.session.commit()
-        user = new_user
 
-    session["user_id"] = user.id
-    return redirect("http://localhost:3000/post-login-homepage")
+        email = id_info.get("email")
+        if not email:
+            abort(400, "Email not provided by Google")
+
+        # Check if user exists, if not create new user
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            # Create new user with Google info
+            new_user = User(
+                email=email,
+                # Use a placeholder password for Google authenticated users
+                password=bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8')
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            user = new_user
+
+        session["user_id"] = user.id
+        return redirect("http://localhost:5173/post-login-homepage")
+
+    except Exception as e:
+        print(f"Google OAuth error: {str(e)}")
+        return redirect("http://localhost:3000/login?error=google_auth_failed")
+
+@app.route("/me")
+def get_current_user():
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
 
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    session.clear()
+    session.pop("user_id", None)
     return "200"
 
 if __name__ == "__main__":
