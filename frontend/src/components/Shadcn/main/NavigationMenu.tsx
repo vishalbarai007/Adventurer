@@ -146,7 +146,7 @@ export function NavigationMenuDemo() {
                                                             to="/login"
                                                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                                         >
-                                                            <Icons.logo className="h-6 w-6" />
+                                                            {/* <Icons.logo className="h-6 w-6" /> */}
                                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                                 <TbSocial /> Travel Social
                                                             </div>
@@ -205,7 +205,7 @@ export function NavigationMenuDemo() {
                                 <nav className="flex flex-col space-y-4">
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Home</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
@@ -217,21 +217,21 @@ export function NavigationMenuDemo() {
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Destiations</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Explore</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Contact us</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>About us</span>
                                     </Link>
-                                    {/* ... (other mobile menu items) */}
+            
                                 </nav>
                             </SheetContent>
                         </Sheet>
