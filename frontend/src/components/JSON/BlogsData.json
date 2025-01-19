@@ -5,6 +5,7 @@
     "title": "Create Memories for a Lifetime",
     "topic": "Summer",
     "url": "https://adventurer-omega.vercel.app/",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime.",
     "date": "20th September 2024",
     "social": "#"
@@ -15,7 +16,8 @@
     "title": "DESIGN SLIDER",
     "topic": "Winter",
     "url": "https://adventurer-omega.vercel.app/BaseContent",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "date": "20th September 2024"
   },
   {
@@ -24,6 +26,7 @@
     "title": "DESIGN SLIDER",
     "topic": "Spring",
     "url": "https://adventurer-omega.vercel.app/Account",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "date": "20th September 2024"
   },
@@ -33,6 +36,7 @@
     "title": "Create Memories for a Lifetime",
     "topic": "TSummer",
     "url": "https://adventurer-omega.vercel.app/",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Each Taj holiday is crafted with impeccable detail for you and your loved ones. Delve into exotic international getaways or venture into wondrous natural settings. Realise moments that you will cherish for a lifetime.",
     "date": "20th September 2024"
   },
@@ -42,6 +46,7 @@
     "title": "DESIGN SLIDER",
     "topic": "Spring",
     "url": "https://adventurer-omega.vercel.app/",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "date": "20th September 2024"
   },
@@ -51,6 +56,7 @@
     "title": "DESIGN SLIDER",
     "topic": "Autumn",
     "url": "https://adventurer-omega.vercel.app/",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "date": "20th September 2024"
   },
@@ -60,6 +66,7 @@
     "title": "DESIGN SLIDER",
     "topic": "Autumn",
     "url": "https://adventurer-omega.vercel.app/",
+    "shortDes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde.",
     "date": "20th September 2024"
   }
