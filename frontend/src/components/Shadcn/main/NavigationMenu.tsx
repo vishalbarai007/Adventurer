@@ -146,7 +146,7 @@ export function NavigationMenuDemo() {
                                                             to="/login"
                                                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                                         >
-                                                            {/* <Icons.logo className="h-6 w-6" /> */}
+                                                            <Icons.logo className="h-6 w-6" />
                                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                                 <TbSocial /> Travel Social
                                                             </div>
@@ -209,11 +209,11 @@ export function NavigationMenuDemo() {
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Feature</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>HOME</span>
+                                        <span>Blogs</span>
                                     </Link>
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />

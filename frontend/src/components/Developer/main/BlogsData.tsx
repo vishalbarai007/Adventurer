@@ -3,7 +3,7 @@ import BlogsDataRight from "../support/BlogsDataRight"
 
 const BlogsData = () => {
   return (
-    <div className='BlogsContainer flex flex-col md:flex-row'>
+    <div className='BlogsContainer flex flex-col md:flex-row' id="target-section">
       <BlogsDataLeft />
       <BlogsDataRight />
     </div>

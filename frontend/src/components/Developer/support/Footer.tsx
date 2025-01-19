@@ -12,7 +12,7 @@ const Footer = (props: { color: any }) => {
     >
       <div className="h-full w-full p-10 inset-0 bg-black bg-opacity-50">
         <footer
-          className="footer w-full grid gap-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto grid-rows-custom p-16"
+          className="footer w-full  grid gap-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto grid-rows-custom "
         >
           <div className="col-span-1">
             <UsefulLinks />
