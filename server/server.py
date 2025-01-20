@@ -13,6 +13,14 @@ import os
 import pathlib
 import requests
 import json
+import firebase_admin
+from firebase_admin import credentials, firestore
+from datetime import datetime
+
+# Initialize Firebase
+cred = credentials.Certificate('firebase_key.json')
+firebase_admin.initialize_app(cred)
+db_firebase = firestore.client()
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
@@ -45,6 +53,23 @@ flow = Flow.from_client_secrets_file(
 with app.app_context():
     db.create_all()
 
+# Firebase helper functions
+def save_user_to_firebase(user_data):
+    """Save user data to Firebase"""
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_data['id']).set({
+        'email': user_data['email'],
+        'created_at': datetime.now(),
+        'last_login': datetime.now()
+    })
+
+def update_user_login_time(user_id):
+    """Update user's last login time"""
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_id).update({
+        'last_login': datetime.now()
+    })
+
 # Regular email/password routes
 @app.route("/register", methods=["POST"])
 def register_user():
@@ -60,6 +85,13 @@ def register_user():
     db.session.add(new_user)
     db.session.commit()
 
+    # Save to Firebase
+    user_data = {
+        'id': new_user.id,
+        'email': new_user.email
+    }
+    save_user_to_firebase(user_data)
+
     session["user_id"] = new_user.id
     return jsonify({"id": new_user.id, "email": new_user.email})
 
@@ -71,6 +103,9 @@ def login_user():
     user = User.query.filter_by(email=email).first()
     if user is None or not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
+
+    # Update last login time in Firebase
+    update_user_login_time(user.id)
 
     session["user_id"] = user.id
     return jsonify({"id": user.id, "email": user.email})
@@ -115,19 +150,57 @@ def google_callback():
             # Create new user with Google info
             new_user = User(
                 email=email,
-                # Use a placeholder password for Google authenticated users
                 password=bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8')
             )
             db.session.add(new_user)
             db.session.commit()
             user = new_user
 
+            # Save new Google user to Firebase
+            user_data = {
+                'id': user.id,
+                'email': user.email,
+                'google_auth': True
+            }
+            save_user_to_firebase(user_data)
+        else:
+            # Update existing user's login time
+            update_user_login_time(user.id)
+
         session["user_id"] = user.id
         return redirect("http://localhost:5173/post-login-homepage")
 
     except Exception as e:
         print(f"Google OAuth error: {str(e)}")
-        return redirect("http://localhost:3000/login?error=google_auth_failed")
+        return redirect("http://localhost:5173/login?error=google_auth_failed")
+
+# User profile routes
+@app.route("/api/user/profile", methods=["GET"])
+def get_user_profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # Get user data from Firebase
+    user_doc = db_firebase.collection('users').document(user_id).get()
+    if user_doc.exists:
+        user_data = user_doc.to_dict()
+        return jsonify(user_data)
+    return jsonify({"error": "User not found"}), 404
+
+@app.route("/api/user/profile", methods=["PUT"])
+def update_user_profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    update_data = request.json
+
+    # Update in Firebase
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_id).update(update_data)
+
+    return jsonify({"message": "Profile updated successfully"})
 
 @app.route("/me")
 def get_current_user():
@@ -144,7 +217,15 @@ def get_current_user():
 
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    session.pop("user_id", None)
+    # Update last_logout time in Firebase before clearing session
+    user_id = session.get("user_id")
+    if user_id:
+        users_ref = db_firebase.collection('users')
+        users_ref.document(user_id).update({
+            'last_logout': datetime.now()
+        })
+
+    session.clear()
     return "200"
 
 if __name__ == "__main__":
