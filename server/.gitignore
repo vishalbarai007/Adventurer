@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 
 client_secret.json
+firebase_key.json
