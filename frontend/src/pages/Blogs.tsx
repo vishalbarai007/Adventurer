@@ -7,6 +7,7 @@ import Scrollslider from "../components/Developer/main/scrollslider";
 import ScrollDownButton from "../components/Developer/main/ScrollDownButton";
 import Footer from "../components/Developer/support/Footer";
 import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
+import BlogsLanding from "../components/Developer/main/BlogsLanding";
 
 
 
@@ -20,7 +21,8 @@ const Blogs = () => {
     <>
       <NavigationMenuDemo />
       <Scrollslider />
-      <BlogLandingTemplate data-aos="fade-up" />
+      {/* <BlogLandingTemplate data-aos="fade-up" /> */}
+      <BlogsLanding/>
       <ScrollDownButton />
       <BlogsData />
       <Footer color={undefined} />
