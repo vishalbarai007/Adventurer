@@ -1,10 +1,9 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaApple, FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { CarouselPlugin } from "../../Shadcn/main/Image_carousel";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import httpClient from "../../../services/httpClient";
 
 interface FormInputs {
@@ -19,6 +18,16 @@ const Login_form: React.FC = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	useEffect(() => {
+		// Check for error parameter in URL
+		const params = new URLSearchParams(location.search);
+		const errorParam = params.get("error");
+		if (errorParam === "google_auth_failed") {
+			setError("Google authentication failed. Please try again.");
+		}
+	}, [location]);
 
 	const {
 		register,
@@ -41,7 +50,7 @@ const Login_form: React.FC = () => {
 			if (mode === "SignUp") {
 				const response = await httpClient.post(
 					"http://localhost:5000/register",
-					{ email: data.email, password: data.password }
+					{ email: data.email, password: data.password },
 				);
 
 				if (response.status === 200) {
@@ -52,7 +61,7 @@ const Login_form: React.FC = () => {
 			} else {
 				const response = await httpClient.post(
 					"http://localhost:5000/login",
-					{ email: data.email, password: data.password }
+					{ email: data.email, password: data.password },
 				);
 
 				if (response.status === 200) {
@@ -66,9 +75,22 @@ const Login_form: React.FC = () => {
 				setError(
 					mode === "SignUp"
 						? "Registration failed. Please try again."
-						: "Login failed. Please check your credentials."
+						: "Login failed. Please check your credentials.",
 				);
 			}
+		}
+	};
+
+	const handleGoogleSignIn = async () => {
+		try {
+			const response = await httpClient.get(
+				"http://localhost:5000/google/login",
+			);
+			if (response.data.url) {
+				window.location.href = response.data.url;
+			}
+		} catch (err: any) {
+			setError("Google sign-in failed. Please try again.");
 		}
 	};
 
@@ -115,13 +137,17 @@ const Login_form: React.FC = () => {
 							className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
 						/>
 						{errors.email && (
-							<p className="text-red-500 text-sm">{errors.email.message}</p>
+							<p className="text-red-500 text-sm">
+								{errors.email.message}
+							</p>
 						)}
 					</div>
 
 					<div className="relative">
 						<label className="block text-sm font-medium text-[#EADED0]">
-							{mode === "SignUp" ? "Create Password" : "Enter Password"}
+							{mode === "SignUp"
+								? "Create Password"
+								: "Enter Password"}
 						</label>
 						<input
 							type={showPassword ? "text" : "password"}
@@ -137,7 +163,9 @@ const Login_form: React.FC = () => {
 							{showPassword ? <FaEyeSlash /> : <FaEye />}
 						</span>
 						{errors.password && (
-							<p className="text-red-500 text-sm">{errors.password.message}</p>
+							<p className="text-red-500 text-sm">
+								{errors.password.message}
+							</p>
 						)}
 					</div>
 
@@ -151,15 +179,22 @@ const Login_form: React.FC = () => {
 								{...register("confirmPassword", {
 									required: "Please confirm your password",
 									validate: (value) =>
-										value === password || "Passwords do not match",
+										value === password ||
+										"Passwords do not match",
 								})}
 								className="mt-1 w-full px-4 py-2 border bg-[#d4d9d1] text-zinc-900 rounded-md focus:ring-green-500 focus:border-green-500"
 							/>
 							<span
-								onClick={() => setShowConfirmPassword((prev) => !prev)}
+								onClick={() =>
+									setShowConfirmPassword((prev) => !prev)
+								}
 								className="absolute right-3 top-10 cursor-pointer text-gray-500"
 							>
-								{showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+								{showConfirmPassword ? (
+									<FaEyeSlash />
+								) : (
+									<FaEye />
+								)}
 							</span>
 							{errors.confirmPassword && (
 								<p className="text-red-500 text-sm">
@@ -190,6 +225,7 @@ const Login_form: React.FC = () => {
 						</button>
 						<button
 							type="button"
+							onClick={handleGoogleSignIn}
 							className="w-full px-4 py-2 flex justify-center items-center bg-white my-2 text-zinc-950 rounded-md gap-2"
 						>
 							<FcGoogle size={20} />
@@ -215,7 +251,6 @@ const Login_form: React.FC = () => {
 							{mode === "SignUp" ? "Sign In" : "Sign Up"}
 						</a>
 					</p>
-
 				</form>
 			</div>
 		</div>

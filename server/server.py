@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session, redirect, abort
+from flask import Flask, request, jsonify, session, redirect, abort, url_for
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
@@ -8,10 +8,19 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport.requests
+from google.auth.transport import requests as google_requests
 import os
 import pathlib
 import requests
 import json
+import firebase_admin
+from firebase_admin import credentials, firestore
+from datetime import datetime
+
+# Initialize Firebase
+cred = credentials.Certificate('firebase_key.json')
+firebase_admin.initialize_app(cred)
+db_firebase = firestore.client()
 
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
@@ -33,14 +42,33 @@ db.init_app(app)
 # Initialize Google OAuth flow
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
-    scopes=["https://www.googleapis.com/auth/userinfo.profile",
-            "https://www.googleapis.com/auth/userinfo.email",
-            "openid"],
+    scopes=[
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+        "openid"
+    ],
     redirect_uri="http://localhost:5000/google/callback"
 )
 
 with app.app_context():
     db.create_all()
+
+# Firebase helper functions
+def save_user_to_firebase(user_data):
+    """Save user data to Firebase"""
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_data['id']).set({
+        'email': user_data['email'],
+        'created_at': datetime.now(),
+        'last_login': datetime.now()
+    })
+
+def update_user_login_time(user_id):
+    """Update user's last login time"""
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_id).update({
+        'last_login': datetime.now()
+    })
 
 # Regular email/password routes
 @app.route("/register", methods=["POST"])
@@ -57,6 +85,13 @@ def register_user():
     db.session.add(new_user)
     db.session.commit()
 
+    # Save to Firebase
+    user_data = {
+        'id': new_user.id,
+        'email': new_user.email
+    }
+    save_user_to_firebase(user_data)
+
     session["user_id"] = new_user.id
     return jsonify({"id": new_user.id, "email": new_user.email})
 
@@ -69,53 +104,127 @@ def login_user():
     if user is None or not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
 
+    # Update last login time in Firebase
+    update_user_login_time(user.id)
+
     session["user_id"] = user.id
     return jsonify({"id": user.id, "email": user.email})
 
 # Google OAuth routes
 @app.route("/google/login")
 def google_login():
-    authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true',
+        prompt='consent'
+    )
     session["state"] = state
     return jsonify({"url": authorization_url})
 
 @app.route("/google/callback")
 def google_callback():
-    flow.fetch_token(authorization_response=request.url)
+    try:
+        flow.fetch_token(authorization_response=request.url)
 
-    if not session["state"] == request.args["state"]:
-        abort(500)
+        if not session.get("state") == request.args.get("state", None):
+            abort(500, "State mismatch in OAuth callback")
 
-    credentials = flow.credentials
-    request_session = requests.session()
-    cached_session = cachecontrol.CacheControl(request_session)
-    token_request = google.auth.transport.requests.Request(session=cached_session)
+        credentials = flow.credentials
+        request_session = requests.session()
+        cached_session = cachecontrol.CacheControl(request_session)
+        token_request = google_requests.Request(session=cached_session)
 
-    id_info = id_token.verify_oauth2_token(
-        id_token=credentials._id_token,
-        request=token_request,
-        audience=GOOGLE_CLIENT_ID
-    )
-
-    # Check if user exists, if not create new user
-    email = id_info.get("email")
-    user = User.query.filter_by(email=email).first()
-
-    if not user:
-        # Create new user with Google info
-        new_user = User(
-            email=email,
-            password=None  # Google authenticated users don't need a password
+        id_info = id_token.verify_oauth2_token(
+            id_token=credentials._id_token,
+            request=token_request,
+            audience=GOOGLE_CLIENT_ID
         )
-        db.session.add(new_user)
-        db.session.commit()
-        user = new_user
 
-    session["user_id"] = user.id
-    return redirect("http://localhost:3000/post-login-homepage")
+        email = id_info.get("email")
+        if not email:
+            abort(400, "Email not provided by Google")
+
+        # Check if user exists, if not create new user
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            # Create new user with Google info
+            new_user = User(
+                email=email,
+                password=bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8')
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            user = new_user
+
+            # Save new Google user to Firebase
+            user_data = {
+                'id': user.id,
+                'email': user.email,
+                'google_auth': True
+            }
+            save_user_to_firebase(user_data)
+        else:
+            # Update existing user's login time
+            update_user_login_time(user.id)
+
+        session["user_id"] = user.id
+        return redirect("http://localhost:5173/post-login-homepage")
+
+    except Exception as e:
+        print(f"Google OAuth error: {str(e)}")
+        return redirect("http://localhost:5173/login?error=google_auth_failed")
+
+# User profile routes
+@app.route("/api/user/profile", methods=["GET"])
+def get_user_profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # Get user data from Firebase
+    user_doc = db_firebase.collection('users').document(user_id).get()
+    if user_doc.exists:
+        user_data = user_doc.to_dict()
+        return jsonify(user_data)
+    return jsonify({"error": "User not found"}), 404
+
+@app.route("/api/user/profile", methods=["PUT"])
+def update_user_profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    update_data = request.json
+
+    # Update in Firebase
+    users_ref = db_firebase.collection('users')
+    users_ref.document(user_id).update(update_data)
+
+    return jsonify({"message": "Profile updated successfully"})
+
+@app.route("/me")
+def get_current_user():
+    user_id = session.get("user_id")
+
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
 
 @app.route("/logout", methods=["POST"])
 def logout_user():
+    # Update last_logout time in Firebase before clearing session
+    user_id = session.get("user_id")
+    if user_id:
+        users_ref = db_firebase.collection('users')
+        users_ref.document(user_id).update({
+            'last_logout': datetime.now()
+        })
+
     session.clear()
     return "200"
 
