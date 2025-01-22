@@ -39,9 +39,8 @@ const BlogModal: React.FC<BlogModalProps> = ({
             transition={{ duration: 0.3 }}
           >
             <button
-              className={`absolute top-3 right-3 text-3xl text-gray-600 rounded-full hover:text-gray-900 transition-transform duration-300 ${
-                isClosing ? "rotate-180" : ""
-              }`}
+              className={`absolute top-3 right-3 text-3xl text-gray-600 rounded-full hover:text-gray-900 transition-transform duration-300 ${isClosing ? "rotate-180" : ""
+                }`}
               onClick={handleClose}
             >
               ✕
