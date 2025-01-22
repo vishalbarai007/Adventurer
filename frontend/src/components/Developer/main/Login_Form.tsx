@@ -88,9 +88,13 @@ const Login_form: React.FC = () => {
 			);
 			if (response.data.url) {
 				window.location.href = response.data.url;
+				console.log("Working");
+				
 			}
 		} catch (err: any) {
 			setError("Google sign-in failed. Please try again.");
+			console.log("error");
+
 		}
 	};
 
