@@ -34,40 +34,8 @@ const destinations = [
 export default function BlogsLanding() {
   return (
   <>
-    <div className="BlogsLanding grid grid-cols-2">
-    <div className="min-h-screen flex items-center justify-center ">
-      {/* Header */}
-      {/* <header className="flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-2">
-          <img src="/assets/BarndLogos/Adventurer/adventurer.png" alt="Adventurer Logo" width={40} height={40} className="object-contain" />
-          <span className="text-2xl font-bold text-white">adventurer</span>
-        </div>
-
-        <nav className="hidden md:flex items-center gap-8">
-          {["BlogsLanding", "Services", "Contact Us", "Blog"].map((item) => (
-            <a key={item} href="#" className="text-white hover:text-white/80 transition-colors">
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <div className="relative hidden md:block">
-            <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="pl-8 bg-white/10 border-white/20 text-white placeholder:text-white/50"
-            />
-          </div>
-          <Button variant="ghost" className="text-white">
-            <User className="h-5 w-5 mr-2" />
-            Log In
-          </Button>
-        </div>
-      </header> */}
-
-      {/* Hero Section */}
+<div className="BlogsLanding w-fit sm:w-full grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3 p-5">    <div className="min-h-screen flex items-center justify-center ">
+      
       <section className="relative  px-10 py-10">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
@@ -116,6 +84,7 @@ export default function BlogsLanding() {
     {/* <section className="flex justify-center items-center"> */}
         <DestinationCarousel destinations={destinations} />
       {/* </section> */}
+      
 
     </div>
   </>
