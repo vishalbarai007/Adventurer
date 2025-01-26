@@ -1,9 +1,39 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import blogData from '../../JSON/BlogsData.json';
 import BlogModal from './BlogModal';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const BlogsDataLeft = () => {
   const [selectedBlog, setSelectedBlog] = useState<any>(null);
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/blog') // Your Flask backend's endpoint
+      .then((response) => {
+        console.log("Fetched data:", response.data); // Log data for debugging
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error); // Log any errors
+        setLoading(false);
+      });
+  }, []);
+  
+
+  
+
+//   if (loading) return <p>Loading...</p>;
+
+//   return (
+//     <div>
+//       <h1>Firestore Data</h1>
+//       <pre>{JSON.stringify(data, null, 2)}</pre>
+//     </div>
+//   );
+// };
 
   return (
     <div className="BlogsContainerLeft w-full md:w-[70%] bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">

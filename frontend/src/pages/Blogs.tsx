@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import BlogLandingTemplate from "../components/Developer/support/BlogLandingTemplate";
+// import BlogLandingTemplate from "../components/Developer/support/BlogLandingTemplate";
 import BlogsData from "../components/Developer/main/BlogsData";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
