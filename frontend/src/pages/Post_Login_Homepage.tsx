@@ -16,9 +16,9 @@
 // }
 
 import PostHeader from "../components/Developer/main/PostLoginComponents/Header"
-import { ImageGrid } from "../components/Developer/main/PostLoginComponents/image-grid"
+// import { ImageGrid } from "../components/Developer/main/PostLoginComponents/image-grid"
 import { ProfileCards } from "../components/Developer/main/PostLoginComponents/profile-cards"
-import { SearchBar } from "../components/Developer/main/PostLoginComponents/search-bar"
+// import { SearchBar } from "../components/Developer/main/PostLoginComponents/search-bar"
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import { Suggestions } from "../components/Developer/main/PostLoginComponents/suggestions"
 
@@ -32,7 +32,7 @@ export default function PostLoginPage() {
         <ProfileCards />
         {/* <SearchBar /> */}
         {/* <ImageGrid /> */}
-        
+
 
       </div>
       <div className="w-full"> <Suggestions /></div>

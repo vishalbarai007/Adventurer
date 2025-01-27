@@ -8,8 +8,9 @@ import About_us from './pages/About_us';
 import Contact_us from './pages/Contact_us';
 import Blogs from './pages/Blogs';
 import Seasonal_destinations from './pages/Seasonal_destinations';
-import PostLoginHomepage from './pages/Post_Login_Homepage';
+// import PostLoginHomepage from './pages/Post_Login_Homepage';
 import SplashScreen from './components/Developer/main/SplashScreen';
+import PostLoginPage from './pages/Post_Login_Homepage';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<SplashScreen />} />
         <Route path='/pre-login-homepage' element={<Pre_login_homepage />} />
-        <Route path="/post-login-homepage" element={<PostLoginHomepage />} />
+        <Route path="/post-login-homepage" element={<PostLoginPage />} />
         <Route path='/about' element={<About_us />} />
         <Route path='/contact' element={<Contact_us />} />
         <Route path='/blogs' element={<Blogs />} />
