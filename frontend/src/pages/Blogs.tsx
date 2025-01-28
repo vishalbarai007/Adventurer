@@ -13,22 +13,22 @@ import BlogsLanding from "../components/Developer/main/BlogsLanding";
 
 const Blogs = () => {
 
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
+    useEffect(() => {
+        AOS.init({ duration: 800 });
+    }, []);
 
-  return (
-    <>
-      <NavigationMenuDemo />
-      <Scrollslider />
-      {/* <BlogLandingTemplate data-aos="fade-up" /> */}
-      <BlogsLanding/>
-      <ScrollDownButton />
-      <BlogsData />
-      <Footer color={undefined} />
+    return (
+        <>
+            <NavigationMenuDemo />
+            <Scrollslider />
+            {/* <BlogLandingTemplate data-aos="fade-up" /> */}
+            <BlogsLanding />
+            <ScrollDownButton />
+            <BlogsData />
+            <Footer color={undefined} />
 
-    </>
-  )
+        </>
+    )
 };
 
 export default Blogs;
