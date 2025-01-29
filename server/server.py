@@ -229,28 +229,25 @@ def logout_user():
     session.clear()
     return "200"
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
 # Fetching Blogs data from Firebase
-@app.route('/blog', methods=['GET'])
+@app.route('/blog', methods=["GET"])
 def get_data():
     try:
         # Use the Firestore client
         collection_ref = db_firebase.collection('Blogs')
         docs = collection_ref.stream()
         data = {doc.id: doc.to_dict() for doc in docs}
-
-        # Log fetched data to the console
-        print("Fetched data from Firestore:", data)
         return jsonify(data)
+
     except Exception as e:
         # Log error to console for debugging
         print(f"Error fetching data: {e}")
         return jsonify({"error": str(e)}), 500
 
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()  # Ensure database tables are created
     app.run(debug=True)
+
+
