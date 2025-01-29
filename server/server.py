@@ -36,7 +36,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # Remove this in production
 
 # Initialize Flask extensions
 bcrypt = Bcrypt(app)
-CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
+CORS(app, origins=["http://localhost:*"], supports_credentials=True)
 server_session = Session(app)
 db.init_app(app)
 
