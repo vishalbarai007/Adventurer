@@ -245,6 +245,22 @@ def get_data():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/travelcategories', methods=["GET"])
+def get_travel_categories():
+    try:
+        # Use the Firestore client
+        collection_ref = db_firebase.collection('Travel_Categories')
+        docs = collection_ref.stream()
+        data = [doc.to_dict() for doc in docs]  # Convert to list of dictionaries
+        print("Fetched travel categories:", data)  # Log the data for debugging
+        return jsonify(data)
+
+    except Exception as e:
+        # Log error to console for debugging
+        print(f"Error fetching travel categories: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()  # Ensure database tables are created

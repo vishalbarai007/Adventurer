@@ -2,7 +2,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import BlogModal from "./BlogModal"
-import blogData from '../../JSON/BlogsData.json';
+// import blogData from '../../JSON/BlogsData.json';
 
 
 const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ setSelectedBlog }) => {
