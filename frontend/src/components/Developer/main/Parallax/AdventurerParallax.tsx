@@ -1,6 +1,6 @@
 import { ParallaxBanner } from "react-scroll-parallax"
 import type { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types"
-import { ChevronDown } from "lucide-react"
+// import { ChevronDown } from "lucide-react"
 import ScrollDownButton from "../ScrollDownButton"
 
 const AdventurerParallax = () => {
@@ -54,11 +54,11 @@ const AdventurerParallax = () => {
   }
   const title: BannerLayer = {
     opacity: [0.7, -5],
-    scale: [0.5, 1, "easeOutCubic"],
+    scale: [0.5, 1.5, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
     children: (
-      <div className="absolute top-[350px] text-center w-full ">
-        <h1 className="text-[250px] font-bold text-black mb-4 tracking-wider">
+      <div className="absolute top-[350px] -left-36 md:-left-60 lg:left-0 text-center w-full ">
+        <h1 className="lg:text-[200px] font-bold text-[80px]  md:text-[190px] text-black mb-4 tracking-wider">
           ADVENTURER
         </h1>
       </div>
@@ -110,4 +110,3 @@ const AdventurerParallax = () => {
 }
 
 export default AdventurerParallax
-
