@@ -10,6 +10,7 @@ import Carousel from '../components/Shadcn/main/Carousel'
 import FindYourWay from '../components/Developer/main/FindYourWay'
 import { NavigationMenu } from '../components/Shadcn/ui/navigation-menu'
 import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu'
+import Preloginlanding from '../components/Developer/main/Pre-login-landing'
 // import BlogsLanding from '../components/Developer/main/BlogsLanding'
 // import { ModeToggle } from '../components/Shadcn/support/PostLoginHome/modetoggle'
 // import PostLoginHomepage from './Post_Login_Homepage'
@@ -24,12 +25,12 @@ const Pre_login_homepage = () => {
 
       {/* <BlogsLanding /> */}
       <Parallax />
+      <Preloginlanding/>
       {/* <Pre_login_menubar /> */}
 
       {/* <PostLoginHomepage/> */}
       {/* <ModeToggle/> */}
       <FindYourWay />
-      <Pre_login_homepage_content />
       <Pre_homepage_cards />
       <NavigationMenu />
 
