@@ -5,7 +5,7 @@ import BlogModal from "./BlogModal"
 // import blogData from '../../JSON/BlogsData.json';
 
 
-const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ setSelectedBlog }) => {
+const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) => {
   const [selectedBlog, setSelectedBlogState] = useState<any>(null)
   const [data, setData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)

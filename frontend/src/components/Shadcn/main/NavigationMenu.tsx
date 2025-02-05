@@ -99,7 +99,7 @@ export function NavigationMenuDemo() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 right-0 z-10 transition-all duration-300 ease-in-out",
+                "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out",
                 isScrolled ? "translate-y-0" : "-translate-y-full",
                 "bg-[#012c18] text-[#012c18]")}>
 
