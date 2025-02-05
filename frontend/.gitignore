@@ -27,3 +27,4 @@ dist-ssr
 venv
 instance/
 client_secret.json
+firebase_key.json
