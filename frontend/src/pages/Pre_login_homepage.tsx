@@ -6,6 +6,7 @@ import Carousel from '../components/Shadcn/main/Carousel'
 import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu'
 import Preloginlanding from '../components/Developer/main/Pre-login-landing'
 import { AnimatedTestimonialsDemo } from '../components/Shadcn/main/AnimatedTestimonialsDemo'
+import { InfiniteMovingCardsDemo } from '../components/Developer/main/InfiniteMovingCardsDemo'
 
 
 const Pre_login_homepage = () => {
@@ -19,6 +20,7 @@ const Pre_login_homepage = () => {
       <Carousel />
       <ExplorePlaces />
       {/* animated modals */}
+      <InfiniteMovingCardsDemo/>
       <AnimatedTestimonialsDemo/>
       <Footer color={undefined} />
     </>
