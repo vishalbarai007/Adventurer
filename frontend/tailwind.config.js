@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	darkMode: 'class',
+	darkMode: "class",
 	content: [
-	  './pages/**/*.{ts,tsx}',
-	  './components/**/*.{ts,tsx}',
-	  './app/**/*.{ts,tsx}',
-	  './src/**/*.{ts,tsx}',
+	  "./index.html",
+	  "./src/**/*.{js,ts,jsx,tsx}",
+	  "./pages/**/*.{ts,tsx}",
+	  "./components/**/*.{ts,tsx}",
+	  "./app/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -18,6 +19,9 @@ module.exports = {
 	  },
 	  extend: {
 		colors: {
+		  "brand-green": "#012c18",
+		  "brand-gold": "#ffaa1c",
+		  "brand-orange": "#ff7757",
 		  border: "hsl(var(--border))",
 		  input: "hsl(var(--input))",
 		  ring: "hsl(var(--ring))",
@@ -110,6 +114,4 @@ module.exports = {
 	  require("tailwindcss-animate"),
 	  require("tailwind-scrollbar-hide"),
 	],
-  };
-  
-  
+  }

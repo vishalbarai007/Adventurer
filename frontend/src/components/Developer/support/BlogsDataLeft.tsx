@@ -1,39 +1,57 @@
-import { useState } from 'react';
-import blogData from '../../JSON/BlogsData.json';
-import BlogModal from './BlogModal';
+import type React from "react"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import BlogModal from "./BlogModal"
+// import blogData from '../../JSON/BlogsData.json';
 
-const BlogsDataLeft = () => {
-  const [selectedBlog, setSelectedBlog] = useState<any>(null);
+
+const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ setSelectedBlog }) => {
+  const [selectedBlog, setSelectedBlogState] = useState<any>(null)
+  const [data, setData] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/blog")
+      .then((response) => {
+        console.log("Fetched blog data:", response.data)
+        // Convert the object of objects to an array of objects
+        const blogsArray = Object.values(response.data)
+        setData(blogsArray)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error("Error fetching blog data:", error)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <p>Loading...</p>
 
   return (
     <div className="BlogsContainerLeft w-full md:w-[70%] bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-        {blogData.map((blog, index) => (
-          <div
-            key={index}
-            className="blog-item bg-white shadow-lg rounded-lg overflow-hidden flex flex-col"
-          >
+        {data.map((blog, index) => (
+          <div key={index} className="blog-item bg-white shadow-lg rounded-lg overflow-hidden flex flex-col">
             <img
-              src={blog.image}
-              alt={blog.title}
+              src={blog.image || "https://via.placeholder.com/300"}
+              alt={blog.Title || "Blog Image"}
               className="w-full h-48 object-cover"
             />
             <div className="p-4 flex flex-col justify-between flex-grow">
               <div>
                 <span className="inline-block bg-green-600 text-white text-xs px-2 py-1 rounded-full mb-2">
-                  {blog.topic}
+                  {blog.Meta_Keys ? blog.Meta_Keys.split(",")[0] : "No Topic"}
                 </span>
-                <h3 className="text-lg font-semibold mb-2">{blog.title}</h3>
-                <p className="text-gray-600 text-sm mb-2">
-                  {blog.shortDes}
-                </p>
+                <h3 className="text-lg font-semibold mb-2">{blog.Title || "Untitled Blog"}</h3>
+                <p className="text-gray-600 text-sm mb-2">{blog.Short_Desc || "No description available"}</p>
               </div>
               <div>
                 <p className="text-gray-600 text-xs mb-2 text-right">
-                  {blog.date}
+                  {blog.DateTime ? new Date(blog.DateTime).toLocaleDateString() : "Unknown Date"}
                 </p>
                 <button
-                  onClick={() => setSelectedBlog(blog)}
+                  onClick={() => setSelectedBlogState(blog)}
                   className="block w-full bg-black text-white text-center py-2 hover:bg-gray-800 transition duration-300"
                 >
                   Read more
@@ -46,17 +64,18 @@ const BlogsDataLeft = () => {
 
       {selectedBlog && (
         <BlogModal
-          image={selectedBlog.image}
-          title={selectedBlog.title}
-          author={selectedBlog.author}
-          topic={selectedBlog.topic}
-          description={selectedBlog.description}
-          date={selectedBlog.date}
-          onClose={() => setSelectedBlog(null)}
+          image={selectedBlog.image || "https://via.placeholder.com/300"}
+          title={selectedBlog.Title || "Untitled Blog"}
+          author={selectedBlog.Admin_ID || "Unknown Author"}
+          topic={selectedBlog.Meta_Keys ? selectedBlog.Meta_Keys.split(",")[0] : "No Topic"}
+          description={selectedBlog.Description || "No description available"}
+          date={selectedBlog.DateTime ? new Date(selectedBlog.DateTime).toLocaleString() : "Unknown Date"}
+          onClose={() => setSelectedBlogState(null)}
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BlogsDataLeft;
+export default BlogsDataLeft
+
