@@ -25,7 +25,6 @@ db_firebase = firestore.client()
 app = Flask(__name__)
 app.config.from_object(ApplicationConfig)
 
-
 clientSecretjson = json.load(open("client_secret.json"))
 clientSecretjson_web = clientSecretjson["web"]
 
@@ -40,19 +39,43 @@ CORS(app, origins=["http://localhost:*"], supports_credentials=True)
 server_session = Session(app)
 db.init_app(app)
 
-# Initialize Google OAuth flow
-flow = Flow.from_client_secrets_file(
-    client_secrets_file=client_secrets_file,
-    scopes=[
-        "https://www.googleapis.com/auth/userinfo.profile",
-        "https://www.googleapis.com/auth/userinfo.email",
-        "openid"
-    ],
-    redirect_uri="http://localhost:5000/google/callback"
-)
-
 with app.app_context():
     db.create_all()
+
+# Gemini API Key (Store this in a `.env` file in production)
+GEMINI_API_KEY =  os.getenv("GEMINI_API_KEY")
+# Gemini API URL for text generation
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateText"
+
+@app.route("/chat", methods=["POST"])
+def chat_with_gemini():
+    user_input = request.json.get("message", "")
+
+    if not user_input:
+        return jsonify({"error": "Message cannot be empty"}), 400
+
+    try:
+        payload = {
+            "prompt": user_input
+        }
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {GEMINI_API_KEY}"
+        }
+
+        response = requests.post(GEMINI_API_URL, json=payload, headers=headers)
+        data = response.json()
+
+        if "candidates" in data and data["candidates"]:
+            reply = data["candidates"][0].get("output", "I'm not sure how to respond to that.")
+        else:
+            reply = "I'm unable to generate a response at the moment."
+
+        return jsonify({"reply": reply})
+
+    except Exception as e:
+        print(f"Error in Gemini API call: {e}")
+        return jsonify({"error": "Failed to fetch response from Gemini"}), 500
 
 # Firebase helper functions
 def save_user_to_firebase(user_data):
@@ -105,13 +128,18 @@ def login_user():
     if user is None or not bcrypt.check_password_hash(user.password, password):
         return jsonify({"error": "Unauthorized"}), 401
 
-    # Update last login time in Firebase
     update_user_login_time(user.id)
 
     session["user_id"] = user.id
     return jsonify({"id": user.id, "email": user.email})
 
 # Google OAuth routes
+flow = Flow.from_client_secrets_file(
+    client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"],
+    redirect_uri="http://localhost:5000/google/callback"
+)
+
 @app.route("/google/login")
 def google_login():
     authorization_url, state = flow.authorization_url(
@@ -145,27 +173,16 @@ def google_callback():
         if not email:
             abort(400, "Email not provided by Google")
 
-        # Check if user exists, if not create new user
         user = User.query.filter_by(email=email).first()
         if not user:
-            # Create new user with Google info
-            new_user = User(
-                email=email,
-                password=bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8')
-            )
+            new_user = User(email=email, password=bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8'))
             db.session.add(new_user)
             db.session.commit()
             user = new_user
 
-            # Save new Google user to Firebase
-            user_data = {
-                'id': user.id,
-                'email': user.email,
-                'google_auth': True
-            }
+            user_data = {'id': user.id, 'email': user.email, 'google_auth': True}
             save_user_to_firebase(user_data)
         else:
-            # Update existing user's login time
             update_user_login_time(user.id)
 
         session["user_id"] = user.id
@@ -175,18 +192,15 @@ def google_callback():
         print(f"Google OAuth error: {str(e)}")
         return redirect("http://localhost:5173/login?error=google_auth_failed")
 
-# User profile routes
 @app.route("/api/user/profile", methods=["GET"])
 def get_user_profile():
     user_id = session.get("user_id")
     if not user_id:
         return jsonify({"error": "Unauthorized"}), 401
 
-    # Get user data from Firebase
     user_doc = db_firebase.collection('users').document(user_id).get()
     if user_doc.exists:
-        user_data = user_doc.to_dict()
-        return jsonify(user_data)
+        return jsonify(user_doc.to_dict())
     return jsonify({"error": "User not found"}), 404
 
 @app.route("/api/user/profile", methods=["PUT"])
@@ -196,74 +210,36 @@ def update_user_profile():
         return jsonify({"error": "Unauthorized"}), 401
 
     update_data = request.json
-
-    # Update in Firebase
-    users_ref = db_firebase.collection('users')
-    users_ref.document(user_id).update(update_data)
-
+    db_firebase.collection('users').document(user_id).update(update_data)
     return jsonify({"message": "Profile updated successfully"})
-
-@app.route("/me")
-def get_current_user():
-    user_id = session.get("user_id")
-
-    if not user_id:
-        return jsonify({"error": "Unauthorized"}), 401
-
-    user = User.query.filter_by(id=user_id).first()
-    return jsonify({
-        "id": user.id,
-        "email": user.email
-    })
 
 @app.route("/logout", methods=["POST"])
 def logout_user():
-    # Update last_logout time in Firebase before clearing session
     user_id = session.get("user_id")
     if user_id:
-        users_ref = db_firebase.collection('users')
-        users_ref.document(user_id).update({
-            'last_logout': datetime.now()
-        })
-
+        db_firebase.collection('users').document(user_id).update({'last_logout': datetime.now()})
     session.clear()
     return "200"
 
-# Fetching Blogs data from Firebase
 @app.route('/blog', methods=["GET"])
 def get_data():
     try:
-        # Use the Firestore client
-        collection_ref = db_firebase.collection('Blogs')
-        docs = collection_ref.stream()
-        data = {doc.id: doc.to_dict() for doc in docs}
-        return jsonify(data)
-
+        docs = db_firebase.collection('Blogs').stream()
+        return jsonify({doc.id: doc.to_dict() for doc in docs})
     except Exception as e:
-        # Log error to console for debugging
         print(f"Error fetching data: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/travelcategories', methods=["GET"])
 def get_travel_categories():
     try:
-        # Use the Firestore client
-        collection_ref = db_firebase.collection('Travel_Categories')
-        docs = collection_ref.stream()
-        data = [doc.to_dict() for doc in docs]  # Convert to list of dictionaries
-        print("Fetched travel categories:", data)  # Log the data for debugging
-        return jsonify(data)
-
+        docs = db_firebase.collection('Travel_Categories').stream()
+        return jsonify([doc.to_dict() for doc in docs])
     except Exception as e:
-        # Log error to console for debugging
         print(f"Error fetching travel categories: {e}")
         return jsonify({"error": str(e)}), 500
 
-
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # Ensure database tables are created
+        db.create_all()
     app.run(debug=True)
-
-
