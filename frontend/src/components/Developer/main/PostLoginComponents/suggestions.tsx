@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react"
 
 export function Suggestions() {
   return (
-    <div className="min-h-screen w-[100%] bg-[#00522c] p-4">
+    <div className="min-h-screen w-[100%] bg-[#edf2f7] border-l-2 *:border-[#012c18] p-4">
       <div className="rounded-xl p-5 bg-[#012c18]">
       <div className="flex items-center text-white">
         <h2 className="text-sm font-medium">Suggestions</h2>

@@ -39,15 +39,15 @@ export function ProfileCards() {
   ]
 
   return (
-    <div className="flex gap-4 overflow-x-auto px-4 pb-5">
+    <div className="flex gap-4 overflow-x-auto px-4 pb-5 border-b-2 *:border-[#012c18]">
       {profiles.map((profile, i) => (
         <div
           key={i}
           className={`relative min-w-[200px] border-2 overflow-hidden rounded-xl bg-transparent p-2`}           //bg-gradient-to-br ${profile.color}
         >
-          <div className="absolute flex justify-center items-center rounded-full border-2 border-black bg-white pr-5 top-5 left-5">
-            <div className="h-10 w-10 rounded-full border-2 border-black p-0 bg-white">
-              <img src={profile.profilepic} alt="Profile" className="rounded-full h-full border-2 object-cover" />
+          <div className="absolute flex justify-center items-center rounded-full border-2 border-[#012c18] bg-white pr-5 top-5 left-5">
+            <div className="h-10 w-10 rounded-full border-2 border-black p-0 bg-[#edf2f7]">
+              <img src={profile.profilepic} alt="Profile" className="rounded-full h-full border-1 border-[#012c18] object-cover" />
             </div>
             <h1 className="text-black ">
               profile pic

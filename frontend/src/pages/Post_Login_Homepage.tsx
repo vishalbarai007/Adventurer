@@ -24,10 +24,10 @@ import { Suggestions } from "../components/Developer/main/PostLoginComponents/su
 
 export default function PostLoginPage() {
   return (
-    <div className="min-h-screen w-full grid grid-cols-[20%,60%,20%] bg-[#012c18]">
+    <div className="post min-h-screen w-full grid grid-cols-[15%,70%,15%] bg-[#edf2f7]">
 
-      <div className="w-full"><Sidebar /></div>
-      <div className="w-full ">
+      <div className="w-full border-1 *:border-[#012c18]"><Sidebar /></div>
+      <div className="w-full border-1 *:border-[#012c18]">
         <PostHeader />
         <ProfileCards />
         {/* <SearchBar /> */}
@@ -35,7 +35,7 @@ export default function PostLoginPage() {
 
 
       </div>
-      <div className="w-full"> <Suggestions /></div>
+      <div className="w-full border-1 *:border-[#012c18]"> <Suggestions /></div>
     </div>
   )
 }

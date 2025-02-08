@@ -23,17 +23,17 @@ const PostHeader: React.FC<HeaderProps> = ({
                         <a
                             key={index}
                             href={href}
-                            className="text-white hover:text-white/80"
+                            className="text-[#012c18] hover:text-[#012c18]/80"
                         >
                             {name}
                         </a>
                     ))}
                 </nav>
                 {/* Search Input */}
-                <div className="relative">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-white/60" />
+                <div className="relative ">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-[#012c18]/60 " />
                     <input
-                        className="h-10 w-[300px] rounded-full bg-white/10 pl-10 pr-4 text-white placeholder-white/60"
+                        className="h-10  w-[300px] rounded-full bg-[#012c18]/10 pl-10 pr-4 text-[#012c18] placeholder-[#012c18]/60"
                         placeholder={placeholderText}
                     />
                 </div>

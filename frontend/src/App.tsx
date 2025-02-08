@@ -1,5 +1,6 @@
 import './App.css'
 import './index.css'
+
 import './styles/custom-scrollbar.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pre_login_homepage from './pages/Pre_login_homepage';
@@ -11,6 +12,8 @@ import Seasonal_destinations from './pages/Seasonal_destinations';
 // import PostLoginHomepage from './pages/Post_Login_Homepage';
 import SplashScreen from './components/Developer/main/SplashScreen';
 import PostLoginPage from './pages/Post_Login_Homepage';
+// const LazyComponent = React.lazy(() => import("./Component"));
+
 
 const App = () => {
   return (
