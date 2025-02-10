@@ -40,7 +40,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 # Initialize Flask extensions
 bcrypt = Bcrypt(app)
-CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
+CORS(app, origins=["http://localhost:*"], supports_credentials=True)
 server_session = Session(app)
 db.init_app(app)
 
