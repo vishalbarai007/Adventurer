@@ -104,7 +104,7 @@ const AdventurerParallax = () => {
   return (
     <ParallaxBanner
       layers={[background, mountains,title, headline, birds1, birds2, adventurer, gradientOverlay, scrollIndicator]}
-      className="h-screen relative"
+      className="h-screen relative inset-0 mask-[radial-gradient(circle,rgba(0,0,0,0)_40%, rgba(0,0,0,0.4)_55%, rgba(0,0,0,0.8)_70%, rgba(0,0,0,1)_90%)]"
     />
   )
 }
