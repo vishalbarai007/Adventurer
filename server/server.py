@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session, redirect, abort
+from flask import Flask, request, jsonify, session, redirect, abort, url_for
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask_session import Session
@@ -8,7 +8,7 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.generativeai as genai
-# import google.auth.transport.requests
+import google.auth.transport.requests
 from google.auth.transport import requests as google_requests
 import os
 import pathlib
@@ -100,6 +100,24 @@ def register_user():
 
     session["user_id"] = new_user.id
     return jsonify({"id": new_user.id, "email": new_user.email})
+
+@app.route('/blog', methods=["GET"])
+def get_data():
+    try:
+        docs = db_firebase.collection('Blogs').stream()
+        return jsonify({doc.id: doc.to_dict() for doc in docs})
+    except Exception as e:
+        print(f"Error fetching data: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/travelcategories', methods=["GET"])
+def get_travel_categories():
+    try:
+        docs = db_firebase.collection('Travel_Categories').stream()
+        return jsonify([doc.to_dict() for doc in docs])
+    except Exception as e:
+            print(f"Error fetching travel categories: {e}")
+            return jsonify({"error": str(e)}), 500
 
 @app.route("/login", methods=["POST"])
 def login_user():
@@ -261,4 +279,6 @@ def chatbot():
         return jsonify({"error": "AI service error"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	# with app.app_context():
+	# 	db.create_all()
+	app.run(debug=True)
