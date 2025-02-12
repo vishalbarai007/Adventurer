@@ -17,6 +17,7 @@ import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
+from locationRecc import create_flask_routes
 
 # Initialize Firebase
 cred = credentials.Certificate('firebase_key.json')
