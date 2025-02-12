@@ -10,7 +10,7 @@ class LocationRecommender:
     def __init__(self, db_firebase):
         self.db = db_firebase
         self.geolocator = Nominatim(user_agent="tourist_recommender")
-        self.GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"  # You'll need to add this
+        self.GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"  # Need to add this
 
     @lru_cache(maxsize=100)
     def get_location_from_ip(self, ip_address):
