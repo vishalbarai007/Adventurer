@@ -6,7 +6,7 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({
-  logoUrl = "/assets/BrandLogos/Adventurer/Adventurer.jpg",
+  logoUrl = "/assets/BrandLogos/Adventurer/Faviconrans.png",
 }) => {
   const menuItems = [
     { name: "Discover", icon: Compass, href: "#" },
@@ -22,8 +22,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         <img
           src={logoUrl}
           alt="Adventurer Logo"
-          width={180}
-          height={60}
+          width={100}
+          height={40}
           className="mb-8 w-full rounded-2xl"
         />
         <nav className="space-y-6">
