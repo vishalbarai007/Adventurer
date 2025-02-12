@@ -11,6 +11,7 @@ const ChatBot = () => {
 	const handleSend = async () => {
 		if (!input.trim()) return;
 
+<<<<<<< Updated upstream
 		const userMessage = { text: input, sender: "user" as const };
 		setMessages((prev) => [...prev, userMessage]);
 		setInput("");
@@ -108,6 +109,38 @@ const ChatBot = () => {
   //     </div>
   //   </div>
   // );
+=======
+  return (
+    <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg flex flex-col h-[500px] border border-green-300">
+      <div className="bg-green-500 text-white p-4 text-center font-semibold rounded-t-xl">Adventurer Chat</div>
+      <div className="flex-1 p-4 overflow-y-auto space-y-2 bg-gray-100">
+        {messages.map((msg, index) => (
+          <div
+            key={index}
+            className={`p-2 rounded-lg max-w-[75%] ${
+              msg.sender === "user" ? "bg-green-500 text-white ml-auto" : "bg-white text-gray-700"
+            }`}
+          >
+            {msg.text}
+          </div>
+        ))}
+      </div>
+      <div className="p-2 flex items-center border-t border-green-300">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="flex-1 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+          placeholder="Type a message..."
+        />
+        <button onClick={handleSend} className="ml-2 p-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+          <Send size={20} />
+        </button>
+
+      </div>
+    </div>
+  );
+>>>>>>> Stashed changes
 };
 
 export default ChatBot;
