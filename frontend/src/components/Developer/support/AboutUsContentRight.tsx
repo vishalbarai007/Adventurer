@@ -1,4 +1,4 @@
-import AdventurerTeam from '/assets/BrandLogos/Adventurer/Adventurer.jpg'
+import AdventurerTeam from '/assets/BrandLogos/Adventurer/Faviconrans.png'
 
 
 const AboutUsContentRight = () => {
@@ -8,7 +8,7 @@ const AboutUsContentRight = () => {
             <img
               src={AdventurerTeam}
               alt="Adventurer Team"
-              className="rounded-lg shadow-lg max-w-full"
+              className="rounded-lg max-w-full"
             />
           </div>
     </div>

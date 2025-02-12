@@ -7,6 +7,7 @@ import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu'
 import Preloginlanding from '../components/Developer/main/Pre-login-landing'
 import { AnimatedTestimonialsDemo } from '../components/Shadcn/main/AnimatedTestimonialsDemo'
 import { InfiniteMovingCardsDemo } from '../components/Developer/main/InfiniteMovingCardsDemo'
+import { FeaturesSectionDemo } from '../components/Shadcn/main/FeatureSectiondemo'
 // import ChatBot from '../components/Developer/main/ChatBot'
 
 
@@ -17,6 +18,7 @@ const Pre_login_homepage = () => {
       <Scrollslider />
       <Parallax />
       <Preloginlanding/>
+      <FeaturesSectionDemo/>
       {/* <ChatBot/> */}
       {/* blogs features */}
       {/* <Carousel /> */}

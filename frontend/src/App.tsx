@@ -8,7 +8,7 @@ import Login_page from './pages/Login_page';
 import About_us from './pages/About_us';
 import Contact_us from './pages/Contact_us';
 import Blogs from './pages/Blogs';
-import Seasonal_destinations from './pages/Seasonal_destinations';
+import Seasonal_destinations from './pages/destinations';
 // import PostLoginHomepage from './pages/Post_Login_Homepage';
 import SplashScreen from './components/Developer/main/SplashScreen';
 import PostLoginPage from './pages/Post_Login_Homepage';
@@ -27,7 +27,7 @@ const App = () => {
         <Route path='/contact' element={<Contact_us />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login_page />} />
-        <Route path='/seasonal_destinations' element={<Seasonal_destinations />} />
+        <Route path='/destinations' element={<Seasonal_destinations />} />
       </Routes>
 
     </BrowserRouter>

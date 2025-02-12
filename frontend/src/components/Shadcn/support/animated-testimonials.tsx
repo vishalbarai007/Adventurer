@@ -45,7 +45,7 @@ export const AnimatedTestimonials = ({
   return (
     <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
         <div className="text-4xl font-bold text-center mb-10">
-            Testimonials
+            Developers
         </div>
       <div className="relative grid grid-cols-1 md:grid-cols-2  gap-20">
         <div>

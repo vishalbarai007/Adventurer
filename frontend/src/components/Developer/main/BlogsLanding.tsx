@@ -10,24 +10,21 @@ import { IoIosArrowDropright } from "react-icons/io";
 const destinations = [
   {
     id: 1,
-    title: "Travel in Paris",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-01-15%20at%2014.33.27_0748f1a9.jpg-yGtJIXYZaOqqhh8wvSC5YC4fbYNJQo.jpeg",
-    description: "Lorem ipsum praesent ac massa ac nisl. Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+    title: "Travel in Nashik",
+    image: "/assets/forts/hariharfort.jpg",
+    description: "Nashik, where Godavari’s waters gleam,Vineyards weave a fragrant dream.Temples whisper tales of old,In hills and ghats, secrets unfold!",
   },
   {
     id: 2,
-    title: "Travel in Japan",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-01-15%20at%2014.33.27_0748f1a9.jpg-yGtJIXYZaOqqhh8wvSC5YC4fbYNJQo.jpeg",
-    description: "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aat ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+    title: "Travel in Pune",
+    image: "/assets/forts/sinhagad_fort.jpg",
+    description: "Nestled where the hills embrace the sky,Pune whispers tales of days gone by.Of forts, of wisdom, of flavors divine,A city where culture and dreams entwine!",
   },
   {
     id: 3,
-    title: "Travel in Roma",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-01-15%20at%2014.33.27_0748f1a9.jpg-yGtJIXYZaOqqhh8wvSC5YC4fbYNJQo.jpeg",
-    description: "Lorem ipsum praesent ac massa at ligu. Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+    title: "Travel in Mumbai",
+    image: "/assets/IND/MarineDrive.png",
+    description: "Mumbai, where the sea meets the sky,Dreams take wings and never die.Chaos and charm in every street,A heartbeat fierce, yet bittersweet!",
   },
 ]
 
@@ -42,11 +39,12 @@ export default function BlogsLanding() {
               <h1 className="text-6xl md:text-8xl font-bold border-l-8 border-white px-5 text-white">
                 EXPLORE
                 <br />
-                <span className="text-[#98D8D3]">THE WORLD</span>
+                <span className="text-[#98D8D3]">MAHARASHTRA</span>
               </h1>
               <p className="text-white/80 text-2xl max-w-2xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam
+              Feel the Essence of Maharashtra Beyond the Ordinary.
+              Heritage, Hills, and the Arabian Waves Await,
+              A Journey Through Tradition, Taste, and Tranquility!
               </p>
               <Button className="bg-[#8B8F3D] text-2xl rounded-full font-extrabold p-7 hover:bg-[#8B8F3D]/90 text-white">
                 BOOK NOW

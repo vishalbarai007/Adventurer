@@ -41,7 +41,7 @@ const ImageGallery: React.FC = () => {
         Discover the unparalleled charm of Maharashtra, a treasure trove of culture, history, and natural beauty. From the majestic forts of Raigad and Sinhagad to the serene beaches of Alibaug and Ganpatipule, every destination tells a story. Explore the breathtaking Sahyadri hills, enchanting caves of Ajanta and Ellora, and vibrant cities like Mumbai and Pune. Whether you're seeking adventure, tranquility, or heritage, Maharashtra has something extraordinary for everyone. Start your unforgettable journey here!
       </p>
       
-      <div className="flex flex-col sm:flex-col lg:flex-row gap-2 image-gallery min-h-screen w-full bg-[#EADED0]">
+      <div className="flex flex-col sm:flex-col lg:flex-row gap-2 image-gallery justify-center items-center min-h-screen w-full bg-[#EADED0]">
         <div 
           className="left-section relative w-full sm:w-full lg:w-[50%] bg-[#EADED0] flex flex-col justify-center items-center" 
           data-aos="fade-up"
@@ -62,7 +62,7 @@ const ImageGallery: React.FC = () => {
                 <h2 className="text-center text-base sm:text-base lg:text-2xl font-bold absolute top-[75%] sm:top-[75%] lg:top-[80%] left-1/2 transform -translate-x-1/2 text-[#EADED0] text-stroke">
                   {item.name}
                 </h2>
-                <button
+                {/* <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleLike(index);
@@ -70,13 +70,13 @@ const ImageGallery: React.FC = () => {
                   className="bg-[#EADED0] absolute flex justify-center items-center gap-1 sm:gap-1 lg:gap-2 bottom-1 sm:bottom-1 lg:bottom-2 left-1 sm:left-1 lg:left-2 text-black px-1 sm:px-1 lg:px-2 py-1 rounded-full text-xs sm:text-xs lg:text-base"
                 >
                   <FcLike className="w-3 h-3 sm:w-3 sm:h-3 lg:w-4 lg:h-4" /> {item.like}
-                </button>
+                </button> */}
               </div>
             ))}
           </div>
         </div>
         
-        <div className="w-full sm:w-full lg:w-[60%] flex items-center justify-center p-2 sm:p-2 lg:p-5">
+        <div className="w-full h-[100%] sm:w-full lg:w-[60%] flex items-center justify-center align-middle p-2 sm:p-2 lg:p-5">
           {items[currentVideoIndex].video && (
             <video
               key={currentVideoIndex}

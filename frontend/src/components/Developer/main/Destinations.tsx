@@ -19,7 +19,7 @@ const Carousel: FC = () => {
       "author": "FORTS",
       "title": "Freedom Begins from Here",
       "topic": "Trekking",
-      "url": "https://adventurer-omega.vercel.app/",
+      "url": "#",
       "description": "Uncover the spirit of freedom as you trek across historic forts. Each step brings you closer to breathtaking views and unforgettable experiences."
     },
     {
@@ -27,7 +27,7 @@ const Carousel: FC = () => {
       "author": "BEACHES",
       "title": "Ride the Waves",
       "topic": "Water Sports",
-      "url": "https://adventurer-omega.vercel.app/BaseContent",
+      "url": "#",
       "description": "Dive into adventure with thrilling water sports. From jet skiing to surfing, feel the rush of adrenaline on serene beaches."
     },
     {
@@ -35,7 +35,7 @@ const Carousel: FC = () => {
       "author": "WATERFALLS",
       "title": "Dive Deep in Nature",
       "topic": "Plunging Adventures",
-      "url": "https://adventurer-omega.vercel.app/Account",
+      "url": "#",
       "description": "Experience the exhilarating plunge into nature’s wonders. Conquer waterfalls with a heart-pounding jump that connects you to the wild."
     },
     {
@@ -43,7 +43,7 @@ const Carousel: FC = () => {
       "author": "SANCTUARY",
       "title": "Create Memories for a Lifetime",
       "topic": "Wildlife Safari",
-      "url": "https://adventurer-omega.vercel.app/",
+      "url": "#",
       "description": "Explore the untamed beauty of sanctuaries. Witness majestic animals in their natural habitats and create memories you’ll cherish forever."
     },
     {
@@ -51,7 +51,7 @@ const Carousel: FC = () => {
       "author": "HILL STATIONS",
       "title": "Serene Escapes",
       "topic": "Family & Friends",
-      "url": "https://adventurer-omega.vercel.app/",
+      "url": "#",
       "description": "Rejuvenate in the tranquil beauty of hill stations. Perfect for bonding with loved ones amidst picturesque landscapes."
     },
     {
@@ -59,7 +59,7 @@ const Carousel: FC = () => {
       "author": "THE SOLO EXPLORER",
       "title": "Find Your Path",
       "topic": "Solo Adventures",
-      "url": "https://adventurer-omega.vercel.app/",
+      "url": "#",
       "description": "Embark on a journey of self-discovery. Perfect for independent adventurers seeking solitude and the thrill of uncharted paths."
     },
     {
@@ -67,7 +67,7 @@ const Carousel: FC = () => {
       "author": "THE NATURE LOVER",
       "title": "Harmony with Nature",
       "topic": "Eco Trails",
-      "url": "https://adventurer-omega.vercel.app/Account",
+      "url": "#",
       "description": "Connect with the earth on peaceful eco trails. Immerse yourself in flora and fauna that will soothe your soul."
     },
    
@@ -188,7 +188,7 @@ const Carousel: FC = () => {
               </div>
               <div className="description mt-4 text-xl text-stroke">{item.description}</div>
               <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
-                <button className="bg-[#1F3D3B]">SEE MORE</button>
+                {/* <button className="bg-[#1F3D3B]">SEE MORE</button> */}
                 {/* <button className="BookButton bg-[#233115]">BOOK NOW</button> */}
               </div>
             </div>

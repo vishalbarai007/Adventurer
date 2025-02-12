@@ -37,7 +37,7 @@ const components: { title: string; subtitle: string; href: string; description: 
         title: "Seasonal Destinations",
         subtitle: "Blogs",
 
-        href: "/seasonal_destinations",
+        href: "/destinations",
         description:
             "For sighted users to preview content available behind a link.",
         icon: <FaMagnifyingGlassLocation />,
@@ -47,7 +47,7 @@ const components: { title: string; subtitle: string; href: string; description: 
         title: "Adventure Activities",
         subtitle: "Blogs",
 
-        href: "/seasonal_destinations",
+        href: "/destinations/#adventure_activities",
         description:
             "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
         icon: <TbTrekking />,
@@ -75,7 +75,7 @@ const components: { title: string; subtitle: string; href: string; description: 
     {
         title: "Travel Guides",
         subtitle: "Blogs",
-        href: "/seasonal_destinations",
+        href: "/destinations",
         description:
             "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
         icon: <FaFlag />,
