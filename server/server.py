@@ -278,6 +278,30 @@ def chatbot():
         print(f"Chatbot error: {str(e)}")
         return jsonify({"error": "AI service error"}), 500
 
+@app.route("/contact", methods=["POST"])
+def submit_contact_form():
+    try:
+        form_data = request.json
+
+        # Add timestamp to the submission
+        form_data['submitted_at'] = datetime.now()
+
+        # Save to Firebase
+        contact_ref = db_firebase.collection('contact_submissions')
+        contact_ref.add({
+            'firstName': form_data.get('firstName'),
+            'lastName': form_data.get('lastName'),
+            'email': form_data.get('email'),
+            'message': form_data.get('message'),
+            'submitted_at': form_data.get('submitted_at')
+        })
+
+        return jsonify({"message": "Form submitted successfully"}), 200
+
+    except Exception as e:
+        print(f"Error saving contact form: {str(e)}")
+        return jsonify({"error": "Failed to submit form"}), 500
+
 if __name__ == "__main__":
 	# with app.app_context():
 	# 	db.create_all()
