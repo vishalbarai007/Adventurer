@@ -4,24 +4,24 @@ export function ProfileCards() {
   const profiles = [
     {
       color: "from-yellow-400 to-orange-500",
-      image: "/assets/sanctuary/andheri.jpg",
-      profilepic: "/assets/sanctuary/andheri.jpg"
+      image: "/assets/Developers/Vishal.png",
+      profilepic: "/assets/Developers/Vishal.png"
     },
     {
       color: "from-green-400 to-green-600",
-      image: "/assets/sanctuary/bor.jpg",
-      profilepic: "/assets/sanctuary/bor.jpg"
+      image: "/assets/Developers/Rahul.png",
+      profilepic: "/assets/Developers/Rahul.png"
     },
     {
       color: "from-blue-400 to-blue-600",
-      image: "/assets/sanctuary/lonar.jpg",
-      profilepic: "/assets/sanctuary/lonar.jpg"
+      image: "/assets/Developers/Shravani.png",
+      profilepic: "/assets/Developers/Shravani.png"
 
     },
     {
       color: "from-pink-400 to-pink-600",
-      image: "/assets/sanctuary/koyna.jpg",
-      profilepic: "/assets/sanctuary/koyna.jpg"
+      image: "/assets/Developers/Yug.png",
+      profilepic: "/assets/Developers/Yug.png"
 
     },
     {
@@ -51,8 +51,8 @@ export function ProfileCards() {
             </div>
             <h1 className="text-black ">
               profile pic
-
             </h1>
+            
           </div>
           <img src={profile.image} alt="Profile" className="rounded-lg h-full border-2 object-cover" />
         </div>

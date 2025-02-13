@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FcLike } from "react-icons/fc";
+// import { FcLike } from "react-icons/fc";
 import galleryItemsData from '../../JSON/ImageGalleryItems.json';
 
 type GalleryItem = {
@@ -10,16 +10,16 @@ type GalleryItem = {
 };
 
 const ImageGallery: React.FC = () => {
-  const [items, setItems] = useState<GalleryItem[]>(galleryItemsData);
+  const [items] = useState<GalleryItem[]>(galleryItemsData);
   const [currentVideoIndex, setCurrentVideoIndex] = useState<number>(0);
 
-  const handleLike = (index: number) => {
-    setItems(prevItems =>
-      prevItems.map((item, i) =>
-        i === index ? { ...item, like: item.like + 1 } : item
-      )
-    );
-  };
+  // const handleLike = (index: number) => {
+  //   setItems(prevItems =>
+  //     prevItems.map((item, i) =>
+  //       i === index ? { ...item, like: item.like + 1 } : item
+  //     )
+  //   );
+  // };
 
   const handleImageClick = (index: number) => {
     setCurrentVideoIndex(index);

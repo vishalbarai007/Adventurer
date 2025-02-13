@@ -12,6 +12,8 @@ import Seasonal_destinations from './pages/destinations';
 // import PostLoginHomepage from './pages/Post_Login_Homepage';
 import SplashScreen from './components/Developer/main/SplashScreen';
 import PostLoginPage from './pages/Post_Login_Homepage';
+import TravelTipsPage from './pages/TravelTips';
+import ChatBot from './components/Developer/main/ChatBot';
 // const LazyComponent = React.lazy(() => import("./Component"));
 
 
@@ -28,6 +30,10 @@ const App = () => {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login_page />} />
         <Route path='/destinations' element={<Seasonal_destinations />} />
+        <Route path='/tips' element={<TravelTipsPage />} />
+        <Route path='/chatbot' element={<ChatBot />} />
+
+
       </Routes>
 
     </BrowserRouter>

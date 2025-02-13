@@ -9,11 +9,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   logoUrl = "/assets/BrandLogos/Adventurer/Faviconrans.png",
 }) => {
   const menuItems = [
-    { name: "Discover", icon: Compass, href: "#" },
-    { name: "Trending", icon: Home, href: "#" },
-    { name: "Explore", icon: Compass, href: "#" },
-    { name: "Book Marks", icon: BookMarked, href: "#" },
-    { name: "Pages", icon: FileText, href: "#" },
+    { name: "Home", icon: Compass, href: "/post-login-homepage" },
+    { name: "Profile", icon: Home, href: "/profile" },
+    { name: "Blogs", icon: Compass, href: "/Blogs" },
+    { name: "Destinations", icon: BookMarked, href: "/Destination" },
+    { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
   ];
 
   return (

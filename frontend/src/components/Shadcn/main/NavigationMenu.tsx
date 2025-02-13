@@ -54,8 +54,8 @@ const components: { title: string; subtitle: string; href: string; description: 
     },
     {
         title: "Travel Tips",
-        href: "/seasonal_destinations",
-        subtitle: "Blogs",
+        href: "/tips",
+        subtitle: "Tips",
 
         description: "Visually or semantically separates content.",
         icon: <FaStar />,
