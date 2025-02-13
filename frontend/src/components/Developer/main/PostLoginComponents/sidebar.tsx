@@ -11,7 +11,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     { name: "Home", icon: Compass, href: "/post-login-homepage" },
     { name: "Profile", icon: Home, href: "/profile" },
-    { name: "Blogs", icon: Compass, href: "/Blogs" },
+    { name: "Blogs", icon: Compass, href: "/blogs" },
     { name: "Destinations", icon: BookMarked, href: "/Destination" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
   ];
