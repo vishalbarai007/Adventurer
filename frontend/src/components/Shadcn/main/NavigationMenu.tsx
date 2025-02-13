@@ -99,7 +99,7 @@ export function NavigationMenuDemo() {
     return (
         <>
             <header className={cn(
-                "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out",
+                "fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out",
                 isScrolled ? "translate-y-0" : "-translate-y-full",
                 "bg-[#012c18] text-[#012c18] shadow-xl shadow-black")}>
 
@@ -201,35 +201,35 @@ export function NavigationMenuDemo() {
                                     <Menu className="h-6 w-6" />
                                 </Button>
                             </SheetTrigger>
-                            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                            <SheetContent side="left" className="w-[300px] z-50 sm:w-[400px]">
                                 <nav className="flex flex-col space-y-4">
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>Home</span>
                                     </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/features" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>Feature</span>
                                     </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/blogs" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>Blogs</span>
                                     </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/destinations" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>Destiations</span>
+                                        <span>Destinations</span>
                                     </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Explore</span>
-                                    </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/contact" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>Contact us</span>
                                     </Link>
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/about" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>About us</span>
+                                    </Link>
+                                    <Link to="/login" className="flex items-center space-x-2">
+                                        <IoHome />
+                                        <span>Login</span>
                                     </Link>
             
                                 </nav>
