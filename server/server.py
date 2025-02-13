@@ -303,6 +303,4 @@ def submit_contact_form():
         return jsonify({"error": "Failed to submit form"}), 500
 
 if __name__ == "__main__":
-	# with app.app_context():
-	# 	db.create_all()
 	app.run(debug=True)
