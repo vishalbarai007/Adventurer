@@ -20,7 +20,7 @@ export function CarouselPlugin() {
     
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-xs"
+      className="w-full max-w-xl flex items-center justify-center"
       // onMouseEnter={plugin.current.stop} // Stop on hover
       // onMouseLeave={plugin.current.reset} // Reset when mouse leaves
     >
@@ -31,9 +31,9 @@ export function CarouselPlugin() {
             <div className="p-1">
               <Card>
                 <CardContent
-                  className="flex aspect-square items-center justify-center p-6 h-[350px]"
+                  className="flex aspect-square items-center justify-center ml-[10%] h-[350px] bg-cover"
                   // backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
-                  backgroundImage={`/assets/IND/MarineDrive.png`} // Replace with actual images ${index + 1}
+                  backgroundImage={`/assets/login/Chat1.png`} // Replace with actual images ${index + 1}
                  
                   // backgroundImage={`/assets/BrandLogos/Adventurer.jpg`} // Replace with actual images ${index + 1}
 

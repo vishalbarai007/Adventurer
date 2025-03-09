@@ -36,6 +36,30 @@ export function ProfileCards() {
       profilepic: "/assets/sanctuary/kalsubai.jpg"
 
     },
+    {
+      color: "from-red-400 to-red-600",
+      image: "/assets/sanctuary/kalsubai.jpg",
+      profilepic: "/assets/sanctuary/kalsubai.jpg"
+
+    },
+    {
+      color: "from-purple-400 to-purple-600",
+      image: "/assets/sanctuary/karnala1.jpg",
+      profilepic: "/assets/sanctuary/karnala1.jpg"
+
+    },
+    {
+      color: "from-red-400 to-red-600",
+      image: "/assets/sanctuary/kalsubai.jpg",
+      profilepic: "/assets/sanctuary/kalsubai.jpg"
+
+    },
+    {
+      color: "from-red-400 to-red-600",
+      image: "/assets/sanctuary/kalsubai.jpg",
+      profilepic: "/assets/sanctuary/kalsubai.jpg"
+
+    },
   ]
 
   return (
@@ -43,10 +67,10 @@ export function ProfileCards() {
       {profiles.map((profile, i) => (
         <div
           key={i}
-          className={`relative min-w-[200px] border-2 overflow-hidden rounded-xl bg-transparent p-2`}           //bg-gradient-to-br ${profile.color}
+          className={`relative min-w-[150px] border-2 overflow-hidden rounded-xl bg-transparent p-2`}           //bg-gradient-to-br ${profile.color}
         >
-          <div className="absolute flex justify-center items-center rounded-full border-2 border-[#012c18] bg-white pr-5 top-5 left-5">
-            <div className="h-10 w-10 rounded-full border-2 border-black p-0 bg-[#edf2f7]">
+          <div className="absolute flex justify-center items-center rounded-full border-2 border-[#012c18] bg-white pr-3 top-5 left-5">
+            <div className="h-5 w-5 rounded-full border-2 border-black p-0 bg-[#edf2f7]">
               <img src={profile.profilepic} alt="Profile" className="rounded-full h-full border-1 border-[#012c18] object-cover" />
             </div>
             <h1 className="text-black ">

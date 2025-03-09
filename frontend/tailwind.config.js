@@ -4,7 +4,8 @@ const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenCo
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"], // ✅ NEW SYNTAX
+  darkMode: "class", // Optional, enables dark mode support  mode: "jit",
   darkMode: "class",
   content: [
     "./index.html",

@@ -55,7 +55,7 @@ const ChatBot = () => {
 				<Sidebar />
 			</div>
 
-			<div className="w-full h-screen md:max-w-[100%] md:h-screen md:rounded-xl pb-10 md:shadow-lg bg-white flex flex-col border border-green-300">
+			<div className="w-full h-screen md:max-w-[100%] md:h-screen md:rounded-xl md:shadow-lg bg-white flex flex-col border border-green-300">
 				<div className="bg-brand-green text-white p-4 text-center font-semibold rounded-t-xl">
 					Trekky !
 				</div>
@@ -78,7 +78,7 @@ const ChatBot = () => {
 					))}
 					{loading && <div className="text-gray-500">Typing...</div>}
 				</div>
-				<div className="p-2 flex items-center border-t border-green-300">
+				<div className="p-2 flex items-center border-t bg-brand-green">
 					<input
 						type="text"
 						value={input}
@@ -95,6 +95,8 @@ const ChatBot = () => {
 						<Send size={20} />
 					</button>
 				</div>
+				<p className="text-center p-2">*Presenting our trekky in your service.</p>
+
 			</div>
 		</div>
 	);

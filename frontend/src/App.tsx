@@ -9,12 +9,16 @@ import About_us from './pages/About_us';
 import Contact_us from './pages/Contact_us';
 import Blogs from './pages/Blogs';
 import Seasonal_destinations from './pages/destinations';
-// import PostLoginHomepage from './pages/Post_Login_Homepage';
 import SplashScreen from './components/Developer/main/SplashScreen';
 import PostLoginPage from './pages/Post_Login_Homepage';
 import TravelTipsPage from './pages/TravelTips';
 import ChatBot from './components/Developer/main/ChatBot';
+import Profile from './pages/Profile';
+import { Suspense } from 'react';
+import SettingsPage from './pages/Setting';
 // const LazyComponent = React.lazy(() => import("./Component"));
+// import { lazy, Suspense } from "react";
+// const PostLoginPage = lazy(() => import("./pages/Post_Login_Homepage"));
 
 
 const App = () => {
@@ -32,6 +36,15 @@ const App = () => {
         <Route path='/destinations' element={<Seasonal_destinations />} />
         <Route path='/tips' element={<TravelTipsPage />} />
         <Route path='/chatbot' element={<ChatBot />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route
+          path="/settings"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <SettingsPage />
+            </Suspense>
+          }
+        />
 
 
       </Routes>

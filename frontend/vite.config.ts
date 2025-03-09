@@ -6,7 +6,12 @@ import compression from "vite-plugin-compression";
 export default defineConfig({
   plugins: [react(), compression()],
   server: {
-    open: true,
+    fs: {
+      strict: false, // Allow files outside root
+    }
+  },
+  optimizeDeps: {
+    include: ["react", "react-dom"],
   },
   build: {
     sourcemap: false,

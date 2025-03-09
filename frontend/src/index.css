@@ -95,3 +95,9 @@
 .perspective-1000 {
   perspective: 1000px;
 }
+
+
+
+.dark {
+  color-scheme: dark;
+}
