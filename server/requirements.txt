@@ -20,6 +20,8 @@ Flask-Bcrypt==1.0.1
 Flask-Cors==5.0.0
 Flask-Session==0.8.0
 Flask-SQLAlchemy==3.1.1
+geographiclib==2.0
+geopy==2.4.1
 google-ai-generativelanguage==0.6.15
 google-api-core==2.24.0
 google-api-python-client==2.159.0
