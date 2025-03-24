@@ -10,7 +10,6 @@ class LocationRecommender:
     def __init__(self, db_firebase):
         self.db = db_firebase
         self.geolocator = Nominatim(user_agent="tourist_recommender")
-        self.GOOGLE_MAPS_API_KEY = "YOUR_GOOGLE_MAPS_API_KEY"  # Need to add this
 
     @lru_cache(maxsize=100)
     def get_location_from_ip(self, ip_address):
@@ -30,36 +29,17 @@ class LocationRecommender:
             logging.error(f"Error getting location from IP: {str(e)}")
             return None
 
-    def get_driving_distance(self, origin, destination):
-        """Calculate driving distance using Google Maps Distance Matrix API"""
-        try:
-            origin_str = f"{origin['latitude']},{origin['longitude']}"
-            dest_str = f"{destination['latitude']},{destination['longitude']}"
-
-            url = f"https://maps.googleapis.com/maps/api/distancematrix/json?origins={origin_str}&destinations={dest_str}&mode=driving&key={self.GOOGLE_MAPS_API_KEY}"
-
-            response = requests.get(url)
-            data = response.json()
-
-            if data['status'] == 'OK':
-                distance = data['rows'][0]['elements'][0]['distance']['value'] / 1000  # Convert to km
-                return distance
-            return None
-        except Exception as e:
-            logging.error(f"Error calculating driving distance: {str(e)}")
-            return None
-
     def get_tourist_spots(self):
         """Fetch tourist spots from Firebase"""
         try:
-            spots_ref = self.db.collection('tourist_spots')
+            spots_ref = self.db.collection('Famous_Places')  # Fetch from Famous_Places collection
             spots = spots_ref.get()
             return [{
                 'id': spot.id,
-                'name': spot.to_dict().get('name'),
+                'name': spot.to_dict().get('Place_Name'),
                 'latitude': spot.to_dict().get('latitude'),
                 'longitude': spot.to_dict().get('longitude'),
-                'description': spot.to_dict().get('description'),
+                'description': spot.to_dict().get('Description'),
                 'rating': spot.to_dict().get('rating', 0)
             } for spot in spots]
         except Exception as e:
@@ -67,27 +47,30 @@ class LocationRecommender:
             return []
 
     def find_nearby_spots(self, user_location, max_distance=20):
-        """Find tourist spots within specified distance"""
+        """Find tourist spots within specified straight-line distance"""
         tourist_spots = self.get_tourist_spots()
         nearby_spots = []
+        all_spots_with_distance = []
 
         for spot in tourist_spots:
-            # First do a rough check using straight-line distance
+            # Calculate straight-line distance using geodesic
             straight_distance = geodesic(
                 (user_location['latitude'], user_location['longitude']),
                 (spot['latitude'], spot['longitude'])
             ).km
 
-            # If straight-line distance is within 1.5x max_distance, check driving distance
-            if straight_distance <= max_distance * 1.5:
-                driving_distance = self.get_driving_distance(
-                    user_location,
-                    {'latitude': spot['latitude'], 'longitude': spot['longitude']}
-                )
+            # Add distance to the spot data
+            spot['distance'] = round(straight_distance, 2)
+            all_spots_with_distance.append(spot)
 
-                if driving_distance and driving_distance <= max_distance:
-                    spot['distance'] = round(driving_distance, 2)
-                    nearby_spots.append(spot)
+            # If the straight-line distance is within the max_distance, add it to the nearby_spots list
+            if straight_distance <= max_distance:
+                nearby_spots.append(spot)
+
+        # If no spots are within the max_distance, return the top 5 closest spots
+        if not nearby_spots:
+            print("No spots found within the specified range. Returning the top 5 closest spots.")
+            nearby_spots = sorted(all_spots_with_distance, key=lambda x: x['distance'])[:5]
 
         # Sort by distance
         return sorted(nearby_spots, key=lambda x: x['distance'])
@@ -101,20 +84,20 @@ def create_flask_routes(app, db_firebase):
         data = request.json
         user_coords = data.get('coordinates')
 
-        # If browser coordinates are provided
+        # If browser coordinates are provided, use them
         if user_coords and 'latitude' in user_coords and 'longitude' in user_coords:
             user_location = {
                 'latitude': float(user_coords['latitude']),
                 'longitude': float(user_coords['longitude'])
             }
         else:
-            # Get location from IP
+            # If browser coordinates are not provided, fall back to IP-based location
             ip_address = request.remote_addr
             user_location = recommender.get_location_from_ip(ip_address)
 
             if not user_location:
                 return jsonify({
-                    "error": "Could not determine location"
+                    "error": "Could not determine location. Please allow access to your location or provide coordinates."
                 }), 400
 
         max_distance = data.get('maxDistance', 20)  # Default 20km
