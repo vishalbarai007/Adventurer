@@ -26,7 +26,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) 
       })
   }, [])
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <p className="font-bold " >Loading...</p>
 
   return (
     <div className="BlogsContainerLeft w-full md:w-[70%] bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
@@ -48,7 +48,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) 
               </div>
               <div>
                 <p className="text-gray-600 text-xs mb-2 text-right">
-                  {blog.DateTime ? new Date(blog.DateTime).toLocaleDateString() : "Unknown Date"}
+                  {blog.date ? blog.date : "Unknown Date"}
                 </p>
                 <button
                   onClick={() => setSelectedBlogState(blog)}
@@ -69,7 +69,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) 
           author={selectedBlog.Admin_ID || "Unknown Author"}
           topic={selectedBlog.Meta_Keys ? selectedBlog.Meta_Keys.split(",")[0] : "No Topic"}
           description={selectedBlog.Description || "No description available"}
-          date={selectedBlog.DateTime ? new Date(selectedBlog.DateTime).toLocaleString() : "Unknown Date"}
+          date={selectedBlog.date ? (selectedBlog.date) : "Unknown Date"}
           onClose={() => setSelectedBlogState(null)}
         />
       )}

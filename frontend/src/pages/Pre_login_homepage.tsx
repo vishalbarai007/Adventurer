@@ -8,6 +8,8 @@ import Preloginlanding from '../components/Developer/main/Pre-login-landing'
 import { AnimatedTestimonialsDemo } from '../components/Shadcn/main/AnimatedTestimonialsDemo'
 import { InfiniteMovingCardsDemo } from '../components/Developer/main/InfiniteMovingCardsDemo'
 import { FeaturesSectionDemo } from '../components/Shadcn/main/FeatureSectiondemo'
+import CounterSection from '../components/Developer/main/Counter'
+// import { MultiStepLoaderDemo } from '../components/Shadcn/main/MultiStepLoaderDemo'
 // import ChatBot from '../components/Developer/main/ChatBot'
 
 
@@ -25,7 +27,9 @@ const Pre_login_homepage = () => {
       {/* <ExplorePlaces /> */}
       {/* animated modals */}
       <InfiniteMovingCardsDemo/>
+      <CounterSection/>
       <AnimatedTestimonialsDemo/>
+      {/* <MultiStepLoaderDemo/> */}
       <Footer color={undefined} />
     </>
   )

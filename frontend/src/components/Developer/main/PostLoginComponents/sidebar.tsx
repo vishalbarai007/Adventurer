@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Profile", icon: Home, href: "/profile" },
     { name: "Blogs", icon: Compass, href: "/blogs" },
     { name: "Setting", icon: Compass, href: "/settings" },
-
+    { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
     { name: "Destinations", icon: BookMarked, href: "/Destination" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
   ];

@@ -34,9 +34,8 @@ const components: { title: string; subtitle: string; href: string; description: 
         icon: <RiMessage3Fill />,
     },
     {
-        title: "Seasonal Destinations",
+        title: "Travel Places",
         subtitle: "Blogs",
-
         href: "/destinations",
         description:
             "For sighted users to preview content available behind a link.",
@@ -46,41 +45,39 @@ const components: { title: string; subtitle: string; href: string; description: 
     {
         title: "Adventure Activities",
         subtitle: "Blogs",
-
-        href: "/destinations/#adventure_activities",
+        href: "/destinations/adventure_activities",
         description:
             "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
         icon: <TbTrekking />,
     },
     {
         title: "Travel Tips",
-        href: "/tips",
         subtitle: "Tips",
-
+        href: "/tips",
         description: "Visually or semantically separates content.",
         icon: <FaStar />,
 
     },
-    {
-        title: "Accommodation",
-        href: "/seasonal_destinations",
-        subtitle: "Blogs",
+    // {
+    //     title: "Accommodation",
+    //     href: "/seasonal_destinations",
+    //     subtitle: "Blogs",
 
-        description:
-            "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    //     description:
+    //         "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
 
-        icon: <MdBedroomParent />,
+    //     icon: <MdBedroomParent />,
 
-    },
-    {
-        title: "Travel Guides",
-        subtitle: "Blogs",
-        href: "/destinations",
-        description:
-            "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-        icon: <FaFlag />,
+    // },
+    // {
+    //     title: "Travel Guides",
+    //     subtitle: "Blogs",
+    //     href: "/destinations",
+    //     description:
+    //         "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    //     icon: <FaFlag />,
 
-    },
+    // },
 ];
 
 export function NavigationMenuDemo() {
