@@ -14,6 +14,16 @@ const Suggestions = lazy(() =>
     default: module.Suggestions,
   })),
 )
+const Posts = lazy(() =>
+  import("../components/Developer/main/PostLoginComponents/Posts").then((module) => ({
+    default: module.Posts,
+  })),
+)
+const CreatePostButton = lazy(() =>
+  import("../components/Developer/main/PostLoginComponents/Posts").then((module) => ({
+    default: module.CreatePostButton,
+  })),
+)
 
 export default function PostLoginPage() {
   const { currentBackground } = useBackgroundStore()
@@ -44,27 +54,35 @@ export default function PostLoginPage() {
           <ProfileCards />
         </Suspense>
 
-        <div>
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <h2 className="text-lg font-semibold">Your Posts</h2>
-              {/* Add your posts component here */}
+        <div className="mt-6 px-4">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex-1 max-h-[600px] overflow-y-auto">
+              <h2 className="text-xl font-semibold mb-4">Your Feed</h2>
+              <Suspense fallback={<div>Loading Posts...</div>}>
+                <Posts />
+              </Suspense>
             </div>
-            <div className="flex-1">
-              <h2 className="text-lg font-semibold">Your Friends</h2>
-              {/* Add your friends component here */}
+
+            <div className="flex-1 md:block hidden max-h-[500px] overflow-y-auto">
+              <h2 className="text-xl font-semibold mb-4">Your Friends</h2>
+              <div className="bg-white rounded-lg shadow p-4">
+                <p className="text-gray-500 text-sm">Your friends' activity will appear here</p>
+              </div>
             </div>
           </div>
-          </div>
+
       </div>
 
-      {/* Right Suggestions Section */}
-      <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-        <Suspense fallback={<div>Loading Suggestions...</div>}>
-          <Suggestions />
-        </Suspense>
-      </div>
+      <Suspense fallback={<div></div>}>
+        <CreatePostButton />
+      </Suspense>
     </div>
+
+  <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
+    <Suspense fallback={<div>Loading Suggestions...</div>}>
+      <Suggestions />
+    </Suspense>
+  </div>
+    </div >
   )
 }
-
