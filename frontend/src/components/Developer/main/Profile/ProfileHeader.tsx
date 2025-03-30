@@ -1,13 +1,16 @@
 import { useState } from "react"
-import { Settings, ChevronLeft } from "lucide-react"
+import { Settings, ChevronLeft, PlusSquare } from "lucide-react"
 import type { ProfileData } from "../../../../types/posts"
 
 interface ProfileHeaderProps {
   isMobile: boolean
   darkMode: boolean
+  onCreateClick: () => void
 }
 
-const ProfileHeader = ({ isMobile, darkMode }: ProfileHeaderProps) => {
+const ProfileHeader = ({ isMobile, darkMode, onCreateClick }: ProfileHeaderProps) => {
+  console.log("ProfileHeader rendered");
+  
   const [profileData, setProfileData] = useState<ProfileData>({
     username: "_VishalBarai_",
     fullName: "Vishal Barai",
@@ -37,6 +40,9 @@ const ProfileHeader = ({ isMobile, darkMode }: ProfileHeaderProps) => {
         <div className="flex items-center mb-4">
           <ChevronLeft className="w-6 h-6 mr-2" />
           <h2 className="text-xl font-semibold flex-1">{profileData.username}</h2>
+          <button className="p-1 mr-2" onClick={onCreateClick}>
+            <PlusSquare className="w-6 h-6" />
+          </button>
           <button className="p-1">
             <Settings className="w-6 h-6" />
           </button>
@@ -123,6 +129,13 @@ const ProfileHeader = ({ isMobile, darkMode }: ProfileHeaderProps) => {
             <button className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2">
               View archive
             </button>
+            <button 
+              className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2 flex items-center"
+              onClick={onCreateClick}
+            >
+              <PlusSquare className="w-5 h-5 mr-1" />
+              Create
+            </button>
             <button className="p-1">
               <Settings className="w-6 h-6" />
             </button>
@@ -168,4 +181,3 @@ const ProfileHeader = ({ isMobile, darkMode }: ProfileHeaderProps) => {
 }
 
 export default ProfileHeader
-

@@ -43,6 +43,19 @@ export default function PostLoginPage() {
         <Suspense fallback={<div>Loading Profile Cards...</div>}>
           <ProfileCards />
         </Suspense>
+
+        <div>
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <h2 className="text-lg font-semibold">Your Posts</h2>
+              {/* Add your posts component here */}
+            </div>
+            <div className="flex-1">
+              <h2 className="text-lg font-semibold">Your Friends</h2>
+              {/* Add your friends component here */}
+            </div>
+          </div>
+          </div>
       </div>
 
       {/* Right Suggestions Section */}

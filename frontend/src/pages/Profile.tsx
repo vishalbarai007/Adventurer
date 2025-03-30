@@ -7,6 +7,7 @@ import ProfileHeader from "../components/Developer/main/Profile/ProfileHeader"
 import ProfileTabs from "../components/Developer/main/Profile/ProfileTabs"
 import PostGrid from "../components/Developer/main/Profile/PostGrid"
 import UploadModal from "../components/Developer/main/Profile/UploadModal"
+import CreateOptionsModal from "../components/Developer/main/Profile/CreateOptionsModal"
 import type { Post } from "../types/posts"
 
 const Profile = () => {
@@ -14,6 +15,8 @@ const Profile = () => {
   const [darkMode, setDarkMode] = useState(false)
   const [activeTab, setActiveTab] = useState("posts")
   const [showUploadModal, setShowUploadModal] = useState(false)
+  const [showCreateOptions, setShowCreateOptions] = useState(false)
+  const [selectedContentType, setSelectedContentType] = useState<"blog" | "image" | "video">("image")
   const [posts, setPosts] = useState<Post[]>([
     {
       id: "1",
@@ -22,6 +25,7 @@ const Profile = () => {
       likes: 245,
       comments: 32,
       title: "CHUDAIL",
+      contentType: "image"
     },
     {
       id: "2",
@@ -30,6 +34,7 @@ const Profile = () => {
       likes: 189,
       comments: 17,
       title: "FAQIR",
+      contentType: "image"
     },
     {
       id: "3",
@@ -38,6 +43,7 @@ const Profile = () => {
       likes: 320,
       comments: 45,
       title: "GRUNGE",
+      contentType: "blog"
     },
     {
       id: "4",
@@ -46,8 +52,8 @@ const Profile = () => {
       likes: 178,
       comments: 23,
       title: "GOTHIC",
+      contentType: "video"
     },
-  
   ])
 
   useEffect(() => {
@@ -68,6 +74,16 @@ const Profile = () => {
     }
   }
 
+  const handleCreateClick = () => {
+    setShowCreateOptions(true)
+  }
+
+  const handleOptionSelect = (option: "blog" | "image" | "video") => {
+    setSelectedContentType(option)
+    setShowCreateOptions(false)
+    setShowUploadModal(true)
+  }
+
   const handleUpload = (newPost: Post) => {
     setPosts([newPost, ...posts])
     setShowUploadModal(false)
@@ -79,20 +95,36 @@ const Profile = () => {
         {!isMobile && <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
 
         <div className="flex-1 md:ml-[300px]">
-          <ProfileHeader isMobile={isMobile} darkMode={darkMode} />
+          <ProfileHeader 
+            isMobile={isMobile} 
+            darkMode={darkMode} 
+            onCreateClick={handleCreateClick}
+          />
 
           <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} isMobile={isMobile} />
 
           <PostGrid posts={posts} isMobile={isMobile} />
         </div>
 
-        {isMobile && <MobileNavbar setShowUploadModal={setShowUploadModal} darkMode={darkMode} />}
+        {isMobile && <MobileNavbar setShowUploadModal={() => handleCreateClick()} darkMode={darkMode} />}
 
-        {showUploadModal && <UploadModal onClose={() => setShowUploadModal(false)} onUpload={handleUpload} />}
+        {showCreateOptions && (
+          <CreateOptionsModal 
+            onClose={() => setShowCreateOptions(false)} 
+            onOptionSelect={handleOptionSelect} 
+          />
+        )}
+
+        {showUploadModal && (
+          <UploadModal 
+            onClose={() => setShowUploadModal(false)} 
+            onUpload={handleUpload} 
+            contentType={selectedContentType}
+          />
+        )}
       </div>
     </div>
   )
 }
 
 export default Profile
-
