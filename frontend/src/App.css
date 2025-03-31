@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
@@ -23,7 +23,7 @@ body {
   position: relative;
 }
 
-*::selection{
+*::selection {
   background-color: #000;
   color: #fff;
 }
@@ -76,9 +76,11 @@ body {
   position: absolute;
   inset: 0;
 }
+
 .white {
   color: #EADED0;
 }
+
 .gray {
   color: #446;
 }
@@ -98,47 +100,52 @@ body {
 }
 
 
-.Pre_login_homepage_content{
+.Pre_login_homepage_content {
   background-image: url("./assets/pexels-ofir-eliav-2397652-6938309.jpg");
   background-size: cover;
 }
 
-.loginform{
+.loginform {
   /* From https://css.glass */
-background: rgba(255, 255, 255, 0.19);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(7.1px);
--webkit-backdrop-filter: blur(7.1px);
-border: 0px solid rgba(255, 255, 255, 0.99);
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.1px);
+  -webkit-backdrop-filter: blur(7.1px);
+  border: 0px solid rgba(255, 255, 255, 0.99);
 }
 
-.loginpagebackground{
+.loginpagebackground {
   background-size: cover;
   background-position: center;
   animation: image 30s infinite alternate;
- 
+
 }
 
 @keyframes image {
   0% {
     background-image: url("/assets/IND/GatewayOfIndia.jpg");
   }
+
   20% {
     background-image: url("/assets/IND/HawaMahal.jpg");
 
   }
+
   40% {
     background-image: url("/assets/IND/Konark.jpg");
 
   }
+
   60% {
     background-image: url("/assets/IND/Banaras.jpg");
 
   }
+
   80% {
     background-image: url("/assets/IND/TajMahal.jpg");
   }
+
   100% {
     background-image: url("/assets/IND/Mahal.jpg");
   }
@@ -176,97 +183,99 @@ dad7cd
 .carousel {
   border-radius: 0 0 3rem 3rem;
   transition: all 2s;
-  box-shadow: 0 5px 40px  black; /* Adds a 5px black shadow at the bottom */
+  box-shadow: 0 5px 40px black;
+  /* Adds a 5px black shadow at the bottom */
   /* border-bottom: 5px solid black; Adds a 5px black border at the bottom */
 }
-.FooterBlock{
-  
+
+.FooterBlock {
+
   /* background-image: url("https://adventor.wpengine.com/wp-content/themes/adventor/modules/footer/assets/images/footer-bg.jpg"); */
   background-position-y: -25em;
 }
 
 
-.carousel .list .item{
+.carousel .list .item {
   transition: all 2s ease-in-out;
 }
 
 .carousel .list .item .author {
-    letter-spacing: 10px;
-    transition: all 2s ease-in-out;
+  letter-spacing: 10px;
+  transition: all 2s ease-in-out;
 }
 
 .carousel .list .item .title,
 .carousel .list .item .topic {
-    line-height: 1.3em;
-    transition: all 2s ease-in-out;
+  line-height: 1.3em;
+  transition: all 2s ease-in-out;
 }
 
 .carousel .list .item .buttons {
-    /* display: grid; */
-    grid-template-columns: repeat(2, 130px);
-    grid-template-rows: 40px;
-    gap: 5px;
-    margin-top: 20px;
-    transition: all 2s ease-in-out;
+  /* display: grid; */
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 40px;
+  gap: 5px;
+  margin-top: 20px;
+  transition: all 2s ease-in-out;
 }
 
 .carousel .list .item .buttons button {
-    border: none;
-    letter-spacing: 3px;
-    transition: all 2s ease-in-out;
+  border: none;
+  letter-spacing: 3px;
+  transition: all 2s ease-in-out;
 }
 
 .carousel .list .item .buttons button:hover {
-    background-color: transparent;
-    border: 1px solid #EADED0;
-    color: #EADED0;
+  background-color: transparent;
+  border: 1px solid #EADED0;
+  color: #EADED0;
 }
 
 /* Thumbnail styles */
 .thumbnail {
-    width: max-content;
-    overflow: hidden;
-    padding: 10px;
+  width: max-content;
+  overflow: hidden;
+  padding: 10px;
 }
 
-.thumbnail .item{
+.thumbnail .item {
   transition: all 1s;
   /* transform: translateX(-300px); */
   box-shadow: -5px -5px 20px black;
 }
 
 .thumbnail .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Arrows styles */
 .arrows {
-    z-index: 2;
-    width: 300px;
-    max-width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  z-index: 2;
+  width: 300px;
+  max-width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .arrows button {
-    /* background-color: rgba(67, 62, 62, 0.614); */
-    background-color: #000;
-    border: none;
-    color: #EADED0;
-    font-family: monospace;
-    transition: .5s;
+  /* background-color: rgba(67, 62, 62, 0.614); */
+  background-color: #000;
+  border: none;
+  color: #EADED0;
+  font-family: monospace;
+  transition: .5s;
 }
 
 .arrows button:hover {
-    background-color: #EADED0;
-    color: #000;
+  background-color: #EADED0;
+  color: #000;
 }
 
-.BlogsLanding{
+.BlogsLanding {
   background-image: url("../public/assets/Blogs/Bg.webp");
   background-size: cover;
 }
@@ -287,33 +296,35 @@ dad7cd
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: #4a5568; /* Customize as needed */
+  background-color: #4a5568;
+  /* Customize as needed */
   border-radius: 4px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
-  background-color: #edf2f7; /* Customize as needed */
+  background-color: #edf2f7;
+  /* Customize as needed */
 }
 
 .post {
   /* From https://css.glass */
-background: rgba(255, 255, 255, 0.27);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.6px);
--webkit-backdrop-filter: blur(6.6px);
+  background: rgba(255, 255, 255, 0.27);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px);
 }
 
-.postlogincomponents{
- /* From https://css.glass */
-background: rgba(1, 44, 24, 0.22);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(2.9px);
--webkit-backdrop-filter: blur(2.9px);
+.postlogincomponents {
+  /* From https://css.glass */
+  background: rgba(1, 44, 24, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.9px);
+  -webkit-backdrop-filter: blur(2.9px);
 }
 
-.Counter{
+.Counter {
   background-image: url("../public/assets/Blogs/Bg.webp");
   background-size: cover;
 }
@@ -323,21 +334,19 @@ backdrop-filter: blur(2.9px);
  *  STYLE 4
  */
 
- #style-4::-webkit-scrollbar-track
- {
-   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-   background-color: #F5F5F5;
- }
- 
- #style-4::-webkit-scrollbar
- {
-   width: 10px;
-   background-color: #F5F5F5;
- }
- 
- #style-4::-webkit-scrollbar-thumb
- {
-   background-color: #000000;
-   border: 2px solid #555555;
- }
- 
+#style-4::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 2px solid #555555;
+}
+
+

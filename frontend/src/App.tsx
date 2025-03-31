@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import { Suspense, createContext, useContext } from "react";
 import SettingsPage from "./pages/Setting";
 import useCurrentLocation from "./hooks/getCurrentLocation";
+import Map from "./pages/map";
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -65,6 +66,7 @@ const App = () => {
 					<Route path="/about" element={<About_us />} />
 					<Route path="/contact" element={<Contact_us />} />
 					<Route path="/blogs" element={<Blogs />} />
+					<Route path="/map" element={<Map/>} />
 					<Route path="/login" element={<Login_page />} />
 					<Route
 						path="/destinations"

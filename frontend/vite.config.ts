@@ -8,6 +8,14 @@ export default defineConfig({
   server: {
     fs: {
       strict: false, // Allow files outside root
+    },
+    // Proxy API requests to your Flask backend
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000', // Your Flask server address
+        changeOrigin: true,
+        secure: false,
+      }
     }
   },
   optimizeDeps: {
