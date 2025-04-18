@@ -6,7 +6,7 @@ interface TaggedGridProps {
   isMobile: boolean;
 }
 
-const TaggedGrid = ({ taggedPosts, isMobile }: TaggedGridProps) => {
+const TaggedGrid = ({ taggedPosts }: TaggedGridProps) => {
   return (
     <div className={`grid grid-cols-3 md:grid-cols-4 gap-5 md:gap-4 pb-16 md:pb-4 px-0 md:px-4`}>
       {taggedPosts.length > 0 ? (

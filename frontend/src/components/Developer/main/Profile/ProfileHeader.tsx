@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Settings, ChevronLeft, PlusSquare } from "lucide-react"
 import type { ProfileData } from "../../../../types/posts"
+import { Link } from "react-router-dom"
 
 interface ProfileHeaderProps {
   isMobile: boolean
@@ -8,10 +9,10 @@ interface ProfileHeaderProps {
   onCreateClick: () => void
 }
 
-const ProfileHeader = ({ isMobile, darkMode, onCreateClick }: ProfileHeaderProps) => {
+const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
   console.log("ProfileHeader rendered");
-  
-  const [profileData, setProfileData] = useState<ProfileData>({
+
+  const [profileData] = useState<ProfileData>({
     username: "_VishalBarai_",
     fullName: "Vishal Barai",
     bio: ["Engineering Student", "Fond of chess", "Orophile", "Web-Developer"],
@@ -43,9 +44,12 @@ const ProfileHeader = ({ isMobile, darkMode, onCreateClick }: ProfileHeaderProps
           <button className="p-1 mr-2" onClick={onCreateClick}>
             <PlusSquare className="w-6 h-6" />
           </button>
-          <button className="p-1">
-            <Settings className="w-6 h-6" />
-          </button>
+
+          <Link to="/settings">
+            <button className="p-1">
+              <Settings className="w-6 h-6" />
+            </button>
+          </Link>
         </div>
 
         <div className="flex items-center mb-6">
@@ -123,22 +127,24 @@ const ProfileHeader = ({ isMobile, darkMode, onCreateClick }: ProfileHeaderProps
         <div className="flex-1">
           <div className="flex items-center mb-4">
             <h1 className="text-xl font-normal mr-4">{profileData.username}</h1>
-            <button className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2">
-              Edit profile
-            </button>
-            <button className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2">
-              View archive
-            </button>
-            <button 
+            <Link to="/settings">
+              <button className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2">
+                Edit profile
+              </button>
+            </Link>
+            <button
               className="bg-gray-200 dark:bg-gray-800 px-4 py-1.5 rounded-md font-semibold mr-2 flex items-center"
               onClick={onCreateClick}
             >
               <PlusSquare className="w-5 h-5 mr-1" />
               Create
             </button>
-            <button className="p-1">
-              <Settings className="w-6 h-6" />
-            </button>
+
+            <Link to="/settings">
+              <button className="p-1">
+                <Settings className="w-6 h-6" />
+              </button>
+            </Link>
           </div>
 
           <div className="flex mb-4">

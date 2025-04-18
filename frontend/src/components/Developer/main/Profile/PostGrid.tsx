@@ -6,7 +6,7 @@ interface PostGridProps {
   isMobile: boolean;
 }
 
-const PostGrid = ({ posts, isMobile }: PostGridProps) => {
+const PostGrid = ({ posts }: PostGridProps) => {
   return (
     <div className={`grid grid-cols-3 md:grid-cols-4 gap-5 md:gap-4 pb-16 md:pb-4 px-0 md:px-4`}>
       {posts.map((post) => (

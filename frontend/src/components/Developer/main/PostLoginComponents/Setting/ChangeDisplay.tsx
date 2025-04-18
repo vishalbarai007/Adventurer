@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { X, Upload } from "lucide-react"
+import { Upload } from "lucide-react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../../../../Shadcn/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../../Shadcn/ui/tabs"
 import { useBackgroundStore } from "../../../support/background-store"

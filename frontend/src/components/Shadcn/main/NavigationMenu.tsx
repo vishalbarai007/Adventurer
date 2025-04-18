@@ -22,6 +22,7 @@ import {
 import { Menu } from 'lucide-react'
 import { Button } from "../ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
+import GoogleTranslate from "../../Developer/support/LanguageSwitcher"
 
 
 const components: { title: string; subtitle: string; href: string; description: string; icon: React.ReactNode }[] = [
@@ -103,7 +104,7 @@ export function NavigationMenuDemo() {
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
                         <Link to="/pre-login-homepage" className="text-2xl font-bold">
-                            <img src="/assets/BrandLogos/Adventurer/Adventurer_yellow.png" alt="ADVENTURER"  className="h-[80px]"/>
+                            <img src="/assets/BrandLogos/Adventurer/Adventurer_yellow.png" alt="ADVENTURER" className="h-[80px]" />
                         </Link>
 
 
@@ -118,10 +119,10 @@ export function NavigationMenuDemo() {
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
-                                        <NavigationMenuTrigger><FaStar className="mr-2" /> Features</NavigationMenuTrigger>
+                                        <NavigationMenuTrigger><FaStar className="mr-2" /> FEATURES </NavigationMenuTrigger>
                                         <NavigationMenuContent>
-                                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                        {components.map((component) => (
+                                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                                {components.map((component) => (
                                                     <ListItem key={component.title} title={component.title} to={component.href}>
                                                         <div className="flex items-center">
                                                             <span className="mr-2 text-black">{component.icon}</span>
@@ -134,7 +135,7 @@ export function NavigationMenuDemo() {
                                         </NavigationMenuContent>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
-                                        <NavigationMenuTrigger><FaSearchLocation className="mr-2" />Explore more</NavigationMenuTrigger>
+                                        <NavigationMenuTrigger><FaSearchLocation className="mr-2" />EXPLORE MORE</NavigationMenuTrigger>
                                         <NavigationMenuContent>
                                             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                                                 <li className="row-span-3">
@@ -168,25 +169,39 @@ export function NavigationMenuDemo() {
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
                                             <Link to="/about" className={navigationMenuTriggerStyle()}>
-                                                <MdGroups2 className="mr-2" /> About us
+                                                <MdGroups2 className="mr-2" /> ABOUT US
                                             </Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
                                             <Link to="/contact" className={navigationMenuTriggerStyle()}>
-                                                <RiContactsFill className="mr-2" /> Contact us
+                                                <RiContactsFill className="mr-2" /> CONTACT US
                                             </Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
                                             <Link to="/login" className={navigationMenuTriggerStyle()}>
-                                                <IoLogIn className="mr-2" /> Login
+                                                <IoLogIn className="mr-2" /> LOGIN
                                             </Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
+                                    {/* <NavigationMenuItem>
+                                        <NavigationMenuLink asChild>
+                                            <Link to="#" className={navigationMenuTriggerStyle()}>
+                                                <IoLogIn className="mr-2" /> <div className="flex items-center hover:bg-white hover:text-black h-10">
+                                                    <GoogleTranslate />
+                                                </div>
+                                            </Link>
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem> */}
                                 </NavigationMenuList>
+                                <div>
+                                    <div className="flex items-center h-10 ml-10">
+                                        <GoogleTranslate />
+                                    </div>
+                                </div>
                             </NavigationMenu>
                         </nav>
 
@@ -202,33 +217,40 @@ export function NavigationMenuDemo() {
                                 <nav className="flex flex-col space-y-4">
                                     <Link to="/pre-login-homepage" className="flex items-center space-x-2">
                                         <IoHome />
-                                        <span>Home</span>
+                                        <span>HOME</span>
                                     </Link>
                                     <Link to="/features" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Feature</span>
+                                        <FaStar />
+                                        <span>FEATURES</span>
                                     </Link>
                                     <Link to="/blogs" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Blogs</span>
+                                        <TbTrekking />
+                                        <span>BLOGS</span>
                                     </Link>
                                     <Link to="/destinations" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Destinations</span>
+                                        <FaMagnifyingGlassLocation />
+                                        <span>DESTINATIONS</span>
+                                    </Link>
+                                    <Link to="/tips" className="flex items-center space-x-2">
+                                        <FaStar />
+                                        <span>TRAVEL TIPS</span>
                                     </Link>
                                     <Link to="/contact" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Contact us</span>
+                                        <RiContactsFill />
+                                        <span>CONTACT US</span>
                                     </Link>
                                     <Link to="/about" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>About us</span>
+                                        <MdGroups2 />
+                                        <span>ABOUT US</span>
                                     </Link>
                                     <Link to="/login" className="flex items-center space-x-2">
-                                        <IoHome />
-                                        <span>Login</span>
+                                        <IoLogIn  />
+                                        <span>LOGIN</span>
                                     </Link>
-            
+                                    <Link to="#" className="flex items-center space-x-2">
+                                        <span><GoogleTranslate /></span>
+                                    </Link>
+
                                 </nav>
                             </SheetContent>
                         </Sheet>

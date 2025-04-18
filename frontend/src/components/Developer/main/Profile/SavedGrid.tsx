@@ -8,7 +8,7 @@ interface SavedGridProps {
   isMobile: boolean;
 }
 
-const SavedGrid = ({ savedPosts, isMobile }: SavedGridProps) => {
+const SavedGrid = ({ savedPosts }: SavedGridProps) => {
   return (
     <div className={`grid grid-cols-3 md:grid-cols-4 gap-5 md:gap-4 pb-16 md:pb-4 px-0 md:px-4`}>
       {savedPosts.length > 0 ? (

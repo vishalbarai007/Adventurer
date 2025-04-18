@@ -8,6 +8,7 @@ import ScrollDownButton from "../components/Developer/main/ScrollDownButton";
 import Footer from "../components/Developer/support/Footer";
 import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
 import BlogsLanding from "../components/Developer/main/BlogsLanding";
+import GoogleTranslate from "../components/Developer/support/LanguageSwitcher";
 
 
 
@@ -19,6 +20,9 @@ const Blogs = () => {
 
     return (
         <>
+            <div className="absolute top-4 right-4"> {/* Position dropdown in the dashboard */}
+                <GoogleTranslate />
+            </div>
             <NavigationMenuDemo />
             <Scrollslider />
             {/* <BlogLandingTemplate data-aos="fade-up" /> */}

@@ -5,7 +5,7 @@ interface MobileNavbarProps {
   darkMode: boolean
 }
 
-const MobileNavbar = ({ setShowUploadModal, darkMode }: MobileNavbarProps) => {
+const MobileNavbar = ({ setShowUploadModal }: MobileNavbarProps) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 py-3 px-4 md:hidden">
       <div className="flex justify-between items-center">

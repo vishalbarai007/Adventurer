@@ -11,14 +11,14 @@ interface UploadModalProps {
 const UploadModal = ({ onClose, onUpload, contentType }: UploadModalProps) => {
   const [title, setTitle] = useState("")
   const [caption, setCaption] = useState("")
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  // Removed unused selectedFile state
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null
     if (file) {
-      setSelectedFile(file)
+      // Removed setSelectedFile as selectedFile is no longer used
       const reader = new FileReader()
       reader.onloadend = () => {
         setPreviewUrl(reader.result as string)
