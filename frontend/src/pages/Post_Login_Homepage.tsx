@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react"
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import { useBackgroundStore } from "../components/Developer/support/background-store"
 import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
+import LargeSuccessLoader from "../components/Developer/support/Loader"
 
 // Lazy loading components
 const PostHeader = lazy(() => import("../components/Developer/main/PostLoginComponents/Header"))
@@ -55,17 +56,17 @@ export default function PostLoginPage() {
 
         {/* Left Sidebar */}
         <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div>Loading Sidebar...</div>}>
+          <Suspense fallback={<div> <LargeSuccessLoader/> Sidebar...</div>}>
             <Sidebar />
           </Suspense>
         </div>
 
         {/* Main Content */}
         <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div>Loading Header...</div>}>
+          <Suspense fallback={<div><LargeSuccessLoader/>  Header...</div>}>
             <PostHeader />
           </Suspense>
-          <Suspense fallback={<div>Loading Profile Cards...</div>}>
+          <Suspense fallback={<div><LargeSuccessLoader/>  Profile Cards...</div>}>
             <ProfileCards />
           </Suspense>
 
@@ -73,7 +74,7 @@ export default function PostLoginPage() {
             <div className="flex flex-col md:flex-row gap-6">
               <div className="flex-1 max-h-[600px] overflow-y-auto">
                 <h2 className="text-xl font-semibold mb-4">Your Feed</h2>
-                <Suspense fallback={<div>Loading Posts...</div>}>
+                <Suspense fallback={<div><LargeSuccessLoader/> Posts...</div>}>
                   <Posts />
                 </Suspense>
               </div>
@@ -94,7 +95,7 @@ export default function PostLoginPage() {
         </div>
 
         <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div>Loading Suggestions...</div>}>
+          <Suspense fallback={<div><LargeSuccessLoader/>  Suggestions...</div>}>
             <Suggestions />
           </Suspense>
         </div>

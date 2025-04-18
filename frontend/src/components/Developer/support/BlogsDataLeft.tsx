@@ -2,6 +2,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import BlogModal from "./BlogModal"
+import LargeSuccessLoader from "./Loader"
 // import blogData from '../../JSON/BlogsData.json';
 
 
@@ -26,7 +27,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) 
       })
   }, [])
 
-  if (loading) return <p className="font-bold " >Loading...</p>
+  if (loading) return <p className="font-bold " ><LargeSuccessLoader/></p>
 
   return (
     <div className="BlogsContainerLeft w-full md:w-[70%] bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">

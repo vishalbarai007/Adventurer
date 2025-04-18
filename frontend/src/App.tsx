@@ -17,6 +17,7 @@ import { Suspense, createContext, useContext } from "react";
 import SettingsPage from "./pages/Setting";
 import useCurrentLocation from "./hooks/getCurrentLocation";
 import Map from "./pages/map";
+import LargeSuccessLoader from "./components/Developer/support/Loader";
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -37,9 +38,7 @@ export const useLocation = () => {
 };
 
 // LocationProvider component to wrap the app
-const LocationProvider: React.FC<{ children: React.ReactNode }> = ({
-	children,
-}) => {
+const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	const { location, isLoading, error } = useCurrentLocation();
 
 	return (
@@ -53,37 +52,23 @@ const App = () => {
 	return (
 		<BrowserRouter>
 			<LocationProvider>
-				<Routes>
-					<Route path="/" element={<SplashScreen />} />
-					<Route
-						path="/pre-login-homepage"
-						element={<Pre_login_homepage />}
-					/>
-					<Route
-						path="/post-login-homepage"
-						element={<PostLoginPage />}
-					/>
-					<Route path="/about" element={<About_us />} />
-					<Route path="/contact" element={<Contact_us />} />
-					<Route path="/blogs" element={<Blogs />} />
-					<Route path="/map" element={<Map/>} />
-					<Route path="/login" element={<Login_page />} />
-					<Route
-						path="/destinations"
-						element={<Seasonal_destinations />}
-					/>
-					<Route path="/tips" element={<TravelTipsPage />} />
-					<Route path="/chatbot" element={<ChatBot />} />
-					<Route path="/profile" element={<Profile />} />
-					<Route
-						path="/settings"
-						element={
-							<Suspense fallback={<div>Loading...</div>}>
-								<SettingsPage />
-							</Suspense>
-						}
-					/>
-				</Routes>
+				<Suspense fallback={<div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>}>
+					<Routes>
+						<Route path="/" element={<SplashScreen />} />
+						<Route path="/pre-login-homepage" element={<Pre_login_homepage />} />
+						<Route path="/post-login-homepage" element={<PostLoginPage />} />
+						<Route path="/about" element={<About_us />} />
+						<Route path="/contact" element={<Contact_us />} />
+						<Route path="/blogs" element={<Blogs />} />
+						<Route path="/map" element={<Map />} />
+						<Route path="/login" element={<Login_page />} />
+						<Route path="/destinations" element={<Seasonal_destinations />} />
+						<Route path="/tips" element={<TravelTipsPage />} />
+						<Route path="/chatbot" element={<ChatBot />} />
+						<Route path="/profile" element={<Profile />} />
+						<Route path="/settings" element={<SettingsPage />} />
+					</Routes>
+				</Suspense>
 			</LocationProvider>
 		</BrowserRouter>
 	);
