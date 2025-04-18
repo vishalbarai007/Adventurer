@@ -4,11 +4,11 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
 import { IoHome, IoLogIn } from "react-icons/io5"
-import { FaSearchLocation, FaStar, FaFlag, FaHandshake } from "react-icons/fa"
+import { FaSearchLocation, FaStar, FaHandshake } from "react-icons/fa"
 import { RiMessage3Fill, RiAccountPinBoxFill, RiCalendarScheduleFill, RiContactsFill } from "react-icons/ri"
 import { TbTrekking, TbSocial } from "react-icons/tb"
 import { FaMagnifyingGlassLocation } from "react-icons/fa6"
-import { MdBedroomParent, MdGroups2 } from "react-icons/md"
+import { MdGroups2 } from "react-icons/md"
 import { cn } from "../../../lib/utils"
 import {
     NavigationMenu,

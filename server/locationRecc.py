@@ -5,6 +5,7 @@ import requests
 import json
 from functools import lru_cache
 import logging
+from flask import jsonify, request
 
 class LocationRecommender:
     def __init__(self, db_firebase):

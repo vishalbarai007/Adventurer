@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ExploreData from "../../JSON/ExplorePlaces.json";
+// import ExploreData from "../../JSON/ExplorePlaces.json";
 
-type Explore = {
-	name: string;
-	imgSrc: string;
-	desc: string;
-};
+// type Explore = {
+// 	name: string;
+// 	imgSrc: string;
+// 	desc: string;
+// };
 
 type TouristSpot = {
 	id: string;
@@ -18,18 +18,17 @@ type TouristSpot = {
 };
 
 const ExplorePlaces: React.FC = () => {
-	const [selectedImage, setSelectedImage] = useState<number | null>(null);
+	// const [selectedImage, setSelectedImage] = useState<number | null>(null);
 	const [nearbySpots, setNearbySpots] = useState<TouristSpot[]>([]);
 	const [userLocation, setUserLocation] = useState<{
 		latitude: number;
 		longitude: number;
 	} | null>(null);
 	const [locationStatus, setLocationStatus] = useState<string>("idle"); // Add status state
-	const explores: Explore[] = ExploreData;
 
-	const handleImageClick = (index: number) => {
-		setSelectedImage(index === selectedImage ? null : index);
-	};
+	// const handleImageClick = (index: number) => {
+	// 	setSelectedImage(index === selectedImage ? null : index);
+	// };
 
 	const fetchNearbySpots = async (latitude: number, longitude: number) => {
 		try {
