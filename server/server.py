@@ -14,7 +14,7 @@ import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
-from locationRecc import LocationRecommender, create_flask_routes
+# from locationRecc import LocationRecommender, create_flask_routes
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -26,8 +26,8 @@ cred = credentials.Certificate('firebase_key.json')
 firebase_admin.initialize_app(cred)
 db_firebase = firestore.client()
 
-location_recommender = LocationRecommender(db_firebase)
-create_flask_routes(app, db_firebase)
+# location_recommender = LocationRecommender(db_firebase)
+# create_flask_routes(app, db_firebase)
 
 clientSecretjson = json.load(open("client_secret.json"))
 clientSecretjson_web = clientSecretjson["web"]
@@ -159,18 +159,30 @@ def google_callback():
         if not email:
             abort(400, "Email not provided by Google")
 
+        # Get the profile picture URL from Google
+        picture_url = id_info.get("picture", "")
+
         user = get_user_by_email(email)
         if not user:
             hashed_password = bcrypt.generate_password_hash("GOOGLE_AUTH_USER").decode('utf-8')
             user_data = {
-                'id': str(hash(email)),  # Generate a unique ID
+                'id': str(hash(email)),
                 'email': email,
                 'password': hashed_password,
-                'google_auth': True
+                'google_auth': True,
+                'profile_picture': picture_url,  # Store the picture URL
+                'name': id_info.get("name", "")  # Also store the name if available
             }
             save_user_to_firebase(user_data)
             user = user_data
         else:
+            # Update existing user with Google picture if they didn't have one
+            if not user.get('profile_picture'):
+                users_ref = db_firebase.collection('users')
+                users_ref.document(user['id']).update({
+                    'profile_picture': picture_url,
+                    'name': id_info.get("name", user.get('name', ""))
+                })
             update_user_login_time(user['id'])
 
         session["user_id"] = user['id']
@@ -189,7 +201,12 @@ def get_user_profile():
     user_doc = db_firebase.collection('users').document(user_id).get()
     if user_doc.exists:
         user_data = user_doc.to_dict()
-        return jsonify(user_data)
+        return jsonify({
+            "id": user_data.get('id'),
+            "email": user_data.get('email'),
+            "profile_picture": user_data.get('profile_picture'),
+            "name": user_data.get('name'),
+        })
     return jsonify({"error": "User not found"}), 404
 
 @app.route("/api/user/profile", methods=["PUT"])
@@ -288,36 +305,36 @@ def submit_contact_form():
         print(f"Error saving contact form: {str(e)}")
         return jsonify({"error": "Failed to submit form"}), 500
 
-import threading
-import time
+# import threading
+# import time
 
-def display_nearby_locations():
-    """Display recommended locations in the terminal every 10 seconds"""
-    while True:
-        try:
-            # Use a default location if needed
-            default_location = {'latitude': 28.6139, 'longitude': 77.2090}  # Delhi, India (closer to your sample data)
+# def display_nearby_locations():
+#     """Display recommended locations in the terminal every 10 seconds"""
+#     while True:
+#         try:
+#             # Use a default location if needed
+#             default_location = {'latitude': 28.6139, 'longitude': 77.2090}  # Delhi, India (closer to your sample data)
 
-            all_spots = location_recommender.get_tourist_spots()
-            print(f"\nNumber of spots in database: {len(all_spots)}")
+#             all_spots = location_recommender.get_tourist_spots()
+#             print(f"\nNumber of spots in database: {len(all_spots)}")
 
-            spots = location_recommender.find_nearby_spots(default_location)
+#             spots = location_recommender.find_nearby_spots(default_location)
 
-            print("\n--- Recommended Locations ---")
-            if not spots:
-                print("No nearby spots found.")
-            else:
-                for i, spot in enumerate(spots, 1):
-                    print(f"{i}. {spot.get('name', 'Unnamed Location')} ({spot.get('location', 'Unknown location')})")
+#             print("\n--- Recommended Locations ---")
+#             if not spots:
+#                 print("No nearby spots found.")
+#             else:
+#                 for i, spot in enumerate(spots, 1):
+#                     print(f"{i}. {spot.get('name', 'Unnamed Location')} ({spot.get('location', 'Unknown location')})")
 
-            time.sleep(10)  # Wait for 10 seconds
-        except Exception as e:
-            print(f"Error displaying locations: {str(e)}")
-            time.sleep(10)  # Wait even if there's an error
+#             time.sleep(10)  # Wait for 10 seconds
+#         except Exception as e:
+#             print(f"Error displaying locations: {str(e)}")
+#             time.sleep(10)  # Wait even if there's an error
 
-# Start the background thread after app initialization
-location_display_thread = threading.Thread(target=display_nearby_locations, daemon=True)
-location_display_thread.start()
+# # Start the background thread after app initialization
+# location_display_thread = threading.Thread(target=display_nearby_locations, daemon=True)
+# location_display_thread.start()
 
 if __name__ == "__main__":
     app.run(debug=True)
