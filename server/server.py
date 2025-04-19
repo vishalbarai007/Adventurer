@@ -78,6 +78,10 @@ def get_user_by_email(email):
 
     return None  # Return None if no user is found
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"message": "Login server is running"}), 200
+
 # Regular email/password routes
 @app.route("/register", methods=["POST"])
 def register_user():
