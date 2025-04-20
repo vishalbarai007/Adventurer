@@ -44,6 +44,8 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
     { name: "Destinations", icon: BookMarked, href: "/Destination" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
+    { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
+
   ];
 
   return (
