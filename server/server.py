@@ -14,7 +14,7 @@ import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
-# from locationRecc import LocationRecommender, create_flask_routes
+from locationRecc import LocationRecommender, create_flask_routes
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -26,8 +26,8 @@ cred = credentials.Certificate('firebase_key.json')
 firebase_admin.initialize_app(cred)
 db_firebase = firestore.client()
 
-# location_recommender = LocationRecommender(db_firebase)
-# create_flask_routes(app, db_firebase)
+location_recommender = LocationRecommender(db_firebase)
+create_flask_routes(app, db_firebase)
 
 clientSecretjson = json.load(open("client_secret.json"))
 clientSecretjson_web = clientSecretjson["web"]
@@ -304,37 +304,6 @@ def submit_contact_form():
     except Exception as e:
         print(f"Error saving contact form: {str(e)}")
         return jsonify({"error": "Failed to submit form"}), 500
-
-# import threading
-# import time
-
-# def display_nearby_locations():
-#     """Display recommended locations in the terminal every 10 seconds"""
-#     while True:
-#         try:
-#             # Use a default location if needed
-#             default_location = {'latitude': 28.6139, 'longitude': 77.2090}  # Delhi, India (closer to your sample data)
-
-#             all_spots = location_recommender.get_tourist_spots()
-#             print(f"\nNumber of spots in database: {len(all_spots)}")
-
-#             spots = location_recommender.find_nearby_spots(default_location)
-
-#             print("\n--- Recommended Locations ---")
-#             if not spots:
-#                 print("No nearby spots found.")
-#             else:
-#                 for i, spot in enumerate(spots, 1):
-#                     print(f"{i}. {spot.get('name', 'Unnamed Location')} ({spot.get('location', 'Unknown location')})")
-
-#             time.sleep(10)  # Wait for 10 seconds
-#         except Exception as e:
-#             print(f"Error displaying locations: {str(e)}")
-#             time.sleep(10)  # Wait even if there's an error
-
-# # Start the background thread after app initialization
-# location_display_thread = threading.Thread(target=display_nearby_locations, daemon=True)
-# location_display_thread.start()
 
 if __name__ == "__main__":
     app.run(debug=True)
