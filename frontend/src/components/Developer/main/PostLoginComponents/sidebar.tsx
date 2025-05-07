@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, Compass, BookMarked, FileText, Menu, X } from 'lucide-react';
+import { Home, Compass, FileText, Menu, X } from 'lucide-react';
 
 type SidebarProps = {
   logoUrl?: string; // Optional prop for logo URL
@@ -40,9 +40,9 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Home", icon: Compass, href: "/post-login-homepage" },
     { name: "Profile", icon: Home, href: "/profile" },
     { name: "Blogs", icon: Compass, href: "/blogs" },
+    { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
-    { name: "Destinations", icon: BookMarked, href: "/Destination" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
 
