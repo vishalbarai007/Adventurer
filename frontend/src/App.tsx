@@ -16,7 +16,7 @@ import Profile from "./pages/Profile";
 import { Suspense, createContext, useContext } from "react";
 import SettingsPage from "./pages/Setting";
 import useCurrentLocation from "./hooks/getCurrentLocation";
-import Map from "./pages/map";
+// import Map from "./pages/map";
 import LargeSuccessLoader from "./components/Developer/support/Loader";
 
 // Create a context to share the location data
@@ -60,7 +60,7 @@ const App = () => {
 						<Route path="/about" element={<About_us />} />
 						<Route path="/contact" element={<Contact_us />} />
 						<Route path="/blogs" element={<Blogs />} />
-						<Route path="/map" element={<Map />} />
+						{/* <Route path="/map" element={<Map />} /> */}
 						<Route path="/login" element={<Login_page />} />
 						<Route path="/destinations" element={<Seasonal_destinations />} />
 						<Route path="/tips" element={<TravelTipsPage />} />
