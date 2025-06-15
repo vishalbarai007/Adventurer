@@ -13,7 +13,7 @@ import PostLoginPage from "./pages/Post_Login_Homepage";
 import TravelTipsPage from "./pages/TravelTips";
 import ChatBot from "./components/Developer/main/ChatBot";
 import Profile from "./pages/Profile";
-import { Suspense, useContext } from "react";
+import { Suspense } from "react";
 import SettingsPage from "./pages/Setting";
 // import useCurrentLocation from "./hooks/getCurrentLocation";
 // import Map from "./pages/map";
