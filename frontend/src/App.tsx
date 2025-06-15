@@ -13,45 +13,45 @@ import PostLoginPage from "./pages/Post_Login_Homepage";
 import TravelTipsPage from "./pages/TravelTips";
 import ChatBot from "./components/Developer/main/ChatBot";
 import Profile from "./pages/Profile";
-import { Suspense, createContext, useContext } from "react";
+import { Suspense, useContext } from "react";
 import SettingsPage from "./pages/Setting";
-import useCurrentLocation from "./hooks/getCurrentLocation";
+// import useCurrentLocation from "./hooks/getCurrentLocation";
 // import Map from "./pages/map";
 import LargeSuccessLoader from "./components/Developer/support/Loader";
 
 // Create a context to share the location data
-type LocationContextType = {
-	location: { latitude: number; longitude: number } | null;
-	isLoading: boolean;
-	error: string | null;
-};
+// type LocationContextType = {
+// 	location: { latitude: number; longitude: number } | null;
+// 	isLoading: boolean;
+// 	error: string | null;
+// };
 
-const LocationContext = createContext<LocationContextType | null>(null);
+// const LocationContext = createContext<LocationContextType | null>(null);
 
 // Custom hook to use the location context
-export const useLocation = () => {
-	const context = useContext(LocationContext);
-	if (!context) {
-		throw new Error("useLocation must be used within a LocationProvider");
-	}
-	return context;
-};
+// export const useLocation = () => {
+// 	const context = useContext(LocationContext);
+// 	if (!context) {
+// 		throw new Error("useLocation must be used within a LocationProvider");
+// 	}
+// 	return context;
+// };
 
 // LocationProvider component to wrap the app
-const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-	const { location, isLoading, error } = useCurrentLocation();
+// const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// 	const { location, isLoading, error } = useCurrentLocation();
 
-	return (
-		<LocationContext.Provider value={{ location, isLoading, error }}>
-			{children}
-		</LocationContext.Provider>
-	);
-};
+	// return (
+	// 	<LocationContext.Provider value={{ location, isLoading, error }}>
+	// 		{children}
+	// 	</LocationContext.Provider>
+	// );
+// };
 
 const App = () => {
 	return (
 		<BrowserRouter>
-			<LocationProvider>
+			{/* <LocationProvider> */}
 				<Suspense fallback={<div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>}>
 					<Routes>
 						<Route path="/" element={<SplashScreen />} />
@@ -69,7 +69,7 @@ const App = () => {
 						<Route path="/settings" element={<SettingsPage />} />
 					</Routes>
 				</Suspense>
-			</LocationProvider>
+			{/* </LocationProvider> */}
 		</BrowserRouter>
 	);
 };
