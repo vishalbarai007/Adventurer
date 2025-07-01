@@ -144,7 +144,7 @@ const TravelTipsPage = () => {
 
             <main className="container mx-auto px-4 py-8">
                 {/* Activities Section */}
-                <LargeSuccessLoader />
+                {/* <LargeSuccessLoader /> */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-bold mb-6 text-brand-green flex items-center gap-2">
                         <Compass className="w-6 h-6" />

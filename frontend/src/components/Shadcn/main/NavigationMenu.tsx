@@ -62,7 +62,7 @@ const components: { title: string; subtitle: string; href: string; description: 
     {
         title: "Weather Forecast",
         subtitle: "weather report",
-        href: "https://weather-forecasts-wheat.vercel.app/",
+        href: "https://weather-forecast-six-theta.vercel.app/",
         description: "A weather forecast predicts future atmospheric conditions like temperature, rain, and wind.",
         icon: <FaStar />,
 

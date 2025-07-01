@@ -10,14 +10,14 @@
     "desc": "Embark on scenic trails, explore rugged terrains, and connect with nature on unforgettable trekking adventures."
   },
   {
-    "name": "Bungee Jumping",
-    "imgSrc": "/assets/Sports/Bungee_Jumping.png",
+    "name": "Wildlife Safari",
+    "imgSrc": "/assets/sanctuary/andheri.jpg",
     "desc": "Experience the ultimate adrenaline rush as you leap off a towering platform in breathtaking locations."
   },
   {
-    "name": "Trekking",
-    "imgSrc": "/assets/Sports/Trekking.png",
-    "desc": "Embark on scenic trails, explore rugged terrains, and connect with nature on unforgettable trekking adventures."
+    "name": "Rock Climbing",
+    "imgSrc": "/assets/forts/pratapgad.jpg",
+    "desc": "Scale new heights and experience the thrill of rock climbing in stunning locations."
   },
   
   {

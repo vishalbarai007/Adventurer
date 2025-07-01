@@ -78,13 +78,6 @@ export default function PostLoginPage() {
                   <Posts />
                 </Suspense>
               </div>
-
-              <div className="flex-1 md:block hidden max-h-[500px] overflow-y-auto">
-                <h2 className="text-xl font-semibold mb-4">Your Friends</h2>
-                <div className="bg-white rounded-lg shadow p-4">
-                  <p className="text-gray-500 text-sm">Your friends' activity will appear here</p>
-                </div>
-              </div>
             </div>
 
           </div>

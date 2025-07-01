@@ -23,13 +23,14 @@ export default function SettingsPage() {
   const [timeZone, setTimeZone] = useState("UTC")
 
   const avatars = [
-    "/api/placeholder/100/100", 
-    "/api/placeholder/100/100",
-    "/api/placeholder/100/100",
-    "/api/placeholder/100/100",
-    "/api/placeholder/100/100",
-    "/api/placeholder/100/100"
-  ]
+  "https://avatars.dicebear.com/api/bottts/robot1.svg",
+  "https://avatars.dicebear.com/api/identicon/animal42.svg",
+  "https://api.dicebear.com/7.x/adventurer/svg?seed=TigerBot",
+  "https://api.dicebear.com/7.x/lorelei/svg?seed=FoxMage",
+  "https://api.dicebear.com/7.x/pixel-art/svg?seed=CyberCat",
+  "https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=MonkeyMind"
+];
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {

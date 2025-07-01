@@ -49,7 +49,7 @@ const BlogModal: React.FC<BlogModalProps> = ({
               <img
                 src={image}
                 alt={title}
-                className="w-[50%] h-60 object-cover rounded-lg mb-4"
+                className="w-[90%] h-96 object-cover rounded-lg mb-4"
               />
             </div>
             <div className="mb-4">
