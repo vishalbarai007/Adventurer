@@ -1,0 +1,6 @@
+# Ignore build output for GitHub language stats
+dist/* linguist-vendored
+build/* linguist-vendored
+
+# Ignore node modules if included by mistake
+node_modules/* linguist-vendored
