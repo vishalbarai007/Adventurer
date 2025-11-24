@@ -1,6 +1,16 @@
-# Ignore build output for GitHub language stats
-dist/* linguist-vendored
-build/* linguist-vendored
+# Treat static HTML / public folders as vendored (so they aren’t counted in source)
+public/** linguist-vendored
+*.html linguist-vendored
 
-# Ignore node modules if included by mistake
-node_modules/* linguist-vendored
+# Treat image and SVG assets as vendored
+*.svg linguist-vendored
+src/assets/** linguist-vendored
+public/assets/** linguist-vendored
+
+# Ensure TSX/TS/JS files are counted as TypeScript or JavaScript
+*.tsx linguist-language=TypeScript
+*.ts linguist-language=TypeScript
+*.js linguist-language=JavaScript
+
+# Node modules or other dependencies (if accidentally committed) — mark vendored
+node_modules/** linguist-vendored
