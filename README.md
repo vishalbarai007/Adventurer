@@ -1,122 +1,142 @@
-# Adventurer Website  
+# Adventurer - Travel & Tourism Platform 🌍
 
-A comprehensive and user-friendly tour, travel, and trekking website, **Adventurer** provides detailed information, easy navigation, and engaging content for adventure enthusiasts.
-
----
-
-## Features  
-
-1. **Interactive Map**: Explore trekking routes, accommodations, and points of interest.  
-2. **Itineraries**: Day-by-day breakdown of treks with distances and landmarks.  
-3. **Media Galleries**: High-quality photos and videos for a visual preview.  
-4. **User Reviews**: Share and read testimonials to make informed decisions.  
-5. **Booking System**: Secure bookings for tours, accommodations, and transportation.  
-6. **Weather & Packing Tips**: Real-time weather and tailored packing lists.  
-7. **Virtual Tours**: Immersive 360-degree views of destinations.  
-8. **Community Forum**: Connect, share advice, and discuss experiences.  
-9. **Mobile-Friendly Design**: Seamless experience across devices.  
+**Adventurer** is a comprehensive, full-stack tour, travel, and trekking platform designed to provide detailed information, interactive tools, and engaging content for adventure enthusiasts. Plan your destination with ease!
 
 ---
 
-## Tech Stack  
+## ✨ Features  
 
-### Frontend  
-
-- **Framework**: [Vite](https://vitejs.dev/) + React  
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)  
-- **TypeScript**: Ensures robust and type-safe code.  
-- **UI Components**: Built with [shadcn/ui](https://ui.shadcn.dev/) for accessible and reusable components.  
-
----
-
-## Installation  
-
-1. Clone the repository:  
-
-   ```bash
-   git clone https://github.com/vishalbarai007/Adventurer.git
-   cd adventurer/frontend
-   ```  
-
-2. Install dependencies:  
-
-   ```bash
-   npm install
-   ```  
-
-3. Start the development server:  
-
-   ```bash
-   npm run dev
-   ```  
-
-4. Open your browser and navigate to `http://localhost:5173`.  
+1. **Interactive Map**: Explore trekking routes and nearby points of interest using dynamic maps.  
+2. **AI-Powered Chatbot**: Get quick answers and trip recommendations via our integrated AI assistant.
+3. **Rich Travel Blogs**: Read experiences from fellow travelers, complete with large media galleries.
+4. **Smart Itineraries & Destinations**: Discover seasonal destinations and curated recommendations based on your preferences.  
+5. **Weather & Packing Tips**: Dedicated sections covering tips for specific configurations and activities (trekking, hiking, stargazing).
+6. **Authentication System**: Secure user registration, sign-in, and seamless Google OAuth integration.
+7. **Profile Ecosystem**: Save posts, view tagged photos, and navigate personal travel histories.
+8. **Responsive Design**: Polished, motion-rich, and mobile-friendly UI built on modern best practices.
 
 ---
 
-## Folder Structure  
+## 🛠️ Tech Stack  
 
+### Frontend
+- **Framework**: [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with Framer Motion for advanced animations.
+- **Language**: TypeScript for robust and scalable frontend code.
+- **UI Components**: Employs [shadcn/ui](https://ui.shadcn.dev/) and Radix UI primitives for accessible design.
+- **Maps**: React Leaflet to render interactive travel trails.
+
+### Backend
+- **Framework**: [Flask](https://flask.palletsprojects.com/) (Python)
+- **Database / Auth**: Firebase Admin SDK for database management and secure backend auth logic.
+- **Integration**: Google OAuth capabilities built directly over `client_secret.json`.
+- **AI/ML Scripting**: Integrated `.py` modules (`locationRecc.py`) for smart recommendations logic.
+
+---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+- [Node.js](https://nodejs.org/en/) (v18+)
+- [Python 3.8+](https://www.python.org/)
+- Firebase Service Account Key & Google OAuth Credentials
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/vishalbarai007/Adventurer.git
+cd Adventurer
 ```
-adventurer/
-├── src/
-│   ├── components/       # Reusable React components
-│   ├── pages/            # Page-level components
-│   ├── styles/           # Tailwind CSS configuration and global styles
-│   ├── utils/            # Utility functions
-│   ├── assets/           # Static assets (images, videos, etc.)
-│   └── App.tsx           # Main application entry point
-├── public/               # Public static files
-├── tsconfig.json         # TypeScript configuration
-├── vite.config.ts        # Vite configuration
-└── package.json          # Project metadata and dependencies
+
+### 2. Backend Setup (Flask Server)
+```bash
+cd server
+# Create a virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install requirements
+pip install -r requirements.txt
+```
+**Environment Variables:**
+Ensure you place your `firebase_key.json` and `client_secret.json` in the `/server` directory. Configure your `.env` file for backend keys.
+```env
+FLASK_APP=server.py
+FLASK_ENV=development
+```
+**Run Server:**
+```bash
+python server.py
+# The server will run on http://localhost:5000
+```
+
+### 3. Frontend Setup (Vite React App)
+Open a new terminal tab from the root repository folder:
+```bash
+cd frontend
+npm install
+```
+**Run Frontend:**
+```bash
+npm run dev
+# The app will run on http://localhost:5173
+```
+
+---
+
+## 📂 Project Structure  
+
+```text
+Adventurer/
+├── frontend/             # React + TypeScript Client
+│   ├── src/
+│   │   ├── components/   # Reusable UI elements & Shadcn library
+│   │   ├── pages/        # Main route views (Map, Login, Blogs, etc.)
+│   │   ├── services/     # Axios API requests architecture
+│   │   ├── styles/       # Global CSS & Tailwind setups
+│   │   ├── assets/       # Static assets, local videos, images
+│   │   └── App.tsx       # Routing logic map (Code-split via React.lazy)
+│   ├── vite.config.ts    
+│   └── package.json      
+├── server/               # Python Flask Backend
+│   ├── server.py         # Main Flask API endpoints
+│   ├── locationRecc.py   # Recommendation logic scripts
+│   ├── requirements.txt  # Python dependencies
+│   ├── .env              # Secrets configuration
+│   └── *_key.json        # Service accounts & OAuth secrets
+└── README.md
 ```  
 
 ---
 
-## Scripts  
+## 📜 Available Scripts (Frontend)
 
-- `npm run dev`: Starts the development server.  
-- `npm run build`: Builds the project for production.  
-- `npm run preview`: Previews the production build.  
-
----
-
-## Contribution  
-
-Contributions are welcome!  
-
-1. Fork the repository.  
-2. Create a new branch:  
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```  
-
-3. Commit your changes:  
-
-   ```bash
-   git commit -m "Add your feature or fix"
-   ```  
-
-4. Push the branch:  
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```  
-
-5. Open a pull request.  
+- `npm run dev`: Starts the Vite development server.  
+- `npm run build`: Type-checks (`tsc -b`) and bundles the project chunks for production.  
+- `npm run lint`: Analyzes codebase for ESLint constraint violations.
+- `npm run preview`: Hosts a lightweight local server to preview the production build output.  
 
 ---
 
-## License  
+## 🤝 Contributing  
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License  
 
 This project is licensed under the [MIT License](./LICENSE).  
 
 ---
 
-## Contact  
+## 📬 Contact  
 
-For questions or feedback, feel free to reach out:  
-
-- **Email**: <your-email@example.com>  
-- **GitHub**: [your-username](https://github.com/your-username)  
+- **Author**: Vishal Barai
+- **GitHub**: [vishalbarai007](https://github.com/vishalbarai007)
+- **Project Link**: [https://github.com/vishalbarai007/Adventurer](https://github.com/vishalbarai007/Adventurer)

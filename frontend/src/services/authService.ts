@@ -17,9 +17,10 @@ export const registerUser = async (
 			password,
 		});
 		return response.data;
-	} catch (error: any) {
-		if (error.response?.data?.error) {
-			throw new Error(error.response.data.error);
+	} catch (error: unknown) {
+        const axiosError = error as { response?: { data?: { error?: string } } };
+		if (axiosError.response?.data?.error) {
+			throw new Error(axiosError.response.data.error);
 		}
 		throw new Error("Registration failed");
 	}
@@ -36,9 +37,10 @@ export const signInUser = async (
 			password,
 		});
 		return response.data;
-	} catch (error: any) {
-		if (error.response?.data?.error) {
-			throw new Error(error.response.data.error);
+	} catch (error: unknown) {
+        const axiosError = error as { response?: { data?: { error?: string } } };
+		if (axiosError.response?.data?.error) {
+			throw new Error(axiosError.response.data.error);
 		}
 		throw new Error("Sign in failed");
 	}

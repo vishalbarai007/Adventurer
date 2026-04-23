@@ -68,9 +68,10 @@ const Login_form: React.FC = () => {
 					navigate("/post-login-homepage");
 				}
 			}
-		} catch (err: any) {
-			if (err.response?.data?.error) {
-				setError(err.response.data.error);
+		} catch (err: unknown) {
+            const axiosError = err as { response?: { data?: { error?: string } } };
+			if (axiosError.response?.data?.error) {
+				setError(axiosError.response.data.error);
 			} else {
 				setError(
 					mode === "SignUp"
@@ -91,7 +92,7 @@ const Login_form: React.FC = () => {
 				console.log("Working");
 				
 			}
-		} catch (err: any) {
+		} catch {
 			setError("Google sign-in failed. Please try again.");
 			console.log("error");
 

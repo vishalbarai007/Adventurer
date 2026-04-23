@@ -1,5 +1,7 @@
 // import Logo from "./Logo"
 
+import CachedImage from "../support/CachedImage"
+
 export default function Preloginlanding() {
   return (
     <div className="min-h-screen flex justify-center items-center align-middle bg-brand-green" id="target-section">
@@ -30,7 +32,7 @@ export default function Preloginlanding() {
           {/* Right Column - Image */}
           <div className="relative">
             <div className="border-4 border-brand-orange rounded-lg overflow-hidden">
-              <img
+              <CachedImage
                 src="/assets/Prelanding.png"
                 alt="Adventure seeker standing on a mountain during sunset"
                 className="w-full h-auto object-cover"

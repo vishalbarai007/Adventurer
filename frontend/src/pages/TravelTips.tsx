@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import Footer from '../components/Developer/support/Footer';
 import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu';
-import LargeSuccessLoader from '../components/Developer/support/Loader';
 
 // Motion variants for dropdown animations
 const dropdownVariants = {

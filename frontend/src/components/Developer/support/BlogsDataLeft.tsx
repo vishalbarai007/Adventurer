@@ -6,9 +6,20 @@ import LargeSuccessLoader from "./Loader"
 // import blogData from '../../JSON/BlogsData.json';
 
 
-const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) => {
-  const [selectedBlog, setSelectedBlogState] = useState<any>(null)
-  const [data, setData] = useState<any[]>([])
+interface BlogData {
+  image?: string;
+  Title?: string;
+  Meta_Keys?: string;
+  Short_Desc?: string;
+  date?: string;
+  Admin_ID?: string;
+  Description?: string;
+  [key: string]: unknown; // To accommodate other potential fields when mapping response
+}
+
+const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: BlogData) => void }> = () => {
+  const [selectedBlog, setSelectedBlogState] = useState<BlogData | null>(null)
+  const [data, setData] = useState<BlogData[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -17,7 +28,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog: (blog: any) => void }> = ({ }) 
       .then((response) => {
         console.log("Fetched blog data:", response.data)
         // Convert the object of objects to an array of objects
-        const blogsArray = Object.values(response.data)
+        const blogsArray = Object.values(response.data) as BlogData[]
         setData(blogsArray)
         setLoading(false)
       })

@@ -4,7 +4,7 @@ import BlogsDataRight from "../support/BlogsDataRight"
 const BlogsData = () => {
   return (
     <div className='BlogsContainer flex flex-col md:flex-row' id="target-section">
-      <BlogsDataLeft setSelectedBlog={function (_blog: any): void {
+      <BlogsDataLeft setSelectedBlog={function (): void {
         throw new Error("Function not implemented.");
       } } />
       <BlogsDataRight />

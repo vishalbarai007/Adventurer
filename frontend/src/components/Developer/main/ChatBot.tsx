@@ -36,7 +36,7 @@ const ChatBot = () => {
                 sender: "bot",
             })
         );
-    } catch (error) {
+    } catch {
         setMessages((prev) =>
             prev.slice(0, -1).concat({
                 text: "Error contacting AI",

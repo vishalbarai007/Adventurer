@@ -4,7 +4,7 @@ import SocialMedia from "../support/SocialMedia";
 import UsefulLinks from "../support/UsefulLinks";
 // import ContactUsForm from "./ContactUsForm";
 
-const Footer = (props: { color: any }) => {
+const Footer = (props: { color: string | undefined }) => {
   return (
     <div
       className="FooterBlock h-fit w-full mt-10 text-[#EADED0] bg-cover"
