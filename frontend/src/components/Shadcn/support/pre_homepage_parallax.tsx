@@ -1,5 +1,5 @@
 import { ParallaxBanner } from "react-scroll-parallax";
-import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
+import { BannerLayer } from "react-scroll-parallax";
 
 export const AdvancedBannerTop = () => {
   const background: BannerLayer = {

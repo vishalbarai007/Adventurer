@@ -1,6 +1,6 @@
-// Posts.jsx
-import { useState } from "react";
-import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from "lucide-react";
+// Posts.tsx
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal, Loader2 } from "lucide-react";
 
 // Sample data for posts
 const SAMPLE_POSTS = [
@@ -21,7 +21,7 @@ const SAMPLE_POSTS = [
     userAvatar: "/assets/Developers/Rahul.png",
     location: "Marine Drive, Mumbai",
     imageUrl: "/assets/Developers/Rahul.png",
-    caption: "There’s something magical about the sound of the sea and the city lights ✨🌃 #mumbainights #coastlinevibes",
+    caption: "There's something magical about the sound of the sea and the city lights ✨🌃 #mumbainights #coastlinevibes",
     likes: 210,
     comments: 22,
     timestamp: "10 hours ago",
@@ -76,7 +76,7 @@ const SAMPLE_POSTS = [
     userAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
     location: "Chandni Chowk, Delhi",
     imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    caption: "Golgappe, jalebi, chaat – can’t stop, won’t stop! 🍢🍮🧡 #delhifoodie #streetfoodlove",
+    caption: "Golgappe, jalebi, chaat – can't stop, won't stop! 🍢🍮🧡 #delhifoodie #streetfoodlove",
     likes: 522,
     comments: 65,
     timestamp: "6 days ago",
@@ -105,23 +105,95 @@ const SAMPLE_POSTS = [
   }
 ];
 
+// Simulate generating more posts for infinite scroll
+const generateMorePosts = (page: number) => {
+  return SAMPLE_POSTS.map((post, index) => ({
+    ...post,
+    id: post.id + page * SAMPLE_POSTS.length + index,
+    timestamp: `${page + 1} week${page > 0 ? "s" : ""} ago`,
+  }));
+};
 
 export const Posts = ({ profileOnly = false, username = "" }) => {
+  const [posts, setPosts] = useState(SAMPLE_POSTS);
+  const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
   // Filter posts if viewing a specific profile
-  const posts = profileOnly 
-    ? SAMPLE_POSTS.filter(post => post.username === username) 
-    : SAMPLE_POSTS;
-  
+  const filteredPosts = profileOnly
+    ? posts.filter((post) => post.username === username)
+    : posts;
+
+  // Infinite scroll sentinel ref
+  const lastPostRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (isLoading) return;
+      if (observerRef.current) observerRef.current.disconnect();
+
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && hasMore && !profileOnly) {
+            loadMorePosts();
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      if (node) observerRef.current.observe(node);
+    },
+    [isLoading, hasMore, profileOnly]
+  );
+
+  const loadMorePosts = () => {
+    setIsLoading(true);
+    // Simulate network delay
+    setTimeout(() => {
+      const nextPage = page + 1;
+      if (nextPage >= 5) {
+        // Limit to 5 pages of infinite scroll for the demo
+        setHasMore(false);
+        setIsLoading(false);
+        return;
+      }
+      const newPosts = generateMorePosts(nextPage);
+      setPosts((prev) => [...prev, ...newPosts]);
+      setPage(nextPage);
+      setIsLoading(false);
+    }, 800);
+  };
+
   return (
-    <div className="w-full max-w-lg mx-auto my-4">
-      {posts.length === 0 ? (
+    <div className="w-full max-w-lg mx-auto">
+      {filteredPosts.length === 0 ? (
         <div className="text-center py-8">
           <p className="text-gray-500">No posts yet</p>
         </div>
       ) : (
-        posts.map(post => (
-          <Post key={post.id} post={post} />
+        filteredPosts.map((post, index) => (
+          <div
+            key={`${post.id}-${index}`}
+            ref={index === filteredPosts.length - 1 ? lastPostRef : undefined}
+          >
+            <Post post={post} />
+          </div>
         ))
+      )}
+
+      {/* Loading indicator */}
+      {isLoading && (
+        <div className="flex items-center justify-center py-6">
+          <Loader2 className="h-6 w-6 animate-spin text-[#012c18]" />
+          <span className="ml-2 text-sm text-gray-500">Loading more posts...</span>
+        </div>
+      )}
+
+      {/* End of feed message */}
+      {!hasMore && !profileOnly && (
+        <div className="text-center py-6 border-t border-gray-200">
+          <p className="text-sm text-gray-400">You're all caught up! 🎉</p>
+        </div>
       )}
     </div>
   );
@@ -299,7 +371,7 @@ export const CreatePostButton = () => {
     <>
       <button 
         onClick={() => setShowModal(true)}
-        className="fixed bottom-6 right-6 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 transition-colors"
+        className="fixed bottom-6 right-6 bg-[#012c18] text-white rounded-full p-4 shadow-lg hover:bg-[#024d2b] transition-all hover:scale-110 active:scale-95 z-30"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -325,8 +397,8 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
   };
   
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg w-full max-w-lg overflow-hidden">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
         <div className="border-b border-gray-200 p-4">
           <h3 className="text-lg font-medium">Create New Post</h3>
         </div>
@@ -340,7 +412,7 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
               <p className="text-gray-500 mb-2">Drag photos and videos here</p>
               <button 
                 type="button"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm"
+                className="bg-[#012c18] text-white px-4 py-2 rounded-md text-sm hover:bg-[#024d2b] transition-colors"
               >
                 Select from computer
               </button>
@@ -358,13 +430,13 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
             <button 
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm"
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50 transition-colors"
             >
               Cancel
             </button>
             <button 
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded-md text-sm"
+              className="px-4 py-2 bg-[#012c18] text-white rounded-md text-sm hover:bg-[#024d2b] transition-colors"
             >
               Share
             </button>

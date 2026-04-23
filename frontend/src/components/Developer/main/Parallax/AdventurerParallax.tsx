@@ -1,5 +1,5 @@
 import { ParallaxBanner } from "react-scroll-parallax"
-import type { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types"
+import type { BannerLayer } from "react-scroll-parallax"
 // import { ChevronDown } from "lucide-react"
 import ScrollDownButton from "../ScrollDownButton"
 

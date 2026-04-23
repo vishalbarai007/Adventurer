@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useState } from "react"
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import { useBackgroundStore } from "../components/Developer/support/background-store"
 import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
@@ -11,11 +11,7 @@ const ProfileCards = lazy(() =>
     default: module.ProfileCards,
   })),
 )
-const Suggestions = lazy(() =>
-  import("../components/Developer/main/PostLoginComponents/suggestions").then((module) => ({
-    default: module.Suggestions,
-  })),
-)
+const Suggestions = lazy(() => import("../components/Developer/main/PostLoginComponents/suggestions"))
 const Posts = lazy(() =>
   import("../components/Developer/main/PostLoginComponents/Posts").then((module) => ({
     default: module.Posts,
@@ -29,70 +25,65 @@ const CreatePostButton = lazy(() =>
 
 export default function PostLoginPage() {
   const { currentBackground } = useBackgroundStore()
+  const [rightSidebarOpen, setRightSidebarOpen] = useState(false)
 
   return (
-    <>
-
-      <div className="absolute top-4 right-4 z-50"> {/* Position dropdown in the dashboard */}
+    <div
+      className="relative flex h-screen w-full overflow-hidden bg-[#e2e4e6]"
+      style={{
+        backgroundImage: `url('${currentBackground}')`,
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Google Translate */}
+      {/* <div className="absolute top-4 right-16 z-50">
         <GoogleTranslate />
-      </div>
+      </div> */}
 
-      <div
-        className="post min-h-screen w-full grid md:grid-cols-[15%,70%,15%] grid-cols-[20%,80%] sm:grid-cols-1 bg-[#e2e4e6]"
-        style={{
-          backgroundImage: `url('${currentBackground}')`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-        }}
-      >
+      {/* Left Sidebar (statically visible on desktop, toggleable on mobile) */}
+      <Suspense fallback={<div><LargeSuccessLoader /></div>}>
+        <Sidebar />
+      </Suspense>
 
+      {/* Right Sidebar (overlay, toggleable) */}
+      <Suspense fallback={<div><LargeSuccessLoader /></div>}>
+        <Suggestions
+          isOpen={rightSidebarOpen}
+          onToggle={() => setRightSidebarOpen(!rightSidebarOpen)}
+        />
+      </Suspense>
 
-
-
-
-
-
-
-        {/* Left Sidebar */}
-        <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div> <LargeSuccessLoader/> Sidebar...</div>}>
-            <Sidebar />
-          </Suspense>
-        </div>
-
-        {/* Main Content */}
-        <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div><LargeSuccessLoader/>  Header...</div>}>
+      {/* Main Content — takes full width, locked to 100vh */}
+      <div className="flex h-full w-full flex-col">
+        {/* Header — fixed at top, never scrolls */}
+        <div className="flex-shrink-0">
+          <Suspense fallback={<div className="p-8"><LargeSuccessLoader /></div>}>
             <PostHeader />
           </Suspense>
-          <Suspense fallback={<div><LargeSuccessLoader/>  Profile Cards...</div>}>
+        </div>
+
+        {/* Stories section — pinned below header, never scrolls */}
+        <div className="flex-shrink-0 border-b border-[#012c18]/10">
+          <Suspense fallback={<div className="p-4"><LargeSuccessLoader /></div>}>
             <ProfileCards />
           </Suspense>
-
-          <div className="mt-6 px-4">
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="flex-1 max-h-[600px] overflow-y-auto">
-                <h2 className="text-xl font-semibold mb-4">Your Feed</h2>
-                <Suspense fallback={<div><LargeSuccessLoader/> Posts...</div>}>
-                  <Posts />
-                </Suspense>
-              </div>
-            </div>
-
-          </div>
-
-          <Suspense fallback={<div></div>}>
-            <CreatePostButton />
-          </Suspense>
         </div>
 
-        <div className="postlogincomponents w-full border-1 *:border-[#012c18]">
-          <Suspense fallback={<div><LargeSuccessLoader/>  Suggestions...</div>}>
-            <Suggestions />
+        {/* Feed section — only this scrolls */}
+        <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-4">
+          <h2 className="text-xl font-semibold mb-4 text-[#012c18]">Your Feed</h2>
+          <Suspense fallback={<div><LargeSuccessLoader /></div>}>
+            <Posts />
           </Suspense>
         </div>
-      </div >
-    </>
+      </div>
+
+      {/* Create Post FAB */}
+      <Suspense fallback={<div></div>}>
+        <CreatePostButton />
+      </Suspense>
+    </div>
   )
 }

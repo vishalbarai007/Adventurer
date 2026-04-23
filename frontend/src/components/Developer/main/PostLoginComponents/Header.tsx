@@ -14,7 +14,7 @@ const PostHeader: React.FC<HeaderProps> = ({
     ];
 
     return (
-        <div className="flex items-center justify-between p-8">
+        <div className="flex items-center justify-between p-8 mt-10">
             {/* Left Section */}
             <div className="flex items-center gap-8">
                 {/* Navigation */}
