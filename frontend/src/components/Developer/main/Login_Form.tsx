@@ -7,13 +7,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import httpClient from "../../../services/httpClient";
 
 interface FormInputs {
+	name?: string;
 	email: string;
 	password: string;
 	confirmPassword: string;
+	companyName?: string;
+	gstNumber?: string;
 }
 
 const Login_form: React.FC = () => {
 	const [mode, setFormMode] = useState<"SignUp" | "SignIn">("SignUp");
+	const [role, setRole] = useState<string>("traveler");
 	const [error, setError] = useState<string>("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -50,7 +54,14 @@ const Login_form: React.FC = () => {
 			if (mode === "SignUp") {
 				const response = await httpClient.post(
 					"http://localhost:5000/register",
-					{ email: data.email, password: data.password },
+					{ 
+						email: data.email, 
+						password: data.password,
+						name: data.name,
+						role: role,
+						companyName: data.companyName,
+						gstNumber: data.gstNumber
+					},
 				);
 
 				if (response.status === 200) {
@@ -124,6 +135,64 @@ const Login_form: React.FC = () => {
 						<div className="text-red-500 text-sm text-center bg-red-50 p-2 rounded">
 							{error}
 						</div>
+					)}
+
+					{mode === "SignUp" && (
+						<>
+							<div>
+								<label className="block text-sm font-medium text-[#EADED0]">
+									Full Name
+								</label>
+								<input
+									type="text"
+									{...register("name", { required: mode === "SignUp" ? "Name is required" : false })}
+									className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+								/>
+								{errors.name && (
+									<p className="text-red-500 text-sm">{errors.name.message}</p>
+								)}
+							</div>
+							<div>
+								<label className="block text-sm font-medium text-[#EADED0]">
+									Role
+								</label>
+								<select
+									value={role}
+									onChange={(e) => setRole(e.target.value)}
+									className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+								>
+									<option value="traveler">I am a Traveler</option>
+									<option value="organizer">I am an Agency/Organizer</option>
+									<option value="vendor">I own a Villa/Property</option>
+								</select>
+							</div>
+							{role !== "traveler" && (
+								<div className="flex gap-4">
+									<div className="flex-1">
+										<label className="block text-sm font-medium text-[#EADED0]">Business Name</label>
+										<input
+											type="text"
+											{...register("companyName", { required: role !== "traveler" ? "Business Name is required" : false })}
+											className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+										/>
+										{errors.companyName && (
+											<p className="text-red-500 text-sm">{errors.companyName.message}</p>
+										)}
+									</div>
+									<div className="flex-1">
+										<label className="block text-sm font-medium text-[#EADED0]">GST Number</label>
+										<input
+											type="text"
+											{...register("gstNumber", { required: role !== "traveler" ? "GST Number is required" : false })}
+											className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
+										/>
+										{errors.gstNumber && (
+											<p className="text-red-500 text-sm">{errors.gstNumber.message}</p>
+										)}
+									</div>
+								</div>
+							)}
+						</>
 					)}
 
 					<div>

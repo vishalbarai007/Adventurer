@@ -52,12 +52,24 @@ flow = Flow.from_client_secrets_file(
 def save_user_to_firebase(user_data):
     """Save user data to Firebase"""
     users_ref = db_firebase.collection('users')
-    users_ref.document(user_data['id']).set({
+    
+    document_data = {
         'email': user_data['email'],
         'password': user_data['password'],  # Store hashed password
-        'created_at': datetime.now(),
+        'name': user_data.get('name', ''),
+        'role': user_data.get('role', 'traveler'),
+        'createdAt': datetime.now(),
         'last_login': datetime.now()
-    })
+    }
+    
+    if document_data['role'] in ['organizer', 'vendor']:
+        document_data['businessDetails'] = {
+            'companyName': user_data.get('companyName', ''),
+            'gstNumber': user_data.get('gstNumber', ''),
+            'isVerified': False
+        }
+        
+    users_ref.document(user_data['id']).set(document_data)
 
 def update_user_login_time(user_id):
     """Update user's last login time"""
@@ -85,8 +97,15 @@ def index():
 # Regular email/password routes
 @app.route("/register", methods=["POST"])
 def register_user():
-    email = request.json["email"]
-    password = request.json["password"]
+    email = request.json.get("email")
+    password = request.json.get("password")
+    role = request.json.get("role", "traveler")
+    name = request.json.get("name", "")
+    companyName = request.json.get("companyName", "")
+    gstNumber = request.json.get("gstNumber", "")
+
+    if not email or not password:
+        return jsonify({"error": "Email and password are required"}), 400
 
     # Check if user already exists
     user_exists = get_user_by_email(email)
@@ -98,7 +117,11 @@ def register_user():
     user_data = {
         'id': str(hash(email)),  # Generate a unique ID (you can use UUID if preferred)
         'email': email,
-        'password': hashed_password
+        'password': hashed_password,
+        'role': role,
+        'name': name,
+        'companyName': companyName,
+        'gstNumber': gstNumber
     }
     save_user_to_firebase(user_data)
 
