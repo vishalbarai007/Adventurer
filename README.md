@@ -77,6 +77,33 @@ npm run dev
 **Running Locally:**
 After compilation, the system provides a localhost link. Visit `http://localhost:5173` to interact with your frontend app.
 ---
+## ✨ New Features & Key Functionalities
+The platform has recently been expanded to include enterprise-grade features for multi-tenant interactions and real-time social engagement:
+
+### 💼 Multi-Tenant Backbone & Dashboard
+- **Role-Based Access Control (RBAC)**: Support for `traveler`, `organizer`, and `vendor` roles.
+- **Business Dashboard**: A centralized hub for organizers/vendors to manage their trip listings and communicate with customers.
+- **Listing Management**: CRUD operations for treks and property listings directly from the UI.
+- **Route**: [`/dashboard`](http://localhost:5173/dashboard)
+
+### 💬 Real-Time 1:1 Chat System
+- **Live Messaging**: Fully synchronized 1:1 chat powered by Firestore `onSnapshot`.
+- **Premium UI/UX**: Animated message bubbles with spring physics using `framer-motion`.
+- **Inquiry Handshake**: Seamless transition from viewing a trek to contacting the organizer.
+- **Route**: [`/chat/:chatId`](http://localhost:5173/chat/example_chat_id)
+
+### 📸 Social Explore & Location Tagging
+- **Dynamic Feed**: Toggle between standard list view and a sleek Instagram-style Explore grid.
+- **Deep Location Integration**: Suggests nearby "Famous Places" using browser geolocation and custom recommendation logic.
+- **Map Modal**: Click on any explore tile to view the photo along with an interactive OpenStreetMap popup centering on the location.
+- **Viral Share**: Integrated Web Share API for native mobile/desktop sharing of posts and trips.
+- **Route**: [`/`](http://localhost:5173/) (Posts section)
+
+### 🗺️ Trek Details & Inquiries
+- **Direct Handshake**: New immersive detail view for trips with a high-conversion inquiry button.
+- **Route**: [`/destinations/dummy-trek`](http://localhost:5173/destinations/dummy-trek)
+
+---
 ## 📂 Project Structure  
 ```text
 Adventurer/
@@ -84,6 +111,15 @@ Adventurer/
 ├── backend.md            # Documentation for Database & APIs
 ├── frontend/             # React + TypeScript Client
 │   ├── src/
-│   │   ├── components/   # Reusable UI elements & Shadcn library
+│   │   ├── components/   # Reusable UI elements & Page components
+│   │   ├── pages/        # Main application views (Dashboard, Chat, etc.)
+│   │   ├── services/     # API interaction helpers
+│   │   └── firebaseConfig.ts # Client-side Firebase initialization
+├── server/               # Flask + Firebase Admin SDK Backend
+│   ├── server.py         # Main API server and route handlers
+│   ├── locationRecc.py   # Geo-location recommendation logic
+│   └── firebase_key.json # Backend service account (KEEP PRIVATE)
+```
+
 - **GitHub**: [vishalbarai007](https://github.com/vishalbarai007)
 - **Project Link**: [https://github.com/vishalbarai007/Adventurer](https://github.com/vishalbarai007/Adventurer)

@@ -328,5 +328,89 @@ def submit_contact_form():
         print(f"Error saving contact form: {str(e)}")
         return jsonify({"error": "Failed to submit form"}), 500
 
+@app.route('/api/my-listings', methods=['GET'])
+def get_my_listings():
+    # Attempt to get user from frontend query param or session
+    user_id = request.args.get('userId') or session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    try:
+        docs = db_firebase.collection('listings').where('organizerId', '==', user_id).stream()
+        listings = []
+        for doc in docs:
+            data = doc.to_dict()
+            data['id'] = doc.id
+            listings.append(data)
+        
+        return jsonify(listings), 200
+    except Exception as e:
+        print(f"Error fetching my listings: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/listings', methods=['POST'])
+def create_listing():
+    user_id = request.json.get("organizerId") or session.get("user_id")
+    if not user_id:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    try:
+        data = request.json
+        listing_ref = db_firebase.collection('listings').document()
+        listing_data = {
+            "listingId": listing_ref.id,
+            "organizerId": user_id,
+            "type": data.get("type", "trek"),
+            "title": data.get("title", "New Trip"),
+            "price": data.get("price", 0),
+            "location": data.get("location", {}),
+            "slots": data.get("slots", 0),
+            "images": data.get("images", []),
+            "createdAt": datetime.now()
+        }
+        listing_ref.set(listing_data)
+        return jsonify(listing_data), 201
+    except Exception as e:
+        print(f"Error creating listing: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/posts', methods=['GET'])
+def get_posts():
+    """Fetch all posts from the 'posts' collection, ordered by createdAt descending."""
+    try:
+        docs = db_firebase.collection('posts').order_by('createdAt', direction='DESCENDING').stream()
+        posts = []
+        for doc in docs:
+            data = doc.to_dict()
+            data['id'] = doc.id
+            posts.append(data)
+        return jsonify(posts), 200
+    except Exception as e:
+        print(f"Error fetching posts: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/posts', methods=['POST'])
+def create_post():
+    """Create a new post in the 'posts' collection."""
+    try:
+        data = request.json
+        post_ref = db_firebase.collection('posts').document()
+        post_data = {
+            "postId": post_ref.id,
+            "authorId": data.get("authorId", session.get("user_id", "anonymous")),
+            "authorName": data.get("authorName", "Adventurer"),
+            "mediaUrl": data.get("mediaUrl", ""),
+            "caption": data.get("caption", ""),
+            "locationTag": data.get("locationTag", ""),
+            "locationCoords": data.get("locationCoords", {}),
+            "likes": [],
+            "createdAt": datetime.now()
+        }
+        post_ref.set(post_data)
+        return jsonify(post_data), 201
+    except Exception as e:
+        print(f"Error creating post: {e}")
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)

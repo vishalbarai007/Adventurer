@@ -30,41 +30,54 @@ Tracks both locally registered users via Email/PW and standard OAuth accounts.
 - `id` (String - Document ID)
 - `email` (String)
 - `password` (String - Bcrypt Hashed)
+- `role` (String: `traveler`, `organizer`, `vendor`)
+- `businessDetails` (Object - Exists if role is organizer/vendor)
+  - `companyName`, `gstNumber`, `isVerified`
 - `name` (String)
 - `profile_picture` (String URL - Fetched from Google Auth)
 - `google_auth` (Boolean)
 - `created_at` (Timestamp)
-- `last_login` / `last_logout` (Timestamp)
 
-### 2. `Famous_Places`
-Maintains geographical and contextual data about destinations for algorithmic recommendation.
-- `Place_Name` (String)
-- `Description` (String)
-- `latitude` (Float)
-- `longitude` (Float)
-- `rating` (Number)
+### 2. `listings`
+Primary product/service collection for multi-tenant organizations.
+- `listingId`, `organizerId`
+- `type` (`trek`, `villa`, `tour`)
+- `title`, `price`
+- `location` { latitude, longitude }
+- `slots` (Number)
 
-### 3. `contact_submissions`
-Store metrics submitted via the application's support forms.
-- `firstName`, `lastName`, `email`, `message` (Strings)
-- `submitted_at` (Timestamp)
+### 3. `posts`
+Social feed content collection.
+- `postId`, `authorId`, `authorName`
+- `mediaUrl`, `caption`
+- `locationTag` (String reference to Famous_Place)
+- `locationCoords` { latitude, longitude }
+- `likes` (Array of userIds)
 
-### 4. `Blogs`
-Stores rich text, visual URIs, and metadata for user-created / curated travel blog content.
+### 4. `chats` (Parent) & `messages` (Sub-collection)
+Real-time messaging architecture.
+- `chats/{chatId}/`
+  - `participants` (Array of [traveler_uid, organizer_uid])
+  - `updatedAt` (Timestamp)
+- `chats/{chatId}/messages/{msgId}/`
+  - `senderId`, `text`, `timestamp`
+
+---
 
 ## 🔗 Key Endpoints & APIs
 
-**Authentication:** 
-- `POST /register`, `POST /login`, `POST /logout`
+**Authentication & Roles:** 
+- `POST /register`, `POST /login` (supports RBAC persistence)
 - `GET /google/login`, `GET /google/callback`
-- `GET /me`
 
-**Profile API:**
-- `GET /api/user/profile`
-- `PUT /api/user/profile`
+**Business & Listings:**
+- `GET /api/my-listings` - Fetches trips scoped to the authenticated Organizer.
+- `POST /api/listings` - Creates a new trip/accommodation document.
 
-**Recommender Tools & AI:**
-- `POST /api/nearby-spots` 
-  - Submits coordinates payload for computing geodesic spatial bounds relative to destination points.
-- `POST /chatbot`
-  - Passes the input `message` inside a JSON body to the `gemini-2.0-flash` generative model and pipes the text candidate directly to the React frontend.
+**Social & Explore:**
+- `GET /api/posts` - Retrieve global feed with reverse-chronological ordering.
+- `POST /api/posts` - Submit user-generated content with location tagging.
+- `POST /api/nearby-spots` - Integrated with `locationRecc.py` to suggest tags.
+
+**Real-Time Communications:**
+- Directly handled via **Firebase Web SDK** on the client side using Firestore listeners for lower latency.

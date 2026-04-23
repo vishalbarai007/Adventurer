@@ -19,6 +19,9 @@ const ChatBot = lazy(() => import("./components/Developer/main/ChatBot"));
 const Profile = lazy(() => import("./pages/Profile"));
 const SettingsPage = lazy(() => import("./pages/Setting"));
 const Map = lazy(() => import("./pages/map"));
+const BusinessDashboard = lazy(() => import("./pages/BusinessDashboard"));
+const ChatPage = lazy(() => import("./pages/ChatPage"));
+const TrekDetails = lazy(() => import("./pages/TrekDetails"));
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -68,6 +71,9 @@ const App = () => {
 						<Route path="/chatbot" element={<ChatBot />} />
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/settings" element={<SettingsPage />} />
+						<Route path="/dashboard" element={<BusinessDashboard />} />
+						<Route path="/chat/:chatId" element={<ChatPage />} />
+						<Route path="/destinations/dummy-trek" element={<TrekDetails />} />
 					</Routes>
 				</Suspense>
 			</LocationProvider>
