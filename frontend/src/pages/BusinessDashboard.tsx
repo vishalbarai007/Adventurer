@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import httpClient from "../services/httpClient";
 import { db } from "../firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar";
 
 interface Listing {
   id: string;
@@ -54,7 +55,11 @@ const BusinessDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col p-6 pt-20 text-zinc-900">
+   <>
+   <div className="absolute ">
+    <Sidebar/>
+   </div>
+     <div className="min-h-screen bg-gray-50 flex flex-col p-6 pt-20 text-zinc-900">
       <div className="max-w-6xl w-full mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">Business Dashboard</h1>
         <div className="flex gap-4 border-b pb-2 mb-6">
@@ -174,6 +179,7 @@ const BusinessDashboard: React.FC = () => {
         )}
       </div>
     </div>
+   </>
   );
 };
 export default BusinessDashboard;

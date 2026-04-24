@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from "react"
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import { useBackgroundStore } from "../components/Developer/support/background-store"
-import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
+// import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
 import LargeSuccessLoader from "../components/Developer/support/Loader"
 
 // Lazy loading components
@@ -32,7 +32,7 @@ export default function PostLoginPage() {
       className="relative flex h-screen w-full overflow-hidden bg-[#e2e4e6]"
       style={{
         backgroundImage: `url('${currentBackground}')`,
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}

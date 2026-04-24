@@ -4,6 +4,31 @@ import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal, Loader2, Grid, Li
 import { motion, AnimatePresence } from "framer-motion";
 import httpClient from "../../../../services/httpClient";
 
+// Variants for staggered entrance
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 30, opacity: 0, scale: 0.9 },
+  show: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.6,
+    },
+  },
+};
+
 // Sample data for posts
 const SAMPLE_POSTS = [
   {
@@ -45,7 +70,7 @@ const SAMPLE_POSTS = [
   {
     id: 5,
     username: "neha_travels",
-    userAvatar: "/assets/Developers/Neha.png",
+    userAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
     location: "Manali, Himachal Pradesh",
     imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
     caption: "Woke up to snow-covered dreams ❄️🏔️ #manali #snowvibes #mountainlove",
@@ -224,21 +249,35 @@ export const Posts = ({ profileOnly = false, username = "" }) => {
         </div>
       ) : viewMode === "list" ? (
         /* ===== LIST VIEW ===== */
-        filteredPosts.map((post, index) => (
-          <div
-            key={`${post.id}-${index}`}
-            ref={index === filteredPosts.length - 1 ? lastPostRef : undefined}
-          >
-            <Post post={post} />
-          </div>
-        ))
-      ) : (
-        /* ===== GRID / EXPLORE VIEW ===== */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 rounded-lg overflow-hidden">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="space-y-6"
+        >
           {filteredPosts.map((post, index) => (
             <motion.div
-              whileHover={{ scale: 0.98 }}
+              key={`${post.id}-${index}`}
+              variants={itemVariants}
+              ref={index === filteredPosts.length - 1 ? lastPostRef : undefined}
+            >
+              <Post post={post} />
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        /* ===== GRID / EXPLORE VIEW ===== */
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 rounded-lg overflow-hidden"
+        >
+          {filteredPosts.map((post, index) => (
+            <motion.div
               key={`grid-${post.id}-${index}`}
+              variants={itemVariants}
+              whileHover={{ scale: 0.98 }}
               ref={index === filteredPosts.length - 1 ? lastPostRef : undefined}
               className="relative aspect-square overflow-hidden cursor-pointer group"
               onClick={() => setSelectedPost(post)}
@@ -261,7 +300,7 @@ export const Posts = ({ profileOnly = false, username = "" }) => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       )}
 
       {/* Loading indicator */}
@@ -432,28 +471,39 @@ const Post = ({ post }: { post: PostProps }) => {
       {/* Post actions */}
       <div className="flex justify-between p-3">
         <div className="flex space-x-4">
-          <button 
+          <motion.button 
+            whileTap={{ scale: 0.8, rotate: -10 }}
+            whileHover={{ scale: 1.15 }}
             onClick={handleLike}
-            className={`${liked ? "text-red-500" : "text-gray-700"} transition-transform active:scale-125`}
+            className={`${liked ? "text-red-500" : "text-gray-700"} transition-colors`}
           >
             <Heart size={24} fill={liked ? "currentColor" : "none"} />
-          </button>
-          <button 
+          </motion.button>
+          <motion.button 
+            whileTap={{ scale: 0.8, rotate: 10 }}
+            whileHover={{ scale: 1.15 }}
             onClick={() => setShowComments(!showComments)}
             className="text-gray-700"
           >
             <MessageCircle size={24} />
-          </button>
-          <button className="text-gray-700 hover:text-[#012c18] transition" onClick={() => handleShare(post)}>
+          </motion.button>
+          <motion.button 
+            whileTap={{ scale: 0.8, x: 5, y: -5 }}
+            whileHover={{ scale: 1.15 }}
+            className="text-gray-700 hover:text-[#012c18] transition" 
+            onClick={() => handleShare(post)}
+          >
             <Send size={24} />
-          </button>
+          </motion.button>
         </div>
-        <button 
+        <motion.button 
+          whileTap={{ scale: 0.8 }}
+          whileHover={{ scale: 1.15 }}
           onClick={handleSave}
           className={`${saved ? "text-black" : "text-gray-700"}`}
         >
           <Bookmark size={24} fill={saved ? "currentColor" : "none"} />
-        </button>
+        </motion.button>
       </div>
 
       {/* Likes count */}
@@ -531,18 +581,22 @@ export const CreatePostButton = () => {
   
   return (
     <>
-      <button 
+      <motion.button 
+        whileTap={{ scale: 0.9, rotate: -3 }}
+        whileHover={{ scale: 1.1, rotate: 3 }}
         onClick={() => setShowModal(true)}
-        className="fixed bottom-6 right-6 bg-[#012c18] text-white rounded-full p-4 shadow-lg hover:bg-[#024d2b] transition-all hover:scale-110 active:scale-95 z-30"
+        className="fixed bottom-6 right-6 bg-[#012c18] text-white rounded-full p-4 shadow-lg hover:bg-[#024d2b] transition-all z-30"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
         </svg>
-      </button>
+      </motion.button>
       
-      {showModal && (
-        <CreatePostModal onClose={() => setShowModal(false)} />
-      )}
+      <AnimatePresence>
+        {showModal && (
+          <CreatePostModal onClose={() => setShowModal(false)} />
+        )}
+      </AnimatePresence>
     </>
   );
 };
@@ -606,8 +660,19 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
   };
   
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+    >
+      <motion.div 
+        initial={{ scale: 0.8, y: 50, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.8, y: 50, opacity: 0 }}
+        transition={{ type: "spring", bounce: 0.4 }}
+        className="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl"
+      >
         <div className="border-b border-gray-200 p-4 flex items-center justify-between">
           <h3 className="text-lg font-bold text-gray-900">Create New Post</h3>
           <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full transition">
@@ -694,15 +759,17 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
             >
               Cancel
             </button>
-            <button 
+            <motion.button 
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
               type="submit"
               className="px-5 py-2.5 bg-[#012c18] text-white rounded-lg text-sm font-bold hover:bg-[#024d2b] transition-colors shadow-lg shadow-green-900/10"
             >
               Share Post
-            </button>
+            </motion.button>
           </div>
         </form>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

@@ -289,16 +289,38 @@ def chatbot():
         return jsonify({"error": "No input provided"}), 400
 
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")
-        response = model.generate_content(user_input)
+        # 1. Fetch available trips/listings from Firestore for context
+        docs = db_firebase.collection('listings').limit(5).stream()
+        listings_data = ""
+        for doc in docs:
+            d = doc.to_dict()
+            location = d.get('location', {})
+            address = location.get('address', 'Various Locations') if isinstance(location, dict) else location
+            listings_data += f"- {d.get('title', 'Trek')} at {address} for ₹{d.get('price', 'TBD')}\n"
 
-        bot_reply = None
+        # 2. Construct the "System Prompt"
+        system_prompt = f"""
+        You are the Adventurer Concierge, a helpful assistant for a trekking and travel platform. 
+        Here are some of our current featured trips:
+        {listings_data}
+        
+        Guidelines:
+        - Use this info to help the user find their next adventure. 
+        - If they show interest in a specific type of trip or listing, encourage them to 'Check the Explore Feed' for more details.
+        - Be witty, adventurous, and concise.
+        - If you don't know something, be honest but stay in character.
+        """
+
+        model = genai.GenerativeModel("gemini-2.0-flash")
+        response = model.generate_content([system_prompt, user_input])
+
+        bot_reply = ""
         if hasattr(response, "text"):
             bot_reply = response.text
         elif hasattr(response, "candidates") and response.candidates:
             bot_reply = response.candidates[0].content.parts[0].text
         else:
-            bot_reply = "I couldn't understand."
+            bot_reply = "I'm having a bit of trouble connecting to the base camp. Could you try that again?"
 
         return jsonify({"response": bot_reply})
 
