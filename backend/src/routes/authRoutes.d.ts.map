@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "file": "authRoutes.d.ts",
+    "sourceRoot": "",
+    "sources": [
+        "authRoutes.ts"
+    ],
+    "names": [],
+    "mappings": "AASA,QAAA,MAAM,MAAM,4CAAW,CAAC;AA6MxB,eAAe,MAAM,CAAC"
+}

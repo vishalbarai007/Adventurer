@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Build output
+dist/
+
+# Environment variables
+.env
+
+# Secrets
+client_secret.json
+firebase_key.json
+
+# TypeScript cache
+*.tsbuildinfo

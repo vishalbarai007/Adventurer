@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react"
+import { lazy, Suspense, useState, useEffect } from "react"
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import { useBackgroundStore } from "../components/Developer/support/background-store"
 // import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
@@ -26,6 +26,16 @@ const CreatePostButton = lazy(() =>
 export default function PostLoginPage() {
   const { currentBackground } = useBackgroundStore()
   const [rightSidebarOpen, setRightSidebarOpen] = useState(false)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    if (token) {
+      localStorage.setItem('jwt_token', token);
+      // Clean up the URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
 
   return (
     <div

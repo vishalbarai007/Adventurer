@@ -2,8 +2,9 @@ import httpClient from "./httpClient";
 
 // Define what the response from your server looks like
 interface AuthResponse {
-	id: number;
+	id: string;
 	email: string;
+	token?: string;
 }
 
 export const registerUser = async (
@@ -11,11 +12,13 @@ export const registerUser = async (
 	password: string,
 ): Promise<AuthResponse> => {
 	try {
-		// This actually sends the data to your Flask backend
 		const response = await httpClient.post<AuthResponse>("/register", {
 			email,
 			password,
 		});
+		if (response.data.token) {
+			localStorage.setItem("jwt_token", response.data.token);
+		}
 		return response.data;
 	} catch (error: unknown) {
         const axiosError = error as { response?: { data?: { error?: string } } };
@@ -31,11 +34,13 @@ export const signInUser = async (
 	password: string,
 ): Promise<AuthResponse> => {
 	try {
-		// This sends login data to your Flask backend
 		const response = await httpClient.post<AuthResponse>("/login", {
 			email,
 			password,
 		});
+		if (response.data.token) {
+			localStorage.setItem("jwt_token", response.data.token);
+		}
 		return response.data;
 	} catch (error: unknown) {
         const axiosError = error as { response?: { data?: { error?: string } } };
@@ -44,4 +49,14 @@ export const signInUser = async (
 		}
 		throw new Error("Sign in failed");
 	}
+};
+
+export const logoutUser = async () => {
+    try {
+        await httpClient.post("/logout");
+    } catch (e) {
+        console.error("Logout error", e);
+    } finally {
+        localStorage.removeItem("jwt_token");
+    }
 };
