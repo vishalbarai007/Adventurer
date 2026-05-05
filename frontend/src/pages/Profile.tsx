@@ -1,7 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Sidebar from "../components/Developer/main/Profile/Sidebar"
+// import Sidebar from "../components/Developer/main/Profile/Sidebar"
+
+import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
 import MobileNavbar from "../components/Developer/main/Profile/MobileNavbar"
 import ProfileHeader from "../components/Developer/main/Profile/ProfileHeader"
 import ProfileTabs from "../components/Developer/main/Profile/ProfileTabs"
@@ -54,6 +56,24 @@ const Profile = () => {
       title: "GOTHIC",
       contentType: "video"
     },
+     {
+      id: "5",
+      imageUrl: "/assets/Developers/Vishal.png",
+      caption: "Dark aesthetics combined with laid-back vibes",
+      likes: 178,
+      comments: 23,
+      title: "GOTHIC",
+      contentType: "video"
+    },
+     {
+      id: "4",
+      imageUrl: "/assets/Developers/Vishal.png",
+      caption: "Dark aesthetics combined with laid-back vibes",
+      likes: 178,
+      comments: 23,
+      title: "GOTHIC",
+      contentType: "video"
+    },
   ])
 
   useEffect(() => {
@@ -92,7 +112,10 @@ const Profile = () => {
   return (
     <div className={`${darkMode ? "dark" : ""} min-h-screen`}>
       <div className="flex flex-col md:flex-row bg-white dark:bg-black text-black dark:text-white min-h-screen">
-        {!isMobile && <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+        {/* {!isMobile && <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} */}
+          <div className="hidden md:block absolute">
+             <Sidebar />
+          </div>
 
         <div className="flex-1 md:ml-[300px]">
           <ProfileHeader 

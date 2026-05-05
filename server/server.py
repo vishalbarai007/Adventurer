@@ -11,6 +11,7 @@ import os
 import pathlib
 import requests
 import json
+import razorpay
 import firebase_admin
 from firebase_admin import credentials, firestore
 from datetime import datetime
@@ -431,7 +432,64 @@ def create_post():
         post_ref.set(post_data)
         return jsonify(post_data), 201
     except Exception as e:
-        print(f"Error creating post: {e}")
+        return jsonify({"error": str(e)}), 500
+
+razorpay_client = razorpay.Client(auth=("rzp_test_dummy_key", "dummy_secret"))
+
+@app.route('/api/create-order', methods=['POST'])
+def create_order():
+    data = request.json
+    amount = float(data.get('price', 0))
+    # Calculate 1% platform fee
+    platform_fee = amount * 0.01
+    organizer_share = amount - platform_fee
+    
+    amount_in_paise = int(amount * 100)
+    
+    try:
+        # Mock order since we are using dummy keys
+        mock_order = {
+            "id": "order_mock_" + str(int(datetime.now().timestamp())),
+            "amount": amount_in_paise,
+            "currency": "INR",
+            "fee": platform_fee,
+            "organizer_share": organizer_share
+        }
+        return jsonify(mock_order), 200
+    except Exception as e:
+        print(f"Razorpay Error: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/verify-payment', methods=['POST'])
+def verify_payment():
+    data = request.json
+    transaction_id = data.get('transactionId', 'txn_mock_' + str(int(datetime.now().timestamp())))
+    amount = float(data.get('amount', 0))
+    payment_mode = data.get('paymentMode', 'Online')
+    organizer_id = data.get('organizerId', 'mock_organizer_id')
+    user_id = session.get("user_id", "mock_user_id")
+    percentage_paid = data.get('percentagePaid', 100 if payment_mode == 'Online' else 0)
+    
+    platform_fee = amount * 0.01
+    
+    booking_ref = db_firebase.collection('bookings').document()
+    booking_data = {
+        "bookingId": booking_ref.id,
+        "transactionId": transaction_id,
+        "amount": amount,
+        "platformFee": platform_fee,
+        "escrowStatus": "Pending_Cash" if payment_mode == 'Cash' else "Held",
+        "paymentMode": payment_mode,
+        "percentagePaid": percentage_paid,
+        "userId": user_id,
+        "organizerId": organizer_id,
+        "createdAt": datetime.now()
+    }
+    
+    try:
+        booking_ref.set(booking_data)
+        return jsonify({"success": True, "bookingId": booking_ref.id}), 200
+    except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":

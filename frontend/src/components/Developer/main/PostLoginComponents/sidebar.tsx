@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Home, Compass, FileText, Menu, X } from 'lucide-react';
+import { Home, Compass, FileText, Menu, X, History } from 'lucide-react';
+import UserTimelineModal from "./UserTimelineModal";
 
 type SidebarProps = {
   logoUrl?: string;
@@ -34,7 +35,10 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
+    { name: "Book Trips", icon: Compass, href: "/destinations/dummy-trek" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
+    { name: "My Chats", icon: FileText, href: "/mychats" },
+    { name: "My Timeline", icon: History, href: "#", isModal: true },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
   ];
 
@@ -83,17 +87,29 @@ const Sidebar: React.FC<SidebarProps> = ({
               Menu
             </div>
             <div className="space-y-1">
-              {menuItems.map(({ name, icon: Icon, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[#012c18] transition-all duration-200 hover:bg-[#012c18]/10 hover:translate-x-1 active:scale-[0.98]"
-                  onClick={() => isMobile && setIsOpen(false)}
-                >
-                  <Icon className="h-5 w-5 flex-shrink-0" />
-                  <span>{name}</span>
-                </a>
-              ))}
+              {menuItems.map((item, index) => {
+                const { name, icon: Icon, href, isModal } = item as any;
+                
+                if (isModal) {
+                  return (
+                    <div key={index} className="flex w-full" onClick={() => isMobile && setIsOpen(false)}>
+                      <UserTimelineModal />
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    key={index}
+                    href={href}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[#012c18] transition-all duration-200 hover:bg-[#012c18]/10 hover:translate-x-1 active:scale-[0.98]"
+                    onClick={() => isMobile && setIsOpen(false)}
+                  >
+                    <Icon className="h-5 w-5 flex-shrink-0" />
+                    <span>{name}</span>
+                  </a>
+                );
+              })}
             </div>
           </nav>
 
