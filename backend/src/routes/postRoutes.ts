@@ -19,25 +19,44 @@ router.get('/posts', async (req: Request, res: Response) => {
 });
 
 router.post('/posts', authenticateToken, async (req: AuthRequest, res: Response) => {
+  // Frontend sends the secure_url returned by Cloudinary
+  const { secure_url, mediaUrl, userId, locationName, locationTag, description, caption, authorName, locationCoords } = req.body;
+
+  const finalImageUrl = secure_url || mediaUrl;
+
+  if (!finalImageUrl) {
+    return res.status(400).json({ error: "No image URL provided" });
+  }
+
   try {
-    const data = req.body;
     const postRef = db.collection('posts').doc();
     const postData = {
       postId: postRef.id,
-      authorId: data.authorId || req.user?.id || "anonymous",
-      authorName: data.authorName || "Adventurer",
-      mediaUrl: data.mediaUrl || "",
-      caption: data.caption || "",
-      locationTag: data.locationTag || "",
-      locationCoords: data.locationCoords || {},
+      imageUrl: finalImageUrl, 
+      mediaUrl: finalImageUrl, // Keeping for backward compatibility
+      userId: req.user?.id || userId || "anonymous",
+      authorId: req.user?.id || userId || "anonymous",
+      authorName: authorName || "Adventurer",
+      locationName: locationName || locationTag || "",
+      locationTag: locationTag || locationName || "",
+      description: description || caption || "",
+      caption: caption || description || "",
+      locationCoords: locationCoords || {},
       likes: [],
-      createdAt: new Date()
+      createdAt: new Date(),
     };
     
     await postRef.set(postData);
-    return res.status(201).json(postData);
+
+    return res.status(201).json({ 
+      id: postRef.id, 
+      postId: postRef.id,
+      message: "Post created successfully!",
+      post: postData
+    });
   } catch (error: any) {
-    return res.status(500).json({ error: error.message });
+    console.error(`Error saving post: ${error}`);
+    return res.status(500).json({ error: "Failed to save post to database" });
   }
 });
 
