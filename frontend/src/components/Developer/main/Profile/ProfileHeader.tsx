@@ -29,17 +29,17 @@ const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
 		postsCount: 3,
 		followersCount: 148,
 		followingCount: 163,
-		profilePicture: "/assets/Developers/Vishal.png", // Default fallback
+		profilePicture: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png", // Default fallback
 		isVerified: false,
 		highlights: [
 			{
 				id: "1",
-				imageUrl: "/assets/Seasons/Winter3.jpg",
+				imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056616/adventurer_assets_migration/images/Winter3_yhneuh.jpg",
 				title: "Snowflakes",
 			},
 			{
 				id: "2",
-				imageUrl: "/assets/Sports/Trekking.png",
+				imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056761/adventurer_assets_migration/images/Trekking_ibimmf.png",
 				title: "Trekking",
 			},
 		],

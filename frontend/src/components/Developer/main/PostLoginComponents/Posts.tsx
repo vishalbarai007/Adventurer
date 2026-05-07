@@ -34,9 +34,9 @@ const SAMPLE_POSTS = [
   {
     id: 1,
     username: "vishal_barai",
-    userAvatar: "/assets/Developers/Vishal.png",
+    userAvatar: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
     location: "Juhu Beach, Mumbai",
-    imageUrl: "/assets/Developers/Vishal.png",
+    imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
     caption: "Golden hour walks by the waves 🌅🌊 #beachvibes #mumbai #sunsetmagic",
     likes: 321,
     comments: 34,
@@ -46,9 +46,9 @@ const SAMPLE_POSTS = [
   {
     id: 3,
     username: "rahul_skywalker",
-    userAvatar: "/assets/Developers/Rahul.png",
+    userAvatar: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
     location: "Marine Drive, Mumbai",
-    imageUrl: "/assets/Developers/Rahul.png",
+    imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
     caption: "There's something magical about the sound of the sea and the city lights ✨🌃 #mumbainights #coastlinevibes",
     likes: 210,
     comments: 22,

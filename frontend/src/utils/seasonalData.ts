@@ -17,7 +17,7 @@ export const getSeason = (): "winter" | "monsoon" | "summer" => {
 export const seasonalSuggestions: Record<string, SuggestionItem[]> = {
   winter: [
     { id: "w1", name: "Nashik", tag: "Vineyards & Cold Breeze", image: "/assets/nashik.jpg", type: "destination" },
-    { id: "w2", name: "Mahabaleshwar", tag: "Strawberry Picking", image: "/assets/mahabaleshwar.jpg", type: "destination" },
+    { id: "w2", name: "Mahabaleshwar", tag: "Strawberry Picking", image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png", type: "destination" },
   ],
   monsoon: [
     { id: "m1", name: "Harishchandragad", tag: "Cloudy Trekking", image: "/assets/harishchandragad.jpg", type: "destination" },
@@ -30,5 +30,5 @@ export const seasonalSuggestions: Record<string, SuggestionItem[]> = {
 };
 
 export const recentOrgTrips: SuggestionItem[] = [
-  { id: "org1", name: "Kalsubai Night Trek", tag: "Starts Tomorrow", companyName: "Summit Seekers", image: "/assets/kalsubai.jpg", type: "organization" },
+  { id: "org1", name: "Kalsubai Night Trek", tag: "Starts Tomorrow", companyName: "Summit Seekers", image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057398/adventurer_assets_migration/images/kalsubai_ra1cq1.webp", type: "organization" },
 ];

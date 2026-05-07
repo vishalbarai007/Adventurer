@@ -1,4 +1,4 @@
-import Contactusimg from "/assets/IND/ContactUs.png";
+import Contactusimg from "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056095/adventurer_assets_migration/images/ContactUs_twhavr.png";
 
 const ContactUsImage = () => {
   return (

@@ -1,38 +1,38 @@
 [
   {
-    "image": "/assets/IND/MarineDrive.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056315/adventurer_assets_migration/images/MarineDrive_aybgsr.png",
     "like": 0,
     "name": "Marine Lines",
-    "video": "/assets/Videos/MarineDrive.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778057049/adventurer_assets_migration/videos/MarineDrive_kwamvq.mp4"
   },
   {
-    "image": "/assets/IND/rajgad_fort.jpg",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056659/adventurer_assets_migration/images/rajgad_fort_z6l3a8.jpg",
     "like": 0,
     "name": "Rajgad Fort",
-    "video": "/assets/Videos/fortshelp.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778056905/adventurer_assets_migration/videos/fortshelp_xrw1l2.mp4"
   },
   {
-    "image": "/assets/IND/Alibaug.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056266/adventurer_assets_migration/images/Alibaug_g2q8ci.png",
     "like": 0,
     "name": "Aalibaugh Beaches",
-    "video": "/assets/Videos/Alibaugh.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778056653/adventurer_assets_migration/videos/Alibaugh_fu5lt1.mp4"
   },
   {
-    "image": "/assets/IND/Sahyadri.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056331/adventurer_assets_migration/images/Sahyadri_k5aodp.png",
     "like": 0,
     "name": "Sahyadri Hill Station",
-    "video": "/assets/Videos/hillclimb.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778056673/adventurer_assets_migration/videos/hillclimb_tf5r1q.mp4"
   },
   {
-    "image": "/assets/IND/AjantaCaves.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056080/adventurer_assets_migration/images/AjantaCaves_efmw7u.png",
     "like": 0,
     "name": "Ajanta Caves",
-    "video": "/assets/Videos/caves.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778056515/adventurer_assets_migration/videos/caves_onb30a.mp4"
   },
   {
-    "image": "/assets/IND/SanjayGandhiNationalPark.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056345/adventurer_assets_migration/images/SanjayGandhiNationalPark_n4mede.png",
     "like": 0,
     "name": "National Park",
-    "video": "/assets/Videos/SanjayGandhi.mp4"
+    "video": "https://res.cloudinary.com/djk32h7rn/video/upload/v1778056537/adventurer_assets_migration/videos/SanjayGandhi_mfgac0.mp4"
   }
 ]

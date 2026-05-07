@@ -10,8 +10,8 @@ const ContactForm = () => {
   return (
     <div className="bg-[#112c1d] min-h-screen py-10 pb-0">
       {/* <PreLoginMenuBar /> */}
-           <NavigationMenuDemo/>
-      
+      <NavigationMenuDemo />
+
       <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto p-6">
         <ContactUsImage />
         <ContactUsForm />

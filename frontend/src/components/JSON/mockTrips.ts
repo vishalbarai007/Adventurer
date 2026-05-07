@@ -7,7 +7,10 @@ export const mockTrips = [
     organizerName: "Summit Seekers",
     type: "Trekking & Camping",
     image: "https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=80&w=1200&auto=format&fit=crop",
-    description: "Experience the thrilling climb and the majestic views from Konkankada. Highly recommended for experienced trekkers and nature enthusiasts looking for an unforgettable weekend escaping the hustle of the city."
+    description: "Experience the thrilling climb and the majestic views from Konkankada. Highly recommended for experienced trekkers and nature enthusiasts looking for an unforgettable weekend escaping the hustle of the city.",
+    startDate: "2026-06-15",
+    endDate: "2026-06-16",
+    createdAt: "2026-05-01T10:00:00Z"
   },
   {
     id: "trek_2",
@@ -17,7 +20,10 @@ export const mockTrips = [
     organizerName: "Maharashtra Adventures",
     type: "Trekking",
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
-    description: "Climb the highest peak of Maharashtra. The views from the top during sunrise are simply breathtaking and definitely worth the challenging ascent."
+    description: "Climb the highest peak of Maharashtra. The views from the top during sunrise are simply breathtaking and definitely worth the challenging ascent.",
+    startDate: "2026-06-20",
+    endDate: "2026-06-21",
+    createdAt: "2026-05-02T11:00:00Z"
   },
   {
     id: "trek_3",
@@ -27,7 +33,10 @@ export const mockTrips = [
     organizerName: "Extreme Trekkers",
     type: "Adventure Trek",
     image: "https://images.unsplash.com/photo-1522046422329-37fbf9d332ac?q=80&w=1200&auto=format&fit=crop",
-    description: "Known as the Valley of Shadows, Sandhan Valley is a brilliant trek for thrill-seekers. Prepare for rappelling and wading through water pools."
+    description: "Known as the Valley of Shadows, Sandhan Valley is a brilliant trek for thrill-seekers. Prepare for rappelling and wading through water pools.",
+    startDate: "2026-07-05",
+    endDate: "2026-07-06",
+    createdAt: "2026-05-03T14:30:00Z"
   },
   {
     id: "trek_4",
@@ -37,7 +46,10 @@ export const mockTrips = [
     organizerName: "Nature Trails",
     type: "Camping",
     image: "https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1200&auto=format&fit=crop",
-    description: "Witness the magical spectacle of thousands of fireflies illuminating the night sky near the historic Rajmachi fort."
+    description: "Witness the magical spectacle of thousands of fireflies illuminating the night sky near the historic Rajmachi fort.",
+    startDate: "2026-05-25",
+    endDate: "2026-05-26",
+    createdAt: "2026-05-04T09:15:00Z"
   },
   {
     id: "trek_5",
@@ -47,7 +59,10 @@ export const mockTrips = [
     organizerName: "Aqua Ventures",
     type: "Nature Trek",
     image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=1200&auto=format&fit=crop",
-    description: "A beautiful trek through deep forests leading to the pristine Devkund waterfall. Perfect for a refreshing dip after a long walk."
+    description: "A beautiful trek through deep forests leading to the pristine Devkund waterfall. Perfect for a refreshing dip after a long walk.",
+    startDate: "2026-08-10",
+    endDate: "2026-08-10",
+    createdAt: "2026-05-05T16:45:00Z"
   },
   {
     id: "trek_6",
@@ -57,7 +72,10 @@ export const mockTrips = [
     organizerName: "History Hikers",
     type: "Historical Trek",
     image: "https://images.unsplash.com/photo-1623405788599-2a912bbfa0c8?q=80&w=1200&auto=format&fit=crop",
-    description: "An easy and popular trek near Lonavala, Lohagad offers great panoramic views and a dive into Maratha history."
+    description: "An easy and popular trek near Lonavala, Lohagad offers great panoramic views and a dive into Maratha history.",
+    startDate: "2026-06-12",
+    endDate: "2026-06-12",
+    createdAt: "2026-05-06T08:20:00Z"
   },
   {
     id: "trek_7",
@@ -67,7 +85,10 @@ export const mockTrips = [
     organizerName: "History Hikers",
     type: "Monsoon Trek",
     image: "https://images.unsplash.com/photo-1601633519842-83568c07e997?q=80&w=1200&auto=format&fit=crop",
-    description: "Trek through gushing waterfalls on the steps of Visapur Fort. A thrilling experience exclusively best during the monsoons."
+    description: "Trek through gushing waterfalls on the steps of Visapur Fort. A thrilling experience exclusively best during the monsoons.",
+    startDate: "2026-07-20",
+    endDate: "2026-07-20",
+    createdAt: "2026-05-06T12:00:00Z"
   },
   {
     id: "trek_8",
@@ -77,7 +98,10 @@ export const mockTrips = [
     organizerName: "Summit Seekers",
     type: "Trekking",
     image: "https://images.unsplash.com/photo-1625625471946-b6480eab52fb?q=80&w=1200&auto=format&fit=crop",
-    description: "A less crowded sibling of Kalavantin Durg, Prabalgad offers a serene environment and stunning views of the Western Ghats."
+    description: "A less crowded sibling of Kalavantin Durg, Prabalgad offers a serene environment and stunning views of the Western Ghats.",
+    startDate: "2026-08-05",
+    endDate: "2026-08-05",
+    createdAt: "2026-05-07T09:30:00Z"
   },
   {
     id: "trek_9",
@@ -87,7 +111,10 @@ export const mockTrips = [
     organizerName: "Wild Explorers",
     type: "Jungle Trek",
     image: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop",
-    description: "Trek through the dense, dark forest of Andharban. A descending trek that provides a mesmerizing canopy of green."
+    description: "Trek through the dense, dark forest of Andharban. A descending trek that provides a mesmerizing canopy of green.",
+    startDate: "2026-09-12",
+    endDate: "2026-09-13",
+    createdAt: "2026-05-07T10:15:00Z"
   },
   {
     id: "trek_10",
@@ -97,6 +124,74 @@ export const mockTrips = [
     organizerName: "Maharashtra Adventures",
     type: "Trekking",
     image: "https://images.unsplash.com/photo-1606821360061-01f1437de58a?q=80&w=1200&auto=format&fit=crop",
-    description: "Known as Prachandagad, it is the highest fort in Pune district. Offers a moderately difficult trek with rewarding views."
+    description: "Known as Prachandagad, it is the highest fort in Pune district. Offers a moderately difficult trek with rewarding views.",
+    startDate: "2026-10-02",
+    endDate: "2026-10-03",
+    createdAt: "2026-05-07T11:00:00Z"
+  },
+  {
+    id: "trek_11",
+    title: "Karnala Bird Sanctuary Trail",
+    price: 800,
+    organizerId: "org_nature_trails",
+    organizerName: "Nature Trails",
+    type: "Nature Trek",
+    image: "https://images.unsplash.com/photo-1542224566-6e85f2e6772f?q=80&w=1200&auto=format&fit=crop",
+    description: "A beginner-friendly hike culminating at the Karnala Fort, surrounded by lush greenery and diverse bird species.",
+    startDate: "2026-06-05",
+    endDate: "2026-06-05",
+    createdAt: "2026-05-07T11:10:00Z"
+  },
+  {
+    id: "trek_12",
+    title: "Bhimashankar Jungle Trek",
+    price: 2100,
+    organizerId: "org_wild_explorers",
+    organizerName: "Wild Explorers",
+    type: "Jungle Trek",
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
+    description: "Wander through the dense foliage to reach one of the 12 Jyotirlingas, while spotting the rare Malabar Giant Squirrel.",
+    startDate: "2026-08-20",
+    endDate: "2026-08-21",
+    createdAt: "2026-05-07T11:20:00Z"
+  },
+  {
+    id: "trek_13",
+    title: "Alang Madan Kulang (AMK) Expedition",
+    price: 4500,
+    organizerId: "org_extreme_trekkers",
+    organizerName: "Extreme Trekkers",
+    type: "Adventure Trek",
+    image: "https://images.unsplash.com/photo-1522046422329-37fbf9d332ac?q=80&w=1200&auto=format&fit=crop",
+    description: "The toughest trek in Maharashtra! Conquer three formidable forts over three days of intense climbing and rappelling.",
+    startDate: "2026-11-15",
+    endDate: "2026-11-17",
+    createdAt: "2026-05-07T11:30:00Z"
+  },
+  {
+    id: "trek_14",
+    title: "Raigad Fort Heritage Walk",
+    price: 1500,
+    organizerId: "org_history_hikers",
+    organizerName: "History Hikers",
+    type: "Historical Trek",
+    image: "https://images.unsplash.com/photo-1517824806704-9040b037703b?q=80&w=1200&auto=format&fit=crop",
+    description: "Explore the capital of the Maratha Empire. A journey back in time enriched by expert storytelling and grand architecture.",
+    startDate: "2026-07-10",
+    endDate: "2026-07-10",
+    createdAt: "2026-05-07T11:40:00Z"
+  },
+  {
+    id: "trek_15",
+    title: "Aadrai Jungle Trek",
+    price: 1700,
+    organizerId: "org_aqua_ventures",
+    organizerName: "Aqua Ventures",
+    type: "Nature Trek",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=1200&auto=format&fit=crop",
+    description: "A hidden gem! Traverse through unexplored trails, crossing multiple streams and soaking in pristine waterfalls.",
+    startDate: "2026-09-05",
+    endDate: "2026-09-05",
+    createdAt: "2026-05-07T11:50:00Z"
   }
 ];

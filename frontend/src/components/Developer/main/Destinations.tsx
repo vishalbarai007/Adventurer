@@ -15,7 +15,7 @@ interface CarouselItem {
 const Carousel: FC = () => {
   const [items, setItems] = useState<CarouselItem[]>([
     {
-      "image": "/assets/forts/Rajmachi.png",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056494/adventurer_assets_migration/images/Rajmachi_hmbkia.jpg",
       "author": "FORTS",
       "title": "Freedom Begins from Here",
       "topic": "Trekking",
@@ -23,7 +23,7 @@ const Carousel: FC = () => {
       "description": "Uncover the spirit of freedom as you trek across historic forts. Each step brings you closer to breathtaking views and unforgettable experiences."
     },
     {
-      "image": "/assets/Seasons/Summer2.jpg",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056287/adventurer_assets_migration/images/Summer2_sq4skx.jpg",
       "author": "BEACHES",
       "title": "Ride the Waves",
       "topic": "Water Sports",
@@ -31,7 +31,7 @@ const Carousel: FC = () => {
       "description": "Dive into adventure with thrilling water sports. From jet skiing to surfing, feel the rush of adrenaline on serene beaches."
     },
     {
-      "image": "/assets/waterfalls/thoseghar.jpg",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057683/adventurer_assets_migration/images/thoseghar_qaik9s.jpg",
       "author": "WATERFALLS",
       "title": "Dive Deep in Nature",
       "topic": "Plunging Adventures",
@@ -39,7 +39,7 @@ const Carousel: FC = () => {
       "description": "Experience the exhilarating plunge into nature’s wonders. Conquer waterfalls with a heart-pounding jump that connects you to the wild."
     },
     {
-      "image": "/assets/sanctuary/andheri.jpg",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057442/adventurer_assets_migration/images/andheri_ycuval.jpg",
       "author": "SANCTUARY",
       "title": "Create Memories for a Lifetime",
       "topic": "Wildlife Safari",
@@ -47,7 +47,7 @@ const Carousel: FC = () => {
       "description": "Explore the untamed beauty of sanctuaries. Witness majestic animals in their natural habitats and create memories you’ll cherish forever."
     },
     {
-      "image": "/assets/IND/Mahabaleshwar.png",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png",
       "author": "HILL STATIONS",
       "title": "Serene Escapes",
       "topic": "Family & Friends",
@@ -55,7 +55,7 @@ const Carousel: FC = () => {
       "description": "Rejuvenate in the tranquil beauty of hill stations. Perfect for bonding with loved ones amidst picturesque landscapes."
     },
     {
-      "image": "/assets/IND/SoloTravelling.png",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056188/adventurer_assets_migration/images/SoloTravelling_xywhrh.png",
       "author": "THE SOLO EXPLORER",
       "title": "Find Your Path",
       "topic": "Solo Adventures",
@@ -63,14 +63,14 @@ const Carousel: FC = () => {
       "description": "Embark on a journey of self-discovery. Perfect for independent adventurers seeking solitude and the thrill of uncharted paths."
     },
     {
-      "image": "/assets/IND/EcoTrails.png",
+      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056105/adventurer_assets_migration/images/EcoTrails_cqzkf1.png",
       "author": "THE NATURE LOVER",
       "title": "Harmony with Nature",
       "topic": "Eco Trails",
       "url": "#",
       "description": "Connect with the earth on peaceful eco trails. Immerse yourself in flora and fauna that will soothe your soul."
     },
-   
+
   ]
   );
 
@@ -143,6 +143,7 @@ const Carousel: FC = () => {
 
   return (
     <div className="carousel relative h-screen w-full overflow-hidden ">
+     
       <div
         className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}

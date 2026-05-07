@@ -137,7 +137,7 @@ export default function SplashScreen() {
                 transition={{ delay: 1, duration: 0.5 }}
             >
                 <img
-                    src="/assets/BrandLogos/Adventurer/Adventurer_yellow.png"
+                    src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055969/adventurer_assets_migration/images/Adventurer_yellow_wrya5w.png"
                     alt="Adventurer Logo"
                     className="w-[50%] h-auto"
                 />

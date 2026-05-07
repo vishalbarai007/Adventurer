@@ -15,6 +15,7 @@ import locationRoutes from './routes/locationRoutes';
 import blogRoutes from './routes/blogRoutes';
 import chatbotRoutes from './routes/chatbotRoutes';
 import contactRoutes from './routes/contactRoutes';
+import uploadRoutes from './routes/uploadRoutes';
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/', authRoutes); // /register, /login, /me, /logout, /google/*
 app.use('/api/user', userRoutes); // /api/user/profile
 app.use('/api', trekRoutes); // /api/listings, /api/my-listings
 app.use('/api', postRoutes); // /api/posts
+app.use('/api/upload', uploadRoutes); // /api/upload
 app.use('/api', paymentRoutes); // /api/create-order, /api/verify-payment
 app.use('/api', locationRoutes); // /api/nearby-spots
 app.use('/blog', blogRoutes); // /blog

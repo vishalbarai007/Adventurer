@@ -7,7 +7,7 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({
-  logoUrl = "/assets/BrandLogos/Adventurer/Faviconrans.png",
+  logoUrl = "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055972/adventurer_assets_migration/images/Faviconrans_r8yzq5.png",
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -35,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
-    { name: "Book Trips", icon: Compass, href: "/destinations/dummy-trek" },
+    { name: "Book Trips", icon: Compass, href: "/upcoming-treks" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
     { name: "My Chats", icon: FileText, href: "/mychats" },
     { name: "My Timeline", icon: History, href: "#", isModal: true },

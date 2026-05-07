@@ -33,7 +33,7 @@ export default function Preloginlanding() {
           <div className="relative">
             <div className="border-4 border-brand-orange rounded-lg overflow-hidden">
               <CachedImage
-                src="/assets/Prelanding.png"
+                src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056374/adventurer_assets_migration/images/Prelanding_w1fdqe.png"
                 alt="Adventure seeker standing on a mountain during sunset"
                 className="w-full h-auto object-cover"
               />

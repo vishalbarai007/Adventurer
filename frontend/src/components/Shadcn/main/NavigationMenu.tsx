@@ -112,7 +112,7 @@ export function NavigationMenuDemo() {
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
                         <Link to="/pre-login-homepage" className="text-2xl font-bold">
-                            <img src="/assets/BrandLogos/Adventurer/Adventurer_yellow.png" alt="ADVENTURER" className="h-[80px]" />
+                            <img src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055969/adventurer_assets_migration/images/Adventurer_yellow_wrya5w.png" alt="ADVENTURER" className="h-[80px]" />
                         </Link>
 
 

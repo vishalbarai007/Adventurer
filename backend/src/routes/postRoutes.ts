@@ -20,7 +20,7 @@ router.get('/posts', async (req: Request, res: Response) => {
 
 router.post('/posts', authenticateToken, async (req: AuthRequest, res: Response) => {
   // Frontend sends the secure_url returned by Cloudinary
-  const { secure_url, mediaUrl, userId, locationName, locationTag, description, caption, authorName, locationCoords } = req.body;
+  const { secure_url, mediaUrl, public_id, userId, locationName, locationTag, description, caption, authorName, locationCoords } = req.body;
 
   const finalImageUrl = secure_url || mediaUrl;
 
@@ -34,6 +34,7 @@ router.post('/posts', authenticateToken, async (req: AuthRequest, res: Response)
       postId: postRef.id,
       imageUrl: finalImageUrl, 
       mediaUrl: finalImageUrl, // Keeping for backward compatibility
+      public_id: public_id || null, // Storing public_id for future deletion
       userId: req.user?.id || userId || "anonymous",
       authorId: req.user?.id || userId || "anonymous",
       authorName: authorName || "Adventurer",

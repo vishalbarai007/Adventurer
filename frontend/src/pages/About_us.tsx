@@ -12,7 +12,7 @@ const AboutUs: React.FC = () => {
       <NavigationMenuDemo />
 
       <div className="container mx-auto px-6 py-16">
-        {/* Title Section */}
+        {/* Title Section */} 
         <AboutUsTitle />
       </div>
       {/* Content Section */}

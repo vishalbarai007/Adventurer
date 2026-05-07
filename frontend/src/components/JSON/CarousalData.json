@@ -1,41 +1,41 @@
 [
   {
-    "image": "/assets/IND/MarineDrive.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056315/adventurer_assets_migration/images/MarineDrive_aybgsr.png",
     "like": 0,
     "title": "Marine Lines",
     "location": "Mumbai, Maharashtra",
     "url": "https://example.com/marine-lines"
   },
   {
-    "image": "/assets/IND/rajgad_fort.jpg",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056659/adventurer_assets_migration/images/rajgad_fort_z6l3a8.jpg",
     "like": 0,
     "title": "Rajgad Fort",
     "location": "Pune District, Maharashtra",
     "url": "https://example.com/rajgad-fort"
   },
   {
-    "image": "/assets/IND/Alibaug.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056266/adventurer_assets_migration/images/Alibaug_g2q8ci.png",
     "like": 0,
     "title": "Alibaug Beaches",
     "location": "Raigad District, Maharashtra",
     "url": "https://example.com/alibaug-beaches"
   },
   {
-    "image": "/assets/IND/Sahyadri.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056331/adventurer_assets_migration/images/Sahyadri_k5aodp.png",
     "like": 0,
     "title": "Sahyadri Hill Station",
     "location": "Western Ghats, Maharashtra",
     "url": "https://example.com/sahyadri-hill-station"
   },
   {
-    "image": "/assets/IND/AjantaCaves.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056080/adventurer_assets_migration/images/AjantaCaves_efmw7u.png",
     "like": 0,
     "title": "Ajanta Caves",
     "location": "Aurangabad District, Maharashtra",
     "url": "https://example.com/ajanta-caves"
   },
   {
-    "image": "/assets/IND/SanjayGandhiNationalPark.png",
+    "image": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056345/adventurer_assets_migration/images/SanjayGandhiNationalPark_n4mede.png",
     "like": 0,
     "title": "Wildlife & Sanctuary",
     "location": "Borivali, Mumbai, Maharashtra",

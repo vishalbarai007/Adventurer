@@ -73,7 +73,7 @@ const App = () => {
 						<Route path="/settings" element={<SettingsPage />} />
 						<Route path="/dashboard" element={<BusinessDashboard />} />
 						<Route path="/chat/:chatId" element={<ChatPage />} />
-						<Route path="/destinations/dummy-trek" element={<TrekDetails />} />
+						<Route path="/upcoming-treks" element={<TrekDetails />} />
 					</Routes>
 				</Suspense>
 			</LocationProvider>

@@ -15,10 +15,10 @@ interface ChangeDisplayModalProps {
 
 // Sample preset backgrounds
 const presetBackgrounds = [
-  { id: 1, name: "Summer", url: "/assets/Seasons/Summer1.jpg" },
-  { id: 2, name: "Autumn", url: "/assets/Seasons/Autumn1.jpg" },
-  { id: 3, name: "Winter", url: "/assets/Seasons/Winter1.jpg" },
-  { id: 4, name: "Spring", url: "/assets/Seasons/Spring1.jpg" },
+  { id: 1, name: "Summer", url: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056280/adventurer_assets_migration/images/Summer1_e0gbfd.jpg" },
+  { id: 2, name: "Autumn", url: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056383/adventurer_assets_migration/images/Autumn1_tfgfiu.jpg" },
+  { id: 3, name: "Winter", url: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056314/adventurer_assets_migration/images/Winter1_uufysj.jpg" },
+  { id: 4, name: "Spring", url: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056439/adventurer_assets_migration/images/Spring1_tvbmkx.jpg" },
   { id: 5, name: "Beach", url: "/assets/Landscapes/Beach1.jpg" },
   { id: 6, name: "Mountains", url: "/assets/Landscapes/Mountains1.jpg" },
 ]

@@ -4,7 +4,7 @@ const FindYourWayLeft = () => {
         <div className="max-w-lg w-full p-4 sm:p-6 bg-white">
           <div className="text-center lg:text-left">
             <img
-              src="/assets/IND/Findyourway.png"
+              src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056108/adventurer_assets_migration/images/Findyourway_xpqltg.png"
               alt="Expert Illustration"
               className="mx-auto lg:mx-0 max-w-full h-auto"
             />

@@ -11,19 +11,19 @@ const destinations = [
   {
     id: 1,
     title: "Travel in Nashik",
-    image: "/assets/forts/hariharfort.jpg",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056869/adventurer_assets_migration/images/hariharfort_oybyue.jpg",
     description: "Nashik, where Godavari’s waters gleam,Vineyards weave a fragrant dream.Temples whisper tales of old,In hills and ghats, secrets unfold!",
   },
   {
     id: 2,
     title: "Travel in Pune",
-    image: "/assets/forts/sinhagad_fort.jpg",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056673/adventurer_assets_migration/images/sinhagad_fort_y51vys.jpg",
     description: "Nestled where the hills embrace the sky,Pune whispers tales of days gone by.Of forts, of wisdom, of flavors divine,A city where culture and dreams entwine!",
   },
   {
     id: 3,
     title: "Travel in Mumbai",
-    image: "/assets/IND/MarineDrive.png",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056162/adventurer_assets_migration/images/MarineDrive_csdbv4.png",
     description: "Mumbai, where the sea meets the sky,Dreams take wings and never die.Chaos and charm in every street,A heartbeat fierce, yet bittersweet!",
   },
 ]

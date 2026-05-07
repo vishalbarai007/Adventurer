@@ -5,7 +5,7 @@ import ScrollDownButton from "../ScrollDownButton"
 
 const AdventurerParallax = () => {
   const background: BannerLayer = {
-    image: "/assets/parallax/Bgmountains.png",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056757/adventurer_assets_migration/images/Bgmountains_vdanil.png",
     translateY: [0, 50],
     opacity: [1, 5],
     scale: [1.05, 1, "easeOutCubic"],
@@ -13,7 +13,7 @@ const AdventurerParallax = () => {
   }
 
   const mountains: BannerLayer = {
-    image: "/assets/parallax/Bgmountains.png",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056757/adventurer_assets_migration/images/Bgmountains_vdanil.png",
     translateY: [0, 100],
     scale: [1, 1.5, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
@@ -24,7 +24,7 @@ const AdventurerParallax = () => {
     scale: [0.5, 0.2, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
     children: (
-      <div className="absolute top-[50%] w-[100%] h-[400px]" style={{backgroundImage: "url(/assets/parallax/birds1.png)", backgroundRepeat: "repeat-x", backgroundSize: "contain"}}>
+      <div className="absolute top-[50%] w-[100%] h-[400px]" style={{backgroundImage: "url(https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057063/adventurer_assets_migration/images/birds1_upwewj.png)", backgroundRepeat: "repeat-x", backgroundSize: "contain"}}>
 
       </div>
     ),
@@ -36,7 +36,7 @@ const AdventurerParallax = () => {
     scale: [0.5, 0.2, "easeOutCubic"],
     shouldAlwaysCompleteAnimation: true,
     children: (
-      <div className="absolute -top-[50%] -left-[40%] rotate-180 w-[50%] h-[400px]" style={{backgroundImage: "url(/assets/parallax/birds2.svg)", backgroundRepeat: "repeat-x", backgroundSize: "contain"}}>
+      <div className="absolute -top-[50%] -left-[40%] rotate-180 w-[50%] h-[400px]" style={{backgroundImage: "url(https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057066/adventurer_assets_migration/images/birds2_jtvgx9.svg)", backgroundRepeat: "repeat-x", backgroundSize: "contain"}}>
 
       </div>
     ),
@@ -48,7 +48,7 @@ const AdventurerParallax = () => {
     expanded: false,
     children: (
       <div className="absolute left-[-15%] bottom-[-5%] w-auto h-[100%] z-40">
-        <img src="/assets/parallax/man.png" alt="Adventurer" className="w-full h-full object-cover object-center" />
+        <img src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057237/adventurer_assets_migration/images/man_q8evnw.png" alt="Adventurer" className="w-full h-full object-cover object-center" />
       </div>
     ),
   }

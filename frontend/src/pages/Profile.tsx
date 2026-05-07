@@ -22,7 +22,7 @@ const Profile = () => {
   const [posts, setPosts] = useState<Post[]>([
     {
       id: "1",
-      imageUrl: "/assets/Developers/Vishal.png",
+      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
       caption: "Definition: A chudail is an individual who fuses elements of both gothic and grunge fashion styles.",
       likes: 245,
       comments: 32,
@@ -40,7 +40,7 @@ const Profile = () => {
     },
     {
       id: "3",
-      imageUrl: "/assets/Developers/Rahul.png",
+      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
       caption: "A Brief Journey Through 90s Counterculture",
       likes: 320,
       comments: 45,
@@ -49,7 +49,7 @@ const Profile = () => {
     },
     {
       id: "4",
-      imageUrl: "/assets/Developers/Vishal.png",
+      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
       caption: "Dark aesthetics combined with laid-back vibes",
       likes: 178,
       comments: 23,
@@ -58,7 +58,7 @@ const Profile = () => {
     },
      {
       id: "5",
-      imageUrl: "/assets/Developers/Vishal.png",
+      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
       caption: "Dark aesthetics combined with laid-back vibes",
       likes: 178,
       comments: 23,
@@ -67,7 +67,7 @@ const Profile = () => {
     },
      {
       id: "4",
-      imageUrl: "/assets/Developers/Vishal.png",
+      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
       caption: "Dark aesthetics combined with laid-back vibes",
       likes: 178,
       comments: 23,

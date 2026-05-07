@@ -48,7 +48,7 @@
 //           <div key={index} className="rounded-xl relative w-full h-64 sm:h-56 md:h-64 bg-zinc-700" data-aos="fade-up">
 //             <div className="overflow-hidden rounded-xl w-full h-full inset-0 bg-black bg-opacity-50">
 //               <img
-//                 src={item.image || "/assets/Blogs/Bg.webp"}
+//                 src={item.image || "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055954/adventurer_assets_migration/images/Bg_jd7hi7.webp"}
 //                 alt={`Image ${index + 1}`}
 //                 title={item.heading}
 //                 className="w-full h-full object-cover rounded-xl transition-transform duration-1000 hover:scale-110"

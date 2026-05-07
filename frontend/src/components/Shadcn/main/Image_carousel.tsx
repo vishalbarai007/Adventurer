@@ -33,9 +33,9 @@ export function CarouselPlugin() {
                 <CardContent
                   className="flex aspect-square items-center justify-center ml-[10%] h-[350px] bg-cover"
                   // backgroundImage={`/assets/IND/image${index + 1}.jpg`} // Replace with actual images ${index + 1}
-                  backgroundImage={`/assets/login/Chat1.png`} // Replace with actual images ${index + 1}
+                  backgroundImage={`https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056976/adventurer_assets_migration/images/Chat1_npfday.png`} // Replace with actual images ${index + 1}
                  
-                  // backgroundImage={`/assets/BrandLogos/Adventurer.jpg`} // Replace with actual images ${index + 1}
+                  // backgroundImage={`https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055967/adventurer_assets_migration/images/Adventurer_q8nh5o.jpg`} // Replace with actual images ${index + 1}
 
                 >
                 </CardContent>
