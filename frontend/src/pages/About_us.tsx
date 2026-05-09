@@ -6,7 +6,7 @@ import AboutUsFeatures from "../components/Developer/support/AboutUsFeatures";
 import Footer from "../components/Developer/support/Footer";
 import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
 
-const AboutUs: React.FC = () => {
+const About_us: React.FC = () => {
   return (
     <div className="bg-[rgb(149,113,79)] min-h-screen">
       <NavigationMenuDemo />
@@ -30,4 +30,4 @@ const AboutUs: React.FC = () => {
   );
 };
 
-export default AboutUs;
+export default About_us;

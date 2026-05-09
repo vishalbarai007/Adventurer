@@ -8,7 +8,7 @@ import { FaSearchLocation, FaStar, FaHandshake } from "react-icons/fa"
 import { RiMessage3Fill, RiAccountPinBoxFill, RiCalendarScheduleFill, RiContactsFill } from "react-icons/ri"
 import { TbTrekking, TbSocial } from "react-icons/tb"
 import { FaMagnifyingGlassLocation } from "react-icons/fa6"
-import { MdGroups2 } from "react-icons/md"
+import { MdGroups2, MdLanguage } from "react-icons/md"
 import { cn } from "../../../lib/utils"
 import {
     NavigationMenu,
@@ -43,14 +43,14 @@ const components: { title: string; subtitle: string; href: string; description: 
         icon: <FaMagnifyingGlassLocation />,
 
     },
-    {
-        title: "Adventure Activities",
-        subtitle: "Blogs",
-        href: "/destinations/adventure_activities",
-        description:
-            "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-        icon: <TbTrekking />,
-    },
+    // {
+    //     title: "Adventure Activities",
+    //     subtitle: "Blogs",
+    //     href: "/destinations/adventure_activities",
+    //     description:
+    //         "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    //     icon: <TbTrekking />,
+    // },
     {
         title: "Travel Tips",
         subtitle: "Tips",
@@ -195,21 +195,13 @@ export function NavigationMenuDemo() {
                                             </Link>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
-                                    {/* <NavigationMenuItem>
-                                        <NavigationMenuLink asChild>
-                                            <Link to="#" className={navigationMenuTriggerStyle()}>
-                                                <IoLogIn className="mr-2" /> <div className="flex items-center hover:bg-white hover:text-black h-10">
-                                                    <GoogleTranslate />
-                                                </div>
-                                            </Link>
-                                        </NavigationMenuLink>
-                                    </NavigationMenuItem> */}
+                                    <NavigationMenuItem>
+                                        <div className={cn(navigationMenuTriggerStyle(), "cursor-pointer px-3 flex items-center")}>
+                                            <MdLanguage className="mr-2 text-lg" />
+                                            <GoogleTranslate />
+                                        </div>
+                                    </NavigationMenuItem>
                                 </NavigationMenuList>
-                                <div>
-                                    <div className="flex items-center h-10 ml-10">
-                                        <GoogleTranslate />
-                                    </div>
-                                </div>
                             </NavigationMenu>
                         </nav>
 

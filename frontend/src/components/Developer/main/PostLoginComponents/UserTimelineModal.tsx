@@ -1,4 +1,3 @@
-import React from "react";
 import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "../../../Shadcn/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem } from "../../support/carousel";
 import Autoplay from "embla-carousel-autoplay";

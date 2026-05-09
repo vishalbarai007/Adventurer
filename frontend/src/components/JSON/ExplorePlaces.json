@@ -1,53 +1,52 @@
 [
   {
     "name": "Bungee Jumping",
-    "imgSrc": "/assets/Sports/Bungee_Jumping.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056418/adventurer_assets_migration/images/Bungee_Jumping_julukk.png",
     "desc": "Experience the ultimate adrenaline rush as you leap off a towering platform in breathtaking locations."
   },
   {
     "name": "Trekking",
-    "imgSrc": "/assets/Sports/Trekking.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056449/adventurer_assets_migration/images/Trekking_fdeohl.png",
     "desc": "Embark on scenic trails, explore rugged terrains, and connect with nature on unforgettable trekking adventures."
   },
   {
     "name": "Wildlife Safari",
-    "imgSrc": "/assets/sanctuary/andheri.jpg",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056771/adventurer_assets_migration/images/Wildlife_c79lh9.png",
     "desc": "Experience the ultimate adrenaline rush as you leap off a towering platform in breathtaking locations."
   },
   {
     "name": "Rock Climbing",
-    "imgSrc": "/assets/forts/pratapgad.jpg",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056942/adventurer_assets_migration/images/pratapgad_w4aoei.jpg",
     "desc": "Scale new heights and experience the thrill of rock climbing in stunning locations."
   },
-  
   {
     "name": "Scuba Diving",
-    "imgSrc": "/assets/Sports/Scuba_Diving.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056450/adventurer_assets_migration/images/Scuba_Diving_uuepy2.png",
     "desc": "Dive into crystal-clear waters to explore vibrant marine life and mesmerizing underwater landscapes."
   },
   {
     "name": "Waterfall Rappelling",
-    "imgSrc": "/assets/Sports/WaterFall_Rappeling.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056465/adventurer_assets_migration/images/WaterFall_Rappeling_wxriuy.png",
     "desc": "Conquer cascading waterfalls while rappelling down with an exhilarating mix of adventure and nature."
   },
   {
     "name": "Wildlife Safari",
-    "imgSrc": "/assets/Sports/Wildlife.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056771/adventurer_assets_migration/images/Wildlife_c79lh9.png",
     "desc": "Discover exotic wildlife, stunning landscapes, and thrilling encounters in their natural habitats."
   },
   {
     "name": "Cycling",
-    "imgSrc": "/assets/Sports/Cycling.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056432/adventurer_assets_migration/images/Cycling_zotcyg.png",
     "desc": "Ride through picturesque trails, serene countryside, and challenging mountain paths on a cycling escapade."
   },
   {
     "name": "Paragliding",
-    "imgSrc": "/assets/Sports/ParaGliding.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056744/adventurer_assets_migration/images/ParaGliding_mrd7k9.png",
     "desc": "Soar like a bird and enjoy panoramic views of valleys, mountains, and coasts with paragliding adventures."
   },
   {
     "name": "Forest Camping",
-    "imgSrc": "/assets/Sports/Night_forest_camping.png",
+    "imgSrc": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056439/adventurer_assets_migration/images/Night_forest_camping_uglwoh.png",
     "desc": "Immerse in the tranquility of nature with night camping under a starlit sky in lush forests."
   }
 ]

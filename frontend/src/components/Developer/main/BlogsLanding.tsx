@@ -23,7 +23,7 @@ const destinations = [
   {
     id: 3,
     title: "Travel in Mumbai",
-    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056162/adventurer_assets_migration/images/MarineDrive_csdbv4.png",
+    image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056315/adventurer_assets_migration/images/MarineDrive_aybgsr.png",
     description: "Mumbai, where the sea meets the sky,Dreams take wings and never die.Chaos and charm in every street,A heartbeat fierce, yet bittersweet!",
   },
 ]

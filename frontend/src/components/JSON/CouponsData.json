@@ -1,49 +1,49 @@
 [
     {
       "title": "Uber",
-      "logo": "/assets/BrandLogos/Uber/Uber.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055934/adventurer_assets_migration/images/Uber_ytg6ai.png",
       "description": "Grab Up to Rs 200 with Intercity Bookings",
       "code": "USEIC15"
     },
     {
       "title": "MakeMyTrip",
-      "logo": "/assets/BrandLogos/MakeMyTrip/MMK.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055981/adventurer_assets_migration/images/MMK_ehygzs.png",
       "description": "Sale: Up to Rs 2000 Off on Domestic Flights",
       "code": "MMTSUPER"
     },
     {
       "title": "FabHotels",
-      "logo": "/assets/BrandLogos/FabHotels/FabHotels.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055979/adventurer_assets_migration/images/FabHotels_hhjvdl.png",
       "description": "AU Small Finance Bank Offer: Get Flat 30% Discount on Payments Today",
       "code": "STAYAU"
     },
     {
       "title": "Oyo",
-      "logo": "/assets/BrandLogos/OYO/Oyo.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055990/adventurer_assets_migration/images/Oyo_yssxko.png",
       "description": "Get Flat 33% Off on All OYO Hotel bookings in USA",
       "code": "OYOGOUSA"
     },
     {
       "title": "Oyo",
-      "logo": "/assets/BrandLogos/OYO/Oyo.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055990/adventurer_assets_migration/images/Oyo_yssxko.png",
       "description": "Get Flat 33% Off on All OYO Hotel bookings in USA",
       "code": "OYOGOUSA"
     },
     {
       "title": "FabHotels",
-      "logo": "/assets/BrandLogos/FabHotels/FabHotels.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055979/adventurer_assets_migration/images/FabHotels_hhjvdl.png",
       "description": "AU Small Finance Bank Offer: Get Flat 30% Discount on Payments Today",
       "code": "STAYAU"
     },
     {
       "title": "Oyo",
-      "logo": "/assets/BrandLogos/OYO/Oyo.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055990/adventurer_assets_migration/images/Oyo_yssxko.png",
       "description": "Get Flat 33% Off on All OYO Hotel bookings in USA",
       "code": "OYOGOUSA"
     },
     {
       "title": "Trivago",
-      "logo": "/assets/BrandLogos/Trivago/Trivago_Logo_1.png",
+      "logo": "https://res.cloudinary.com/djk32h7rn/image/upload/v1778055932/adventurer_assets_migration/images/Trivago_Logo_1_t3ko0f.png",
       "description": "Get Flat 33% Off on All OYO Hotel bookings in USA",
       "code": "OYOGOUSA"
     }

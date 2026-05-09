@@ -2,7 +2,6 @@ import { Home, Search, PlusSquare, Heart, User } from "lucide-react"
 
 interface MobileNavbarProps {
   setShowUploadModal: (show: boolean) => void
-  darkMode: boolean
 }
 
 const MobileNavbar = ({ setShowUploadModal }: MobileNavbarProps) => {

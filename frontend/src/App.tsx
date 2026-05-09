@@ -6,10 +6,11 @@ import { createContext, Suspense, useContext, lazy } from "react";
 import useCurrentLocation from "./hooks/getCurrentLocation";
 import LargeSuccessLoader from "./components/Developer/support/Loader";
 
+
 const SplashScreen = lazy(() => import("./components/Developer/main/SplashScreen"));
 const Pre_login_homepage = lazy(() => import("./pages/Pre_login_homepage"));
 const Login_page = lazy(() => import("./pages/Login_page"));
-const About_us = lazy(() => import("./pages/About_us"));
+const About_us = lazy(() => import("./pages/About_us.tsx"));
 const Contact_us = lazy(() => import("./pages/Contact_us"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const Seasonal_destinations = lazy(() => import("./pages/destinations"));
@@ -22,6 +23,7 @@ const Map = lazy(() => import("./pages/map"));
 const BusinessDashboard = lazy(() => import("./pages/BusinessDashboard"));
 const ChatPage = lazy(() => import("./pages/ChatPage"));
 const TrekDetails = lazy(() => import("./pages/TrekDetails"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -74,6 +76,7 @@ const App = () => {
 						<Route path="/dashboard" element={<BusinessDashboard />} />
 						<Route path="/chat/:chatId" element={<ChatPage />} />
 						<Route path="/upcoming-treks" element={<TrekDetails />} />
+						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</Suspense>
 			</LocationProvider>

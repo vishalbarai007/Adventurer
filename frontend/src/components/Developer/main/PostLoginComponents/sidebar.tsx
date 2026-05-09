@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
     { name: "Book Trips", icon: Compass, href: "/upcoming-treks" },
     { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
-    { name: "My Chats", icon: FileText, href: "/mychats" },
+    { name: "My Chats", icon: FileText, href: "/chat/5" },
     { name: "My Timeline", icon: History, href: "#", isModal: true },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
   ];

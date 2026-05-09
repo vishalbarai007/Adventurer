@@ -14,7 +14,6 @@ import type { Post } from "../types/posts"
 
 const Profile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
-  const [darkMode, setDarkMode] = useState(false)
   const [activeTab, setActiveTab] = useState("posts")
   const [showUploadModal, setShowUploadModal] = useState(false)
   const [showCreateOptions, setShowCreateOptions] = useState(false)
@@ -85,15 +84,6 @@ const Profile = () => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-    if (!darkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }
-
   const handleCreateClick = () => {
     setShowCreateOptions(true)
   }
@@ -110,7 +100,7 @@ const Profile = () => {
   }
 
   return (
-    <div className={`${darkMode ? "dark" : ""} min-h-screen`}>
+    <div className="min-h-screen">
       <div className="flex flex-col md:flex-row bg-white dark:bg-black text-black dark:text-white min-h-screen">
         {/* {!isMobile && <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} */}
           <div className="hidden md:block absolute">
@@ -120,7 +110,6 @@ const Profile = () => {
         <div className="flex-1 md:ml-[300px]">
           <ProfileHeader 
             isMobile={isMobile} 
-            darkMode={darkMode} 
             onCreateClick={handleCreateClick}
           />
 
@@ -129,7 +118,7 @@ const Profile = () => {
           <PostGrid posts={posts} isMobile={isMobile} />
         </div>
 
-        {isMobile && <MobileNavbar setShowUploadModal={() => handleCreateClick()} darkMode={darkMode} />}
+        {isMobile && <MobileNavbar setShowUploadModal={() => handleCreateClick()} />}
 
         {showCreateOptions && (
           <CreateOptionsModal 

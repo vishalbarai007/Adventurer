@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 interface ProfileHeaderProps {
 	isMobile: boolean;
-	darkMode: boolean;
 	onCreateClick: () => void;
 }
 

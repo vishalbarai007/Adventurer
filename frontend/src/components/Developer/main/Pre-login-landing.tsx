@@ -11,21 +11,17 @@ export default function Preloginlanding() {
           {/* Left Column - Text Content */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-              <span className="text-brand-gold">Discover</span>{" "}
-              <span className="text-white">the magic in every destination</span>{" "}
-              <span className="text-brand-gold">with us!</span>
+              <span className="text-brand-gold">Unleash</span>{" "}
+              <span className="text-white">your wild side,</span>{" "}
+              <span className="text-brand-gold">defy the ordinary.</span>
             </h1>
 
             <p className="text-white text-lg leading-relaxed max-w-2xl">
-              A travel and tourism website dedicated to adventurers offers a wealth of resources for those seeking
-              unique experiences. It features destination guides, adventure itineraries, and tourists blogs, catering to
-              thrill-seekers and nature enthusiasts alike.
+              Welcome to the ultimate sanctuary for thrill-seekers and wanderers. Whether you're chasing the adrenaline of high-altitude treks, carving through untouched wilderness, or hunting for that perfect, breathtaking summit—your next legendary story begins here.
             </p>
 
             <p className="text-white text-lg leading-relaxed max-w-2xl">
-              Users can explore various travel options, from hiking trails to extreme sports, ensuring they find the
-              perfect adventure to suit their interests. The platform also fosters a community of like-minded
-              individuals, encouraging the sharing of stories and recommendations to enhance the travel experience.
+              Dive into curated trails, uncover hidden adrenaline rushes, and connect with a raw community of fellow explorers. Stop dreaming about the edge of the map. Step off the beaten path, push your limits, and let the wild transform you.
             </p>
           </div>
 

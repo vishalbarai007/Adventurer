@@ -76,7 +76,9 @@ const Login_form: React.FC = () => {
 				);
 
 				if (response.status === 200) {
-					navigate("/post-login-homepage");
+					const params = new URLSearchParams(location.search);
+					const redirectPath = params.get("redirect") || "/post-login-homepage";
+					navigate(redirectPath);
 				}
 			}
 		} catch (err: unknown) {
