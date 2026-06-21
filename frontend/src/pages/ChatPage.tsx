@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { db } from "../firebaseConfig";
+import { db } from "@/firebaseConfig";
 import { collection, query, orderBy, onSnapshot, addDoc, serverTimestamp } from "firebase/firestore";
 import { 
   Search, 
@@ -13,7 +13,7 @@ import {
   CheckCheck
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar";
+import Sidebar from "@/components/post-login/timeline/Sidebar";
 
 interface Message {
   id: string;

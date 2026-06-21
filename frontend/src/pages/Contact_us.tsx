@@ -1,9 +1,9 @@
-import ContactInfo from "../components/Developer/support/ContactInfo";
-import ContactUsForm from "../components/Developer/support/ContactUsForm";
-import ContactUsImage from "../components/Developer/support/ContactUsImage";
-import Footer from "../components/Developer/support/Footer";
+import ContactInfo from "@/components/contact/ContactInfo";
+import ContactUsForm from "@/components/contact/ContactUsForm";
+import ContactUsImage from "@/components/contact/ContactUsImage";
+import Footer from "@/components/common/Footer";
 // import PreLoginMenuBar from "../components/Shadcn/main/pre_login_menubar";
-import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
+import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
 
 
 const ContactForm = () => {

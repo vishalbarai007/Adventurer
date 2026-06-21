@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react"
 // import Sidebar from "../components/Developer/main/Profile/Sidebar"
 
-import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
-import MobileNavbar from "../components/Developer/main/Profile/MobileNavbar"
-import ProfileHeader from "../components/Developer/main/Profile/ProfileHeader"
-import ProfileTabs from "../components/Developer/main/Profile/ProfileTabs"
-import PostGrid from "../components/Developer/main/Profile/PostGrid"
-import UploadModal from "../components/Developer/main/Profile/UploadModal"
-import CreateOptionsModal from "../components/Developer/main/Profile/CreateOptionsModal"
-import type { Post } from "../types/posts"
+import Sidebar from "@/components/post-login/timeline/Sidebar"
+import MobileNavbar from "@/components/profile/MobileNavbar"
+import ProfileHeader from "@/components/profile/ProfileHeader"
+import ProfileTabs from "@/components/profile/ProfileTabs"
+import PostGrid from "@/components/profile/PostGrid"
+import UploadModal from "@/components/profile/UploadModal"
+import CreateOptionsModal from "@/components/profile/CreateOptionsModal"
+import type { Post } from "@/types/posts"
 
 const Profile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768)

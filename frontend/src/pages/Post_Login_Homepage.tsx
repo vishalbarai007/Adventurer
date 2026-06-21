@@ -1,24 +1,24 @@
 import { lazy, Suspense, useState, useEffect } from "react"
-import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar"
-import { useBackgroundStore } from "../components/Developer/support/background-store"
-// import GoogleTranslate from "../components/Developer/support/LanguageSwitcher"
-import LargeSuccessLoader from "../components/Developer/support/Loader"
+import Sidebar from "@/components/post-login/timeline/Sidebar"
+import { useBackgroundStore } from "@/contexts/background-store"
+// import GoogleTranslate from "@/components/common/LanguageSwitcher"
+import LargeSuccessLoader from "@/components/common/Loader"
 
 // Lazy loading components
-const PostHeader = lazy(() => import("../components/Developer/main/PostLoginComponents/Header"))
+const PostHeader = lazy(() => import("@/components/post-login/timeline/Header"))
 const ProfileCards = lazy(() =>
-  import("../components/Developer/main/PostLoginComponents/profile-cards").then((module) => ({
+  import("@/components/post-login/timeline/ProfileCards").then((module) => ({
     default: module.ProfileCards,
   })),
 )
-const Suggestions = lazy(() => import("../components/Developer/main/PostLoginComponents/suggestions"))
+const Suggestions = lazy(() => import("@/components/post-login/timeline/Suggestions"))
 const Posts = lazy(() =>
-  import("../components/Developer/main/PostLoginComponents/Posts").then((module) => ({
+  import("@/components/post-login/timeline/Posts").then((module) => ({
     default: module.Posts,
   })),
 )
 const CreatePostButton = lazy(() =>
-  import("../components/Developer/main/PostLoginComponents/Posts").then((module) => ({
+  import("@/components/post-login/timeline/Posts").then((module) => ({
     default: module.CreatePostButton,
   })),
 )

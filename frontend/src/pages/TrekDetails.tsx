@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { db } from "../firebaseConfig";
+import { db } from "@/firebaseConfig";
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
-import { mockTrips } from "../components/JSON/mockTrips";
+import { mockTrips } from "@/data/mockTrips";
 import toast, { Toaster } from 'react-hot-toast';
-import httpClient from "../services/httpClient";
-import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar";
+import httpClient from "@/services/httpClient";
+import Sidebar from "@/components/post-login/timeline/Sidebar";
 import { Search, Calendar, ChevronLeft, ChevronRight, MapPin, IndianRupee, X, Instagram } from "lucide-react";
-import { useAuth } from "../Contexts/AuthContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -174,6 +174,7 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
   const [isProcessingBooking, setIsProcessingBooking] = useState(false);
   const [showProfileCompletion, setShowProfileCompletion] = useState(false);
   const [organizerInstagram, setOrganizerInstagram] = useState<string | null>(null);
+  const organizerId = trip.organizerId;
 
   useEffect(() => {
     const fetchOrgSocial = async () => {
@@ -191,7 +192,6 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
     fetchOrgSocial();
   }, [organizerId]);
 
-  const organizerId = trip.organizerId;
   const currentUser = { uid: user?.id || "traveler_123" };
   const trekName = trip.title;
 

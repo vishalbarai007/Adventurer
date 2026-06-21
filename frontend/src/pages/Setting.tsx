@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react"
 import { Settings, Image, User, Shield, HelpCircle, Upload, Bell, Instagram } from "lucide-react"
-import ChangeDisplayModal from "../components/Developer/main/PostLoginComponents/Setting/ChangeDisplay"
-import LanguageSwitcher from "../components/Developer/support/LanguageSwitcher"
-import { useAuth } from "../Contexts/AuthContext"
-import httpClient from "../services/httpClient"
+import ChangeDisplayModal from "@/components/post-login/settings/ChangeDisplay"
+import LanguageSwitcher from "@/components/common/LanguageSwitcher"
+import { useAuth } from "@/contexts/AuthContext"
+import httpClient from "@/services/httpClient"
 import toast, { Toaster } from "react-hot-toast"
 import { FaInstagram } from "react-icons/fa"
 

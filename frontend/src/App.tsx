@@ -3,35 +3,35 @@ import "./index.css";
 import "./styles/custom-scrollbar.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext, Suspense, useContext, lazy } from "react";
-import useCurrentLocation from "./hooks/getCurrentLocation";
-import LargeSuccessLoader from "./components/Developer/support/Loader";
-import { AuthProvider } from './Contexts/AuthContext';
+import useCurrentLocation from "@/hooks/getCurrentLocation";
+import LargeSuccessLoader from "@/components/common/Loader";
+import { AuthProvider } from '@/contexts/AuthContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID";
 
 
-const SplashScreen = lazy(() => import("./components/Developer/main/SplashScreen"));
-const Pre_login_homepage = lazy(() => import("./pages/Pre_login_homepage"));
-const Login_page = lazy(() => import("./pages/Login_page"));
-const About_us = lazy(() => import("./pages/About_us.tsx"));
-const Contact_us = lazy(() => import("./pages/Contact_us"));
-const Blogs = lazy(() => import("./pages/Blogs"));
-const Seasonal_destinations = lazy(() => import("./pages/destinations"));
-const PostLoginPage = lazy(() => import("./pages/Post_Login_Homepage"));
-const TravelTipsPage = lazy(() => import("./pages/TravelTips"));
-const ChatBot = lazy(() => import("./components/Developer/main/ChatBot"));
-const Profile = lazy(() => import("./pages/Profile"));
-const SettingsPage = lazy(() => import("./pages/Setting"));
-const Map = lazy(() => import("./pages/map"));
-const BusinessDashboard = lazy(() => import("./pages/BusinessDashboard"));
-const ChatPage = lazy(() => import("./pages/ChatPage"));
-const TrekDetails = lazy(() => import("./pages/TrekDetails"));
-const DestinationCategory = lazy(() => import("./pages/DestinationCategory"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const SplashScreen = lazy(() => import("@/components/common/SplashScreen"));
+const Pre_login_homepage = lazy(() => import("@/pages/Pre_login_homepage"));
+const Login_page = lazy(() => import("@/pages/Login_page"));
+const About_us = lazy(() => import("@/pages/About_us.tsx"));
+const Contact_us = lazy(() => import("@/pages/Contact_us"));
+const Blogs = lazy(() => import("@/pages/Blogs"));
+const Seasonal_destinations = lazy(() => import("@/pages/destinations"));
+const PostLoginPage = lazy(() => import("@/pages/Post_Login_Homepage"));
+const TravelTipsPage = lazy(() => import("@/pages/TravelTips"));
+const ChatBot = lazy(() => import("@/components/chat/ChatBot"));
+const Profile = lazy(() => import("@/pages/Profile"));
+const SettingsPage = lazy(() => import("@/pages/Setting"));
+const Map = lazy(() => import("@/pages/map"));
+const BusinessDashboard = lazy(() => import("@/pages/BusinessDashboard"));
+const ChatPage = lazy(() => import("@/pages/ChatPage"));
+const TrekDetails = lazy(() => import("@/pages/TrekDetails"));
+const DestinationCategory = lazy(() => import("@/pages/DestinationCategory"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
-import { useAuth } from "./Contexts/AuthContext";
-import OrganizerOnboarding from "./components/Developer/main/OrganizerOnboarding";
+import { useAuth } from "@/contexts/AuthContext";
+import OrganizerOnboarding from "@/components/auth/OrganizerOnboarding";
 
 // Create a context to share the location data
 type LocationContextType = {

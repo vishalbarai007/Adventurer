@@ -1,4 +1,4 @@
-import httpClient from "./httpClient";
+import httpClient from "@/services/httpClient";
 
 // Define what the response from your server looks like
 interface AuthResponse {

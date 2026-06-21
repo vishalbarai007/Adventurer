@@ -1,10 +1,10 @@
-import AboutUsTitle from "../components/Developer/support/AboutUsTitle";
-import AboutUsLeftContent from "../components/Developer/support/AboutUsLeftContent";
-import AboutUsContentRight from "../components/Developer/support/AboutUsContentRight";
-import AboutUsFeatures from "../components/Developer/support/AboutUsFeatures";
+import AboutUsTitle from "@/components/about/AboutUsTitle";
+import AboutUsLeftContent from "@/components/about/AboutUsLeftContent";
+import AboutUsContentRight from "@/components/about/AboutUsContentRight";
+import AboutUsFeatures from "@/components/about/AboutUsFeatures";
 // import PreLoginMenuBar from "../components/Shadcn/main/pre_login_menubar";
-import Footer from "../components/Developer/support/Footer";
-import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
+import Footer from "@/components/common/Footer";
+import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
 
 const About_us: React.FC = () => {
   return (

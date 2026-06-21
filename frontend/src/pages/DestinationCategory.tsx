@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
-import Footer from "../components/Developer/support/Footer";
-import DestinationModal from "../components/Developer/main/DestinationModal";
+import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
+import Footer from "@/components/common/Footer";
+import DestinationModal from "@/components/destinations/DestinationModal";
 
 // Import all JSON data
-import trekkingData from "../components/JSON/trekking.json";
-import waterfallsData from "../components/JSON/waterfalls.json";
-import beachesData from "../components/JSON/beaches.json";
-import sanctuaryData from "../components/JSON/sanctuary.json";
-import familyFriendlyData from "../components/JSON/family-friendly.json";
-import historicalData from "../components/JSON/historical.json";
-import wildlifeData from "../components/JSON/wildlife.json";
-import soloTravelData from "../components/JSON/solo-travel.json";
+import trekkingData from "@/data/trekking.json";
+import waterfallsData from "@/data/waterfalls.json";
+import beachesData from "@/data/beaches.json";
+import sanctuaryData from "@/data/sanctuary.json";
+import familyFriendlyData from "@/data/family-friendly.json";
+import historicalData from "@/data/historical.json";
+import wildlifeData from "@/data/wildlife.json";
+import soloTravelData from "@/data/solo-travel.json";
 
 // Type definition for a destination
 interface Destination {

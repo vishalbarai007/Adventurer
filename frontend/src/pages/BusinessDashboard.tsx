@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import httpClient from "../services/httpClient";
-import { db } from "../firebaseConfig";
+import httpClient from "@/services/httpClient";
+import { db } from "@/firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar";
+import Sidebar from "@/components/post-login/timeline/Sidebar";
 
 interface Listing {
   id: string;

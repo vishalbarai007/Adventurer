@@ -1,17 +1,17 @@
-import Categories from "../components/Developer/main/Categories";
-import CouponsAndDeals from "../components/Developer/main/CouponsAndDeals";
-import Destination from "../components/Developer/main/Destinations";
-import ImageGallery from "../components/Developer/main/ImageGallery";
+import Categories from "@/components/destinations/Categories";
+import CouponsAndDeals from "@/components/destinations/CouponsAndDeals";
+import Destination from "@/components/destinations/Destinations";
+import ImageGallery from "@/components/destinations/ImageGallery";
 // import Pre_login_menubar from "../components/Shadcn/main/pre_login_menubar";
-// import ExplorePlaces from '../components/Developer/main/ExplorePlaces';
-import Scrollslider from "../components/Developer/main/scrollslider";
+// import ExplorePlaces from '@/components/destinations/ExplorePlaces';
+import Scrollslider from "@/components/home/ScrollSlider";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Carousel from "../components/Shadcn/main/Carousel";
-import Footer from "../components/Developer/support/Footer";
-import { NavigationMenuDemo } from "../components/Shadcn/main/NavigationMenu";
-import ExploreAdventures from "../components/Developer/main/ExploreAdventures";
+import Carousel from "@/components/home/Carousel";
+import Footer from "@/components/common/Footer";
+import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
+import ExploreAdventures from "@/components/destinations/ExploreAdventures";
 
 
 

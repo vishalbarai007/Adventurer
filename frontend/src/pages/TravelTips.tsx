@@ -10,8 +10,8 @@ import {
     BotMessageSquare,
     ArrowRight
 } from 'lucide-react';
-import Footer from '../components/Developer/support/Footer';
-import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu';
+import Footer from '@/components/common/Footer';
+import { NavigationMenuDemo } from '@/components/common/NavigationMenu';
 
 const dropdownVariants = {
     hidden: { opacity: 0, height: 0 },
