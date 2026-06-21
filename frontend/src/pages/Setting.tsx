@@ -1,18 +1,27 @@
 "use client"
 
-import { useState } from "react"
-import { Settings, Image, User, Shield, HelpCircle, Upload, Bell } from "lucide-react"
+import React, { useState, useEffect } from "react"
+import { Settings, Image, User, Shield, HelpCircle, Upload, Bell, Instagram } from "lucide-react"
 import ChangeDisplayModal from "../components/Developer/main/PostLoginComponents/Setting/ChangeDisplay"
 import LanguageSwitcher from "../components/Developer/support/LanguageSwitcher"
+import { useAuth } from "../Contexts/AuthContext"
+import httpClient from "../services/httpClient"
+import toast, { Toaster } from "react-hot-toast"
+import { FaInstagram } from "react-icons/fa"
 
 export default function SettingsPage() {
+  const { user, checkAuth } = useAuth()
   const [isDisplayModalOpen, setIsDisplayModalOpen] = useState(false)
   const [isProfileSection, setIsProfileSection] = useState(true)
   const [isDisplaySection, setIsDisplaySection] = useState(false)
   const [isGeneralSection, setIsGeneralSection] = useState(false)
+  const [isSocialSection, setIsSocialSection] = useState(false)
+  
   const [profilePhoto, setProfilePhoto] = useState<string | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null)
+  const [instagramInput, setInstagramInput] = useState("")
+
   const [notificationSettings, setNotificationSettings] = useState({
     emailNotifications: true,
     pushNotifications: false,
@@ -23,14 +32,19 @@ export default function SettingsPage() {
   const [timeZone, setTimeZone] = useState("UTC")
 
   const avatars = [
-  "https://avatars.dicebear.com/api/bottts/robot1.svg",
-  "https://avatars.dicebear.com/api/identicon/animal42.svg",
-  "https://api.dicebear.com/7.x/adventurer/svg?seed=TigerBot",
-  "https://api.dicebear.com/7.x/lorelei/svg?seed=FoxMage",
-  "https://api.dicebear.com/7.x/pixel-art/svg?seed=CyberCat",
-  "https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=MonkeyMind"
-];
+    "https://avatars.dicebear.com/api/bottts/robot1.svg",
+    "https://avatars.dicebear.com/api/identicon/animal42.svg",
+    "https://api.dicebear.com/7.x/adventurer/svg?seed=TigerBot",
+    "https://api.dicebear.com/7.x/lorelei/svg?seed=FoxMage",
+    "https://api.dicebear.com/7.x/pixel-art/svg?seed=CyberCat",
+    "https://api.dicebear.com/7.x/big-ears-neutral/svg?seed=MonkeyMind"
+  ];
 
+  useEffect(() => {
+    if (user?.socialLinks?.instagramProfileUrl) {
+      setInstagramInput(user.socialLinks.instagramProfileUrl);
+    }
+  }, [user]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -78,18 +92,28 @@ export default function SettingsPage() {
     setIsProfileSection(true)
     setIsDisplaySection(false)
     setIsGeneralSection(false)
+    setIsSocialSection(false)
   }
 
   const showDisplaySection = () => {
     setIsProfileSection(false)
     setIsDisplaySection(true)
     setIsGeneralSection(false)
+    setIsSocialSection(false)
   }
 
   const showGeneralSection = () => {
     setIsProfileSection(false)
     setIsDisplaySection(false)
     setIsGeneralSection(true)
+    setIsSocialSection(false)
+  }
+
+  const showSocialSection = () => {
+    setIsProfileSection(false)
+    setIsDisplaySection(false)
+    setIsGeneralSection(false)
+    setIsSocialSection(true)
   }
 
   const toggleNotificationSetting = (setting: keyof typeof notificationSettings) => {
@@ -107,8 +131,70 @@ export default function SettingsPage() {
     setTimeZone(e.target.value)
   }
 
+  const handleSaveInstagram = async () => {
+    if (!instagramInput.trim()) {
+      toast.error("Please enter a link or username.");
+      return;
+    }
+
+    let input = instagramInput.trim();
+    let username = "";
+    
+    const regex = /^(https?:\/\/)?(www\.)?instagram\.com\/([a-zA-Z0-9_\.]+)\/?/;
+    const match = input.match(regex);
+    
+    if (match) {
+      username = match[3];
+    } else {
+      if (/^[a-zA-Z0-9_\.]+$/.test(input)) {
+        username = input;
+      } else {
+        toast.error("Please enter a valid Instagram URL or username.");
+        return;
+      }
+    }
+
+    const profileUrl = `https://www.instagram.com/${username}/`;
+
+    try {
+      toast.loading("Saving social links...", { id: "social" });
+      await httpClient.put("/api/user/profile", {
+        socialLinks: {
+          instagramUsername: username,
+          instagramProfileUrl: profileUrl,
+          isInstagramLinked: true
+        }
+      });
+      await checkAuth();
+      toast.success("Instagram successfully linked!", { id: "social" });
+    } catch (e: any) {
+      console.error(e);
+      toast.error(e.response?.data?.error || "Failed to update social links.", { id: "social" });
+    }
+  };
+
+  const handleDisconnectInstagram = async () => {
+    try {
+      toast.loading("Disconnecting Instagram...", { id: "social" });
+      await httpClient.put("/api/user/profile", {
+        socialLinks: {
+          instagramUsername: null,
+          instagramProfileUrl: null,
+          isInstagramLinked: false
+        }
+      });
+      setInstagramInput("");
+      await checkAuth();
+      toast.success("Instagram disconnected.", { id: "social" });
+    } catch (e: any) {
+      console.error(e);
+      toast.error(e.response?.data?.error || "Failed to disconnect.", { id: "social" });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white p-6">
+      <Toaster position="top-center" />
       <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
         <Settings className="h-6 w-6" />
         Settings
@@ -119,31 +205,38 @@ export default function SettingsPage() {
           <div className="bg-gray-50 rounded-lg p-4">
             <ul className="space-y-2">
               <li 
-                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isProfileSection ? 'bg-gray-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isProfileSection ? 'bg-gray-100 text-blue-600 font-medium' : 'hover:bg-gray-100 text-gray-700'}`}
                 onClick={showProfileSection}
               >
                 <User className="h-4 w-4" />
                 Profile
               </li>
               <li
-                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isDisplaySection ? 'bg-gray-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isDisplaySection ? 'bg-gray-100 text-blue-600 font-medium' : 'hover:bg-gray-100 text-gray-700'}`}
                 onClick={showDisplaySection}
               >
                 <Image className="h-4 w-4" />
                 Change Display
               </li>
               <li
-                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isGeneralSection ? 'bg-gray-100 text-blue-600' : 'hover:bg-gray-100'}`}
+                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isSocialSection ? 'bg-gray-100 text-blue-600 font-medium' : 'hover:bg-gray-100 text-gray-700'}`}
+                onClick={showSocialSection}
+              >
+                <FaInstagram className="h-4 w-4 text-pink-600" />
+                Social Links
+              </li>
+              <li
+                className={`p-2 rounded-md cursor-pointer flex items-center gap-2 ${isGeneralSection ? 'bg-gray-100 text-blue-600 font-medium' : 'hover:bg-gray-100 text-gray-700'}`}
                 onClick={showGeneralSection}
               >
                 <Bell className="h-4 w-4" />
                 General
               </li>
-              <li className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+              <li className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex items-center gap-2 text-gray-700">
                 <Shield className="h-4 w-4" />
                 Privacy & Security
               </li>
-              <li className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+              <li className="p-2 rounded-md hover:bg-gray-100 cursor-pointer flex items-center gap-2 text-gray-700">
                 <HelpCircle className="h-4 w-4" />
                 Help & Support
               </li>
@@ -214,6 +307,7 @@ export default function SettingsPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                   <input
                     type="text"
+                    defaultValue={user?.name || ""}
                     className="w-full p-2 border border-gray-300 rounded-md"
                     placeholder="Enter your full name"
                   />
@@ -223,7 +317,9 @@ export default function SettingsPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                   <input
                     type="email"
-                    className="w-full p-2 border border-gray-300 rounded-md"
+                    defaultValue={user?.email || ""}
+                    disabled
+                    className="w-full p-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -260,6 +356,68 @@ export default function SettingsPage() {
                 >
                   Change Background
                 </button>
+              </div>
+            </div>
+          )}
+
+          {isSocialSection && (
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Instagram className="h-5 w-5 text-pink-600" />
+                Social Links & Proof
+              </h2>
+              <p className="text-gray-600 text-sm mb-6">
+                Link your Instagram account to show social proof on your posts, organizers listings, and profile cards.
+              </p>
+
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Instagram Profile Link</label>
+                  <div className="relative">
+                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                      <Instagram size={18} className="h-5 w-5 text-pink-600" />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="e.g. https://www.instagram.com/yourusername"
+                      className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition"
+                      value={instagramInput}
+                      onChange={(e) => setInstagramInput(e.target.value)}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">
+                    Enter your full profile link (e.g. https://www.instagram.com/alex_adventurer) or just your username.
+                  </p>
+                </div>
+
+                {user?.socialLinks?.isInstagramLinked && (
+                  <div className="rounded-xl bg-green-50 border border-green-200 p-4 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                        <Instagram size={20} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">Instagram Account Linked</p>
+                        <p className="text-xs text-green-700 font-medium">@{user.socialLinks.instagramUsername}</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={handleDisconnectInstagram}
+                      className="text-xs font-semibold text-red-600 hover:text-red-800 transition"
+                    >
+                      Disconnect
+                    </button>
+                  </div>
+                )}
+
+                <div className="pt-4 border-t border-gray-200 flex gap-3">
+                  <button
+                    onClick={handleSaveInstagram}
+                    className="px-6 py-2.5 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-600/10 hover:bg-blue-700 transition"
+                  >
+                    Save Changes
+                  </button>
+                </div>
               </div>
             </div>
           )}
@@ -348,7 +506,6 @@ export default function SettingsPage() {
                       value={languagePreference}
                       onChange={handleLanguageChange}
                     >
-                    
                       <option value="english">English</option>
                       <option value="spanish">Spanish</option>
                       <option value="french">French</option>

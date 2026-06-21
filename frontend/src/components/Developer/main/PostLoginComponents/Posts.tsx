@@ -1,6 +1,6 @@
 // Posts.tsx
-import { useState, useRef, useCallback } from "react";
-import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal, Loader2, Grid, List, MapPin, X, Share2 } from "lucide-react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal, Loader2, Grid, List, MapPin, X, Share2, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import httpClient from "../../../../services/httpClient";
 
@@ -417,6 +417,22 @@ const Post = ({ post }: { post: PostProps }) => {
   const [likeCount, setLikeCount] = useState(post.likes);
   const [comment, setComment] = useState("");
   const [showComments, setShowComments] = useState(false);
+  const [instagramUrl, setInstagramUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSocial = async () => {
+      try {
+        const authorId = (post as any).authorId || post.username;
+        const res = await httpClient.get(`http://localhost:5000/api/user/${authorId}/public-profile`);
+        if (res.data?.socialLinks?.isInstagramLinked) {
+          setInstagramUrl(res.data.socialLinks.instagramProfileUrl);
+        }
+      } catch (e) {
+        // Ignore
+      }
+    };
+    fetchSocial();
+  }, [post]);
 
   const handleLike = () => {
     if (liked) {
@@ -450,7 +466,14 @@ const Post = ({ post }: { post: PostProps }) => {
             className="w-8 h-8 rounded-full object-cover"
           />
           <div>
-            <p className="font-medium text-sm">{post.username}</p>
+            <div className="flex items-center gap-1.5">
+              <p className="font-medium text-sm">{post.username}</p>
+              {instagramUrl && (
+                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-700 transition">
+                  <Instagram size={14} className="stroke-[2.5]" />
+                </a>
+              )}
+            </div>
             {post.location && (
               <p className="text-xs text-gray-500">{post.location}</p>
             )}

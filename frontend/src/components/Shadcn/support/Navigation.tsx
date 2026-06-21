@@ -21,13 +21,13 @@ export const Navigation: React.FC<NavigationProps> = ({ isOpen }) => {
   const { authState } = useAuth();
 
   const menuItems = [
-    { label: "Home", link: "/pre-login-homepage" },
+    { label: "Home", link: "/welcome" },
     { label: "Blogs", link: "/blogs" },
-    { label: "Destinations", link: "/seasonal_destinations" },
+    { label: "Destinations", link: "/destinations" },
     { label: "About us", link: "/about" },
     { label: "Contact us", link: "/contact" },
     ...(authState === 'authenticated'
-      ? [{ label: "Dashboard", link: "/post-login-homepage" }]
+      ? [{ label: "Dashboard", link: "/explore" }]
       : [{ label: "Signup/SignIn", link: "/login" }]),
   ];
 

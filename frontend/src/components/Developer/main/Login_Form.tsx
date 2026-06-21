@@ -6,6 +6,7 @@ import { CarouselPlugin } from "../../Shadcn/main/Image_carousel";
 import { useNavigate, useLocation } from "react-router-dom";
 import httpClient from "../../../services/httpClient";
 import { useAuth } from "../../../Contexts/AuthContext";
+import { Link } from 'react-router-dom';
 
 interface FormInputs {
 	name?: string;
@@ -56,8 +57,8 @@ const Login_form: React.FC = () => {
 			if (mode === "SignUp") {
 				const response = await httpClient.post(
 					"http://localhost:5000/register",
-					{ 
-						email: data.email, 
+					{
+						email: data.email,
 						password: data.password,
 						name: data.name,
 						role: role,
@@ -80,12 +81,12 @@ const Login_form: React.FC = () => {
 				if (response.status === 200) {
 					await checkAuth(); // Update global auth state before navigating
 					const params = new URLSearchParams(location.search);
-					const redirectPath = params.get("redirect") || "/post-login-homepage";
+					const redirectPath = params.get("redirect") || "/explore";
 					navigate(redirectPath);
 				}
 			}
 		} catch (err: unknown) {
-            const axiosError = err as { response?: { data?: { error?: string } } };
+			const axiosError = err as { response?: { data?: { error?: string } } };
 			if (axiosError.response?.data?.error) {
 				setError(axiosError.response.data.error);
 			} else {
@@ -106,8 +107,9 @@ const Login_form: React.FC = () => {
 			if (response.data.url) {
 				window.location.href = response.data.url;
 				console.log("Working");
-				
+
 			}
+			// console.log(response.data);
 		} catch {
 			setError("Google sign-in failed. Please try again.");
 			console.log("error");
@@ -121,12 +123,14 @@ const Login_form: React.FC = () => {
 		<div className="min-h-screen bg-[#112c1d] flex items-center justify-center p-4">
 			<div className="loginform bg-white text-[#EADED0] bg-opacity-20 p-4 sm:p-8 rounded-lg shadow-lg w-full max-w-6xl flex flex-col lg:flex-row gap-6 lg:gap-10">
 				<div className="Formlogo p-4 sm:p-8 rounded-lg shadow-lg w-full lg:w-1/2 text-center">
-					<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#233115]">
-						ADVENTURER
-					</h1>
-					<p className="text-sm text-[#EADED0] mt-2">
-						"Plan your destination with Adventurer."
-					</p>
+					<Link to="/welcome" className="cursor-pointer">
+						<h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#233115]">
+							ADVENTURER
+						</h1>
+						<p className="text-sm text-[#EADED0] mt-2">
+							"Plan your destination with Adventurer."
+						</p>
+					</Link>
 					<div className="z-20 my-6 sm:my-10 flex justify-center align-middle">
 						<CarouselPlugin />
 					</div>
@@ -146,7 +150,7 @@ const Login_form: React.FC = () => {
 						<>
 							<div>
 								<label className="block text-sm font-medium text-[#EADED0]">
-									Full Name
+									Full Name <span className="text-red-500">*</span>
 								</label>
 								<input
 									type="text"
@@ -168,13 +172,13 @@ const Login_form: React.FC = () => {
 								>
 									<option value="traveler">I am a Traveler</option>
 									<option value="organizer">I am an Agency/Organizer</option>
-									<option value="vendor">I own a Villa/Property</option>
+									{/* <option value="vendor">I own a Villa/Property</option> */}
 								</select>
 							</div>
 							{role !== "traveler" && (
 								<div className="flex gap-4">
 									<div className="flex-1">
-										<label className="block text-sm font-medium text-[#EADED0]">Business Name</label>
+										<label className="block text-sm font-medium text-[#EADED0]">Business Name <span className="text-red-500">*</span></label>
 										<input
 											type="text"
 											{...register("companyName", { required: role !== "traveler" ? "Business Name is required" : false })}
@@ -202,7 +206,7 @@ const Login_form: React.FC = () => {
 
 					<div>
 						<label className="block text-sm font-medium text-[#EADED0]">
-							{mode === "SignUp" ? "Create Email" : "Enter Email"}
+							{mode === "SignUp" ? "Create Email" : "Enter Email"} <span className="text-red-500">*</span>
 						</label>
 						<input
 							type="email"
@@ -226,7 +230,8 @@ const Login_form: React.FC = () => {
 						<label className="block text-sm font-medium text-[#EADED0]">
 							{mode === "SignUp"
 								? "Create Password"
-								: "Enter Password"}
+								: "Enter Password"}{" "}
+							<span className="text-red-500">*</span>
 						</label>
 						<input
 							type={showPassword ? "text" : "password"}

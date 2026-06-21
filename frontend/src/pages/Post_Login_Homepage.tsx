@@ -83,7 +83,7 @@ export default function PostLoginPage() {
 
         {/* Feed section — only this scrolls */}
         <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-4">
-          <h2 className="text-xl font-semibold mb-4 text-[#012c18]">Your Feed</h2>
+          {/* <h2 className="text-xl font-semibold mb-4 text-[#012c18]">Your Feed</h2> */}
           <Suspense fallback={<div><LargeSuccessLoader /></div>}>
             <Posts />
           </Suspense>

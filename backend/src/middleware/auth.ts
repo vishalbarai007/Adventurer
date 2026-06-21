@@ -20,17 +20,22 @@ export const authenticateToken = async (req: AuthRequest, res: Response, next: N
     req.user = decoded;
     
     // Implement sliding session window
-    const newToken = jwt.sign(
-      { id: decoded.id, email: decoded.email, role: decoded.role || 'traveler' },
-      JWT_SECRET,
-      { expiresIn: '3d' }
-    );
-    res.cookie('token', newToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
-      maxAge: 3 * 24 * 60 * 60 * 1000 // 3 days
-    });
+    const currentTime = Math.floor(Date.now() / 1000);
+    const remainingTime = decoded.exp - currentTime;
+
+    if (remainingTime < 24 * 60 * 60) {
+      const newToken = jwt.sign(
+        { id: decoded.id, email: decoded.email, role: decoded.role || 'traveler' },
+        JWT_SECRET,
+        { expiresIn: '3d' }
+      );
+      res.cookie('token', newToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict',
+        maxAge: 3 * 24 * 60 * 60 * 1000 // 3 days
+      });
+    }
 
     next();
   } catch (err) {

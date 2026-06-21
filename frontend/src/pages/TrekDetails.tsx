@@ -1,11 +1,12 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import { collection, query, where, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 import { mockTrips } from "../components/JSON/mockTrips";
 import toast, { Toaster } from 'react-hot-toast';
 import httpClient from "../services/httpClient";
 import Sidebar from "../components/Developer/main/PostLoginComponents/sidebar";
-import { Search, Calendar, ChevronLeft, ChevronRight, MapPin, IndianRupee, X } from "lucide-react";
+import { Search, Calendar, ChevronLeft, ChevronRight, MapPin, IndianRupee, X, Instagram } from "lucide-react";
+import { useAuth } from "../Contexts/AuthContext";
 
 const loadRazorpayScript = () => {
   return new Promise((resolve) => {
@@ -17,14 +18,216 @@ const loadRazorpayScript = () => {
   });
 };
 
+const ProfileCompletionModal = ({ onSubmit, onClose }: { onSubmit: (data: any) => Promise<void>, onClose: () => void }) => {
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [residentialAddress, setResidentialAddress] = useState("");
+  const [emergencyName, setEmergencyName] = useState("");
+  const [emergencyPhone, setEmergencyPhone] = useState("");
+  const [emergencyRelation, setEmergencyRelation] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!gender || !dateOfBirth || !residentialAddress || !emergencyName || !emergencyPhone || !emergencyRelation) {
+      setError("All fields are required.");
+      return;
+    }
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(emergencyPhone.replace(/\s+/g, ""))) {
+      setError("Please enter a valid 10-digit emergency contact phone number.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    try {
+      await onSubmit({
+        gender,
+        dateOfBirth,
+        residentialAddress,
+        emergencyName: emergencyName.trim(),
+        emergencyPhone: emergencyPhone.trim(),
+        emergencyRelation: emergencyRelation.trim()
+      });
+    } catch (err: any) {
+      setError(err.message || "Failed to submit.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className="max-w-md w-full bg-white rounded-2xl p-8 shadow-2xl relative border border-gray-100 my-auto max-h-[90vh] overflow-y-auto custom-scrollbar">
+        <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+          <X className="w-6 h-6" />
+        </button>
+        <h2 className="text-2xl font-bold mb-2 text-gray-900">Complete Your Profile</h2>
+        <p className="text-sm text-gray-600 mb-6 font-medium">For your safety during the trek, please provide your basic details and emergency contact information.</p>
+        
+        {error && (
+          <div className="mb-4 bg-red-50 border border-red-200 text-red-600 rounded-xl p-3 text-xs">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Gender</label>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm bg-white focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+              required
+            >
+              <option value="">Select Gender...</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Date of Birth</label>
+            <input
+              type="date"
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
+              className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Residential Address</label>
+            <input
+              type="text"
+              placeholder="e.g. 123 Street Name, City"
+              value={residentialAddress}
+              onChange={(e) => setResidentialAddress(e.target.value)}
+              className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+              required
+            />
+          </div>
+
+          <div className="border-t border-gray-100 pt-4 mt-4">
+            <h3 className="text-sm font-bold text-gray-800 mb-3">Emergency Contact Information</h3>
+            
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Contact Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. John Doe"
+                  value={emergencyName}
+                  onChange={(e) => setEmergencyName(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Relation</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Father, Spouse"
+                  value={emergencyRelation}
+                  onChange={(e) => setEmergencyRelation(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs text-gray-600 mb-1">Phone Number</label>
+                <input
+                  type="tel"
+                  placeholder="10-digit number"
+                  value={emergencyPhone}
+                  onChange={(e) => setEmergencyPhone(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none transition"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-green-600/10 transition mt-6 disabled:opacity-50"
+          >
+            {loading ? "Saving Details..." : "Save & Continue Booking"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
 const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => {
+  const { user, checkAuth } = useAuth();
   const [isInjecting, setIsInjecting] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isProcessingBooking, setIsProcessingBooking] = useState(false);
+  const [showProfileCompletion, setShowProfileCompletion] = useState(false);
+  const [organizerInstagram, setOrganizerInstagram] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchOrgSocial = async () => {
+      try {
+        if (organizerId) {
+          const res = await httpClient.get(`http://localhost:5000/api/user/${organizerId}/public-profile`);
+          if (res.data?.socialLinks?.isInstagramLinked) {
+            setOrganizerInstagram(res.data.socialLinks.instagramProfileUrl);
+          }
+        }
+      } catch (err) {
+        // Ignore
+      }
+    };
+    fetchOrgSocial();
+  }, [organizerId]);
 
   const organizerId = trip.organizerId;
-  const currentUser = { uid: "traveler_123" };
+  const currentUser = { uid: user?.id || "traveler_123" };
   const trekName = trip.title;
+
+  const handleBookNowClick = () => {
+    if (!user) {
+      toast.error("Please login to book a trek.");
+      return;
+    }
+    if (user.role === 'traveler' && !user.profileCompleted) {
+      setShowProfileCompletion(true);
+    } else {
+      setIsBookingModalOpen(true);
+    }
+  };
+
+  const handleSubmitProfile = async (profileData: any) => {
+    try {
+      await httpClient.put("/api/user/profile", {
+        profileCompleted: true,
+        gender: profileData.gender,
+        dateOfBirth: profileData.dateOfBirth,
+        residentialAddress: profileData.residentialAddress,
+        emergencyContact: {
+          name: profileData.emergencyName,
+          phone: profileData.emergencyPhone,
+          relation: profileData.emergencyRelation
+        }
+      });
+      await checkAuth();
+      setShowProfileCompletion(false);
+      setIsBookingModalOpen(true);
+    } catch (e: any) {
+      console.error(e);
+      throw new Error(e.response?.data?.error || "Failed to update profile details.");
+    }
+  };
 
   const handleInquire = async () => {
     setIsInjecting(true);
@@ -172,14 +375,21 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
               </div>
               <div>
                 <p className="text-sm text-gray-500 font-medium">Organized professionally by</p>
-                <p className="font-bold text-gray-900 text-lg">{trip.organizerName}</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="font-bold text-gray-900 text-lg">{trip.organizerName}</p>
+                  {organizerInstagram && (
+                    <a href={organizerInstagram} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-700 transition">
+                      <Instagram size={18} className="stroke-[2.5]" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
             <div className="flex gap-4 w-full sm:w-auto">
               <button onClick={handleInquire} disabled={isInjecting} className="w-full sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-900 font-bold py-3 px-6 rounded-xl transition disabled:opacity-70 flex justify-center items-center gap-2 whitespace-nowrap">
                 {isInjecting ? "Connecting..." : "Contact Organizer"}
               </button>
-              <button onClick={() => setIsBookingModalOpen(true)} className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-xl transition transform hover:-translate-y-1 active:translate-y-0 flex justify-center items-center gap-2 whitespace-nowrap">
+              <button onClick={handleBookNowClick} className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-xl shadow-xl transition transform hover:-translate-y-1 active:translate-y-0 flex justify-center items-center gap-2 whitespace-nowrap">
                 Book Now
               </button>
             </div>
@@ -203,6 +413,43 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
             <button onClick={() => setIsBookingModalOpen(false)} className="mt-6 w-full text-center text-sm font-semibold text-gray-500 hover:text-gray-800">Cancel</button>
           </div>
         </div>
+      )}
+      {showProfileCompletion && (
+        <ProfileCompletionModal
+          onSubmit={handleSubmitProfile}
+          onClose={() => setShowProfileCompletion(false)}
+        />
+      )}
+    </div>
+  );
+};
+
+const OrganizerLink = ({ organizerId, organizerName }: { organizerId: string, organizerName: string }) => {
+  const [instagramUrl, setInstagramUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSocial = async () => {
+      try {
+        if (organizerId) {
+          const res = await httpClient.get(`http://localhost:5000/api/user/${organizerId}/public-profile`);
+          if (res.data?.socialLinks?.isInstagramLinked) {
+            setInstagramUrl(res.data.socialLinks.instagramProfileUrl);
+          }
+        }
+      } catch (err) {
+        // Ignore
+      }
+    };
+    fetchSocial();
+  }, [organizerId]);
+
+  return (
+    <div className="flex items-center gap-1.5">
+      <span className="font-medium text-gray-700">{organizerName}</span>
+      {instagramUrl && (
+        <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-700 transition" onClick={(e) => e.stopPropagation()}>
+          <Instagram size={14} className="stroke-[2.5]" />
+        </a>
       )}
     </div>
   );
@@ -288,7 +535,7 @@ const TrekDetails = () => {
                       </div>
                       <div className="flex items-center text-sm text-gray-600 mb-4">
                         <MapPin className="w-4 h-4 mr-2 text-green-600" />
-                        <span className="font-medium">{trek.organizerName}</span>
+                        <OrganizerLink organizerId={trek.organizerId} organizerName={trek.organizerName} />
                       </div>
                       <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                         <div className="flex items-center text-gray-900 font-bold text-xl">

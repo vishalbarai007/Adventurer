@@ -52,15 +52,20 @@ const saveUserToFirebase = async (userData: any) => {
     password: userData.password,
     name: userData.name || '',
     role: userData.role || 'traveler',
+    authProvider: userData.authProvider || (userData.google_auth ? 'google' : 'password'),
     createdAt: new Date(),
     last_login: new Date()
   };
 
-  if (['organizer', 'vendor'].includes(documentData.role)) {
+  if (documentData.role === 'traveler') {
+    documentData.profileCompleted = false;
+  } else if (['organizer', 'vendor'].includes(documentData.role)) {
+    documentData.onboardingCompleted = false;
     documentData.businessDetails = {
       companyName: userData.companyName || '',
       gstNumber: userData.gstNumber || '',
-      isVerified: false
+      isVerified: false,
+      contactPhone: ''
     };
   }
 
@@ -101,7 +106,7 @@ router.post('/register', async (req: Request, res: Response) => {
     const id = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
     
     const userData = {
-      id, email, password: hashedPassword, role, name, companyName, gstNumber
+      id, email, password: hashedPassword, role, name, companyName, gstNumber, authProvider: 'password'
     };
 
     await saveUserToFirebase(userData);
@@ -121,6 +126,10 @@ router.post('/login', async (req: Request, res: Response) => {
     
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (user.authProvider === 'google' || user.google_auth === true) {
+      return res.status(401).json({ error: 'This email is linked with Google sign-in. Please use Google Login.' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -173,7 +182,7 @@ router.get('/google/callback', async (req: Request, res: Response) => {
       const hashedPassword = await bcrypt.hash("GOOGLE_AUTH_USER", 10);
       const id = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
       const userData = {
-        id, email, password: hashedPassword, google_auth: true, profile_picture: pictureUrl, name
+        id, email, password: hashedPassword, google_auth: true, profile_picture: pictureUrl, name, role: 'traveler', authProvider: 'google'
       };
       await saveUserToFirebase(userData);
       user = userData;
@@ -188,8 +197,9 @@ router.get('/google/callback', async (req: Request, res: Response) => {
     }
 
     const token = generateToken(user);
+    setAuthCookie(res, token);
     // Redirect to frontend with token in query params
-    res.redirect(`http://localhost:5173/post-login-homepage?token=${token}`);
+    res.redirect(`http://localhost:5173/explore?token=${token}`);
   } catch (error) {
     console.error('Google OAuth error:', error);
     res.redirect(`http://localhost:5173/login?error=google_auth_failed`);
@@ -215,7 +225,7 @@ router.post('/google/one-tap', async (req: Request, res: Response) => {
       const hashedPassword = await bcrypt.hash("GOOGLE_AUTH_USER", 10);
       const id = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
       const userData = {
-        id, email, password: hashedPassword, google_auth: true, profile_picture: pictureUrl, name, role: 'traveler'
+        id, email, password: hashedPassword, google_auth: true, profile_picture: pictureUrl, name, role: 'traveler', authProvider: 'google'
       };
       await saveUserToFirebase(userData);
       user = userData;
@@ -246,7 +256,19 @@ router.get('/me', authenticateToken, async (req: AuthRequest, res: Response) => 
     const userDoc = await db.collection('users').doc(user.id).get();
     if (userDoc.exists) {
       const userData: any = userDoc.data();
-      return res.json({ id: user.id, email: user.email, role: userData.role });
+      return res.json({
+        id: user.id,
+        email: user.email,
+        role: userData.role,
+        name: userData.name,
+        profileCompleted: userData.profileCompleted ?? false,
+        onboardingCompleted: userData.onboardingCompleted ?? false,
+        socialLinks: userData.socialLinks || {
+          instagramUsername: null,
+          instagramProfileUrl: null,
+          isInstagramLinked: false
+        }
+      });
     }
     return res.status(404).json({ error: 'User not found' });
   } catch (error: any) {

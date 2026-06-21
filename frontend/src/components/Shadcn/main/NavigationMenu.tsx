@@ -112,7 +112,7 @@ export function NavigationMenuDemo() {
 
                 <div className="container mx-auto px-4">
                     <div className="flex justify-between items-center py-4">
-                        <Link to="/pre-login-homepage" className="text-2xl font-bold">
+                        <Link to="/welcome" className="text-2xl font-bold">
                             <img src="https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055969/adventurer_assets_migration/images/Adventurer_yellow_wrya5w.png" alt="ADVENTURER" className="h-[80px]" />
                         </Link>
 
@@ -122,7 +122,7 @@ export function NavigationMenuDemo() {
                                 <NavigationMenuList>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
-                                            <Link to="/pre-login-homepage" className={navigationMenuTriggerStyle()}>
+                                            <Link to="/welcome" className={navigationMenuTriggerStyle()}>
                                                 <IoHome className="mr-2" />HOME
                                             </Link>
                                         </NavigationMenuLink>
@@ -150,7 +150,7 @@ export function NavigationMenuDemo() {
                                                 <li className="row-span-3">
                                                     <NavigationMenuLink asChild>
                                                         <Link
-                                                            to={authState === 'authenticated' ? "/post-login-homepage" : "/login"}
+                                                            to={authState === 'authenticated' ? "/explore" : "/login"}
                                                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                                         >
                                                             {/* <Icons.logo className="h-6 w-6" /> */}
@@ -163,13 +163,13 @@ export function NavigationMenuDemo() {
                                                         </Link>
                                                     </NavigationMenuLink>
                                                 </li>
-                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Personalized Account">
+                                                <ListItem to={authState === 'authenticated' ? "/explore" : "/login"} title="Personalized Account">
                                                     <RiAccountPinBoxFill className="text-black" /> Personalized account only for you .
                                                 </ListItem>
-                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Meet Ups">
+                                                <ListItem to={authState === 'authenticated' ? "/explore" : "/login"} title="Meet Ups">
                                                     <FaHandshake className="text-black" /> Meet Travel Enthusiast who Matches Your Aura & Excitements.
                                                 </ListItem>
-                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Travel Reminder" >
+                                                <ListItem to={authState === 'authenticated' ? "/explore" : "/login"} title="Travel Reminder" >
                                                     <RiCalendarScheduleFill className="text-black" /> Get Reminded about your upcoming trips.
                                                 </ListItem>
                                             </ul>
@@ -192,7 +192,7 @@ export function NavigationMenuDemo() {
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
                                             {authState === 'authenticated' ? (
-                                                <Link to="/post-login-homepage" className={navigationMenuTriggerStyle()}>
+                                                <Link to="/explore" className={navigationMenuTriggerStyle()}>
                                                     <IoHome className="mr-2" /> DASHBOARD
                                                 </Link>
                                             ) : (
@@ -222,7 +222,7 @@ export function NavigationMenuDemo() {
                             </SheetTrigger>
                             <SheetContent side="left" className="w-[300px] z-50 sm:w-[400px]">
                                 <nav className="flex flex-col space-y-4">
-                                    <Link to="/pre-login-homepage" className="flex items-center space-x-2">
+                                    <Link to="/welcome" className="flex items-center space-x-2">
                                         <IoHome />
                                         <span>HOME</span>
                                     </Link>
@@ -251,7 +251,7 @@ export function NavigationMenuDemo() {
                                         <span>ABOUT US</span>
                                     </Link>
                                     {authState === 'authenticated' ? (
-                                        <Link to="/post-login-homepage" className="flex items-center space-x-2">
+                                        <Link to="/explore" className="flex items-center space-x-2">
                                             <IoHome />
                                             <span>DASHBOARD</span>
                                         </Link>

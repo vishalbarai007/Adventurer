@@ -29,14 +29,14 @@ const Sidebar: React.FC<SidebarProps> = ({
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    { name: "Home", icon: Compass, href: "/post-login-homepage" },
+    { name: "Home", icon: Compass, href: "/explore" },
     { name: "Profile", icon: Home, href: "/profile" },
     { name: "Blogs", icon: Compass, href: "/blogs" },
     { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
-    { name: "Book Trips", icon: Compass, href: "/upcoming-treks" },
-    { name: "Ask Trekky!", icon: FileText, href: "/chatbot" },
+    { name: "Book Trips", icon: Compass, href: "/treks" },
+    { name: "Ask Trekky!", icon: FileText, href: "/assistant" },
     { name: "My Chats", icon: FileText, href: "/chat/5" },
     { name: "My Timeline", icon: History, href: "#", isModal: true },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },

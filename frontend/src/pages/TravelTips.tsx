@@ -194,7 +194,7 @@ const TravelTipsPage = () => {
                         </div>
                         <div className="flex-shrink-0">
                             <button 
-                                onClick={() => navigate('/login?redirect=/chatbot')}
+                                onClick={() => navigate('/login?redirect=/assistant')}
                                 className="group relative inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-green px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(255,170,28,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:-translate-y-1"
                             >
                                 Ask Trekky

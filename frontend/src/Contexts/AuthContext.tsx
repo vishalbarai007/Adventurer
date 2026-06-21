@@ -7,6 +7,22 @@ export interface User {
   id: string;
   email: string;
   role?: string;
+  name?: string;
+  profileCompleted?: boolean;
+  onboardingCompleted?: boolean;
+  socialLinks?: {
+    instagramUsername?: string | null;
+    instagramProfileUrl?: string | null;
+    isInstagramLinked?: boolean;
+  };
+  gender?: string | null;
+  dateOfBirth?: string | null;
+  residentialAddress?: string | null;
+  emergencyContact?: {
+    name: string;
+    phone: string;
+    relation: string;
+  };
 }
 
 interface AuthContextType {

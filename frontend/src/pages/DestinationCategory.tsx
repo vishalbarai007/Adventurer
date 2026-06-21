@@ -67,7 +67,7 @@ const DestinationCategory: React.FC = () => {
         <div className="text-center mt-20">
           <h1 className="text-4xl font-serif text-brand-gold mb-4">Category Not Found</h1>
           <p className="text-white/70 mb-8">We couldn't find destinations for "{category}".</p>
-          <Link to="/pre-login-homepage" className="px-6 py-3 bg-brand-gold text-brand-green font-bold rounded-full">
+          <Link to="/welcome" className="px-6 py-3 bg-brand-gold text-brand-green font-bold rounded-full">
             Return Home
           </Link>
         </div>

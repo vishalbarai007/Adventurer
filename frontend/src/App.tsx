@@ -30,6 +30,9 @@ const TrekDetails = lazy(() => import("./pages/TrekDetails"));
 const DestinationCategory = lazy(() => import("./pages/DestinationCategory"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+import { useAuth } from "./Contexts/AuthContext";
+import OrganizerOnboarding from "./components/Developer/main/OrganizerOnboarding";
+
 // Create a context to share the location data
 type LocationContextType = {
 	location: { latitude: number; longitude: number } | null;
@@ -59,35 +62,56 @@ const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 	);
 };
 
+const OnboardingWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+	const { authState, user } = useAuth();
+
+	if (authState === 'checking') {
+		return <div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>;
+	}
+
+	if (
+		authState === 'authenticated' &&
+		user &&
+		(user.role === 'organizer' || user.role === 'vendor') &&
+		!user.onboardingCompleted
+	) {
+		return <OrganizerOnboarding />;
+	}
+
+	return <>{children}</>;
+};
+
 const App = () => {
 	return (
 		<GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
 			<AuthProvider>
 				<BrowserRouter>
 					<LocationProvider>
-				<Suspense fallback={<div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>}>
-					<Routes>
-						<Route path="/" element={<SplashScreen />} />
-						<Route path="/pre-login-homepage" element={<Pre_login_homepage />} />
-						<Route path="/post-login-homepage" element={<PostLoginPage />} />
-						<Route path="/about" element={<About_us />} />
-						<Route path="/contact" element={<Contact_us />} />
-						<Route path="/blogs" element={<Blogs />} />
-						<Route path="/map" element={<Map />} />
-						<Route path="/login" element={<Login_page />} />
-						<Route path="/destinations" element={<Seasonal_destinations />} />
-						<Route path="/destinations/:category" element={<DestinationCategory />} />
-						<Route path="/tips" element={<TravelTipsPage />} />
-						<Route path="/chatbot" element={<ChatBot />} />
-						<Route path="/profile" element={<Profile />} />
-						<Route path="/settings" element={<SettingsPage />} />
-						<Route path="/dashboard" element={<BusinessDashboard />} />
-						<Route path="/chat/:chatId" element={<ChatPage />} />
-						<Route path="/upcoming-treks" element={<TrekDetails />} />
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-				</Suspense>
-			</LocationProvider>
+						<Suspense fallback={<div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>}>
+							<OnboardingWrapper>
+								<Routes>
+									<Route path="/" element={<SplashScreen />} />
+									<Route path="/welcome" element={<Pre_login_homepage />} />
+									<Route path="/explore" element={<PostLoginPage />} />
+									<Route path="/about" element={<About_us />} />
+									<Route path="/contact" element={<Contact_us />} />
+									<Route path="/blogs" element={<Blogs />} />
+									<Route path="/map" element={<Map />} />
+									<Route path="/login" element={<Login_page />} />
+									<Route path="/destinations" element={<Seasonal_destinations />} />
+									<Route path="/destinations/:category" element={<DestinationCategory />} />
+									<Route path="/tips" element={<TravelTipsPage />} />
+									<Route path="/assistant" element={<ChatBot />} />
+									<Route path="/profile" element={<Profile />} />
+									<Route path="/settings" element={<SettingsPage />} />
+									<Route path="/dashboard" element={<BusinessDashboard />} />
+									<Route path="/chat/:chatId" element={<ChatPage />} />
+									<Route path="/treks" element={<TrekDetails />} />
+									<Route path="*" element={<NotFound />} />
+								</Routes>
+								</OnboardingWrapper>
+							</Suspense>
+						</LocationProvider>
 		</BrowserRouter>
 			</AuthProvider>
 		</GoogleOAuthProvider>
