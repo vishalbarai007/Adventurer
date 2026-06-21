@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Matheran Hill Station",
+    "images": [
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800",
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800"
+    ],
+    "bestSeason": "Winter and Monsoon",
+    "description": "Matheran is an automobile-free hill station and a municipal council in Karjat Tahsil, Raigad district in the Indian state of Maharashtra. Matheran is part of the Mumbai Metropolitan Region, and one of the smallest hill stations in India. Perfect for families looking for a peaceful retreat.",
+    "location": "Matheran, Maharashtra"
+  },
+  {
+    "id": "2",
+    "title": "Lonavala",
+    "images": [
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Lonavala is a popular hill station close to Pune and Mumbai. It is famous for its chikki (a sweet peanut brittle) and offers beautiful viewpoints, caves, and forts that are easily accessible for family outings.",
+    "location": "Lonavala, Maharashtra"
+  },
+  {
+    "id": "3",
+    "title": "Mahabaleshwar",
+    "images": [
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800",
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png"
+    ],
+    "bestSeason": "Winter and Summer",
+    "description": "Mahabaleshwar is a hill station in India's forested Western Ghats range, south of Mumbai. It features several elevated viewing points, such as Arthur’s Seat. West of here is centuries-old Pratapgad Fort, clinging to a mountain spur. Families enjoy the pleasant climate and strawberry farms.",
+    "location": "Mahabaleshwar, Maharashtra"
+  }
+]

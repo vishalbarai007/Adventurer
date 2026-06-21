@@ -5,6 +5,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext, Suspense, useContext, lazy } from "react";
 import useCurrentLocation from "./hooks/getCurrentLocation";
 import LargeSuccessLoader from "./components/Developer/support/Loader";
+import { AuthProvider } from './Contexts/AuthContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID";
 
 
 const SplashScreen = lazy(() => import("./components/Developer/main/SplashScreen"));
@@ -23,6 +27,7 @@ const Map = lazy(() => import("./pages/map"));
 const BusinessDashboard = lazy(() => import("./pages/BusinessDashboard"));
 const ChatPage = lazy(() => import("./pages/ChatPage"));
 const TrekDetails = lazy(() => import("./pages/TrekDetails"));
+const DestinationCategory = lazy(() => import("./pages/DestinationCategory"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Create a context to share the location data
@@ -56,8 +61,10 @@ const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
 const App = () => {
 	return (
-		<BrowserRouter>
-			<LocationProvider>
+		<GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+			<AuthProvider>
+				<BrowserRouter>
+					<LocationProvider>
 				<Suspense fallback={<div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>}>
 					<Routes>
 						<Route path="/" element={<SplashScreen />} />
@@ -69,6 +76,7 @@ const App = () => {
 						<Route path="/map" element={<Map />} />
 						<Route path="/login" element={<Login_page />} />
 						<Route path="/destinations" element={<Seasonal_destinations />} />
+						<Route path="/destinations/:category" element={<DestinationCategory />} />
 						<Route path="/tips" element={<TravelTipsPage />} />
 						<Route path="/chatbot" element={<ChatBot />} />
 						<Route path="/profile" element={<Profile />} />
@@ -81,6 +89,8 @@ const App = () => {
 				</Suspense>
 			</LocationProvider>
 		</BrowserRouter>
+			</AuthProvider>
+		</GoogleOAuthProvider>
 	);
 };
 

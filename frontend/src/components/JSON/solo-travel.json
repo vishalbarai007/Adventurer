@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Igatpuri",
+    "images": [
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056188/adventurer_assets_migration/images/SoloTravelling_xywhrh.png",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800",
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800"
+    ],
+    "bestSeason": "Monsoon",
+    "description": "Igatpuri is a town and hill station in the Western Ghats mountains of Maharashtra. It’s known for the Vipassana International Academy, where meditation is taught. The town is surrounded by the highest peaks in Sahyaadri, making it great for solo meditation and trekking.",
+    "location": "Nashik, Maharashtra"
+  },
+  {
+    "id": "2",
+    "title": "Panchgani",
+    "images": [
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056188/adventurer_assets_migration/images/SoloTravelling_xywhrh.png",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800"
+    ],
+    "bestSeason": "Winter",
+    "description": "Panchgani, also called Paachgani, is a hill station and municipal council in Satara district in Maharashtra, India. It is renowned for its many premier residential educational institutions. Solo travelers love its scenic views like Sydney Point and Table Land.",
+    "location": "Satara, Maharashtra"
+  },
+  {
+    "id": "3",
+    "title": "Kolad",
+    "images": [
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800",
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056188/adventurer_assets_migration/images/SoloTravelling_xywhrh.png"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Kolad is a village in Raigad district, Maharashtra State, India. It is 117 km from Mumbai on the National Highway no 66. It is a popular destination for white water rafting on the Kundalika River, making it an exciting escape for solo thrill-seekers.",
+    "location": "Raigad, Maharashtra"
+  }
+]

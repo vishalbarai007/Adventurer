@@ -23,6 +23,7 @@ import { Menu } from 'lucide-react'
 import { Button } from "../ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import GoogleTranslate from "../../Developer/support/LanguageSwitcher"
+import { useAuth } from "../../../Contexts/AuthContext"
 
 
 const components: { title: string; subtitle: string; href: string; description: string; icon: React.ReactNode }[] = [
@@ -91,7 +92,7 @@ const components: { title: string; subtitle: string; href: string; description: 
 
 export function NavigationMenuDemo() {
     const [isScrolled, setIsScrolled] = React.useState(false)
-    // const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+    const { authState } = useAuth()
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -149,7 +150,7 @@ export function NavigationMenuDemo() {
                                                 <li className="row-span-3">
                                                     <NavigationMenuLink asChild>
                                                         <Link
-                                                            to="/login"
+                                                            to={authState === 'authenticated' ? "/post-login-homepage" : "/login"}
                                                             className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                                                         >
                                                             {/* <Icons.logo className="h-6 w-6" /> */}
@@ -162,13 +163,13 @@ export function NavigationMenuDemo() {
                                                         </Link>
                                                     </NavigationMenuLink>
                                                 </li>
-                                                <ListItem to="/login" title="Personalized Account">
+                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Personalized Account">
                                                     <RiAccountPinBoxFill className="text-black" /> Personalized account only for you .
                                                 </ListItem>
-                                                <ListItem to="/login" title="Meet Ups">
+                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Meet Ups">
                                                     <FaHandshake className="text-black" /> Meet Travel Enthusiast who Matches Your Aura & Excitements.
                                                 </ListItem>
-                                                <ListItem to="/login" title="Travel Reminder" >
+                                                <ListItem to={authState === 'authenticated' ? "/post-login-homepage" : "/login"} title="Travel Reminder" >
                                                     <RiCalendarScheduleFill className="text-black" /> Get Reminded about your upcoming trips.
                                                 </ListItem>
                                             </ul>
@@ -190,9 +191,15 @@ export function NavigationMenuDemo() {
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
                                         <NavigationMenuLink asChild>
-                                            <Link to="/login" className={navigationMenuTriggerStyle()}>
-                                                <IoLogIn className="mr-2" /> LOGIN
-                                            </Link>
+                                            {authState === 'authenticated' ? (
+                                                <Link to="/post-login-homepage" className={navigationMenuTriggerStyle()}>
+                                                    <IoHome className="mr-2" /> DASHBOARD
+                                                </Link>
+                                            ) : (
+                                                <Link to="/login" className={navigationMenuTriggerStyle()}>
+                                                    <IoLogIn className="mr-2" /> LOGIN
+                                                </Link>
+                                            )}
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
@@ -243,10 +250,17 @@ export function NavigationMenuDemo() {
                                         <MdGroups2 />
                                         <span>ABOUT US</span>
                                     </Link>
-                                    <Link to="/login" className="flex items-center space-x-2">
-                                        <IoLogIn  />
-                                        <span>LOGIN</span>
-                                    </Link>
+                                    {authState === 'authenticated' ? (
+                                        <Link to="/post-login-homepage" className="flex items-center space-x-2">
+                                            <IoHome />
+                                            <span>DASHBOARD</span>
+                                        </Link>
+                                    ) : (
+                                        <Link to="/login" className="flex items-center space-x-2">
+                                            <IoLogIn  />
+                                            <span>LOGIN</span>
+                                        </Link>
+                                    )}
                                     <Link to="#" className="flex items-center space-x-2">
                                         <span><GoogleTranslate /></span>
                                     </Link>

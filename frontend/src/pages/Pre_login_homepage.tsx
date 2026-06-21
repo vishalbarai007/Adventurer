@@ -1,13 +1,17 @@
+import { lazy, Suspense } from 'react'
 import Scrollslider from '../components/Developer/main/scrollslider'
 import Parallax from '../components/Developer/main/Parallax'
 import Footer from '../components/Developer/support/Footer'
 import { NavigationMenuDemo } from '../components/Shadcn/main/NavigationMenu'
-import Preloginlanding from '../components/Developer/main/Pre-login-landing'
-// import { AnimatedTestimonialsDemo } from '../components/Shadcn/main/AnimatedTestimonialsDemo'
 import { InfiniteMovingCardsDemo } from '../components/Developer/main/InfiniteMovingCardsDemo'
-import { FeaturesSectionDemo } from '../components/Shadcn/main/FeatureSectiondemo'
-import CounterSection from '../components/Developer/main/Counter'
+import HeroCTA from '../components/Developer/main/HeroCTA'
+import HowItWorks from '../components/Developer/main/HowItWorks'
+import AdventureGallery from '../components/Developer/main/AdventureGallery'
+import AppShowcase from '../components/Developer/main/AppShowcase'
+import StatsCounter from '../components/Developer/main/StatsCounter'
+import LargeSuccessLoader from '../components/Developer/support/Loader'
 
+const FeatureShowcase = lazy(() => import('../components/Developer/main/FeatureShowcase'))
 
 const Pre_login_homepage = () => {
   return (
@@ -15,12 +19,16 @@ const Pre_login_homepage = () => {
       <NavigationMenuDemo />
       <Scrollslider />
       <Parallax />
-      <Preloginlanding/>
-      <FeaturesSectionDemo/>
-      <InfiniteMovingCardsDemo/>
-      <CounterSection/>
-      {/* <AnimatedTestimonialsDemo/> */}
-
+      <HeroCTA />
+      {/* <Preloginlanding /> */}
+      <HowItWorks />
+      <Suspense fallback={<div className="flex justify-center items-center py-24 bg-[#000a05]"><LargeSuccessLoader /></div>}>
+        <FeatureShowcase />
+      </Suspense>
+      <AdventureGallery />
+      <InfiniteMovingCardsDemo />
+      <AppShowcase />
+      <StatsCounter />
       <Footer color={undefined} />
     </>
   )

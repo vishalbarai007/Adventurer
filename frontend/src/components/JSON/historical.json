@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Raigad Fort",
+    "images": [
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
+      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800"
+    ],
+    "bestSeason": "Winter",
+    "description": "Raigad is a hill fort situated in Mahad, Raigad district of Maharashtra, India. It is one of the strongest fortresses on the Deccan Plateau. Chhatrapati Shivaji Maharaj built this fort and made it his capital in 1674 when he was crowned the King of a Maratha Kingdom.",
+    "location": "Mahad, Maharashtra"
+  },
+  {
+    "id": "2",
+    "title": "Pratapgad Fort",
+    "images": [
+      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800",
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Pratapgad literally 'Valour Fort' is a large fort located in Satara district, in the Western Indian state of Maharashtra. Significant as the site of the Battle of Pratapgad, the fort is now a popular tourist destination.",
+    "location": "Mahabaleshwar, Maharashtra"
+  },
+  {
+    "id": "3",
+    "title": "Ajanta and Ellora Caves",
+    "images": [
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800",
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
+      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800"
+    ],
+    "bestSeason": "Winter",
+    "description": "The Ajanta Caves are approximately 30 rock-cut Buddhist cave monuments which date from the 2nd century BCE to about 480 CE. Ellora is a UNESCO World Heritage Site located in the Aurangabad district of Maharashtra, featuring Hindu, Buddhist, and Jain monuments.",
+    "location": "Aurangabad, Maharashtra"
+  }
+]

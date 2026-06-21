@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Rajmachi Fort Trek",
+    "images": [
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056494/adventurer_assets_migration/images/Rajmachi_hmbkia.jpg",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800",
+      "https://images.unsplash.com/photo-1590393080775-4c2826fc1e34?q=80&w=800"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Rajmachi Fort is one of the many historical forts in the rugged hills of Sahyadri mountains (Western Ghats). It consists of two twin fortresses Shriwardhan and Manaranjan. The trek offers lush green landscapes and numerous waterfalls during the monsoons.",
+    "location": "Lonavala, Maharashtra"
+  },
+  {
+    "id": "2",
+    "title": "Harishchandragad Trek",
+    "images": [
+      "https://images.unsplash.com/photo-1594833215903-8d0ea7652c78?q=80&w=800",
+      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800"
+    ],
+    "bestSeason": "Winter",
+    "description": "Harishchandragad is a hill fort in the Ahmednagar district of India. Its history is linked with that of Malshej Ghat, kothale village and it has played a major role in guarding and controlling the surrounding region. The Kokan Kada is the major attraction.",
+    "location": "Ahmednagar, Maharashtra"
+  },
+  {
+    "id": "3",
+    "title": "Kalsubai Peak Trek",
+    "images": [
+      "https://images.unsplash.com/photo-1616428784826-68153f317b20?q=80&w=800",
+      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
+      "https://images.unsplash.com/photo-1625476307222-79354eeec611?q=80&w=800"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Kalsubai Peak is a mountain in the Western Ghats, located in the Indian state of Maharashtra. Its summit situated at an elevation of 1646 meters is the highest point in Maharashtra which earns it the much-glorified title of the 'Everest of Maharashtra'.",
+    "location": "Igatpuri, Maharashtra"
+  }
+]

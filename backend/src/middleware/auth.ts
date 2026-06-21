@@ -9,8 +9,7 @@ export interface AuthRequest extends Request {
 }
 
 export const authenticateToken = async (req: AuthRequest, res: Response, next: NextFunction) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+  const token = req.cookies?.token || (req.headers['authorization'] && req.headers['authorization'].split(' ')[1]);
 
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized: No token provided' });
@@ -20,10 +19,18 @@ export const authenticateToken = async (req: AuthRequest, res: Response, next: N
     const decoded: any = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
     
-    // Optionally fetch full user from Firestore if needed
-    // const userDoc = await db.collection('users').doc(decoded.id).get();
-    // if (!userDoc.exists) return res.sendStatus(404);
-    // req.user = userDoc.data();
+    // Implement sliding session window
+    const newToken = jwt.sign(
+      { id: decoded.id, email: decoded.email, role: decoded.role || 'traveler' },
+      JWT_SECRET,
+      { expiresIn: '3d' }
+    );
+    res.cookie('token', newToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 3 * 24 * 60 * 60 * 1000 // 3 days
+    });
 
     next();
   } catch (err) {

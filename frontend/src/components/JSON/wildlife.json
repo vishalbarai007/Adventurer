@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Bhimashankar Wildlife Sanctuary",
+    "images": [
+      "https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&q=80",
+      "https://images.unsplash.com/photo-1589131644782-b7b58bb3858a?w=600&q=80",
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?w=600&q=80"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Bhimashankar Wildlife Sanctuary was created in the Western Ghats of Maharashtra state, India, to primarily protect the habitat of the Indian Giant Squirrel. It is heavily forested and home to many endemic species of flora and fauna.",
+    "location": "Pune, Maharashtra"
+  },
+  {
+    "id": "2",
+    "title": "Melghat Tiger Reserve",
+    "images": [
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?w=600&q=80",
+      "https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&q=80",
+      "https://images.unsplash.com/photo-1589131644782-b7b58bb3858a?w=600&q=80"
+    ],
+    "bestSeason": "Winter",
+    "description": "Melghat was declared a tiger reserve and was among the first nine tiger reserves notified in 1973-74 under Project Tiger. It is located in the northern part of Amravati District of Maharashtra State in India. The Tapti River and the Gawilgadh ridge of the Satpura Range form the boundaries of the reserve.",
+    "location": "Amravati, Maharashtra"
+  },
+  {
+    "id": "3",
+    "title": "Koyna Wildlife Sanctuary",
+    "images": [
+      "https://images.unsplash.com/photo-1589131644782-b7b58bb3858a?w=600&q=80",
+      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?w=600&q=80",
+      "https://images.unsplash.com/photo-1549366021-9f761d450615?w=600&q=80"
+    ],
+    "bestSeason": "Monsoon and Winter",
+    "description": "Koyna Wildlife Sanctuary is a wildlife sanctuary and natural World Heritage Site located in Satara district of the Indian state of Maharashtra. The sanctuary is nested in the Western Ghats, protecting a diverse range of plant and animal life.",
+    "location": "Satara, Maharashtra"
+  }
+]

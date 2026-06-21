@@ -4,7 +4,7 @@ import httpClient from "./httpClient";
 interface AuthResponse {
 	id: string;
 	email: string;
-	token?: string;
+	role?: string;
 }
 
 export const registerUser = async (
@@ -16,9 +16,6 @@ export const registerUser = async (
 			email,
 			password,
 		});
-		if (response.data.token) {
-			localStorage.setItem("jwt_token", response.data.token);
-		}
 		return response.data;
 	} catch (error: unknown) {
         const axiosError = error as { response?: { data?: { error?: string } } };
@@ -38,9 +35,6 @@ export const signInUser = async (
 			email,
 			password,
 		});
-		if (response.data.token) {
-			localStorage.setItem("jwt_token", response.data.token);
-		}
 		return response.data;
 	} catch (error: unknown) {
         const axiosError = error as { response?: { data?: { error?: string } } };
@@ -51,12 +45,36 @@ export const signInUser = async (
 	}
 };
 
+export const googleOneTapLogin = async (
+	credential: string,
+): Promise<AuthResponse> => {
+	try {
+		const response = await httpClient.post<AuthResponse>("/google/one-tap", {
+			credential,
+		});
+		return response.data;
+	} catch (error: unknown) {
+        const axiosError = error as { response?: { data?: { error?: string } } };
+		if (axiosError.response?.data?.error) {
+			throw new Error(axiosError.response.data.error);
+		}
+		throw new Error("Google One-Tap login failed");
+	}
+};
+
 export const logoutUser = async () => {
     try {
         await httpClient.post("/logout");
     } catch (e) {
         console.error("Logout error", e);
-    } finally {
-        localStorage.removeItem("jwt_token");
     }
+};
+
+export const fetchCurrentUser = async (): Promise<AuthResponse> => {
+	try {
+		const response = await httpClient.get<AuthResponse>("/me");
+		return response.data;
+	} catch (error) {
+		throw new Error("Not authenticated");
+	}
 };

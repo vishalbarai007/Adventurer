@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { CarouselPlugin } from "../../Shadcn/main/Image_carousel";
 import { useNavigate, useLocation } from "react-router-dom";
 import httpClient from "../../../services/httpClient";
+import { useAuth } from "../../../Contexts/AuthContext";
 
 interface FormInputs {
 	name?: string;
@@ -23,6 +24,7 @@ const Login_form: React.FC = () => {
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { checkAuth } = useAuth();
 
 	useEffect(() => {
 		// Check for error parameter in URL
@@ -76,6 +78,7 @@ const Login_form: React.FC = () => {
 				);
 
 				if (response.status === 200) {
+					await checkAuth(); // Update global auth state before navigating
 					const params = new URLSearchParams(location.search);
 					const redirectPath = params.get("redirect") || "/post-login-homepage";
 					navigate(redirectPath);

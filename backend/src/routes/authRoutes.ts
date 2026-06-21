@@ -32,8 +32,17 @@ const generateToken = (user: any) => {
   return jwt.sign(
     { id: user.id, email: user.email, role: user.role || 'traveler' },
     JWT_SECRET,
-    { expiresIn: '7d' }
+    { expiresIn: '3d' }
   );
+};
+
+const setAuthCookie = (res: Response, token: string) => {
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 3 * 24 * 60 * 60 * 1000 // 3 days
+  });
 };
 
 const saveUserToFirebase = async (userData: any) => {
@@ -98,7 +107,8 @@ router.post('/register', async (req: Request, res: Response) => {
     await saveUserToFirebase(userData);
     
     const token = generateToken(userData);
-    res.json({ id, email, token });
+    setAuthCookie(res, token);
+    res.json({ id, email, role });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
@@ -120,8 +130,9 @@ router.post('/login', async (req: Request, res: Response) => {
 
     await updateUserLoginTime(user.id);
     const token = generateToken(user);
+    setAuthCookie(res, token);
     
-    res.json({ id: user.id, email: user.email, token });
+    res.json({ id: user.id, email: user.email, role: user.role });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
@@ -185,6 +196,48 @@ router.get('/google/callback', async (req: Request, res: Response) => {
   }
 });
 
+router.post('/google/one-tap', async (req: Request, res: Response) => {
+  try {
+    const { credential } = req.body;
+    const ticket = await oauth2Client.verifyIdToken({
+      idToken: credential,
+      audience: GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    if (!payload || !payload.email) throw new Error('No email from Google');
+
+    const email = payload.email;
+    const pictureUrl = payload.picture || '';
+    const name = payload.name || '';
+
+    let user: any = await getUserByEmail(email);
+    if (!user) {
+      const hashedPassword = await bcrypt.hash("GOOGLE_AUTH_USER", 10);
+      const id = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
+      const userData = {
+        id, email, password: hashedPassword, google_auth: true, profile_picture: pictureUrl, name, role: 'traveler'
+      };
+      await saveUserToFirebase(userData);
+      user = userData;
+    } else {
+      const updates: any = {};
+      if (!user.profile_picture) updates.profile_picture = pictureUrl;
+      if (!user.name) updates.name = name;
+      if (Object.keys(updates).length > 0) {
+        await db.collection('users').doc(user.id).update(updates);
+      }
+      await updateUserLoginTime(user.id);
+    }
+
+    const token = generateToken(user);
+    setAuthCookie(res, token);
+    res.json({ id: user.id, email: user.email, role: user.role || 'traveler' });
+  } catch (error: any) {
+    console.error('Google One-Tap error:', error);
+    res.status(401).json({ error: 'Google authentication failed' });
+  }
+});
+
 router.get('/me', authenticateToken, async (req: AuthRequest, res: Response) => {
   try {
     const user = req.user;
@@ -206,6 +259,7 @@ router.post('/logout', authenticateToken, async (req: AuthRequest, res: Response
     if (req.user?.id) {
       await db.collection('users').doc(req.user.id).update({ last_logout: new Date() });
     }
+    res.clearCookie('token');
     res.status(200).json({ message: "Logged out" });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
