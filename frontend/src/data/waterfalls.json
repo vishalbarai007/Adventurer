@@ -1,38 +1,38 @@
 [
   {
     "id": "1",
-    "title": "Thoseghar Waterfalls",
+    "title": "Kalu Waterfall",
     "images": [
-      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057683/adventurer_assets_migration/images/thoseghar_qaik9s.jpg",
-      "https://images.unsplash.com/photo-1594833215903-8d0ea7652c78?q=80&w=800",
-      "https://images.unsplash.com/photo-1543081977-17eb40eb42df?q=80&w=800"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143714/hq720_ltc160.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143715/kalu_20waterfall_sltgkx.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143713/02-IMG20240712111043_kv9qal.jpg"
     ],
-    "bestSeason": "Monsoon",
-    "description": "Thoseghar waterfalls is a scenic spot located near the small village of Thoseghar, 20 km from Satara city, at the edge of the Konkan region, in Western India. There are a series of waterfalls, some of them 15 to 20 meters and one of 200 meters in height.",
-    "location": "Satara, Maharashtra"
+    "bestSeason": "Monsoon (June to September)",
+    "description": "Kalu Waterfall is the highest and largest waterfall in the Malshej Ghat region, plunging from a massive height of approximately 1,200 feet. Falling in a multi-tiered drop against the rugged cliffs of the Harishchandragad sanctuary, it creates an awe-inspiring mist shroud that makes it a dream destination for extreme trekkers.",
+    "location": "Malshej Ghat, Maharashtra"
   },
   {
     "id": "2",
     "title": "Devkund Waterfall",
     "images": [
-      "https://images.unsplash.com/photo-1543081977-17eb40eb42df?q=80&w=800",
-      "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=800",
-      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=800"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778057597/adventurer_assets_migration/images/devkund_eqktzg.png",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778057559/adventurer_assets_migration/images/bhivpuri_osdd5t.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778057624/adventurer_assets_migration/images/madheghatwaterfalls_cm9wzd.png"
     ],
-    "bestSeason": "Late Monsoon and Winter",
-    "description": "Devkund Waterfall is a waterfall located in Bhira, near Raigad district, Maharashtra, India. It is a 'plunge' waterfall pouring massively, as a scenic combination of three waterfalls and is said to be the origin of Kundalika river.",
-    "location": "Bhira, Maharashtra"
+    "bestSeason": "Late Monsoon and Winter (September to January)",
+    "description": "Devkund Waterfall is a pristine plunge waterfall hidden deep within the dense forests of Bhira near Patnus. Widely regarded as one of the most beautiful natural pools in India, the water falls fiercely into a crystal-clear turquoise pool, forming the exact origin point of the Kundalika River.",
+    "location": "Bhira, Raigad, Maharashtra"
   },
   {
     "id": "3",
-    "title": "Randha Falls",
+    "title": "Thoseghar Waterfalls",
     "images": [
-      "https://images.unsplash.com/photo-1506161474136-22a0ce123568?q=80&w=800",
-      "https://images.unsplash.com/photo-1616428784826-68153f317b20?q=80&w=800",
-      "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=800"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143594/thoseghar_waterfall_satara_monsoon_1_nrg8pt.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143594/thoseghar-falls-satara-1585641002_mmick6.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143594/thoseghar_waterfall_satara_monsoon_1_nrg8pt.jpg"
     ],
-    "bestSeason": "Monsoon",
-    "description": "Randha falls is situated in the Ahmednagar district of Maharashtra. The clear water of the Pravara River fiercely falls from a height of 170 feet into a massive gorge. It is considered one of the prominent waterfalls in India.",
-    "location": "Bhandardara, Maharashtra"
+    "bestSeason": "Peak Monsoon (July to October)",
+    "description": "Thoseghar Waterfalls is a magnificent series of cascades located 20 km from Satara at the edge of the Konkan region. Surrounded by a clean, dense green amphitheater, the site features multiple smaller seasonal drops alongside a main, roaring 200-meter vertical waterfall that comes alive during heavy rains.",
+    "location": "Satara, Maharashtra"
   }
 ]

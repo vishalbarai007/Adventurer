@@ -9,53 +9,54 @@ gsap.registerPlugin(ScrollTrigger);
 const destinations = [
   {
     image:
-      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1778056374/adventurer_assets_migration/images/Prelanding_w1fdqe.png",
-    title: "Mountain Summits",
-    location: "Western Ghats, India",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1782056502/IMG_20260228_011240_ea0hps.jpg",
+    title: "Sandhan Valley Trek",
+    location: "Ahmednagar, Maharashtra, India",
     category: "trekking",
     tall: true,
   },
   {
     image:
-      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1778056757/adventurer_assets_migration/images/Bgmountains_vdanil.png",
-    title: "Alpine Passes",
-    location: "Himalayas, India",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1782056506/Matheran_sxaqm9.jpg",
+    title: "Matheran Forest Trails",
+    location: "Raigad, Maharashtra, India",
     category: "trekking",
     tall: false,
   },
   {
     image:
-      "https://images.unsplash.com/photo-1432405972618-c6b0cfba1b4f?w=600&q=80",
-    title: "Hidden Waterfalls",
-    location: "Meghalaya, India",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1782056497/Kalu_y9zszi.webp",
+    title: "Kalu Waterfall",
+    location: "Malshej Ghat, Maharashtra, India",
     category: "waterfalls",
     tall: false,
   },
   {
     image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-    title: "Pristine Beaches",
-    location: "Gokarna, India",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1782056497/kokan_uvcqkb.avif",
+    title: "Kokan Beaches",
+    location: "Ratnagiri, Maharashtra, India",
     category: "beaches",
     tall: true,
   },
   {
     image:
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
-    title: "Ancient Forts",
-    location: "Rajasthan, India",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1778056080/adventurer_assets_migration/images/AjantaCaves_efmw7u.png",
+    title: "Ajanta & Ellora Caves",
+    location: "Chhatrapati Sambhajinagar, Maharashtra, India",
     category: "historical",
     tall: false,
   },
   {
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
-    title: "Valley Treks",
-    location: "Spiti Valley, India",
-    category: "trekking",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto,w_600/v1778056869/adventurer_assets_migration/images/hariharfort_oybyue.jpg",
+    title: "Harihar Fort",
+    location: "Nashik, Maharashtra, India",
+    category: "Trekking",
     tall: false,
   },
 ];
+
 
 const AdventureGallery = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

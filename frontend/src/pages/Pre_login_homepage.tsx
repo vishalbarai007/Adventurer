@@ -9,8 +9,9 @@ import HowItWorks from '@/components/home/HowItWorks'
 import AdventureGallery from '@/components/destinations/AdventureGallery'
 import AppShowcase from '@/components/home/AppShowcase'
 import StatsCounter from '@/components/home/StatsCounter'
+import FeatureShowcase from '@/components/home/FeatureShowcase'
 
-const FeatureShowcase = lazy(() => import('@/components/home/FeatureShowcase'))
+// const FeatureShowcase = lazy(() => import('@/components/home/FeatureShowcase'))
 
 const Pre_login_homepage = () => {
   return (

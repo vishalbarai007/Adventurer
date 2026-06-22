@@ -83,37 +83,37 @@ const features = [
 const FeatureShowcase = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".fs-title", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 5%",
-          toggleActions: "play none none reverse",
-        },
-      });
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     gsap.from(".fs-title", {
+  //       y: 40,
+  //       opacity: 0,
+  //       duration: 1,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 5%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
 
-      gsap.from(".feature-card", {
-        y: 60,
-        opacity: 0,
-        scale: 0.95,
-        stagger: 0.1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".feature-grid",
-          start: "top 5%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    }, sectionRef);
+  //     gsap.from(".feature-card", {
+  //       y: 60,
+  //       opacity: 0,
+  //       scale: 0.95,
+  //       stagger: 0.1,
+  //       duration: 1,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: ".feature-grid",
+  //         start: "top 5%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
+  //   }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
     <section
