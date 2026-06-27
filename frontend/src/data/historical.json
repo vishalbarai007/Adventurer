@@ -3,9 +3,9 @@
     "id": "1",
     "title": "Raigad Fort",
     "images": [
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
-      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
-      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154353/fort-raigad_asulwv.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056656/adventurer_assets_migration/images/raigad_fort_ny5a3s.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154286/a-view-of-the-main-door-of-raigad-fort-in-india-the-v0-7vz1uarll6d51_gfddcs.jpg"
     ],
     "bestSeason": "Winter",
     "description": "Raigad is a hill fort situated in Mahad, Raigad district of Maharashtra, India. It is one of the strongest fortresses on the Deccan Plateau. Chhatrapati Shivaji Maharaj built this fort and made it his capital in 1674 when he was crowned the King of a Maratha Kingdom.",
@@ -15,9 +15,9 @@
     "id": "2",
     "title": "Pratapgad Fort",
     "images": [
-      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800",
-      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154524/ce679bf882b7e0fd917b05e6b3a482ee_ozqq3c.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056942/adventurer_assets_migration/images/pratapgad_w4aoei.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154464/8e7e9dfa07ff6081cd714ba24f534192_rnfcbz.jpg"
     ],
     "bestSeason": "Monsoon and Winter",
     "description": "Pratapgad literally 'Valour Fort' is a large fort located in Satara district, in the Western Indian state of Maharashtra. Significant as the site of the Battle of Pratapgad, the fort is now a popular tourist destination.",
@@ -27,9 +27,9 @@
     "id": "3",
     "title": "Ajanta and Ellora Caves",
     "images": [
-      "https://images.unsplash.com/photo-1582260655112-9c3db697cc67?q=80&w=800",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
-      "https://images.unsplash.com/photo-1623869680373-c155519ec311?q=80&w=800"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056080/adventurer_assets_migration/images/AjantaCaves_efmw7u.png",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154642/ajanta-caves-chhatrapati-sambhaji-nagar-maharashtra-attr-hero-1_c9yvh4.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154642/xjxpxkphepzpzwudorlm_htrnws.jpg"
     ],
     "bestSeason": "Winter",
     "description": "The Ajanta Caves are approximately 30 rock-cut Buddhist cave monuments which date from the 2nd century BCE to about 480 CE. Ellora is a UNESCO World Heritage Site located in the Aurangabad district of Maharashtra, featuring Hindu, Buddhist, and Jain monuments.",

@@ -3,9 +3,9 @@
     "id": "1",
     "title": "Kashid Beach",
     "images": [
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80",
-      "https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=600&q=80"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153797/ka_1511718614t_pia92d.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153796/kashid-beach-near-alibaug_yrfves.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153796/20170408-073656-largejpg_j7edvp.jpg"
     ],
     "bestSeason": "Winter and Summer",
     "description": "Kashid is a beach town on the shores of the Arabian Sea, in the North Konkan region of Maharashtra. It is famous for its white sand, blue seas, green mountains, paddy fields, and murmuring casuarinas.",
@@ -15,9 +15,9 @@
     "id": "2",
     "title": "Tarkarli Beach",
     "images": [
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80",
-      "https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=600&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153986/tarkarli-tour-2_m6ughk.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153986/68e4d1aa7dc27-Things_20To_20Do_20in_20Tarkarli_xl64ku.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782153985/1766145568place_zq37ic.webp"
     ],
     "bestSeason": "Winter",
     "description": "Tarkarli is a village in Sindhudurg district in the Indian state of Maharashtra. It is a tourist destination and a coral beach. It is famous for its pristine water, white sand, and water sports including scuba diving.",
@@ -27,9 +27,9 @@
     "id": "3",
     "title": "Ganpatipule Beach",
     "images": [
-      "https://images.unsplash.com/photo-1495954484750-af469f2f9be5?w=600&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80"
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154110/maxresdefault_ie6wio.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154109/ganpatipule-beach_pk5g5n.jpg",
+      "https://res.cloudinary.com/djk32h7rn/image/upload/v1782154110/ganpatipule-beach-district-ratnagiri-maharashtra-india-F3GR4H_nbcnt3.jpg"
     ],
     "bestSeason": "Winter",
     "description": "Ganpatipule is a small town located in the Ratnagiri district on the Konkan coast of Maharashtra. It is known for its beautiful, clean, and serene beaches, and the 400-year-old Swayambhu Ganpati Temple.",

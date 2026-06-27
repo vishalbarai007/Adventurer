@@ -8,23 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
   {
-    icon: "🤖",
+    icon: "",
     text: "AI-powered travel concierge at your fingertips",
   },
   {
-    icon: "🌍",
+    icon: "",
     text: "150+ destinations, curated by real adventurers",
   },
   {
-    icon: "🛡️",
+    icon: "",
     text: "Real-time safety alerts & emergency contacts",
   },
   {
-    icon: "👥",
+    icon: "",
     text: "Smart matching with compatible travel partners",
   },
   {
-    icon: "💬",
+    icon: "",
     text: "Community forums with 500+ active travelers",
   },
 ];
@@ -89,48 +89,48 @@ const AppShowcase = () => {
   }, []);
 
   // GSAP scroll animations
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".app-title", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     gsap.from(".app-title", {
+  //       y: 40,
+  //       opacity: 0,
+  //       duration: 1,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: sectionRef.current,
+  //         start: "top 80%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
 
-      gsap.from(".highlight-item", {
-        x: -40,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".highlights-list",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
+  //     gsap.from(".highlight-item", {
+  //       x: -40,
+  //       opacity: 0,
+  //       stagger: 0.15,
+  //       duration: 0.8,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: ".highlights-list",
+  //         start: "top 80%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
 
-      gsap.from(".globe-container", {
-        scale: 0.8,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".globe-container",
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    }, sectionRef);
+  //     gsap.from(".globe-container", {
+  //       scale: 0.8,
+  //       opacity: 0,
+  //       duration: 1.5,
+  //       ease: "power3.out",
+  //       scrollTrigger: {
+  //         trigger: ".globe-container",
+  //         start: "top 80%",
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
+  //   }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
     <section
