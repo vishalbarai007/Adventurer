@@ -1,4 +1,3 @@
-import { lazy } from 'react'
 import Scrollslider from '@/components/home/ScrollSlider'
 import Parallax from '@/components/parallax/Parallax'
 import Footer from '@/components/common/Footer'

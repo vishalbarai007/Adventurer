@@ -1,10 +1,21 @@
+import { FiHeart } from "react-icons/fi";
 
 const Copyright = () => {
-    return (
-        <div className="w-full flex mt-24 items-center justify-center border-t border-t-[#EADED0]">
-            <h1 className="">@2024 Copyright Vishal All Rights Reserved</h1>
-        </div>
-    )
-}
+  const currentYear = new Date().getFullYear();
 
-export default Copyright
+  return (
+    <div className="footer-copyright" id="footer-copyright">
+      <div className="footer-copyright-divider" />
+      <div className="footer-copyright-content">
+        <p className="footer-copyright-text">
+          © {currentYear} <span className="footer-copyright-brand">Adventurer</span>. All rights reserved.
+        </p>
+        <p className="footer-copyright-made">
+          Made with <FiHeart className="footer-heart-icon" size={14} /> by Vishal
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Copyright;

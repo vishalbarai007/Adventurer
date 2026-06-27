@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button-slate"
 // import { Input } from "@/components/ui/input"
 // import { Card, CardContent } from "@/components/ui/card"
 import { ChevronRight } from "lucide-react"
-import DestinationCarousel from "@/components/destinations/DestinationCarousel"
+import BlogsCarousel from "@/components/blog/BlogsCarousel"
 import { IoIosArrowDropright } from "react-icons/io";
 
 
@@ -31,56 +31,56 @@ const destinations = [
 export default function BlogsLanding() {
   return (
     <>
-      <div className="BlogsLanding w-fit sm:w-full grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3 p-5">    <div className="min-h-screen flex items-center justify-center ">
-
-        <section className="relative  px-10 py-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
-              <h1 className="text-6xl md:text-8xl font-bold border-l-8 border-white px-5 text-white">
-                EXPLORE
-                <br />
-                <span className="text-[#98D8D3]">MAHARASHTRA</span>
-              </h1>
-              <p className="text-white/80 text-2xl max-w-2xl">
-              Feel the Essence of Maharashtra Beyond the Ordinary.
-              Heritage, Hills, and the Arabian Waves Await,
-              A Journey Through Tradition, Taste, and Tranquility!
-              </p>
-              <Button className="bg-[#8B8F3D] text-2xl rounded-full font-extrabold p-7 hover:bg-[#8B8F3D]/90 text-white">
-                BOOK NOW
-                <IoIosArrowDropright className="ml-2 h-10 w-10" />
-              </Button>
+      <div className="BlogsLanding w-fit sm:w-full grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3 p-5">
+        <div className="min-h-screen flex items-center justify-center ">
+          <section className="relative  px-10 py-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-6">
+                <h1 className="text-6xl md:text-8xl font-bold border-l-8 border-white px-5 text-white">
+                  EXPLORE
+                  <br />
+                  <span className="text-[#98D8D3]">MAHARASHTRA</span>
+                </h1>
+                <p className="text-white/80 text-2xl max-w-2xl">
+                  Feel the Essence of Maharashtra Beyond the Ordinary.
+                  Heritage, Hills, and the Arabian Waves Await,
+                  A Journey Through Tradition, Taste, and Tranquility!
+                </p>
+                <Button className="bg-[#8B8F3D] text-2xl rounded-full font-extrabold p-7 hover:bg-[#8B8F3D]/90 text-white">
+                  BOOK NOW
+                  <IoIosArrowDropright className="ml-2 h-10 w-10" />
+                </Button>
+              </div>
             </div>
-          </div>
 
-          {/* Decorative Elements */}
-          <div className="absolute -top-20 right-10 grid grid-cols-5 gap-2 opacity-70">
-            {Array.from({ length: 25 }).map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-white rounded-full" />
-            ))}
-          </div>
-          <div className="absolute -bottom-20 left-10 grid grid-cols-5 gap-2 opacity-70">
-            {Array.from({ length: 25 }).map((_, i) => (
-              <div key={i} className="w-2 h-2 bg-white rounded-full" />
-            ))}
-          </div>
-          <div className="absolute -top-20 left-10">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <ChevronRight key={i} className="inline text-white/90 font-extrabold h-8 w-6" />
-            ))}
-          </div>
-          <div className="absolute -bottom-20 right-10">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <ChevronRight key={i} className="inline text-white/90 h-8 w-6" />
-            ))}
-          </div>
-        </section>
-
-
-      </div>
+            {/* Decorative Elements */}
+            <div className="absolute -top-20 right-10 grid grid-cols-5 gap-2 opacity-70">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <div key={i} className="w-2 h-2 bg-white rounded-full" />
+              ))}
+            </div>
+            <div className="absolute -bottom-20 left-10 grid grid-cols-5 gap-2 opacity-70">
+              {Array.from({ length: 25 }).map((_, i) => (
+                <div key={i} className="w-2 h-2 bg-white rounded-full" />
+              ))}
+            </div>
+            <div className="absolute -top-20 left-10">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <ChevronRight key={i} className="inline text-white/90 font-extrabold h-8 w-6" />
+              ))}
+            </div>
+            <div className="absolute -bottom-20 right-10">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <ChevronRight key={i} className="inline text-white/90 h-8 w-6" />
+              ))}
+            </div>
+          </section>
 
 
-        <DestinationCarousel destinations={destinations} />
+        </div>
+
+
+        <BlogsCarousel destinations={destinations} />
 
 
       </div>

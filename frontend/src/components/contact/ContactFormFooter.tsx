@@ -1,136 +1,180 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { FiSend, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 
 interface FormData {
   name: string;
   email: string;
   location: string;
   contact: string;
+  message: string;
 }
 
-const ContactForm: React.FC = () => {
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
+const ContactFormFooter: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     location: "",
     contact: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted", formData);
-    alert("Form Submitted Successfully!");
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      location: "",
-      contact: "",
-    });
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      await axios.post("http://localhost:5000/api/user-query", formData, {
+        withCredentials: true,
+      });
+
+      setStatus("success");
+      setFormData({ name: "", email: "", location: "", contact: "", message: "" });
+
+      // Reset status after 4 seconds
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (error: any) {
+      setStatus("error");
+      setErrorMessage(
+        error.response?.data?.error || "Something went wrong. Please try again."
+      );
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
-    <div className="flex justify-center rounded-md items-center max-h-fit">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-gray-100 shadow-md rounded-lg p-8"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-[#1F3D3B] text-center">Contact Us</h2>
+    <div className="footer-form-wrapper" id="footer-contact-form">
+      <h3 className="footer-section-title">
+        <span className="footer-title-accent">Send Us</span> a Message
+      </h3>
+      <p className="footer-section-subtitle">
+        Have a question? We'd love to hear from you.
+      </p>
 
-        {/* Name Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 text-sm font-medium mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+      <form onSubmit={handleSubmit} className="footer-form" autoComplete="off">
+        <div className="footer-form-row">
+          <div className="footer-form-group">
+            <input
+              type="text"
+              id="footer-name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name *"
+              required
+              className="footer-input"
+              disabled={status === "loading"}
+            />
+          </div>
+          <div className="footer-form-group">
+            <input
+              type="email"
+              id="footer-email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email Address *"
+              required
+              className="footer-input"
+              disabled={status === "loading"}
+            />
+          </div>
+        </div>
+
+        <div className="footer-form-row">
+          <div className="footer-form-group">
+            <input
+              type="text"
+              id="footer-location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Your Location"
+              className="footer-input"
+              disabled={status === "loading"}
+            />
+          </div>
+          <div className="footer-form-group">
+            <input
+              type="tel"
+              id="footer-contact"
+              name="contact"
+              value={formData.contact}
+              onChange={handleChange}
+              placeholder="Phone Number"
+              className="footer-input"
+              disabled={status === "loading"}
+            />
+          </div>
+        </div>
+
+        <div className="footer-form-group">
+          <textarea
+            id="footer-message"
+            name="message"
+            value={formData.message}
             onChange={handleChange}
-            placeholder="Enter your name"
+            placeholder="Your Message *"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            rows={3}
+            className="footer-input footer-textarea"
+            disabled={status === "loading"}
           />
         </div>
 
-        {/* Email Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 text-sm font-medium mb-2"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        {/* Location Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="location"
-            className="block text-gray-700 text-sm font-medium mb-2"
-          >
-            Location
-          </label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            placeholder="Enter your location"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        {/* Contact Number Input */}
-        <div className="mb-4">
-          <label
-            htmlFor="contact"
-            className="block text-gray-700 text-sm font-medium mb-2"
-          >
-            Contact Number
-          </label>
-          <input
-            type="tel"
-            id="contact"
-            name="contact"
-            value={formData.contact}
-            onChange={handleChange}
-            placeholder="Enter your contact number"
-            required
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-[#233115] text-white py-2 px-4 rounded-lg hover:bg-[#1F3D3B] focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className={`footer-submit-btn ${status === "loading" ? "footer-btn-loading" : ""}`}
+          disabled={status === "loading"}
+          id="footer-submit-btn"
         >
-          Submit
+          {status === "loading" ? (
+            <>
+              <span className="footer-spinner" />
+              Sending...
+            </>
+          ) : status === "success" ? (
+            <>
+              <FiCheckCircle size={18} />
+              Sent Successfully!
+            </>
+          ) : (
+            <>
+              <FiSend size={16} />
+              Send Message
+            </>
+          )}
         </button>
+
+        {status === "error" && (
+          <div className="footer-form-error">
+            <FiAlertCircle size={16} />
+            <span>{errorMessage}</span>
+          </div>
+        )}
+
+        {status === "success" && (
+          <div className="footer-form-success">
+            <FiCheckCircle size={16} />
+            <span>Thank you! We'll get back to you soon.</span>
+          </div>
+        )}
       </form>
     </div>
   );
 };
 
-export default ContactForm;
+export default ContactFormFooter;

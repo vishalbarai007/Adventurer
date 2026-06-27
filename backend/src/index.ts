@@ -17,6 +17,7 @@ import blogRoutes from './routes/blogRoutes';
 import chatbotRoutes from './routes/chatbotRoutes';
 import contactRoutes from './routes/contactRoutes';
 import uploadRoutes from './routes/uploadRoutes';
+import userQueryRoutes from './routes/userQueryRoutes';
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/api', locationRoutes); // /api/nearby-spots
 app.use('/blog', blogRoutes); // /blog
 app.use('/chatbot', chatbotRoutes); // /chatbot
 app.use('/contact', contactRoutes); // /contact
+app.use('/api/user-query', userQueryRoutes); // /api/user-query
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
