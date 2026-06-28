@@ -18,8 +18,10 @@ import chatbotRoutes from './routes/chatbotRoutes';
 import contactRoutes from './routes/contactRoutes';
 import uploadRoutes from './routes/uploadRoutes';
 import userQueryRoutes from './routes/userQueryRoutes';
+import marketplaceRoutes from './routes/marketplaceRoutes';
 
 const app = express();
+
 
 // Middleware
 app.use(express.json());
@@ -43,6 +45,7 @@ app.use('/blog', blogRoutes); // /blog
 app.use('/chatbot', chatbotRoutes); // /chatbot
 app.use('/contact', contactRoutes); // /contact
 app.use('/api/user-query', userQueryRoutes); // /api/user-query
+app.use('/api', marketplaceRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

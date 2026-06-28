@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import BlogModal from "@/components/blog/BlogModal"
 import LargeSuccessLoader from "@/components/common/Loader"
-import { FiClock, FiCalendar, FiArrowRight, FiMessageSquare } from "react-icons/fi"
+import { FiCalendar, FiArrowRight, FiMessageSquare } from "react-icons/fi"
 
 interface Comment {
   id: string;

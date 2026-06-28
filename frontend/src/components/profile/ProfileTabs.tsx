@@ -1,4 +1,4 @@
-import { Grid, Bookmark, Tag } from "lucide-react";
+import { Grid, Bookmark, Tag, Calendar } from "lucide-react";
 
 interface ProfileTabsProps {
   activeTab: string;
@@ -36,6 +36,15 @@ const ProfileTabs = ({ activeTab, setActiveTab, isMobile }: ProfileTabsProps) =>
         >
           <Tag className="w-4 h-4 mr-1" />
           <span className={isMobile ? "hidden" : ""}>TAGGED</span>
+        </button>
+        <button
+          className={`flex items-center py-3 px-4 ${
+            activeTab === "bookings" ? "border-t-2 border-black dark:border-white" : "text-gray-500 dark:text-gray-400"
+          }`}
+          onClick={() => setActiveTab("bookings")}
+        >
+          <Calendar className="w-4 h-4 mr-1" />
+          <span className={isMobile ? "hidden" : ""}>BOOKINGS</span>
         </button>
       </div>
     </div>

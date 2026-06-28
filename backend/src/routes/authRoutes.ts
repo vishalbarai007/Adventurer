@@ -47,25 +47,49 @@ const setAuthCookie = (res: Response, token: string) => {
 
 const saveUserToFirebase = async (userData: any) => {
   const usersRef = db.collection('users');
+  const role = userData.role || 'traveler';
   const documentData: any = {
     email: userData.email,
     password: userData.password,
     name: userData.name || '',
-    role: userData.role || 'traveler',
+    role: role,
     authProvider: userData.authProvider || (userData.google_auth ? 'google' : 'password'),
-    createdAt: new Date(),
-    last_login: new Date()
+    createdAt: new Date().toISOString(),
+    last_login: new Date().toISOString(),
+    onboardingProgress: 33, // Account creation is step 1 (33%)
+    onboardingCompleted: false,
+    profileCompleted: false
   };
 
-  if (documentData.role === 'traveler') {
-    documentData.profileCompleted = false;
-  } else if (['organizer', 'vendor'].includes(documentData.role)) {
-    documentData.onboardingCompleted = false;
-    documentData.businessDetails = {
+  if (role === 'traveler') {
+    documentData.travelerProfile = {
+      userTags: [],
+      gender: null,
+      dateOfBirth: null,
+      emergencyContact: { name: '', phone: '', relation: '' }
+    };
+  } else if (role === 'organizer') {
+    documentData.organizationProfile = {
       companyName: userData.companyName || '',
       gstNumber: userData.gstNumber || '',
+      tripsConducted: 0,
+      touristsHelped: 0,
+      teamSize: 1,
+      specialityTags: [],
+      statesCovered: [],
       isVerified: false,
-      contactPhone: ''
+      experienceYears: 0
+    };
+  } else if (role === 'guide') {
+    documentData.guideProfile = {
+      nativeLocation: '',
+      languagesSpoken: [],
+      availability: 'all',
+      pricePerTrek: 1000,
+      averageRating: 0,
+      totalReviews: 0,
+      isActiveListing: true,
+      experienceYears: 0
     };
   }
 

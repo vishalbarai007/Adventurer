@@ -5,11 +5,17 @@ export type AuthState = 'checking' | 'unauthenticated' | 'authenticated';
 
 export interface User {
   id: string;
+  uid?: string;
   email: string;
   role?: string;
   name?: string;
   profileCompleted?: boolean;
   onboardingCompleted?: boolean;
+  onboardingProgress?: number;
+  activity?: any[];
+  travelerProfile?: any;
+  organizationProfile?: any;
+  guideProfile?: any;
   socialLinks?: {
     instagramUsername?: string | null;
     instagramProfileUrl?: string | null;

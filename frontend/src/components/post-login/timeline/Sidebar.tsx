@@ -31,6 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const menuItems = [
     { name: "Home", icon: Compass, href: "/explore" },
     { name: "Profile", icon: Home, href: "/profile" },
+    { name: "Guides Marketplace", icon: Compass, href: "/marketplace" },
     { name: "Blogs", icon: Compass, href: "/blogs" },
     { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },

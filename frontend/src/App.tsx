@@ -29,9 +29,9 @@ const ChatPage = lazy(() => import("@/pages/ChatPage"));
 const TrekDetails = lazy(() => import("@/pages/TrekDetails"));
 const DestinationCategory = lazy(() => import("@/pages/DestinationCategory"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const GuideMarketplace = lazy(() => import("@/pages/GuideMarketplace"));
 
 import { useAuth } from "@/contexts/AuthContext";
-import OrganizerOnboarding from "@/components/auth/OrganizerOnboarding";
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -63,19 +63,10 @@ const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 };
 
 const OnboardingWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-	const { authState, user } = useAuth();
+	const { authState } = useAuth();
 
 	if (authState === 'checking') {
 		return <div className="min-h-screen flex justify-center items-center"><LargeSuccessLoader /></div>;
-	}
-
-	if (
-		authState === 'authenticated' &&
-		user &&
-		(user.role === 'organizer' || user.role === 'vendor') &&
-		!user.onboardingCompleted
-	) {
-		return <OrganizerOnboarding />;
 	}
 
 	return <>{children}</>;
@@ -107,6 +98,7 @@ const App = () => {
 									<Route path="/dashboard" element={<BusinessDashboard />} />
 									<Route path="/chat/:chatId" element={<ChatPage />} />
 									<Route path="/treks" element={<TrekDetails />} />
+									<Route path="/marketplace" element={<GuideMarketplace />} />
 									<Route path="*" element={<NotFound />} />
 								</Routes>
 								</OnboardingWrapper>

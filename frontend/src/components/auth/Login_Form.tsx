@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import httpClient from "@/services/httpClient";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link } from 'react-router-dom';
+import OnboardingWizard from "./OnboardingWizard";
 
 interface FormInputs {
 	name?: string;
@@ -21,6 +22,7 @@ const Login_form: React.FC = () => {
 	const [mode, setFormMode] = useState<"SignUp" | "SignIn">("SignUp");
 	const [role, setRole] = useState<string>("traveler");
 	const [error, setError] = useState<string>("");
+	const [isOnboarding, setIsOnboarding] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const navigate = useNavigate();
@@ -68,8 +70,8 @@ const Login_form: React.FC = () => {
 				);
 
 				if (response.status === 200) {
-					alert("Registration successful! Please sign in.");
-					setFormMode("SignIn");
+					await checkAuth(); // Updates context user to newly registered user
+					setIsOnboarding(true);
 					reset();
 				}
 			} else {
@@ -118,6 +120,22 @@ const Login_form: React.FC = () => {
 	};
 
 	const password = watch("password");
+
+	if (isOnboarding) {
+		return (
+			<div className="min-h-screen bg-[#112c1d] flex items-center justify-center p-4">
+				<OnboardingWizard 
+					onComplete={() => {
+						if (role === 'traveler') {
+							navigate('/explore');
+						} else {
+							navigate('/dashboard');
+						}
+					}} 
+				/>
+			</div>
+		);
+	}
 
 	return (
 		<div className="min-h-screen bg-[#112c1d] flex items-center justify-center p-4">
@@ -172,16 +190,16 @@ const Login_form: React.FC = () => {
 								>
 									<option value="traveler">I am a Traveler</option>
 									<option value="organizer">I am an Agency/Organizer</option>
-									{/* <option value="vendor">I own a Villa/Property</option> */}
+									<option value="guide">I am Local Guide</option>
 								</select>
 							</div>
-							{role !== "traveler" && (
+							{role === "organizer" && (
 								<div className="flex gap-4">
 									<div className="flex-1">
 										<label className="block text-sm font-medium text-[#EADED0]">Business Name <span className="text-red-500">*</span></label>
 										<input
 											type="text"
-											{...register("companyName", { required: role !== "traveler" ? "Business Name is required" : false })}
+											{...register("companyName", { required: role === "organizer" ? "Business Name is required" : false })}
 											className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
 										/>
 										{errors.companyName && (
@@ -192,7 +210,7 @@ const Login_form: React.FC = () => {
 										<label className="block text-sm font-medium text-[#EADED0]">GST Number</label>
 										<input
 											type="text"
-											{...register("gstNumber", { required: role !== "traveler" ? "GST Number is required" : false })}
+											{...register("gstNumber", { required: role === "organizer" ? "GST Number is required" : false })}
 											className="mt-1 w-full px-4 py-2 border text-zinc-900 bg-[#d4d9d1] rounded-md focus:ring-green-500 focus:border-green-500"
 										/>
 										{errors.gstNumber && (
