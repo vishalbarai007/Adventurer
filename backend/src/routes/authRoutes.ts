@@ -287,6 +287,11 @@ router.get('/me', authenticateToken, async (req: AuthRequest, res: Response) => 
         name: userData.name,
         profileCompleted: userData.profileCompleted ?? false,
         onboardingCompleted: userData.onboardingCompleted ?? false,
+        onboardingProgress: userData.onboardingProgress ?? 33,
+        activity: userData.activity || [],
+        travelerProfile: userData.travelerProfile || null,
+        organizationProfile: userData.organizationProfile || null,
+        guideProfile: userData.guideProfile || null,
         socialLinks: userData.socialLinks || {
           instagramUsername: null,
           instagramProfileUrl: null,

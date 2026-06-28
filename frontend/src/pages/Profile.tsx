@@ -11,8 +11,9 @@ import CreateOptionsModal from "@/components/profile/CreateOptionsModal"
 import type { Post } from "@/types/posts"
 import { useAuth } from "@/contexts/AuthContext"
 import httpClient from "@/services/httpClient"
+import OnboardingWizard from "@/components/auth/OnboardingWizard"
 import { 
-  Star, Shield, MapPin, Calendar, DollarSign, X, Check, AlertTriangle 
+  Star, Shield, MapPin, Calendar, DollarSign, X, Check, AlertTriangle, ArrowRight 
 } from "lucide-react"
 
 interface GuideBooking {
@@ -40,6 +41,7 @@ const Profile = () => {
   // Escrow & review states
   const [releaseLoading, setReleaseLoading] = useState<{ [bookingId: string]: boolean }>({});
   const [selectedBookingForReview, setSelectedBookingForReview] = useState<GuideBooking | null>(null);
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
   
   // Review metrics
   const [safetyRating, setSafetyRating] = useState(5);
@@ -210,6 +212,9 @@ const Profile = () => {
     </div>
   );
 
+  const showProgressBanner = user?.onboardingProgress !== undefined && user.onboardingProgress < 100;
+  const progressPercent = user?.onboardingProgress || 33;
+
   return (
     <div className="min-h-screen">
       <div className="flex flex-col md:flex-row bg-white dark:bg-black text-black dark:text-white min-h-screen">
@@ -222,6 +227,39 @@ const Profile = () => {
             isMobile={isMobile} 
             onCreateClick={handleCreateClick}
           />
+
+          {showProgressBanner && (
+            <div className="mx-6 my-4 p-5 rounded-3xl bg-gradient-to-r from-emerald-950 to-zinc-900 border border-emerald-800/30 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-5">
+              <div className="flex-1 w-full">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-400">
+                    Profile Completion: {progressPercent}%
+                  </span>
+                  <span className="text-xs text-gray-400">
+                    {progressPercent === 33 ? "Step 1 of 3 complete" : "Step 2 of 3 complete"}
+                  </span>
+                </div>
+                {/* Progress bar container */}
+                <div className="w-full bg-emerald-950/60 border border-emerald-900/30 h-3 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-gradient-to-r from-emerald-500 to-green-500 h-full rounded-full transition-all duration-700 ease-out"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+                <p className="text-xs text-emerald-300/80 mt-2.5">
+                  {progressPercent === 33 
+                    ? "Complete your profile metrics (experience, capabilities) and preferences to unlock the trusted traveler status."
+                    : "Almost there! Complete your activity preferences and specialties to finish setting up your account."}
+                </p>
+              </div>
+              <button
+                onClick={() => setShowOnboardingModal(true)}
+                className="w-full md:w-auto px-5 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-1.5 whitespace-nowrap self-stretch md:self-center"
+              >
+                Complete Setup <ArrowRight size={14} />
+              </button>
+            </div>
+          )}
 
           <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} isMobile={isMobile} />
 
@@ -389,6 +427,26 @@ const Profile = () => {
                 </button>
               </form>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Onboarding Wizard Modal */}
+      {showOnboardingModal && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto">
+          <div className="relative w-full max-w-2xl">
+            <button 
+              onClick={() => setShowOnboardingModal(false)}
+              className="absolute right-4 top-4 text-emerald-300 hover:text-white z-10 p-1.5 bg-emerald-950/60 hover:bg-emerald-900 rounded-full transition"
+            >
+              <X size={20} />
+            </button>
+            <OnboardingWizard 
+              onComplete={() => {
+                setShowOnboardingModal(false);
+                checkAuth();
+              }}
+            />
           </div>
         </div>
       )}
