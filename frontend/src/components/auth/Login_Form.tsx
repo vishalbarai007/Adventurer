@@ -81,10 +81,15 @@ const Login_form: React.FC = () => {
 				);
 
 				if (response.status === 200) {
-					await checkAuth(); // Update global auth state before navigating
-					const params = new URLSearchParams(location.search);
-					const redirectPath = params.get("redirect") || "/explore";
-					navigate(redirectPath);
+					const loggedInUser = await checkAuth();
+					if (loggedInUser && loggedInUser.onboardingProgress !== undefined && loggedInUser.onboardingProgress < 100) {
+						setIsOnboarding(true);
+						reset();
+					} else {
+						const params = new URLSearchParams(location.search);
+						const redirectPath = params.get("redirect") || "/explore";
+						navigate(redirectPath);
+					}
 				}
 			}
 		} catch (err: unknown) {
@@ -166,6 +171,34 @@ const Login_form: React.FC = () => {
 
 					{mode === "SignUp" && (
 						<>
+							<div className="mb-6 bg-emerald-950/30 border border-emerald-900/20 p-4 rounded-2xl">
+								{/* Progress steps indicator */}
+								<div className="flex items-center justify-between text-xs font-semibold text-emerald-400 mb-3">
+									<div className="flex items-center gap-1.5 text-emerald-300">
+										<span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-700 text-white text-[10px] border border-emerald-500 font-bold">1</span>
+										<span>Account</span>
+									</div>
+									<div className="h-0.5 flex-1 mx-2 bg-emerald-950/60 rounded">
+										<div className="h-full bg-emerald-500 w-[33%]" />
+									</div>
+									<div className="flex items-center gap-1.5 text-emerald-600/60">
+										<span className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold bg-emerald-950/50 text-emerald-600/40 border border-emerald-900/20">2</span>
+										<span>Metrics</span>
+									</div>
+									<div className="h-0.5 flex-1 mx-2 bg-emerald-950/60 rounded">
+										<div className="h-full bg-emerald-500/0 w-0" />
+									</div>
+									<div className="flex items-center gap-1.5 text-emerald-600/60">
+										<span className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold bg-emerald-950/50 text-emerald-600/40 border border-emerald-900/20">3</span>
+										<span>Preferences</span>
+									</div>
+								</div>
+								<div className="h-1.5 w-full bg-emerald-950/60 rounded-full overflow-hidden border border-emerald-900/20">
+									<div className="bg-emerald-500 h-full w-[33%] rounded-full" />
+								</div>
+								<p className="text-[10px] text-emerald-300/80 mt-1.5">Step 1 of 3: Setup your baseline account credentials</p>
+							</div>
+
 							<div>
 								<label className="block text-sm font-medium text-[#EADED0]">
 									Full Name <span className="text-red-500">*</span>

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Settings, ChevronLeft, PlusSquare } from "lucide-react";
 import type { ProfileData } from "@/types/posts";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ProfileHeaderProps {
 	isMobile: boolean;
 	onCreateClick: () => void;
+	onCompleteProfileClick?: () => void;
 }
 
 interface UserProfile {
@@ -15,7 +17,10 @@ interface UserProfile {
 	name?: string;
 }
 
-const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
+const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: ProfileHeaderProps) => {
+	const { user } = useAuth();
+	const progressPercent = user?.onboardingProgress ?? 100;
+
 	const [profileData, setProfileData] = useState<ProfileData>({
 		username: "_VishalBarai_",
 		fullName: "Vishal Barai",
@@ -26,8 +31,8 @@ const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
 			"Web-Developer",
 		],
 		postsCount: 3,
-		followersCount: 148,
-		followingCount: 163,
+		followersCount: 0,
+		followingCount: 0,
 		profilePicture: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png", // Default fallback
 		isVerified: false,
 		highlights: [
@@ -86,6 +91,15 @@ const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
 					<button className="p-1 mr-2" onClick={onCreateClick}>
 						<PlusSquare className="w-6 h-6" />
 					</button>
+
+					{progressPercent < 100 && (
+						<button
+							onClick={onCompleteProfileClick}
+							className="mr-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md transition whitespace-nowrap animate-pulse"
+						>
+							Finish update
+						</button>
+					)}
 
 					<Link to="/settings">
 						<button className="p-1">
@@ -211,10 +225,19 @@ const ProfileHeader = ({ isMobile, onCreateClick }: ProfileHeaderProps) => {
 						</button>
 
 						<Link to="/settings">
-							<button className="p-1">
+							<button className="p-1 mr-2">
 								<Settings className="w-6 h-6" />
 							</button>
 						</Link>
+
+						{progressPercent < 100 && (
+							<button
+								onClick={onCompleteProfileClick}
+								className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md transition whitespace-nowrap animate-pulse"
+							>
+								Finish update
+							</button>
+						)}
 					</div>
 
 					<div className="flex mb-4">

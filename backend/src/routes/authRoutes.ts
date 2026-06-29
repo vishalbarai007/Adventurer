@@ -56,7 +56,7 @@ const saveUserToFirebase = async (userData: any) => {
     authProvider: userData.authProvider || (userData.google_auth ? 'google' : 'password'),
     createdAt: new Date().toISOString(),
     last_login: new Date().toISOString(),
-    onboardingProgress: 33, // Account creation is step 1 (33%)
+    onboardingProgress: 30, // Account creation is step 1 (30%)
     onboardingCompleted: false,
     profileCompleted: false
   };

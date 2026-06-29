@@ -34,7 +34,7 @@ export interface User {
 interface AuthContextType {
   authState: AuthState;
   user: User | null;
-  checkAuth: () => Promise<void>;
+  checkAuth: () => Promise<User | null>;
   logout: () => Promise<void>;
 }
 
@@ -44,15 +44,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [authState, setAuthState] = useState<AuthState>('checking');
   const [user, setUser] = useState<User | null>(null);
 
-  const checkAuth = async () => {
+  const checkAuth = async (): Promise<User | null> => {
     setAuthState('checking');
     try {
       const userData = await fetchCurrentUser();
       setUser(userData);
       setAuthState('authenticated');
+      return userData;
     } catch (error) {
       setUser(null);
       setAuthState('unauthenticated');
+      return null;
     }
   };
 

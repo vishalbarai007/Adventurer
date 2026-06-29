@@ -42,6 +42,7 @@ const Profile = () => {
   const [releaseLoading, setReleaseLoading] = useState<{ [bookingId: string]: boolean }>({});
   const [selectedBookingForReview, setSelectedBookingForReview] = useState<GuideBooking | null>(null);
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const [showProgressDetailsModal, setShowProgressDetailsModal] = useState(false);
   
   // Review metrics
   const [safetyRating, setSafetyRating] = useState(5);
@@ -226,6 +227,7 @@ const Profile = () => {
           <ProfileHeader 
             isMobile={isMobile} 
             onCreateClick={handleCreateClick}
+            onCompleteProfileClick={() => setShowProgressDetailsModal(true)}
           />
 
           {showProgressBanner && (
@@ -447,6 +449,157 @@ const Profile = () => {
                 checkAuth();
               }}
             />
+          </div>
+        </div>
+      )}
+
+      {/* Profile Progress Details Modal */}
+      {showProgressDetailsModal && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-md bg-white dark:bg-[#121c15] text-black dark:text-white rounded-3xl border border-emerald-800/20 p-6 shadow-2xl">
+            <button 
+              onClick={() => setShowProgressDetailsModal(false)}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 dark:text-emerald-400 dark:hover:text-white z-10 p-1 rounded-full"
+            >
+              <X size={20} />
+            </button>
+
+            <h3 className="text-xl font-bold mb-4 font-serif text-[#012c18] dark:text-emerald-400">Profile Progress</h3>
+            
+            {/* Progress bar */}
+            <div className="mb-6">
+              <div className="flex justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-1.5">
+                <span>Overall Completion</span>
+                <span>{progressPercent}%</span>
+              </div>
+              <div className="w-full bg-gray-200 dark:bg-emerald-950/60 h-2.5 rounded-full overflow-hidden">
+                <div 
+                  className="bg-emerald-500 h-full rounded-full transition-all duration-500"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+            </div>
+
+            <div className="border-t border-gray-100 dark:border-emerald-900/30 pt-4 mb-6">
+              <h4 className="text-sm font-bold text-gray-700 dark:text-emerald-300 mb-3">Complete your Profile</h4>
+              <ul className="space-y-3 text-xs">
+                {/* Display list based on user role */}
+                {user?.role === 'traveler' && (
+                  <>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className="text-emerald-500 font-bold">1</span> Biography / Name
+                      </span>
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">30% (Completed)</span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.travelerProfile?.gender ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>2</span> Gender & DOB
+                      </span>
+                      <span className={`font-semibold ${user?.travelerProfile?.gender ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.travelerProfile?.gender ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.travelerProfile?.emergencyContact?.name ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>3</span> Emergency Contact
+                      </span>
+                      <span className={`font-semibold ${user?.travelerProfile?.emergencyContact?.name ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.travelerProfile?.emergencyContact?.name ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.travelerProfile?.userTags?.length ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>4</span> Preferences / Tags
+                      </span>
+                      <span className={`font-semibold ${user?.travelerProfile?.userTags?.length ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.travelerProfile?.userTags?.length ? "30% (Completed)" : "30% (Pending)"}
+                      </span>
+                    </li>
+                  </>
+                )}
+
+                {user?.role === 'guide' && (
+                  <>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className="text-emerald-500 font-bold">1</span> Biography / Name
+                      </span>
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">30% (Completed)</span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.guideProfile?.nativeLocation ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>2</span> Native Location
+                      </span>
+                      <span className={`font-semibold ${user?.guideProfile?.nativeLocation ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.guideProfile?.nativeLocation ? "30% (Completed)" : "30% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.guideProfile?.pricePerTrek ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>3</span> Guiding Price
+                      </span>
+                      <span className={`font-semibold ${user?.guideProfile?.pricePerTrek ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.guideProfile?.pricePerTrek ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.guideProfile?.languagesSpoken?.length ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>4</span> Languages Spoken
+                      </span>
+                      <span className={`font-semibold ${user?.guideProfile?.languagesSpoken?.length ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.guideProfile?.languagesSpoken?.length ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                  </>
+                )}
+
+                {user?.role === 'organizer' && (
+                  <>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className="text-emerald-500 font-bold">1</span> Company Name & GST
+                      </span>
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">30% (Completed)</span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.organizationProfile?.experienceYears ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>2</span> Guiding Experience
+                      </span>
+                      <span className={`font-semibold ${user?.organizationProfile?.experienceYears ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.organizationProfile?.experienceYears ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.organizationProfile?.tripsConducted ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>3</span> Operations Metrics
+                      </span>
+                      <span className={`font-semibold ${user?.organizationProfile?.tripsConducted ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.organizationProfile?.tripsConducted ? "20% (Completed)" : "20% (Pending)"}
+                      </span>
+                    </li>
+                    <li className="flex justify-between items-center py-1">
+                      <span className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                        <span className={user?.organizationProfile?.specialityTags?.length ? "text-emerald-500 font-bold" : "text-gray-400 font-bold"}>4</span> Speciality & States
+                      </span>
+                      <span className={`font-semibold ${user?.organizationProfile?.specialityTags?.length ? "text-emerald-600 dark:text-emerald-400" : "text-gray-400"}`}>
+                        {user?.organizationProfile?.specialityTags?.length ? "30% (Completed)" : "30% (Pending)"}
+                      </span>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+
+            <button 
+              onClick={() => {
+                setShowProgressDetailsModal(false);
+                setShowOnboardingModal(true);
+              }}
+              className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2 text-sm"
+            >
+              Complete your profile <ArrowRight size={16} />
+            </button>
           </div>
         </div>
       )}

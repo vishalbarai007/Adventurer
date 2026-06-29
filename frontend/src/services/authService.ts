@@ -81,8 +81,10 @@ export const googleOneTapLogin = async (
 export const logoutUser = async () => {
     try {
         await httpClient.post("/logout");
+        localStorage.removeItem("jwt_token");
     } catch (e) {
         console.error("Logout error", e);
+        localStorage.removeItem("jwt_token");
     }
 };
 

@@ -101,12 +101,12 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete, 
     setError("");
 
     // Calculate onboarding progress metric
-    // Step 1 (Account Creation) = 33%
-    // Step 2 (Profile Metrics) = 66%
+    // Step 1 (Account Creation) = 30%
+    // Step 2 (Profile Metrics) = 60%
     // Step 3 (Setup Preferences) = 100%
     const progressPercentage = isSkipped 
-      ? (completedStep === 2 ? 33 : 66)
-      : (completedStep === 2 ? 66 : 100);
+      ? (completedStep === 2 ? 30 : 60)
+      : (completedStep === 2 ? 60 : 100);
 
     const values = watch();
 

@@ -1,2 +1,9 @@
 1. Login Issues persist, Check next time , after login components not there
+2. Created foem on claude just copy that and paste in this next day.
 
+plan:
+
+Go page by Page, 
+Before login pages are done 
+
+Login -> /explore -> Profile Page 
