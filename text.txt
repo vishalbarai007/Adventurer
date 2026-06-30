@@ -7,3 +7,20 @@ Go page by Page,
 Before login pages are done 
 
 Login -> /explore -> Profile Page 
+
+Day 30th June 
+Next day Plan 
+
+Next Steps to Complete the Backend
+To move your project closer to deployment, consider these three immediate priorities:
+
+1. Build the Progressive Profile Update Route: Create a dedicated route under userRoutes.ts (e.g., PUT /api/user/profile/update) to allow travelers to add their preference tags (hills, waterfalls, history) or organizers to update details like tripsConducted and statesCovered.
+
+2. Implement the 50/50 Release Triggers:
+Expand paymentRoutes.ts to include endpoints that change escrowStatus from "Held" to "Partial_Released" when the organizer checks in a traveler at the base village.
+
+3. Connect the Guide Marketplace Actions:
+In marketplaceRoutes.ts, build out the code to query all users where role === 'guide' so your frontend has a live list of local experts to display.
+
+Complete Task 1 on 1st July,2026
+
