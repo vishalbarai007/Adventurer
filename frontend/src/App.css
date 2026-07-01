@@ -122,35 +122,6 @@ body {
 
 }
 
-@keyframes image {
-  0% {
-    background-image: url("/assets/IND/GatewayOfIndia.jpg");
-  }
-
-  20% {
-    background-image: url("/assets/IND/HawaMahal.jpg");
-
-  }
-
-  40% {
-    background-image: url("/assets/IND/Konark.jpg");
-
-  }
-
-  60% {
-    background-image: url("/assets/IND/Banaras.jpg");
-
-  }
-
-  80% {
-    background-image: url("/assets/IND/TajMahal.jpg");
-  }
-
-  100% {
-    background-image: url("/assets/IND/Mahal.jpg");
-  }
-}
-
 
 
 /* 

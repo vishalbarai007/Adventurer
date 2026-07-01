@@ -32,6 +32,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const GuideMarketplace = lazy(() => import("@/pages/GuideMarketplace"));
 
 import { useAuth } from "@/contexts/AuthContext";
+import OnboardingWizard from "@/components/auth/OnboardingWizard";
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -98,6 +99,7 @@ const App = () => {
 									<Route path="/dashboard" element={<BusinessDashboard />} />
 									<Route path="/chat/:chatId" element={<ChatPage />} />
 									<Route path="/treks" element={<TrekDetails />} />
+									<Route path="/onboarding" element={<OnboardingWizard />} />
 									<Route path="/marketplace" element={<GuideMarketplace />} />
 									<Route path="*" element={<NotFound />} />
 								</Routes>

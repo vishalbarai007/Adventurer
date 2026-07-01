@@ -223,7 +223,7 @@ router.get('/google/callback', async (req: Request, res: Response) => {
     const token = generateToken(user);
     setAuthCookie(res, token);
     // Redirect to frontend with token in query params
-    res.redirect(`http://localhost:5173/explore?token=${token}`);
+    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
   } catch (error) {
     console.error('Google OAuth error:', error);
     res.redirect(`http://localhost:5173/login?error=google_auth_failed`);
@@ -265,6 +265,9 @@ router.post('/google/one-tap', async (req: Request, res: Response) => {
 
     const token = generateToken(user);
     setAuthCookie(res, token);
+    // Redirect to frontend with token in query params
+    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
+    
     res.json({ id: user.id, email: user.email, role: user.role || 'traveler' });
   } catch (error: any) {
     console.error('Google One-Tap error:', error);
