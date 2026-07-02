@@ -6,6 +6,8 @@ import { db } from '../config/firebase';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import * as fs from 'fs';
 import * as path from 'path';
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
 
 const router = Router();
 const JWT_SECRET = process.env.SECRET_KEY || 'default_secret_key';
@@ -316,6 +318,100 @@ router.post('/logout', authenticateToken, async (req: AuthRequest, res: Response
     res.clearCookie('token');
     res.status(200).json({ message: "Logged out" });
   } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+let transporter: nodemailer.Transporter;
+
+const getTransporter = async () => {
+  if (transporter) return transporter;
+
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+  } else {
+    try {
+      const testAccount = await nodemailer.createTestAccount();
+      transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false,
+        auth: {
+          user: testAccount.user,
+          pass: testAccount.pass,
+        },
+      });
+      console.log('Created Ethereal SMTP test account:', testAccount.user);
+    } catch (err) {
+      console.warn('Failed to create Ethereal SMTP test account, falling back to console logger:', err);
+      transporter = {
+        sendMail: async (mailOptions: any) => {
+          console.log('--- SENT MOCK EMAIL ---');
+          console.log('To:', mailOptions.to);
+          console.log('Subject:', mailOptions.subject);
+          console.log('Body:', mailOptions.text);
+          console.log('-----------------------');
+          return { messageId: 'mock-id' };
+        }
+      } as any;
+    }
+  }
+  return transporter;
+};
+
+router.post('/forgot-password', async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    const user: any = await getUserByEmail(email);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (user.authProvider === 'google' || user.google_auth === true) {
+      return res.status(400).json({ error: 'This account is linked with Google sign-in. Password recovery is not available.' });
+    }
+
+    const newPassword = crypto.randomBytes(8).toString('hex');
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await db.collection('users').doc(user.id).update({ password: hashedPassword });
+
+    const mailTransporter = await getTransporter();
+    const mailOptions = {
+      from: '"Adventurer Support" <no-reply@adventurer.com>',
+      to: email,
+      subject: 'Adventurer - Password Reset Request',
+      text: `Hello Adventurer,\n\nYour password has been reset. Your new 16-digit password is:\n\n${newPassword}\n\nPlease use this new password to sign in to your account. We recommend changing it after logging in.\n\nHappy exploring,\nThe Adventurer Team`,
+      html: `<p>Hello Adventurer,</p><p>Your password has been reset. Your new 16-digit password is:</p><p><strong>${newPassword}</strong></p><p>Please use this new password to sign in to your account. We recommend changing it after logging in.</p><br/><p>Happy exploring,<br/>The Adventurer Team</p>`
+    };
+
+    const info = await mailTransporter.sendMail(mailOptions);
+
+    let previewUrl = '';
+    if (info && info.messageId && mailTransporter.options && (mailTransporter.options as any).host === 'smtp.ethereal.email') {
+      previewUrl = nodemailer.getTestMessageUrl(info) || '';
+      console.log('Preview URL for sent test email:', previewUrl);
+    }
+
+    res.json({ 
+      message: 'A new 16-digit password has been sent to your email address.',
+      ...(previewUrl ? { previewUrl } : {}),
+      temporaryPassword: newPassword 
+    });
+  } catch (error: any) {
+    console.error('Forgot password error:', error);
     res.status(500).json({ error: error.message });
   }
 });

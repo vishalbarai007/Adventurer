@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button-slate"
 import { ChevronRight } from "lucide-react"
 import BlogsCarousel from "@/components/blog/BlogsCarousel"
 import { IoIosArrowDropright } from "react-icons/io";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const destinations = [
@@ -29,6 +31,17 @@ const destinations = [
 ]
 
 export default function BlogsLanding() {
+  const { authState } = useAuth();
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    if (authState === 'authenticated') {
+      navigate('/treks');
+    } else {
+      navigate('/login');
+    }
+  };
+  
   return (
     <>
       <div className="BlogsLanding w-fit sm:w-full grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-3 p-5">
@@ -46,7 +59,10 @@ export default function BlogsLanding() {
                   Heritage, Hills, and the Arabian Waves Await,
                   A Journey Through Tradition, Taste, and Tranquility!
                 </p>
-                <Button className="bg-[#8B8F3D] text-2xl rounded-full font-extrabold p-7 hover:bg-[#8B8F3D]/90 text-white">
+                <Button 
+                  className="bg-[#8B8F3D] text-2xl rounded-full font-extrabold p-7 hover:bg-[#8B8F3D]/90 text-white" 
+                  onClick={handleBookNow}
+                >
                   BOOK NOW
                   <IoIosArrowDropright className="ml-2 h-10 w-10" />
                 </Button>

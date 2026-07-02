@@ -10,10 +10,11 @@ const AboutUsLeftContent: React.FC = () => {
           diverse cultures, and experiencing nature at its finest. Our
           platform offers a one-stop solution for adventure enthusiasts,
           combining planning tools, personalized recommendations, and a
-          community of like-minded explorers.
+          community of like-minded explorers.<br/>
+          <span className="text-[#233115] font-semibold">Adventurer</span> refers to all travelers, trekkers, and wanderers who are passionate about exploring and embracing adventure in their lives.
         </p>
         <p className="text-[#EADED0] text-base md:text-lg leading-relaxed font-light">
-          Whether you're embarking on your first trek or you're a seasoned
+          Whether you're planning your first trek or you're a seasoned
           traveler, Adventurer is here to inspire, guide, and support you.
           From detailed itineraries and safety tips to local guides and
           cultural insights, we provide everything you need to make your

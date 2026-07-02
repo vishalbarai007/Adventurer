@@ -14,7 +14,9 @@ Next day Plan
 Next Steps to Complete the Backend
 To move your project closer to deployment, consider these three immediate priorities:
 
-1. Build the Progressive Profile Update Route: Create a dedicated route under userRoutes.ts (e.g., PUT /api/user/profile/update) to allow travelers to add their preference tags (hills, waterfalls, history) or organizers to update details like tripsConducted and statesCovered.
+1. Build the Progressive Profile Update Route: Create a dedicated route under userRoutes.ts (e.g., PUT /api/user/profile/update) to allow travelers to add their preference tags (hills, waterfalls, history) or organizers to update details like tripsConducted and statesCovered. 
+(this has been implemented now, 1st july, Giving finishing touch now , 2nd july)
+[Implemented forgotpassword and fixed login minor ui bugs. on 2nd july]
 
 2. Implement the 50/50 Release Triggers:
 Expand paymentRoutes.ts to include endpoints that change escrowStatus from "Held" to "Partial_Released" when the organizer checks in a traveler at the base village.

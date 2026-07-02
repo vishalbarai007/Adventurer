@@ -30,6 +30,7 @@ const TrekDetails = lazy(() => import("@/pages/TrekDetails"));
 const DestinationCategory = lazy(() => import("@/pages/DestinationCategory"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const GuideMarketplace = lazy(() => import("@/pages/GuideMarketplace"));
+const ForgotPasswordPage = lazy(() => import("@/pages/ForgotPasswordPage"));
 
 import { useAuth } from "@/contexts/AuthContext";
 import OnboardingWizard from "@/components/auth/OnboardingWizard";
@@ -101,6 +102,7 @@ const App = () => {
 									<Route path="/treks" element={<TrekDetails />} />
 									<Route path="/onboarding" element={<OnboardingWizard />} />
 									<Route path="/marketplace" element={<GuideMarketplace />} />
+									<Route path="/forgot-password" element={<ForgotPasswordPage />} />
 									<Route path="*" element={<NotFound />} />
 								</Routes>
 								</OnboardingWrapper>

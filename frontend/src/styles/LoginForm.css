@@ -39,12 +39,12 @@ input[type=range]::-moz-range-thumb {
 /* ── Buttons ── */
 .adv-btn-primary {
   width: 100%; padding: 13px; border: none; border-radius: 13px;
-  background: linear-gradient(135deg, #1B6630 0%, #268C42 100%);
-  color: #fff; font-size: 15px; font-weight: 700; cursor: pointer;
-  box-shadow: 0 4px 24px rgba(27,102,48,0.4);
+  background: linear-gradient(to right, #ffaa1c 0%, #ff7757 100%);
+  color: #012c18; font-size: 15px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 24px rgba(255, 170, 28, 0.25);
   transition: transform .15s, box-shadow .15s, opacity .15s;
 }
-.adv-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(27,102,48,0.5); }
+.adv-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(255, 170, 28, 0.35); }
 .adv-btn-primary:active { transform: translateY(0); }
 
 .adv-btn-social {

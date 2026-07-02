@@ -323,8 +323,9 @@ const LoginForm: React.FC = () => {
           <Link to="/welcome" style={{ textDecoration: "none" }}>
             <h1 style={{
               fontSize: "clamp(28px,4vw,46px)", fontWeight: 900, letterSpacing: -1,
-              color: "#C0E8CC", textAlign: "center", margin: "0 0 6px",
-            }}>
+              color:"#ffaa1c", textAlign: "center", margin: "0 0 6px",
+            }}
+            >
               ADVENTURER
             </h1>
             <p style={{
@@ -364,10 +365,10 @@ const LoginForm: React.FC = () => {
                   fontSize: 13, fontWeight: 700, cursor: "pointer",
                   transition: "all .22s",
                   background: mode === m
-                    ? "linear-gradient(135deg,#1B6630,#268C42)"
+                    ? "linear-gradient(to right,#ffaa1c,#ff7757)"
                     : "transparent",
-                  color: mode === m ? "#fff" : "rgba(141,212,160,0.55)",
-                  boxShadow: mode === m ? "0 2px 14px rgba(27,102,48,0.4)" : "none",
+                  color: mode === m ? "#012c18" : "rgba(141,212,160,0.55)",
+                  boxShadow: mode === m ? "0 2px 14px rgba(255,170,28,0.25)" : "none",
                 }}>
                 {m === "SignIn" ? "Sign In" : "Sign Up"}
               </button>
@@ -454,7 +455,7 @@ const LoginForm: React.FC = () => {
                 {/* Heading */}
                 <div style={{ marginBottom: 22 }}>
                   <h2 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: "0 0 4px", letterSpacing: -.4 }}>
-                    {mode === "SignIn" ? "Welcome back 👋" : "Create account"}
+                    {mode === "SignIn" ? "Welcome back Adventurer" : "Create account"}
                   </h2>
                   <p style={{ fontSize: 12, color: "rgba(141,212,160,0.55)", margin: 0 }}>
                     {mode === "SignIn"
