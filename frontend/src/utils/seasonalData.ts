@@ -16,16 +16,16 @@ export const getSeason = (): "winter" | "monsoon" | "summer" => {
 
 export const seasonalSuggestions: Record<string, SuggestionItem[]> = {
   winter: [
-    { id: "w1", name: "Nashik", tag: "Vineyards & Cold Breeze", image: "/assets/nashik.jpg", type: "destination" },
-    { id: "w2", name: "Mahabaleshwar", tag: "Strawberry Picking", image: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png", type: "destination" },
+    { id: "w1", name: "Nashik", tag: "Vineyards & Cold Breeze", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143715/kalu_20waterfall_sltgkx.jpg", type: "destination" },
+    { id: "w2", name: "Mahabaleshwar", tag: "Strawberry Picking", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png", type: "destination" },
   ],
   monsoon: [
-    { id: "m1", name: "Harishchandragad", tag: "Cloudy Trekking", image: "/assets/harishchandragad.jpg", type: "destination" },
-    { id: "m2", name: "Harihar Fort", tag: "Iconic Rock-cut Steps", image: "/assets/harihar.jpg", type: "destination" },
+    { id: "m1", name: "Harishchandragad", tag: "Cloudy Trekking", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1782057312/harishchandragad-trek-in-india-2026-1_nu5mjd.webp", type: "destination" },
+    { id: "m2", name: "Harihar Fort", tag: "Iconic Rock-cut Steps", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1778056869/adventurer_assets_migration/images/hariharfort_oybyue.jpg", type: "destination" },
   ],
   summer: [
-    { id: "s1", name: "Sandhan Valley", tag: "Shadow Valley Trek", image: "/assets/sandhan.jpg", type: "destination" },
-    { id: "s2", name: "Bhandardhara", tag: "Lakeside Camping", image: "/assets/bhandar.jpg", type: "destination" },
+    { id: "s1", name: "Sandhan Valley", tag: "Shadow Valley Trek", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1783060852/Sandhan-Valley-Shadow_rd8a2h.png", type: "destination" },
+    { id: "s2", name: "Bhandardhara", tag: "Lakeside Camping", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1783060933/01-Bhandardara_Camping_jpk0m3.jpg", type: "destination" },
   ],
 };
 

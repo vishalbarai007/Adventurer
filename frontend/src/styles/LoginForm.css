@@ -83,6 +83,13 @@ input[type=range]::-moz-range-thumb {
   box-shadow: 0 4px 20px rgba(53,168,85,0.2);
   transform: translateY(-2px);
 }
+.adv-role-card img {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.adv-role-card:hover img {
+  transform: scale(1.05);
+}
+
 
 /* ── Chips / Tiles ── */
 .adv-chip {

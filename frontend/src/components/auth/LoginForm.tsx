@@ -28,9 +28,9 @@ const G = {
 
 /* ─── Static data ───────────────────────────────────────────────────────── */
 const ROLES = [
-  { id: "traveler", icon: "🧳", label: "Traveler", sub: "Explore & discover" },
-  { id: "organizer", icon: "🗓️", label: "Organizer", sub: "Plan & manage" },
-  { id: "guide", icon: "🗺️", label: "Guide", sub: "Lead adventures" },
+  { id: "traveler", icon: "https://static.vecteezy.com/system/resources/thumbnails/080/828/020/small/annual-leave-vacation-illustration-featuring-employee-holiday-calendar-travel-planning-and-time-off-schedule-design-vector.jpg", label: "Traveler", sub: "Explore & discover" },
+  { id: "organizer", icon: "https://cdn-icons-png.magnific.com/256/6556/6556157.png", label: "Organizer", sub: "Plan & manage" },
+  { id: "guide", icon: "https://static.vecteezy.com/system/resources/previews/048/414/244/non_2x/tour-guide-icon-against-transparent-background-generated-by-ai-free-png.png", label: "Guide", sub: "Lead adventures" },
 ];
 
 const TRAVEL_STYLES = ["Adventure", "Backpacking", "Leisure", "Budget", "Luxury"];
@@ -512,20 +512,71 @@ const LoginForm: React.FC = () => {
                     }}>
                       I am a…
                     </label>
-                    <div style={{ display: "flex", gap: 10 }}>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
                       {ROLES.map(r => (
                         <button key={r.id} type="button"
                           className={`adv-role-card${role === r.id ? " active" : ""}`}
-                          onClick={() => setRole(r.id)}>
-                          <div style={{ fontSize: 24, marginBottom: 6 }}>{r.icon}</div>
+                          onClick={() => setRole(r.id)}
+                          style={{
+                            width: "150px",
+                            height: "150px",
+                            padding: 0,
+                            overflow: "hidden",
+                            borderRadius: "16px",
+                            position: "relative",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flex: "none",
+                          }}>
+                          <img
+                            src={r.icon}
+                            alt={r.label}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              transition: "all 0.3s ease",
+                              opacity: role === r.id ? 1 : 0.7,
+                            }}
+                          />
+                          {role === r.id && (
+                            <div style={{
+                              position: "absolute",
+                              top: 10,
+                              right: 10,
+                              background: "#35A855",
+                              color: "#fff",
+                              borderRadius: "50%",
+                              width: 28,
+                              height: 28,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                              border: "2px solid #fff",
+                              zIndex: 10,
+                            }}>
+                              <FaCheck size={12} />
+                            </div>
+                          )}
                           <div style={{
-                            fontSize: 12, fontWeight: 800,
-                            color: role === r.id ? "#C0E8CC" : "rgba(141,212,160,0.7)", marginBottom: 2
+                            position: "absolute",
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            background: "rgba(0,0,0,0.65)",
+                            backdropFilter: "blur(4px)",
+                            padding: "8px 4px",
+                            textAlign: "center",
+                            color: "#fff",
+                            fontSize: "13px",
+                            fontWeight: 700,
+                            letterSpacing: "0.5px",
+                            borderTop: "1px solid rgba(255,255,255,0.1)",
+                            transition: "background 0.3s ease",
                           }}>
                             {r.label}
-                          </div>
-                          <div style={{ fontSize: 10, color: "rgba(141,212,160,0.4)", lineHeight: 1.3 }}>
-                            {r.sub}
                           </div>
                         </button>
                       ))}

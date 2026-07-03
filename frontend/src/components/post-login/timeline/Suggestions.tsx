@@ -43,9 +43,7 @@ export default function Suggestions({ isOpen, onToggle }: RightSidebarProps) {
           isOpen ? "translate-x-0" : "translate-x-full"
         } border-l-2 border-[#012c18]/20 bg-[#edf2f7] text-[#012c18] shadow-2xl`}
       >
-        <button onClick={onToggle} className="absolute top-4 left-4 p-1.5 text-[#012c18]/60 hover:text-[#012c18]">
-          <X className="h-5 w-5" />
-        </button>
+       
 
         <div className="flex h-full flex-col overflow-y-auto custom-scrollbar p-6 pt-14 gap-6">
           
