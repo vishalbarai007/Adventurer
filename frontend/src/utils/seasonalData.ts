@@ -14,6 +14,8 @@ export const getSeason = (): "winter" | "monsoon" | "summer" => {
   return "summer"; // March - May
 };
 
+
+
 export const seasonalSuggestions: Record<string, SuggestionItem[]> = {
   winter: [
     { id: "w1", name: "Nashik", tag: "Vineyards & Cold Breeze", image: "https://res.cloudinary.com/djk32h7rn/image/upload/v1782143715/kalu_20waterfall_sltgkx.jpg", type: "destination" },
