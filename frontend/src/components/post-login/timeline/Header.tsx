@@ -16,7 +16,7 @@ const PostHeader: React.FC<HeaderProps> = ({
     ];
 
     return (
-        <div className="flex flex-col p-8 mt-10">
+        <div className="flex flex-col p-8 -mt-3">
             {/* Main Header Row */}
             <div className="flex items-center justify-between">
                 {/* Left Section */}
@@ -54,7 +54,7 @@ const PostHeader: React.FC<HeaderProps> = ({
                 </div>
 
                 {/* Right Section */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mr-10">
                     <button className="rounded-full bg-[#012c18] p-2 text-white hover:bg-[#012c18]/80">
                         <MessageCircle className="h-5 w-5" />
                     </button>
