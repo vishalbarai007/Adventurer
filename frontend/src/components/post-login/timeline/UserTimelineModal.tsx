@@ -59,7 +59,7 @@ function TimelineCard({ date, title, description, image, side }: typeof timeline
             </div>
 
             <div className="grid grid-cols-2 items-center w-full h-full gap-4 lg:gap-8">
-                {/* First Column */}
+            {/* First Column */}
                 <div className={`flex ${isLogoRight ? "flex-col justify-center items-end text-right pr-4 lg:pr-8" : "justify-end items-center pr-4 lg:pr-8"}`}>
                     {isLogoRight ? (
                         <motion.div 
