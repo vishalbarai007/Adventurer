@@ -4,7 +4,6 @@ import {
   Star, Shield, User, X, Check, Navigation, Clock, Award
 } from "lucide-react";
 import httpClient from "@/services/httpClient";
-import Sidebar from "@/components/post-login/timeline/Sidebar";
 import { UserDocument } from "@/types/schema";
 
 export const GuideMarketplace: React.FC = () => {
@@ -87,11 +86,7 @@ export const GuideMarketplace: React.FC = () => {
 
   return (
     <>
-      <div className="absolute">
-        <Sidebar />
-      </div>
-
-      <div className="min-h-screen bg-[#edf2f7] dark:bg-[#0c130e] text-zinc-900 dark:text-zinc-100 pl-0 md:pl-[270px] pt-8 pb-16 px-4 sm:px-8">
+      <div className="min-h-screen bg-[#edf2f7] dark:bg-[#0c130e] text-zinc-900 dark:text-zinc-100 pt-8 pb-16 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Banner */}
           <div className="bg-gradient-to-r from-emerald-900 to-emerald-950 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden mb-10 border border-emerald-800/30">

@@ -4,7 +4,6 @@ import { collection, query, where, getDocs, addDoc, serverTimestamp } from "fire
 import { mockTrips } from "@/data/mockTrips";
 import toast, { Toaster } from 'react-hot-toast';
 import httpClient from "@/services/httpClient";
-import Sidebar from "@/components/post-login/timeline/Sidebar";
 import { Search, Calendar, ChevronLeft, ChevronRight, MapPin, IndianRupee, X, Instagram } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -491,10 +490,7 @@ const TrekDetails = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 h-full z-10 hidden md:block">
-        <Sidebar />
-      </div>
-      <div className="min-h-screen bg-gray-50 md:pl-64 pt-6 pb-12 font-sans text-zinc-900 relative">
+      <div className="min-h-screen bg-gray-50 pt-6 pb-12 font-sans text-zinc-900 relative">
         <Toaster position="top-center" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6 items-center justify-between">

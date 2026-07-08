@@ -13,7 +13,6 @@ import {
   CheckCheck
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Sidebar from "@/components/post-login/timeline/Sidebar";
 
 interface Message {
   id: string;
@@ -181,9 +180,6 @@ const ChatPage: React.FC = () => {
 
   return (
     <div className="flex h-screen w-full bg-white overflow-hidden font-sans">
-      
-      {/* Column 1: Sidebar Nav */}
-      <Sidebar />
 
       {/* Column 2: Chat List (Toggleable) */}
       <AnimatePresence initial={false}>

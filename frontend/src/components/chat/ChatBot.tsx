@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
-import Sidebar from "@/components/post-login/timeline/Sidebar";
 import ReactMarkdown from "react-markdown";
 
 const ChatBot = () => {
@@ -50,12 +49,7 @@ const ChatBot = () => {
 
 
 	return (
-		<div className="w-screen h-screen flex items-center justify-center bg-gray-100">
-			<div className="hidden md:block w-[300px] h-full border-r border-green-300">
-				<Sidebar />
-			</div>
-
-			<div className="w-full h-screen md:max-w-[100%] md:h-screen md:rounded-xl md:shadow-lg bg-white flex flex-col border border-green-300">
+		<div className="w-full h-full bg-white flex flex-col">
 				<div className="bg-brand-green text-white p-4 text-center font-semibold rounded-t-xl">
 					Trekky !
 				</div>
@@ -97,7 +91,6 @@ const ChatBot = () => {
 				</div>
 				<p className="text-center p-2">*Presenting our trekky in your service.</p>
 
-			</div>
 		</div>
 	);
 };

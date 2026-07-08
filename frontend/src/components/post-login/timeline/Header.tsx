@@ -11,7 +11,7 @@ const PostHeader: React.FC<HeaderProps> = ({
 }) => {
     const navLinks = [
         { name: "Timelines", href: "#", isModal: true },
-        { name: "Discovers", href: "/destinations/dummy-trek" },
+        { name: "Discovers", href: "/destinations/treks" },
         { name: "Guides Marketplace", href: "/marketplace" },
     ];
 

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Sidebar from "@/components/post-login/timeline/Sidebar"
 import MobileNavbar from "@/components/profile/MobileNavbar"
 import ProfileHeader from "@/components/profile/ProfileHeader"
 import ProfileTabs from "@/components/profile/ProfileTabs"
@@ -219,11 +218,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col md:flex-row bg-white dark:bg-black text-black dark:text-white min-h-screen">
-        <div className="hidden md:block absolute">
-          <Sidebar />
-        </div>
-
-        <div className="flex-1 md:ml-[300px]">
+        <div className="flex-1">
           <ProfileHeader 
             isMobile={isMobile} 
             onCreateClick={handleCreateClick}

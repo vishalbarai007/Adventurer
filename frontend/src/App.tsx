@@ -34,6 +34,7 @@ const ForgotPasswordPage = lazy(() => import("@/pages/ForgotPasswordPage"));
 
 import { useAuth } from "@/contexts/AuthContext";
 import OnboardingWizard from "@/components/auth/OnboardingWizard";
+import PostLoginLayout from "@/components/post-login/PostLoginLayout";
 
 // Create a context to share the location data
 type LocationContextType = {
@@ -85,25 +86,29 @@ const App = () => {
 								<Routes>
 									<Route path="/" element={<SplashScreen />} />
 									<Route path="/welcome" element={<Pre_login_homepage />} />
-									<Route path="/explore" element={<PostLoginPage />} />
 									<Route path="/about" element={<About_us />} />
 									<Route path="/contact" element={<Contact_us />} />
 									<Route path="/blogs" element={<Blogs />} />
-									<Route path="/map" element={<Map />} />
 									<Route path="/login" element={<Login_page />} />
 									<Route path="/destinations" element={<Seasonal_destinations />} />
 									<Route path="/destinations/:category" element={<DestinationCategory />} />
 									<Route path="/tips" element={<TravelTipsPage />} />
-									<Route path="/assistant" element={<ChatBot />} />
-									<Route path="/profile" element={<Profile />} />
-									<Route path="/settings" element={<SettingsPage />} />
-									<Route path="/dashboard" element={<BusinessDashboard />} />
-									<Route path="/chat/:chatId" element={<ChatPage />} />
-									<Route path="/treks" element={<TrekDetails />} />
 									<Route path="/onboarding" element={<OnboardingWizard />} />
-									<Route path="/marketplace" element={<GuideMarketplace />} />
 									<Route path="/forgot-password" element={<ForgotPasswordPage />} />
 									<Route path="*" element={<NotFound />} />
+
+									{/* Post-login pages with persistent static sidebar */}
+									<Route element={<PostLoginLayout />}>
+										<Route path="/explore" element={<PostLoginPage />} />
+										<Route path="/map" element={<Map />} />
+										<Route path="/assistant" element={<ChatBot />} />
+										<Route path="/profile" element={<Profile />} />
+										<Route path="/settings" element={<SettingsPage />} />
+										<Route path="/dashboard" element={<BusinessDashboard />} />
+										<Route path="/chat/:chatId" element={<ChatPage />} />
+										<Route path="/treks" element={<TrekDetails />} />
+										<Route path="/marketplace" element={<GuideMarketplace />} />
+									</Route>
 								</Routes>
 								</OnboardingWrapper>
 							</Suspense>

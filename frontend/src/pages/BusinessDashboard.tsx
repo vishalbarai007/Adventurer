@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import httpClient from "@/services/httpClient";
 import { useAuth } from "@/contexts/AuthContext";
-import Sidebar from "@/components/post-login/timeline/Sidebar";
 import OnboardingWizard from "@/components/auth/OnboardingWizard";
 import { db } from "@/firebaseConfig";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -149,11 +148,7 @@ const BusinessDashboard: React.FC = () => {
 
   return (
     <>
-      <div className="absolute">
-        <Sidebar />
-      </div>
-      
-      <div className="min-h-screen bg-gray-50 dark:bg-[#0c130e] flex flex-col p-6 pt-24 text-zinc-900 dark:text-zinc-100 pl-0 md:pl-[270px]">
+      <div className="min-h-screen bg-gray-50 dark:bg-[#0c130e] flex flex-col p-6 pt-24 text-zinc-900 dark:text-zinc-100">
         <div className="max-w-6xl w-full mx-auto">
           
           {/* Profile Completeness Alert Banner */}

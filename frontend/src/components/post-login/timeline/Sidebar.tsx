@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Home, Compass, FileText, Menu, X, History } from 'lucide-react';
+import { NavLink } from "react-router-dom";
 import UserTimelineModal from "@/components/post-login/timeline/UserTimelineModal";
 
 type SidebarProps = {
@@ -29,18 +30,19 @@ const Sidebar: React.FC<SidebarProps> = ({
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    { name: "Home", icon: Compass, href: "/explore" },
+    { name: "Explore", icon: Compass, href: "/explore" },
     { name: "Profile", icon: Home, href: "/profile" },
-    { name: "Guides Marketplace", icon: Compass, href: "/marketplace" },
-    { name: "Blogs", icon: Compass, href: "/blogs" },
-    { name: "Map Recommandation", icon: Compass, href: "/map" },
-    { name: "Setting", icon: Compass, href: "/settings" },
+    { name: "My Chats", icon: FileText, href: "/chat/5" },
     { name: "Travel Dashboard", icon: Compass, href: "/dashboard" },
     { name: "Book Trips", icon: Compass, href: "/treks" },
+    { name: "Guides Marketplace", icon: Compass, href: "/marketplace" },
+    { name: "Blogs", icon: Compass, href: "/blogs" },
     { name: "Ask Trekky!", icon: FileText, href: "/assistant" },
-    { name: "My Chats", icon: FileText, href: "/chat/5" },
     { name: "My Timeline", icon: History, href: "#", isModal: true },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
+    { name: "Map Recommandation", icon: Compass, href: "/map" },
+    { name: "Setting", icon: Compass, href: "/settings" },
+
   ];
 
   return (
@@ -48,9 +50,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Toggle button — visible only on mobile */}
       <button
         onClick={toggleSidebar}
-        className={`fixed top-4 z-[60] flex items-center justify-center rounded-full bg-[#012c18] p-2.5 text-white shadow-lg transition-all duration-300 md:hidden ${
-          isOpen ? "left-[255px]" : "left-4"
-        }`}
+        className={`fixed top-4 z-[60] flex items-center justify-center rounded-full bg-[#012c18] p-2.5 text-white shadow-lg transition-all duration-300 md:hidden ${isOpen ? "left-[255px]" : "left-4"
+          }`}
         aria-label="Toggle sidebar"
       >
         {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -66,9 +67,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Sidebar panel */}
       <div
-        className={`fixed md:relative top-0 left-0 z-50 h-full w-[270px] flex-shrink-0 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } border-r-2 border-[#012c18]/20 bg-[#edf2f7] text-[#012c18] shadow-2xl md:shadow-none`}
+        className={`fixed md:relative top-0 left-0 z-50 h-full w-[270px] flex-shrink-0 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+          } border-r-2 border-[#012c18]/20 bg-[#edf2f7] text-[#012c18] shadow-2xl md:shadow-none`}
       >
         <div className="flex h-full flex-col overflow-y-auto custom-scrollbar p-6">
           {/* Logo */}
@@ -90,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             <div className="space-y-1">
               {menuItems.map((item, index) => {
                 const { name, icon: Icon, href, isModal } = item as any;
-                
+
                 if (isModal) {
                   return (
                     <div key={index} className="flex w-full" onClick={() => isMobile && setIsOpen(false)}>
@@ -99,16 +99,40 @@ const Sidebar: React.FC<SidebarProps> = ({
                   );
                 }
 
+                const isExternal = href.startsWith("http");
+
+                if (isExternal) {
+                  return (
+                    <a
+                      key={index}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[#012c18]/80 transition-all duration-200 hover:bg-[#012c18]/10 hover:translate-x-1 active:scale-[0.98] hover:text-[#012c18]"
+                      onClick={() => isMobile && setIsOpen(false)}
+                    >
+                      <Icon className="h-5 w-5 flex-shrink-0" />
+                      <span>{name}</span>
+                    </a>
+                  );
+                }
+
                 return (
-                  <a
+                  <NavLink
                     key={index}
-                    href={href}
-                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-[#012c18] transition-all duration-200 hover:bg-[#012c18]/10 hover:translate-x-1 active:scale-[0.98]"
+                    to={href}
+                    className={({ isActive }) =>
+                      `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 hover:bg-[#012c18]/10 hover:translate-x-1 active:scale-[0.98] ${
+                        isActive
+                          ? "bg-[#012c18]/15 text-[#012c18] border-l-4 border-[#012c18] pl-3"
+                          : "text-[#012c18]/80 hover:text-[#012c18]"
+                      }`
+                    }
                     onClick={() => isMobile && setIsOpen(false)}
                   >
                     <Icon className="h-5 w-5 flex-shrink-0" />
                     <span>{name}</span>
-                  </a>
+                  </NavLink>
                 );
               })}
             </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronRight, ChevronLeft, X, MapPin, Users, Calendar } from "lucide-react";
+import { ChevronRight, ChevronLeft, MapPin, Users, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { getSeason, seasonalSuggestions, recentOrgTrips } from "@/utils/seasonalData";
 

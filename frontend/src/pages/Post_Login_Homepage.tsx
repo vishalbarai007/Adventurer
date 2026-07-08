@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState, useEffect } from "react"
-import Sidebar from "@/components/post-login/timeline/Sidebar"
 import { useBackgroundStore } from "@/contexts/background-store"
 // import GoogleTranslate from "@/components/common/LanguageSwitcher"
 import LargeSuccessLoader from "@/components/common/Loader"
@@ -52,10 +51,7 @@ export default function PostLoginPage() {
         <GoogleTranslate />
       </div> */}
 
-      {/* Left Sidebar (statically visible on desktop, toggleable on mobile) */}
-      <Suspense fallback={<div><LargeSuccessLoader /></div>}>
-        <Sidebar />
-      </Suspense>
+
 
       {/* Right Sidebar (overlay, toggleable) */}
       <Suspense fallback={<div><LargeSuccessLoader /></div>}>
@@ -75,14 +71,16 @@ export default function PostLoginPage() {
         </div>
 
         {/* Stories section — pinned below header, never scrolls */}
-        <div className="flex-shrink-0 border-b border-[#012c18]/10">
-          <Suspense fallback={<div className="p-4"><LargeSuccessLoader /></div>}>
-            <ProfileCards />
-          </Suspense>
-        </div>
 
         {/* Feed section — only this scrolls */}
         <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-4">
+          {/* Stories section — pinned below header, never scrolls */}
+          <div className="flex-shrink-0 border-b border-[#012c18]/10">
+            <Suspense fallback={<div className="p-4"><LargeSuccessLoader /></div>}>
+              <ProfileCards />
+            </Suspense>
+          </div>
+
           {/* <h2 className="text-xl font-semibold mb-4 text-[#012c18]">Your Feed</h2> */}
           <Suspense fallback={<div><LargeSuccessLoader /></div>}>
             <Posts />
