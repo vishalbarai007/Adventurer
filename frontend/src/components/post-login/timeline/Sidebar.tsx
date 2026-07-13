@@ -30,6 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const menuItems = [
+
     { name: "Explore", icon: Compass, href: "/explore" },
     { name: "Profile", icon: Home, href: "/profile" },
     { name: "My Chats", icon: FileText, href: "/chat/5" },
