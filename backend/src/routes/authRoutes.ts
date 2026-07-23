@@ -13,21 +13,30 @@ const router = Router();
 const JWT_SECRET = process.env.SECRET_KEY || 'default_secret_key';
 
 // Load Google client secret
-let GOOGLE_CLIENT_ID = '';
-let GOOGLE_CLIENT_SECRET = '';
-try {
-  const clientSecretFile = fs.readFileSync(path.resolve(__dirname, '../../client_secret.json'), 'utf8');
-  const clientSecretJson = JSON.parse(clientSecretFile);
-  GOOGLE_CLIENT_ID = clientSecretJson.web.client_id;
-  GOOGLE_CLIENT_SECRET = clientSecretJson.web.client_secret;
-} catch (e) {
-  console.warn("Could not load client_secret.json for Google OAuth");
+let GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
+let GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
+
+if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
+  try {
+    const clientSecretPath = path.resolve(__dirname, '../../client_secret.json');
+    if (fs.existsSync(clientSecretPath)) {
+      const clientSecretFile = fs.readFileSync(clientSecretPath, 'utf8');
+      const clientSecretJson = JSON.parse(clientSecretFile);
+      GOOGLE_CLIENT_ID = GOOGLE_CLIENT_ID || clientSecretJson.web.client_id;
+      GOOGLE_CLIENT_SECRET = GOOGLE_CLIENT_SECRET || clientSecretJson.web.client_secret;
+    }
+  } catch (e) {
+    console.warn("Could not load client_secret.json or environment variables for Google OAuth");
+  }
 }
+
+const googleCallbackUrl = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/google/callback';
+const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
 
 const oauth2Client = new OAuth2Client(
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  'http://localhost:5000/google/callback'
+  googleCallbackUrl
 );
 
 const generateToken = (user: any) => {
@@ -225,10 +234,10 @@ router.get('/google/callback', async (req: Request, res: Response) => {
     const token = generateToken(user);
     setAuthCookie(res, token);
     // Redirect to frontend with token in query params
-    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
+    res.redirect(`${clientUrl}/dashboard?token=${token}`);
   } catch (error) {
     console.error('Google OAuth error:', error);
-    res.redirect(`http://localhost:5173/login?error=google_auth_failed`);
+    res.redirect(`${clientUrl}/login?error=google_auth_failed`);
   }
 });
 
@@ -268,7 +277,7 @@ router.post('/google/one-tap', async (req: Request, res: Response) => {
     const token = generateToken(user);
     setAuthCookie(res, token);
     // Redirect to frontend with token in query params
-    res.redirect(`http://localhost:5173/dashboard?token=${token}`);
+    res.redirect(`${clientUrl}/dashboard?token=${token}`);
     
     res.json({ id: user.id, email: user.email, role: user.role || 'traveler' });
   } catch (error: any) {
