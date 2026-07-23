@@ -5,6 +5,8 @@ import BlogModal from "@/components/blog/BlogModal"
 import LargeSuccessLoader from "@/components/common/Loader"
 import { FiCalendar, FiArrowRight, FiMessageSquare } from "react-icons/fi"
 
+import { API_BASE_URL } from "@/services/httpClient"
+
 interface Comment {
   id: string;
   name: string;
@@ -32,7 +34,7 @@ const BlogsDataLeft: React.FC<{ setSelectedBlog?: (blog: BlogData) => void }> = 
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/blog")
+      .get(`${API_BASE_URL}/blog`)
       .then((response) => {
         console.log("Fetched blog data:", response.data)
         const blogsArray = Object.values(response.data) as BlogData[]

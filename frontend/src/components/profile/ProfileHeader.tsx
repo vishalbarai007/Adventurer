@@ -3,6 +3,7 @@ import { Settings, ChevronLeft, PlusSquare } from "lucide-react";
 import type { ProfileData } from "@/types/posts";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { API_BASE_URL } from "@/services/httpClient";
 
 interface ProfileHeaderProps {
 	isMobile: boolean;
@@ -53,7 +54,7 @@ const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: Prof
 		const fetchUserProfile = async () => {
 			try {
 				const response = await fetch(
-					"http://localhost:5000/api/user/profile",
+					`${API_BASE_URL}/api/user/profile`,
 					{
 						credentials: "include", // Important for session cookies
 					},

@@ -423,7 +423,7 @@ const Post = ({ post }: { post: PostProps }) => {
     const fetchSocial = async () => {
       try {
         const authorId = (post as any).authorId || post.username;
-        const res = await httpClient.get(`http://localhost:5000/api/user/${authorId}/public-profile`);
+        const res = await httpClient.get(`/api/user/${authorId}/public-profile`);
         if (res.data?.socialLinks?.isInstagramLinked) {
           setInstagramUrl(res.data.socialLinks.instagramProfileUrl);
         }
@@ -645,7 +645,7 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         try {
-          const res = await httpClient.post("http://localhost:5000/api/nearby-spots", {
+          const res = await httpClient.post("/api/nearby-spots", {
             coordinates: {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude,
@@ -669,7 +669,7 @@ const CreatePostModal = ({ onClose }: { onClose: () => void }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await httpClient.post("http://localhost:5000/api/posts", {
+      await httpClient.post("/api/posts", {
         caption,
         mediaUrl,
         locationTag: selectedLocation,

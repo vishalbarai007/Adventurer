@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { API_BASE_URL } from "@/services/httpClient";
 
 const ChatBot = () => {
 	const [messages, setMessages] = useState<
@@ -21,7 +22,7 @@ const ChatBot = () => {
     setMessages((prev) => [...prev, { text: "Thinking...", sender: "bot" }]);
 
     try {
-        const res = await fetch("http://localhost:5000/chatbot", {
+        const res = await fetch(`${API_BASE_URL}/chatbot`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: input }),

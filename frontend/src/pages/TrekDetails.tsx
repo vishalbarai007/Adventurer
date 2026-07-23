@@ -179,7 +179,7 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
     const fetchOrgSocial = async () => {
       try {
         if (organizerId) {
-          const res = await httpClient.get(`http://localhost:5000/api/user/${organizerId}/public-profile`);
+          const res = await httpClient.get(`/api/user/${organizerId}/public-profile`);
           if (res.data?.socialLinks?.isInstagramLinked) {
             setOrganizerInstagram(res.data.socialLinks.instagramProfileUrl);
           }
@@ -268,7 +268,7 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
 
   const verifyPayment = async (paymentData: any, paymentMode: 'Online' | 'Cash') => {
     try {
-      const verifyRes = await httpClient.post('http://localhost:5000/api/verify-payment', {
+      const verifyRes = await httpClient.post('/api/verify-payment', {
         transactionId: paymentData?.razorpay_payment_id || `txn_cash_${Date.now()}`,
         amount: trip.price,
         paymentMode: paymentMode,
@@ -293,7 +293,7 @@ const BookingModal = ({ trip, onClose }: { trip: any, onClose: () => void }) => 
     setIsProcessingBooking(true);
     try {
       toast.loading("Preparing Escrow...", { id: 'booking' });
-      const orderRes = await httpClient.post('http://localhost:5000/api/create-order', {
+      const orderRes = await httpClient.post('/api/create-order', {
         price: trip.price,
         organizerId: organizerId
       });
@@ -430,7 +430,7 @@ const OrganizerLink = ({ organizerId, organizerName }: { organizerId: string, or
     const fetchSocial = async () => {
       try {
         if (organizerId) {
-          const res = await httpClient.get(`http://localhost:5000/api/user/${organizerId}/public-profile`);
+          const res = await httpClient.get(`/api/user/${organizerId}/public-profile`);
           if (res.data?.socialLinks?.isInstagramLinked) {
             setInstagramUrl(res.data.socialLinks.instagramProfileUrl);
           }

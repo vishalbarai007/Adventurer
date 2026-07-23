@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FiSend, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 
+import { API_BASE_URL } from "@/services/httpClient";
+
 interface FormData {
   name: string;
   email: string;
@@ -37,7 +39,7 @@ const ContactFormFooter: React.FC = () => {
     setErrorMessage("");
 
     try {
-      await axios.post("http://localhost:5000/api/user-query", formData, {
+      await axios.post(`${API_BASE_URL}/api/user-query`, formData, {
         withCredentials: true,
       });
 

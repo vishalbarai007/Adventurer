@@ -4,6 +4,8 @@ import { FiMessageSquare, FiSend, FiClock, FiUser, FiCalendar, FiX } from "react
 import axios from "axios";
 import { useAuth } from "@/contexts/AuthContext";
 
+import { API_BASE_URL } from "@/services/httpClient";
+
 interface Comment {
   id: string;
   name: string;
@@ -69,7 +71,7 @@ const BlogModal: React.FC<BlogModalProps> = ({
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/blog/${id}/comment`,
+        `${API_BASE_URL}/blog/${id}/comment`,
         { name: finalName, text: commentText.trim() },
         { withCredentials: true }
       );
