@@ -5,16 +5,20 @@ import { visualizer } from "rollup-plugin-visualizer";
 import compression from "vite-plugin-compression";
 
 export default defineConfig({
-	plugins: [react(), compression(), visualizer({ open: true })],
+	plugins: [
+		react(), 
+		compression(), 
+		visualizer({ open: false })
+	],
 
 	server: {
 		fs: {
 			strict: false, // Allow files outside root
 		},
-		// Proxy API requests to your Flask backend
+		// Proxy API requests to your local backend during development
 		proxy: {
 			"/api": {
-				target: "http://localhost:5000", // Your Flask server address
+				target: "http://localhost:5000",
 				changeOrigin: true,
 				secure: false,
 			},
@@ -27,31 +31,6 @@ export default defineConfig({
 		sourcemap: false,
 		minify: "esbuild",
 		target: "esnext",
-		rollupOptions: {
-			output: {
-				manualChunks(id) {
-					if (id.includes("node_modules")) {
-						if (id.includes("react") || id.includes("react-dom")) {
-							return "react";
-						}
-						if (id.includes("@mui/material")) {
-							return "mui";
-						}
-						if (id.includes("chart.js")) {
-							return "chartLibs";
-						}
-						return "vendor";
-					}
-				},
-			},
-		},
-	},
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: '@import "@/styles/variables.scss";',
-			},
-		},
 	},
 	resolve: {
 		alias: {
