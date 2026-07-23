@@ -24,7 +24,7 @@ const ForgotPasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [tempPassword, setTempPassword] = useState("");
+  const [resetLink, setResetLink] = useState("");
   const [copied, setCopied] = useState(false);
   const navigate = useNavigate();
 
@@ -40,8 +40,8 @@ const ForgotPasswordPage: React.FC = () => {
 
     try {
       const res = await httpClient.post("/forgot-password", { email });
-      if (res.data.temporaryPassword) {
-        setTempPassword(res.data.temporaryPassword);
+      if (res.data.resetLink) {
+        setResetLink(res.data.resetLink);
       }
       setSuccess(true);
     } catch (err: any) {
@@ -52,7 +52,7 @@ const ForgotPasswordPage: React.FC = () => {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(tempPassword);
+    navigator.clipboard.writeText(resetLink);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -108,7 +108,7 @@ const ForgotPasswordPage: React.FC = () => {
               Reset Password
             </h2>
             <p style={{ fontSize: 13, color: "rgba(141,212,160,0.55)", marginBottom: 28, lineHeight: 1.5 }}>
-              Enter your registered email address and we'll generate a new 16-digit password for you.
+              Enter your registered email address and we'll email you a secure link to reset your password.
             </p>
 
             {error && (
@@ -196,7 +196,7 @@ const ForgotPasswordPage: React.FC = () => {
                   opacity: loading ? 0.7 : 1,
                 }}
               >
-                {loading ? "Processing..." : "Generate New Password"}
+                {loading ? "Processing..." : "Send Reset Link"}
               </button>
             </form>
           </>
@@ -220,13 +220,13 @@ const ForgotPasswordPage: React.FC = () => {
               <FaLock />
             </div>
             <h2 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: "0 0 10px", letterSpacing: -.4 }}>
-              New Password Generated!
+              Reset Link Sent!
             </h2>
             <p style={{ fontSize: 13, color: "rgba(141,212,160,0.7)", marginBottom: 24, lineHeight: 1.5 }}>
-              A new 16-digit password has been configured for your account. You can use it to sign in immediately.
+              A secure password reset link has been dispatched to your email address. Please click it to set a new password.
             </p>
 
-            {tempPassword && (
+            {resetLink && (
               <div style={{ marginBottom: 28 }}>
                 <label
                   style={{
@@ -239,7 +239,7 @@ const ForgotPasswordPage: React.FC = () => {
                     marginBottom: 8,
                   }}
                 >
-                  Temporary Password
+                  Testing Link (Development Fallback)
                 </label>
                 <div
                   style={{
@@ -250,14 +250,23 @@ const ForgotPasswordPage: React.FC = () => {
                     background: "rgba(255,255,255,0.06)",
                     border: "1px dashed rgba(168,213,181,0.3)",
                     borderRadius: 12,
-                    fontSize: 16,
-                    fontWeight: 700,
-                    letterSpacing: 1,
-                    fontFamily: "monospace",
+                    fontSize: 12,
+                    fontWeight: 500,
                     color: "#fff",
                   }}
                 >
-                  <span>{tempPassword}</span>
+                  <a
+                    href={resetLink}
+                    style={{
+                      color: "#C0E8CC",
+                      textDecoration: "underline",
+                      textAlign: "left",
+                      wordBreak: "break-all",
+                      marginRight: 10,
+                    }}
+                  >
+                    Click to Reset
+                  </a>
                   <button
                     onClick={handleCopy}
                     style={{
@@ -293,7 +302,7 @@ const ForgotPasswordPage: React.FC = () => {
                 boxShadow: "0 4px 24px rgba(255, 170, 28, 0.25)",
               }}
             >
-              Proceed to Sign In
+              Back to Login
             </button>
           </div>
         )}

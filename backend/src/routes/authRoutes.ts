@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { OAuth2Client } from 'google-auth-library';
-import { db } from '../config/firebase';
+import { admin, db } from '../config/firebase';
 import { authenticateToken, AuthRequest } from '../middleware/auth';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -383,18 +383,25 @@ router.post('/forgot-password', async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'This account is linked with Google sign-in. Password recovery is not available.' });
     }
 
-    const newPassword = crypto.randomBytes(8).toString('hex');
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const hashedToken = await bcrypt.hash(resetToken, 10);
+    const resetExpires = Date.now() + 3600 * 1000; // 1 hour from now
 
-    await db.collection('users').doc(user.id).update({ password: hashedPassword });
+    await db.collection('users').doc(user.id).update({
+      resetPasswordToken: hashedToken,
+      resetPasswordExpires: resetExpires
+    });
+
+    const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+    const resetLink = `${clientUrl}/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
     const mailTransporter = await getTransporter();
     const mailOptions = {
       from: '"Adventurer Support" <no-reply@adventurer.com>',
       to: email,
-      subject: 'Adventurer - Password Reset Request',
-      text: `Hello Adventurer,\n\nYour password has been reset. Your new 16-digit password is:\n\n${newPassword}\n\nPlease use this new password to sign in to your account. We recommend changing it after logging in.\n\nHappy exploring,\nThe Adventurer Team`,
-      html: `<p>Hello Adventurer,</p><p>Your password has been reset. Your new 16-digit password is:</p><p><strong>${newPassword}</strong></p><p>Please use this new password to sign in to your account. We recommend changing it after logging in.</p><br/><p>Happy exploring,<br/>The Adventurer Team</p>`
+      subject: 'Adventurer - Password Reset Link',
+      text: `Hello Adventurer,\n\nYou requested a password reset. Please click on the link below (or copy and paste it into your browser) to reset your password within 1 hour:\n\n${resetLink}\n\nIf you did not request this, please ignore this email.\n\nHappy exploring,\nThe Adventurer Team`,
+      html: `<p>Hello Adventurer,</p><p>You requested a password reset. Please click on the link below to reset your password within 1 hour:</p><p><a href="${resetLink}" style="padding: 10px 20px; background-color: #1B6630; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Reset Password</a></p><p>Or copy and paste this URL into your browser:</p><p>${resetLink}</p><br/><p>Happy exploring,<br/>The Adventurer Team</p>`
     };
 
     const info = await mailTransporter.sendMail(mailOptions);
@@ -406,12 +413,49 @@ router.post('/forgot-password', async (req: Request, res: Response) => {
     }
 
     res.json({ 
-      message: 'A new 16-digit password has been sent to your email address.',
+      message: 'A password reset link has been sent to your email address.',
       ...(previewUrl ? { previewUrl } : {}),
-      temporaryPassword: newPassword 
+      resetLink,
+      resetToken
     });
   } catch (error: any) {
     console.error('Forgot password error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/reset-password', async (req: Request, res: Response) => {
+  try {
+    const { email, token, password } = req.body;
+    if (!email || !token || !password) {
+      return res.status(400).json({ error: 'Email, token, and password are required' });
+    }
+
+    const user: any = await getUserByEmail(email);
+    if (!user || !user.resetPasswordToken || !user.resetPasswordExpires) {
+      return res.status(400).json({ error: 'Invalid or expired password reset link' });
+    }
+
+    if (user.resetPasswordExpires < Date.now()) {
+      return res.status(400).json({ error: 'Password reset link has expired' });
+    }
+
+    const isMatch = await bcrypt.compare(token, user.resetPasswordToken);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid or expired password reset link' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await db.collection('users').doc(user.id).update({
+      password: hashedPassword,
+      resetPasswordToken: admin.firestore.FieldValue.delete(),
+      resetPasswordExpires: admin.firestore.FieldValue.delete()
+    });
+
+    res.json({ message: 'Your password has been reset successfully.' });
+  } catch (error: any) {
+    console.error('Reset password error:', error);
     res.status(500).json({ error: error.message });
   }
 });

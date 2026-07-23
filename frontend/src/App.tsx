@@ -31,6 +31,7 @@ const DestinationCategory = lazy(() => import("@/pages/DestinationCategory"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const GuideMarketplace = lazy(() => import("@/pages/GuideMarketplace"));
 const ForgotPasswordPage = lazy(() => import("@/pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("@/pages/ResetPasswordPage"));
 
 import { useAuth } from "@/contexts/AuthContext";
 import OnboardingWizard from "@/components/auth/OnboardingWizard";
@@ -95,6 +96,7 @@ const App = () => {
 									<Route path="/tips" element={<TravelTipsPage />} />
 									<Route path="/onboarding" element={<OnboardingWizard />} />
 									<Route path="/forgot-password" element={<ForgotPasswordPage />} />
+									<Route path="/reset-password" element={<ResetPasswordPage />} />
 									<Route path="*" element={<NotFound />} />
 
 									{/* Post-login pages with persistent static sidebar */}

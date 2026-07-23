@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Footer from '@/components/common/Footer';
 import { NavigationMenuDemo } from '@/components/common/NavigationMenu';
+import useSEO from '@/hooks/useSEO';
 
 const dropdownVariants = {
     hidden: { opacity: 0, height: 0 },
@@ -139,6 +140,12 @@ const TravelTipsPage = () => {
     const [selectedActivity, setSelectedActivity] = useState<string | null>(null);
     const [expandedLocation, setExpandedLocation] = useState<string | null>(null);
     const navigate = useNavigate();
+
+    useSEO({
+        title: 'Adventure Playbook & Travel Tips | Adventurer',
+        description: 'Read packing lists, stargazing kits, terrain survival protocols, and seasonal recommendations for mountain, coastal, and desert hikes.',
+        keywords: 'travel tips, packing lists, mountain survival, desert hiking'
+    });
 
     return (
         <div className="min-h-screen bg-white font-jakarta">

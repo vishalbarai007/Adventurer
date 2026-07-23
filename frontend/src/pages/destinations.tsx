@@ -12,10 +12,17 @@ import Carousel from "@/components/home/Carousel";
 import Footer from "@/components/common/Footer";
 import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
 import ExploreAdventures from "@/components/destinations/ExploreAdventures";
+import useSEO from "@/hooks/useSEO";
 
 
 
 const Seasonal_destinations = () => {
+  useSEO({
+    title: 'Seasonal Trekking Destinations | Adventurer',
+    description: 'Find seasonal trekking recommendations, deals on guides, category-wise trails, and top destinations worldwide.',
+    keywords: 'seasonal destinations, trek routes, category trails, trekking coupons'
+  });
+
   useEffect(() => {
     AOS.init({ duration: 800 });
   }, []);

@@ -1,0 +1,22 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /welcome
+Allow: /about
+Allow: /contact
+Allow: /blogs
+Allow: /destinations
+Allow: /tips
+
+# Disallow private user workspace & post-login routes
+Disallow: /explore
+Disallow: /map
+Disallow: /assistant
+Disallow: /profile
+Disallow: /settings
+Disallow: /dashboard
+Disallow: /chat/
+Disallow: /treks
+Disallow: /marketplace
+
+Sitemap: https://adventurer-travel.vercel.app/sitemap.xml

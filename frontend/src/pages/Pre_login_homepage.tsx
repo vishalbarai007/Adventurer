@@ -9,10 +9,17 @@ import AdventureGallery from '@/components/destinations/AdventureGallery'
 import AppShowcase from '@/components/home/AppShowcase'
 import StatsCounter from '@/components/home/StatsCounter'
 import FeatureShowcase from '@/components/home/FeatureShowcase'
+import useSEO from '@/hooks/useSEO'
 
 // const FeatureShowcase = lazy(() => import('@/components/home/FeatureShowcase'))
 
 const Pre_login_homepage = () => {
+  useSEO({
+    title: 'Welcome to Adventurer | Ultimate Trek & Travel Platform',
+    description: 'Adventurer connects passionate travelers with local verified trekking guides and organizers. Enjoy safe escrow payments and unforgettable hikes.',
+    keywords: 'adventure travel, trekking routes, travel escrows, local tour guides, hiking platform'
+  });
+
   return (
     <>
       <NavigationMenuDemo />

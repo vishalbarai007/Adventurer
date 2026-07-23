@@ -8,10 +8,16 @@ import ScrollDownButton from "@/components/common/ScrollDownButton";
 import Footer from "@/components/common/Footer";
 import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
 import BlogsLanding from "@/components/blog/BlogsLanding";
+import useSEO from "@/hooks/useSEO";
 
 
 
 const Blogs = () => {
+    useSEO({
+      title: 'Blogs & Adventure Stories | Adventurer',
+      description: 'Explore trekking guides, wilderness survival logs, gear reviews, and personal adventure stories shared by our globetrotting community.',
+      keywords: 'trekking blogs, adventure logs, travel stories, hiking tips'
+    });
 
     useEffect(() => {
         AOS.init({ duration: 800 });

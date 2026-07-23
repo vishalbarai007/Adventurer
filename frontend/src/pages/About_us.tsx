@@ -5,8 +5,15 @@ import AboutUsContentRight from "@/components/about/AboutUsContentRight";
 import AboutUsFeatures from "@/components/about/AboutUsFeatures";
 import Footer from "@/components/common/Footer";
 import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
+import useSEO from "@/hooks/useSEO";
 
 const About_us: React.FC = () => {
+  useSEO({
+    title: 'About Us | Adventurer',
+    description: 'Learn about Adventurer, our mission to simplify trekking adventure trips, our security tools, and our local guide integration.',
+    keywords: 'about adventurer, trekking company, secure treks, travel platform team'
+  });
+
   return (
     <div className="bg-[rgb(149,113,79)] min-h-screen font-sans selection:bg-[#233115]/30 selection:text-white">
       {/* Navigation */}
