@@ -45,7 +45,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
 
   const checkAuth = async (): Promise<User | null> => {
-    setAuthState('checking');
+    if (authState !== 'authenticated') {
+      setAuthState('checking');
+    }
     try {
       const userData = await fetchCurrentUser();
       setUser(userData);

@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import httpClient from "@/services/httpClient";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface OnboardingWizardProps {
   onComplete?: () => void;
@@ -45,11 +46,12 @@ const LANGUAGES_LIST = ['Marathi', 'Hindi', 'English', 'Gujarati', 'Kannada'];
 export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete, initialStep }) => {
   const { user, checkAuth } = useAuth();
   const role = user?.role || 'traveler';
+  const navigate = useNavigate();
   
   // Calculate starting step based on user onboarding progress
   const getStartingStep = () => {
     if (initialStep) return initialStep;
-    if (user?.onboardingProgress === 66) return 3;
+    if (user?.onboardingProgress && user.onboardingProgress >= 60) return 3;
     return 2; // Default to step 2 (Profile Metrics)
   };
 
@@ -154,7 +156,15 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ onComplete, 
       await checkAuth();
 
       if (isSkipped || completedStep === 3) {
-        if (onComplete) onComplete();
+        if (onComplete) {
+          onComplete();
+        } else {
+          if (role === 'traveler') {
+            navigate('/explore');
+          } else {
+            navigate('/dashboard');
+          }
+        }
       } else {
         setStep(3);
       }

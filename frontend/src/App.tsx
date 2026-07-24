@@ -94,7 +94,11 @@ const App = () => {
 									<Route path="/destinations" element={<Seasonal_destinations />} />
 									<Route path="/destinations/:category" element={<DestinationCategory />} />
 									<Route path="/tips" element={<TravelTipsPage />} />
-									<Route path="/onboarding" element={<OnboardingWizard />} />
+									<Route path="/onboarding" element={
+										<div className="min-h-screen w-full bg-[#112c1d] flex items-center justify-center p-4">
+											<OnboardingWizard />
+										</div>
+									} />
 									<Route path="/forgot-password" element={<ForgotPasswordPage />} />
 									<Route path="/reset-password" element={<ResetPasswordPage />} />
 									<Route path="*" element={<NotFound />} />
