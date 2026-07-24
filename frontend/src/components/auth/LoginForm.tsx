@@ -8,23 +8,6 @@ import httpClient from "@/services/httpClient";
 import { useAuth } from "@/contexts/AuthContext";
 import "../../styles/LoginForm.css";
 
-/* ─── Design tokens ────────────────────────────────────────────────────── */
-const G = {
-  /* Forest green ramp */
-  g900: "#030F06", g800: "#052A0E", g700: "#092110", g600: "#0F3A1B",
-  g500: "#1B6630", g400: "#268C42", g300: "#35A855", g200: "#58C470",
-  g150: "#8DD4A0", g100: "#C0E8CC", g50: "#E0F3E8", g10: "#F2FAF5",
-  /* Badge white */
-  white: "#FFFFFF",
-  /* Semantic */
-  err: "#E05252", warn: "#E89C2E",
-  /* Overlay tints */
-  o08: "rgba(255,255,255,0.08)",
-  o12: "rgba(255,255,255,0.12)",
-  o20: "rgba(255,255,255,0.20)",
-  o05: "rgba(27,102,48,0.05)",
-  glow: "rgba(88,196,112,0.18)",
-};
 
 /* ─── Static data ───────────────────────────────────────────────────────── */
 const ROLES = [
@@ -283,43 +266,15 @@ const LoginForm: React.FC = () => {
      RENDER
   ════════════════════════════════════════════════════════════════════════ */
   return (
-    <div
-      className="adv-root"
-      style={{
-        height: "100vh", width: "100%",
-        background: `linear-gradient(155deg, ${G.g900} 0%, ${G.g700} 50%, ${G.g600} 100%)`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "24px 16px",
-        overflow: "hidden",
-      }}
-    >
+    <div className="adv-root">
 
       {/* ── Outer card ─────────────────────────────────────────────────── */}
-      <div style={{
-        width: "100%", maxWidth: 980,
-        height: "min(640px, 90vh)",
-        display: "flex", flexWrap: "nowrap",
-        background: "rgba(5,26,10,0.7)",
-        backdropFilter: "blur(24px)",
-        border: "1px solid rgba(168,213,181,0.1)",
-        borderRadius: 28,
-        boxShadow: "0 32px 100px rgba(0,0,0,0.65)",
-        overflow: "hidden",
-      }}>
+      <div className="adv-card">
 
         {/* ══════════════════════════════════════════════════════════════
             LEFT PANEL — brand + carousel (unchanged)
         ══════════════════════════════════════════════════════════════ */}
-        <div style={{
-          flex: "1 1 380px",
-          height: "100%",
-          padding: "40px 36px",
-          display: "flex", flexDirection: "column",
-          justifyContent: "center", alignItems: "center",
-          borderRight: "1px solid rgba(168,213,181,0.08)",
-          background: "rgba(9,33,16,0.5)",
-          overflow: "hidden",
-        }}>
+        <div className="adv-left-panel">
           <Link to="/welcome" style={{ textDecoration: "none" }}>
             <h1 style={{
               fontSize: "clamp(28px,4vw,46px)", fontWeight: 900, letterSpacing: -1,
@@ -343,14 +298,24 @@ const LoginForm: React.FC = () => {
         {/* ══════════════════════════════════════════════════════════════
             RIGHT PANEL — redesigned form
         ══════════════════════════════════════════════════════════════ */}
-        <div
-          className="adv-scroll"
-          style={{
-            flex: "1 1 440px", padding: "36px 38px",
-            display: "flex", flexDirection: "column",
-            height: "100%", overflowY: "auto",
-          }}
-        >
+        <div className="adv-right-panel adv-scroll">
+          {/* Mobile Brand Header */}
+          <div className="adv-mobile-header">
+            <Link to="/welcome" style={{ textDecoration: "none" }}>
+              <h1 style={{
+                fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 900, letterSpacing: -1,
+                color:"#ffaa1c", textAlign: "center", margin: "0 0 4px",
+              }}>
+                ADVENTURER
+              </h1>
+              <p style={{
+                fontSize: 12, color: "rgba(141,212,160,0.55)",
+                textAlign: "center", margin: "0 0 20px", fontStyle: "italic"
+              }}>
+                "Plan your destination with Adventurer."
+              </p>
+            </Link>
+          </div>
 
           {/* ── Mode toggle pill ─────────────────────────────────────── */}
           <div style={{
@@ -398,7 +363,7 @@ const LoginForm: React.FC = () => {
                         }}>
                         {step > s.n ? <FaCheck size={11} /> : s.n}
                       </div>
-                      <span style={{
+                      <span className="adv-step-label" style={{
                         fontSize: 9, fontWeight: step === s.n ? 700 : 500, letterSpacing: .5,
                         color: step >= s.n ? "rgba(192,232,204,0.8)" : "rgba(141,212,160,0.25)",
                         textTransform: "uppercase", whiteSpace: "nowrap",
@@ -512,23 +477,11 @@ const LoginForm: React.FC = () => {
                     }}>
                       I am a…
                     </label>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
+                    <div className="adv-role-cards-container">
                       {ROLES.map(r => (
                         <button key={r.id} type="button"
                           className={`adv-role-card${role === r.id ? " active" : ""}`}
-                          onClick={() => setRole(r.id)}
-                          style={{
-                            width: "150px",
-                            height: "150px",
-                            padding: 0,
-                            overflow: "hidden",
-                            borderRadius: "16px",
-                            position: "relative",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flex: "none",
-                          }}>
+                          onClick={() => setRole(r.id)}>
                           <img
                             src={r.icon}
                             alt={r.label}
