@@ -38,10 +38,10 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: "Book Trips", icon: Compass, href: "/treks" },
     { name: "Guides Marketplace", icon: Compass, href: "/marketplace" },
     { name: "Blogs", icon: Compass, href: "/blogs" },
-    { name: "Ask Trekky!", icon: FileText, href: "/assistant" },
+    // { name: "Ask Trekky!", icon: FileText, href: "/assistant" },
     { name: "My Timeline", icon: History, href: "#", isModal: true },
     { name: "Weather Report", icon: FileText, href: "https://weather-forecasts-wheat.vercel.app/" },
-    { name: "Map Recommandation", icon: Compass, href: "/map" },
+    // { name: "Map Recommandation", icon: Compass, href: "/map" },
     { name: "Setting", icon: Compass, href: "/settings" },
 
   ];
