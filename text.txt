@@ -26,3 +26,8 @@ In marketplaceRoutes.ts, build out the code to query all users where role === 'g
 
 Complete Task 1 on 1st July,2026
 
+
+Deployed on 24th July, 2026
+There is some issue with firebase as login isnt working and blogs are not fetching. 
+Fix these issues for now, but dont touch the code too much as you can break it.
+

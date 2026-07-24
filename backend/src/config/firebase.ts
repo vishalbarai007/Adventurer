@@ -11,6 +11,9 @@ if (process.env.FIREBASE_SERVICE_ACCOUNT) {
   } catch (e) {
     console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT environment variable:", e);
   }
+} else {
+  // On Local Machine (Development): Read from local json file
+  serviceAccount = require(path.resolve(__dirname, '../../firebase_key.json'));
 }
 
 if (!serviceAccount) {

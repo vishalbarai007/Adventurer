@@ -3,10 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
-// Load env vars
 dotenv.config();
 
-// Import Routes
 import authRoutes from './routes/authRoutes';
 import userRoutes from './routes/userRoutes';
 import trekRoutes from './routes/trekRoutes';
@@ -22,30 +20,33 @@ import marketplaceRoutes from './routes/marketplaceRoutes';
 
 const app = express();
 
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-app.use(cors({ origin: clientUrl, credentials: true }));
 
-// Default Route
+// Allow both production Vercel URL and local Vite server
+app.use(cors({ 
+  origin: [CLIENT_URL, 'http://localhost:5173', 'https://neo-adventurer.vercel.app'], 
+  credentials: true 
+}));
+
 app.get('/', (req, res) => {
   res.status(200).json({ message: "Login server is running" });
 });
 
-// Mount Routes
-app.use('/', authRoutes); // /register, /login, /me, /logout, /google/*
-app.use('/api/user', userRoutes); // /api/user/profile
-app.use('/api', trekRoutes); // /api/listings, /api/my-listings
-app.use('/api', postRoutes); // /api/posts
-app.use('/api/upload', uploadRoutes); // /api/upload
-app.use('/api', paymentRoutes); // /api/create-order, /api/verify-payment
-app.use('/api', locationRoutes); // /api/nearby-spots
-app.use('/blog', blogRoutes); // /blog
-app.use('/chatbot', chatbotRoutes); // /chatbot
-app.use('/contact', contactRoutes); // /contact
-app.use('/api/user-query', userQueryRoutes); // /api/user-query
+app.use('/', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api', trekRoutes);
+app.use('/api', postRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api', paymentRoutes);
+app.use('/api', locationRoutes);
+app.use('/blog', blogRoutes);
+app.use('/chatbot', chatbotRoutes);
+app.use('/contact', contactRoutes);
+app.use('/api/user-query', userQueryRoutes);
 app.use('/api', marketplaceRoutes);
 
 const PORT = process.env.PORT || 5000;
