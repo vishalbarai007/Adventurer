@@ -193,18 +193,41 @@ const LoginForm: React.FC = () => {
     try {
       if (step === 1) {
         if (mode === "SignUp") {
-          const res = await httpClient.post("/register", {
-            email: data.email, password: data.password, name: data.name, role,
+          const response = await httpClient.post("/register", {
+            email: data.email,
+            password: data.password,
+            name: data.name,
+            role: role,
+            companyName: data.companyName,
+            // gstNumber: data.gstNumber
           });
-          if (res.status === 200) { setStep(2); }
-        } else {
-          /* Sign In → always go to /Onboarding */
-          const res = await httpClient.post("/login", {
-            email: data.email, password: data.password,
-          });
-          if (res.status === 200) {
+
+          if (response.status === 200) {
+            // Save token to localStorage so step 2 requests won't be unauthorized!
+            if (response.data.token) {
+              localStorage.setItem("jwt_token", response.data.token);
+            }
             await checkAuth();
-            navigate("/onboarding");
+            setStep(2);
+            reset();
+          }
+        } else {
+          const response = await httpClient.post("/login", {
+            email: data.email,
+            password: data.password
+          });
+
+          if (response.status === 200) {
+            // Save token to localStorage
+            if (response.data.token) {
+              localStorage.setItem("jwt_token", response.data.token);
+            }
+            const loggedInUser = await checkAuth();
+            if (loggedInUser && loggedInUser.onboardingProgress !== undefined && loggedInUser.onboardingProgress < 100) {
+              navigate("/onboarding");
+            } else {
+              navigate("/explore");
+            }
           }
         }
       } else if (step === 2) {
@@ -278,7 +301,7 @@ const LoginForm: React.FC = () => {
           <Link to="/welcome" style={{ textDecoration: "none" }}>
             <h1 style={{
               fontSize: "clamp(28px,4vw,46px)", fontWeight: 900, letterSpacing: -1,
-              color:"#ffaa1c", textAlign: "center", margin: "0 0 6px",
+              color: "#ffaa1c", textAlign: "center", margin: "0 0 6px",
             }}
             >
               ADVENTURER
@@ -304,7 +327,7 @@ const LoginForm: React.FC = () => {
             <Link to="/welcome" style={{ textDecoration: "none" }}>
               <h1 style={{
                 fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 900, letterSpacing: -1,
-                color:"#ffaa1c", textAlign: "center", margin: "0 0 4px",
+                color: "#ffaa1c", textAlign: "center", margin: "0 0 4px",
               }}>
                 ADVENTURER
               </h1>

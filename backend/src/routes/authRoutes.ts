@@ -18,15 +18,15 @@ const BACKEND_URL = process.env.BACKEND_URL || (process.env.NODE_ENV === 'produc
 let GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 let GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || '';
 
-try {
-  if (!GOOGLE_CLIENT_ID) {
+if (!GOOGLE_CLIENT_ID) {
+  try {
     const clientSecretFile = fs.readFileSync(path.resolve(__dirname, '../../client_secret.json'), 'utf8');
     const clientSecretJson = JSON.parse(clientSecretFile);
     GOOGLE_CLIENT_ID = clientSecretJson.web.client_id;
     GOOGLE_CLIENT_SECRET = clientSecretJson.web.client_secret;
+  } catch (e) {
+    console.warn("Could not load client_secret.json for Google OAuth");
   }
-} catch (e) {
-  console.warn("Could not load client_secret.json for Google OAuth");
 }
 
 const REDIRECT_URI = `${BACKEND_URL}/google/callback`;
@@ -148,7 +148,7 @@ router.post('/register', async (req: Request, res: Response) => {
     
     const token = generateToken(userData);
     setAuthCookie(res, token);
-    res.json({ id, email, role, onboardingProgress: 33 });
+    res.json({ id, email, role, token, onboardingProgress: 33 });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
@@ -180,6 +180,7 @@ router.post('/login', async (req: Request, res: Response) => {
       id: user.id, 
       email: user.email, 
       role: user.role, 
+      token, 
       onboardingProgress: user.onboardingProgress ?? 33 
     });
   } catch (error: any) {
@@ -282,7 +283,7 @@ router.post('/google/one-tap', async (req: Request, res: Response) => {
     const token = generateToken(user);
     setAuthCookie(res, token);
     
-    res.json({ id: user.id, email: user.email, role: user.role || 'traveler' });
+    res.json({ id: user.id, email: user.email, role: user.role || 'traveler', token });
   } catch (error: any) {
     console.error('Google One-Tap error:', error);
     res.status(401).json({ error: 'Google authentication failed' });
@@ -408,8 +409,7 @@ router.post('/forgot-password', async (req: Request, res: Response) => {
       resetPasswordExpires: resetExpires
     });
 
-    const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-    const resetLink = `${clientUrl}/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
+    const resetLink = `${CLIENT_URL}/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
     const mailTransporter = await getTransporter();
     const mailOptions = {
