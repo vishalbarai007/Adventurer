@@ -204,7 +204,7 @@ const LoginForm: React.FC = () => {
           });
           if (res.status === 200) {
             await checkAuth();
-            navigate("/explore");
+            navigate("/onboarding");
           }
         }
       } else if (step === 2) {
