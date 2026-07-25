@@ -52,44 +52,7 @@ const Profile = () => {
   const [reviewError, setReviewError] = useState("");
   const [reviewSuccess, setReviewSuccess] = useState(false);
 
-  const [posts, setPosts] = useState<Post[]>([
-    {
-      id: "1",
-      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
-      caption: "Definition: A chudail is an individual who fuses elements of both gothic and grunge fashion styles.",
-      likes: 245,
-      comments: 32,
-      title: "CHUDAIL",
-      contentType: "image"
-    },
-    {
-      id: "2",
-      imageUrl: "/assets/Developers/Yug.png",
-      caption: "Definition: A person who embraces a fashion style characterized by practicality, durability.",
-      likes: 189,
-      comments: 17,
-      title: "FAQIR",
-      contentType: "image"
-    },
-    {
-      id: "3",
-      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
-      caption: "A Brief Journey Through 90s Counterculture",
-      likes: 320,
-      comments: 45,
-      title: "GRUNGE",
-      contentType: "blog"
-    },
-    {
-      id: "4",
-      imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
-      caption: "Dark aesthetics combined with laid-back vibes",
-      likes: 178,
-      comments: 23,
-      title: "GOTHIC",
-      contentType: "video"
-    }
-  ])
+  const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
     const handleResize = () => {
@@ -99,6 +62,32 @@ const Profile = () => {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  useEffect(() => {
+    const fetchUserPosts = async () => {
+      if (!user) return;
+      try {
+        const response = await httpClient.get("/api/posts");
+        if (response.data && Array.isArray(response.data)) {
+          const userPosts = response.data
+            .filter((post: any) => post.userId === user.id || post.authorId === user.id)
+            .map((post: any) => ({
+              id: post.id || post.postId,
+              imageUrl: post.imageUrl || post.mediaUrl || "/placeholder.svg",
+              caption: post.caption || post.description || "",
+              likes: Array.isArray(post.likes) ? post.likes.length : (post.likes || 0),
+              comments: post.comments || 0,
+              title: post.locationName || post.locationTag || "Post",
+              contentType: post.contentType || "image"
+            }));
+          setPosts(userPosts);
+        }
+      } catch (err) {
+        console.error("Failed to fetch user posts:", err);
+      }
+    };
+    fetchUserPosts();
+  }, [user]);
 
   const handleCreateClick = () => {
     setShowCreateOptions(true)
@@ -223,6 +212,7 @@ const Profile = () => {
             isMobile={isMobile} 
             onCreateClick={handleCreateClick}
             onCompleteProfileClick={() => setShowProgressDetailsModal(true)}
+            postsCount={posts.length}
           />
 
           {showProgressBanner && (

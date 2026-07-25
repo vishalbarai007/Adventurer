@@ -9,6 +9,7 @@ interface ProfileHeaderProps {
 	isMobile: boolean;
 	onCreateClick: () => void;
 	onCompleteProfileClick?: () => void;
+	postsCount?: number;
 }
 
 interface UserProfile {
@@ -18,7 +19,7 @@ interface UserProfile {
 	name?: string;
 }
 
-const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: ProfileHeaderProps) => {
+const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick, postsCount }: ProfileHeaderProps) => {
 	const { user } = useAuth();
 	const progressPercent = user?.onboardingProgress ?? 100;
 
@@ -51,35 +52,15 @@ const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: Prof
 	});
 
 	useEffect(() => {
-		const fetchUserProfile = async () => {
-			try {
-				const response = await fetch(
-					`${API_BASE_URL}/api/user/profile`,
-					{
-						credentials: "include", // Important for session cookies
-					},
-				);
-
-				if (response.ok) {
-					const userProfile: UserProfile = await response.json();
-
-					// Update profile data with the fetched information
-					setProfileData((prev) => ({
-						...prev,
-						profilePicture:
-							userProfile.profile_picture || prev.profilePicture,
-						fullName: userProfile.name || prev.fullName,
-						username:
-							userProfile.email.split("@")[0] || prev.username,
-					}));
-				}
-			} catch (error) {
-				console.error("Failed to fetch user profile:", error);
-			}
-		};
-
-		fetchUserProfile();
-	}, []);
+		if (user) {
+			setProfileData((prev) => ({
+				...prev,
+				profilePicture: user.profile_picture || prev.profilePicture,
+				fullName: user.name || prev.fullName,
+				username: user.name || user.email.split("@")[0] || prev.username,
+			}));
+		}
+	}, [user]);
 
 	if (isMobile) {
 		return (
@@ -126,7 +107,7 @@ const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: Prof
 					<div className="flex justify-between flex-1">
 						<div className="text-center">
 							<div className="font-semibold">
-								{profileData.postsCount}
+								{postsCount !== undefined ? postsCount : profileData.postsCount}
 							</div>
 							<div className="text-sm text-gray-500 dark:text-gray-400">
 								Posts
@@ -244,7 +225,7 @@ const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick }: Prof
 					<div className="flex mb-4">
 						<div className="mr-8">
 							<span className="font-semibold">
-								{profileData.postsCount}
+								{postsCount !== undefined ? postsCount : profileData.postsCount}
 							</span>{" "}
 							posts
 						</div>

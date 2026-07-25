@@ -42,112 +42,12 @@ const SAMPLE_POSTS = [
     comments: 34,
     timestamp: "1 hour ago",
     locationCoords: { latitude: 19.0948, longitude: 72.8258 },
-  },
-  {
-    id: 3,
-    username: "rahul_skywalker",
-    userAvatar: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
-    location: "Marine Drive, Mumbai",
-    imageUrl: "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055942/adventurer_assets_migration/images/Rahul_piiquh.png",
-    caption: "There's something magical about the sound of the sea and the city lights ✨🌃 #mumbainights #coastlinevibes",
-    likes: 210,
-    comments: 22,
-    timestamp: "10 hours ago",
-    locationCoords: { latitude: 18.9432, longitude: 72.8235 },
-  },
-  {
-    id: 4,
-    username: "yug_clicks",
-    userAvatar: "/assets/Developers/Yug.png",
-    location: "Colaba Causeway, Mumbai",
-    imageUrl: "/assets/Developers/Yug.png",
-    caption: "Street stories and shopping sprees 🛍️📸 #mumbaistreetstyle #indianmarkets",
-    likes: 147,
-    comments: 14,
-    timestamp: "1 day ago",
-    locationCoords: { latitude: 18.9067, longitude: 72.8147 },
-  },
-  {
-    id: 5,
-    username: "neha_travels",
-    userAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    location: "Manali, Himachal Pradesh",
-    imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    caption: "Woke up to snow-covered dreams ❄️🏔️ #manali #snowvibes #mountainlove",
-    likes: 412,
-    comments: 51,
-    timestamp: "2 days ago",
-    locationCoords: { latitude: 32.2396, longitude: 77.1887 },
-  },
-  {
-    id: 6,
-    username: "arjun_lens",
-    userAvatar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
-    location: "Gateway of India, Mumbai",
-    imageUrl: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
-    caption: "History meets hustle at the heart of the city 🇮🇳📷 #gatewayofindia #citysoul",
-    likes: 301,
-    comments: 27,
-    timestamp: "3 days ago",
-    locationCoords: { latitude: 18.9220, longitude: 72.8347 },
-  },
-  {
-    id: 7,
-    username: "meera_inmotion",
-    userAvatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg",
-    location: "Rishikesh, Uttarakhand",
-    imageUrl: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg",
-    caption: "Morning yoga by the Ganga 🧘‍♀️🌼 Peace in every pose. #rishikesh #mindfulmovement",
-    likes: 389,
-    comments: 30,
-    timestamp: "4 days ago",
-    locationCoords: { latitude: 30.0869, longitude: 78.2676 },
-  },
-  {
-    id: 8,
-    username: "ananya_foodie",
-    userAvatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    location: "Chandni Chowk, Delhi",
-    imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    caption: "Golgappe, jalebi, chaat – can't stop, won't stop! 🍢🍮🧡 #delhifoodie #streetfoodlove",
-    likes: 522,
-    comments: 65,
-    timestamp: "6 days ago",
-    locationCoords: { latitude: 28.6506, longitude: 77.2334 },
-  },
-  {
-    id: 9,
-    username: "kartik_code",
-    userAvatar: "/assets/Developers/Kartik.png",
-    location: "Home Office, Bengaluru",
-    imageUrl: "/assets/Developers/Kartik.png",
-    caption: "Late night coffee and code 💻☕ Who else is in the zone? #developerlife #buildmode",
-    likes: 178,
-    comments: 13,
-    timestamp: "6 hours ago",
-    locationCoords: { latitude: 12.9716, longitude: 77.5946 },
-  },
-  {
-    id: 10,
-    username: "ishita_art",
-    userAvatar: "/assets/Developers/Ishita.png",
-    location: "Kala Ghoda, Mumbai",
-    imageUrl: "/assets/Developers/Ishita.png",
-    caption: "Colors, canvas, and chaos. My kind of therapy 🎨🖌️ #artlife #mumbaiartist",
-    likes: 230,
-    comments: 18,
-    timestamp: "1 week ago",
-    locationCoords: { latitude: 18.9322, longitude: 72.8312 },
   }
 ];
 
 // Simulate generating more posts for infinite scroll
 const generateMorePosts = (page: number) => {
-  return SAMPLE_POSTS.map((post, index) => ({
-    ...post,
-    id: post.id + page * SAMPLE_POSTS.length + index,
-    timestamp: `${page + 1} week${page > 0 ? "s" : ""} ago`,
-  }));
+  return [];
 };
 
 // --- Viral Share ---
@@ -172,13 +72,42 @@ const handleShare = async (post: { id: number; location?: string; caption: strin
 //  MAIN EXPORT: Posts Component
 // ==========================================
 export const Posts = ({ profileOnly = false, username = "" }) => {
-  const [posts, setPosts] = useState(SAMPLE_POSTS);
+  const [posts, setPosts] = useState<any[]>(SAMPLE_POSTS);
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
-  const [selectedPost, setSelectedPost] = useState<(typeof SAMPLE_POSTS)[0] | null>(null);
+  const [selectedPost, setSelectedPost] = useState<any | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      try {
+        const response = await httpClient.get("/api/posts");
+        if (response.data && Array.isArray(response.data)) {
+          const normalized = response.data.map((post: any) => ({
+            id: post.id || post.postId,
+            username: post.username || post.authorName || "Adventurer",
+            userAvatar: post.userAvatar || "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056002/adventurer_assets_migration/images/Vishal_mzgtcl.png",
+            location: post.locationName || post.locationTag || "",
+            imageUrl: post.imageUrl || post.mediaUrl || "/placeholder.svg",
+            caption: post.caption || post.description || "",
+            likes: Array.isArray(post.likes) ? post.likes.length : (post.likes || 0),
+            comments: post.comments || 0,
+            timestamp: post.createdAt ? new Date(post.createdAt).toLocaleDateString() : "Just now",
+            locationCoords: post.locationCoords || null,
+          }));
+          setPosts([...SAMPLE_POSTS, ...normalized]);
+        }
+      } catch (err) {
+        console.error("Failed to fetch posts:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   // Filter posts if viewing a specific profile
   const filteredPosts = profileOnly

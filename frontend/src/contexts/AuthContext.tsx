@@ -9,6 +9,7 @@ export interface User {
   email: string;
   role?: string;
   name?: string;
+  profile_picture?: string;
   profileCompleted?: boolean;
   onboardingCompleted?: boolean;
   onboardingProgress?: number;

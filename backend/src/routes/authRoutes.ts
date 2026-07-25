@@ -303,6 +303,7 @@ router.get('/me', authenticateToken, async (req: AuthRequest, res: Response) => 
         email: user.email,
         role: userData.role,
         name: userData.name,
+        profile_picture: userData.profile_picture || null,
         profileCompleted: userData.profileCompleted ?? false,
         onboardingCompleted: userData.onboardingCompleted ?? false,
         onboardingProgress: userData.onboardingProgress ?? 33,
