@@ -46,7 +46,7 @@ const SAMPLE_POSTS = [
 ];
 
 // Simulate generating more posts for infinite scroll
-const generateMorePosts = (page: number) => {
+const generateMorePosts = () => {
   return [];
 };
 
@@ -143,7 +143,7 @@ export const Posts = ({ profileOnly = false, username = "" }) => {
         setIsLoading(false);
         return;
       }
-      const newPosts = generateMorePosts(nextPage);
+      const newPosts = generateMorePosts();
       setPosts((prev) => [...prev, ...newPosts]);
       setPage(nextPage);
       setIsLoading(false);

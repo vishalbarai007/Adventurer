@@ -3,7 +3,6 @@ import { Settings, ChevronLeft, PlusSquare } from "lucide-react";
 import type { ProfileData } from "@/types/posts";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { API_BASE_URL } from "@/services/httpClient";
 
 interface ProfileHeaderProps {
 	isMobile: boolean;
@@ -12,12 +11,6 @@ interface ProfileHeaderProps {
 	postsCount?: number;
 }
 
-interface UserProfile {
-	id: string;
-	email: string;
-	profile_picture?: string;
-	name?: string;
-}
 
 const ProfileHeader = ({ isMobile, onCreateClick, onCompleteProfileClick, postsCount }: ProfileHeaderProps) => {
 	const { user } = useAuth();
