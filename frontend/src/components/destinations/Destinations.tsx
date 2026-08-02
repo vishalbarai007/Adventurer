@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
+import { useState, useEffect, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
-import ScrollDownButton from '@/components/common/ScrollDownButton';
-
+import { ChevronRight, Compass } from 'lucide-react';
 
 interface CarouselItem {
   image: string;
@@ -13,20 +12,20 @@ interface CarouselItem {
 }
 
 const Carousel: FC = () => {
-  const [items, setItems] = useState<CarouselItem[]>([
+  const [items] = useState<CarouselItem[]>([
     {
       "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056494/adventurer_assets_migration/images/Rajmachi_hmbkia.jpg",
       "author": "FORTS",
-      "title": "Freedom Begins from Here",
-      "topic": "Trekking",
+      "title": "Freedom Begins Here",
+      "topic": "Historic Fort Trekking",
       "url": "/destinations/historical",
-      "description": "Uncover the spirit of freedom as you trek across historic forts. Each step brings you closer to breathtaking views and unforgettable experiences."
+      "description": "Uncover the spirit of freedom as you trek across historic forts. Each step brings you closer to breathtaking views and rich heritage."
     },
     {
       "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056287/adventurer_assets_migration/images/Summer2_sq4skx.jpg",
       "author": "BEACHES",
       "title": "Ride the Waves",
-      "topic": "Water Sports",
+      "topic": "Coastal Water Sports",
       "url": "/destinations/beaches",
       "description": "Dive into adventure with thrilling water sports. From jet skiing to surfing, feel the rush of adrenaline on serene beaches."
     },
@@ -36,15 +35,15 @@ const Carousel: FC = () => {
       "title": "Dive Deep in Nature",
       "topic": "Plunging Adventures",
       "url": "/destinations/waterfalls",
-      "description": "Experience the exhilarating plunge into nature’s wonders. Conquer waterfalls with a heart-pounding jump that connects you to the wild."
+      "description": "Experience the exhilarating plunge into nature’s wonders. Conquer waterfalls with a heart-pounding jump into the wild."
     },
     {
       "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778057442/adventurer_assets_migration/images/andheri_ycuval.jpg",
       "author": "SANCTUARY",
-      "title": "Create Memories for a Lifetime",
-      "topic": "Wildlife Safari",
+      "title": "Lifetime Memories",
+      "topic": "Wildlife Safaris",
       "url": "/destinations/sanctuary",
-      "description": "Explore the untamed beauty of sanctuaries. Witness majestic animals in their natural habitats and create memories you’ll cherish forever."
+      "description": "Explore the untamed beauty of sanctuaries. Witness majestic animals in their natural habitats and create cherished memories."
     },
     {
       "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056300/adventurer_assets_migration/images/Mahabaleshwar_yf3qxa.png",
@@ -60,195 +59,85 @@ const Carousel: FC = () => {
       "title": "Find Your Path",
       "topic": "Solo Adventures",
       "url": "/destinations/solo-travel",
-      "description": "Embark on a journey of self-discovery. Perfect for independent adventurers seeking solitude and the thrill of uncharted paths."
-    },
-    {
-      "image": "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778056105/adventurer_assets_migration/images/EcoTrails_cqzkf1.png",
-      "author": "THE NATURE LOVER",
-      "title": "Harmony with Nature",
-      "topic": "Eco Trails",
-      "url": "/destinations/wildlife",
-      "description": "Connect with the earth on peaceful eco trails. Immerse yourself in flora and fauna that will soothe your soul."
-    },
-
-  ]
-  );
+      "description": "Embark on a journey of self-discovery. Perfect for independent adventurers seeking solitude and uncharted paths."
+    }
+  ]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [sliding, setSliding] = useState(false);
-  const [backgroundIndex, setBackgroundIndex] = useState(0);
-  const thumbnailRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const autoNext = () => {
-      nextSlide();
-      timeoutRef.current = setTimeout(autoNext, 5000);
+      setCurrentIndex((prev) => (prev + 1) % items.length);
     };
 
-    timeoutRef.current = setTimeout(autoNext, 5000);
+    timeoutRef.current = setInterval(autoNext, 5000);
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearInterval(timeoutRef.current);
     };
+  }, [items.length]);
 
-  }, []);
-
-  const nextSlide = () => {
-    if (sliding) return;
-    setSliding(true);
-    setCurrentIndex((prevIndex) => (prevIndex) % items.length);
-    setBackgroundIndex((prevIndex) => (prevIndex) % items.length);
-    slideThumbnails(-1);
-  };
-
-  const prevSlide = () => {
-    if (sliding) return;
-    setSliding(true);
-    setCurrentIndex((prevIndex) => (prevIndex + items.length) % items.length);
-    setBackgroundIndex((prevIndex) => (prevIndex + items.length) % items.length);
-    slideThumbnails(1);
-  };
-
-  const slideThumbnails = (direction: number) => {
-    if (thumbnailRef.current) {
-      const itemWidth = thumbnailRef.current.children[0].clientWidth;
-      const gap = 25; // Adjust this value to match your gap between items
-      thumbnailRef.current.style.transition = 'transform 0.3s ease-in-out';
-      thumbnailRef.current.style.transform = `translateX(${direction * (itemWidth + gap)}px)`;
-
-      setTimeout(() => {
-        rotateItems(direction);
-        thumbnailRef.current!.style.transition = 'none';
-        thumbnailRef.current!.style.transform = 'translateX(0)';
-        setSliding(false);
-      }, 300);
-    }
-  };
-
-  const rotateItems = (direction: number) => {
-    setItems((prevItems) => {
-      const newItems = [...prevItems];
-      if (direction < 0) {
-        const firstItem = newItems.shift();
-        if (firstItem) newItems.push(firstItem);
-      } else {
-        const lastItem = newItems.pop();
-        if (lastItem) newItems.unshift(lastItem);
-      }
-      return newItems;
-    });
-  };
+  const currentItem = items[currentIndex];
 
   return (
-    <div className="carousel relative h-screen w-full overflow-hidden ">
-     
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
-        style={{ backgroundImage: `url(${items[backgroundIndex].image})` }}
-      ></div>
-
-      <div className="list absolute inset-0">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className={`item absolute inset-0 duration-1000 ${index === currentIndex ? 'z-10 opacity-100' : 'opacity-0'
-              }`}
-            style={{
-              zIndex: index === 0 && index !== currentIndex ? -1 : 'auto',
-            }}
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-
-            <div className="
-    content 
-    absolute 
-    top-[10%]
-    left-1/2 
-    transform 
-    -translate-x-1/2 
-    w-11/12 
-    max-w-screen-lg 
-    text-[#EADED0] 
-    sm:top-[10%] 
-    md:top-[20%] 
-    lg:top-1/4 
-    xl:top-[30%] 
-  ">
-              <div className="author font-bold text-[#EADED0] ">{item.author}</div>
-              <div className="title text-5xl text-[#EADED0] text-stroke font-bold leading-tight">
-                {item.title}
-              </div>
-              <div className="topic text-5xl font-bold leading-tight text-[#000000]">
-                {item.topic}
-              </div>
-              <div className="description mt-4 text-xl text-stroke">{item.description}</div>
-              <div className="buttons grid grid-cols-2 grid-rows-1 gap-5 mt-8">
-                {/* <button className="bg-[#1F3D3B]">SEE MORE</button> */}
-                {/* <button className="BookButton bg-[#233115]">BOOK NOW</button> */}
-              </div>
-            </div>
-          </div>
-        ))}
+    <div className="relative w-full h-[85vh] min-h-[620px] overflow-hidden font-jakarta bg-[#111827]">
+      {/* Fullscreen Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={currentItem.image} 
+          alt={currentItem.title} 
+          loading="eager"
+          className="w-full h-full object-cover transition-all duration-700 opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-black/30 to-black/50" />
       </div>
 
-      <div className='thumbnail overflow-hidden absolute bottom-[50px] left-[40%] p-5 md:bottom-[10px]'>
-        <div ref={thumbnailRef} className=" flex gap-5">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className="item w-40 h-60 shrink-0 relative rounded-xl"
+      {/* Main Showcase Content Container */}
+      <div className="relative z-10 w-full h-full max-w-[1280px] mx-auto px-6 lg:px-20 py-16 flex flex-col justify-between text-white">
+        <div>
+          <span className="text-[#3A8DFF] font-bold text-xs uppercase tracking-wider bg-white/10 px-4 py-1.5 rounded-full border border-white/20 inline-flex items-center gap-1.5 backdrop-blur-md">
+            <Compass className="w-4 h-4" />
+            {currentItem.author} • {currentItem.topic}
+          </span>
+        </div>
+
+        <div className="max-w-3xl space-y-4 mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-none drop-shadow-md">
+            {currentItem.title}
+          </h1>
+          <p className="text-gray-200 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
+            {currentItem.description}
+          </p>
+          <div className="pt-3">
+            <Link 
+              to={currentItem.url} 
+              className="inline-flex items-center gap-2 bg-white text-[#111827] px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg text-base"
             >
-              <Link to={item.url}>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover rounded-xl"
-                />
-                <div className="content absolute bottom-2 left-2 right-2 text-[#EADED0]">
-                  <div className="title font-medium">{item.title}</div>
-                  <div className="description font-light">{item.topic}</div>
-                </div>
-              </Link>
-            </div>
+              Explore {currentItem.author}
+              <ChevronRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Thumbnail Selector at bottom */}
+        <div className="flex items-center gap-3 overflow-x-auto pt-4 pb-2 scrollbar-hide border-t border-white/15">
+          {items.map((item, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`relative flex-shrink-0 w-24 h-16 md:w-28 md:h-18 rounded-xl overflow-hidden border-2 transition-all ${idx === currentIndex ? 'border-[#3A8DFF] scale-105 shadow-lg opacity-100' : 'border-white/30 opacity-60 hover:opacity-100'}`}
+            >
+              <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/30" />
+              <span className="absolute bottom-1.5 left-2 text-[10px] font-bold text-white uppercase tracking-wider truncate max-w-[90%]">
+                {item.author}
+              </span>
+            </button>
           ))}
         </div>
       </div>
-
-      <div className="arrows 
-    absolute 
-    top-3/4 
-    left-[5%] 
-    md:left-[10%] 
-    lg:left-[20%] 
-    z-20 
-    flex 
-    gap-3 
-    sm:gap-4 
-    lg:gap-5">
-        <button onClick={prevSlide} className="w-16 h-16 rounded-full text-[#EADED0] font-bold">
-          &lt;
-        </button>
-        <button onClick={nextSlide} className="w-16 h-16 rounded-full text-[#EADED0] font-bold">
-          &gt;
-        </button>
-      </div>
     </div>
   );
 };
 
-const Destinations: React.FC = () => {
-  return (
-    <div className="destinations-page">
-      <Carousel />
-      <ScrollDownButton />
-    </div>
-  );
-};
-
-export default Destinations;
+export default Carousel;

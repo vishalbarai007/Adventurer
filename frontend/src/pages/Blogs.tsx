@@ -1,16 +1,11 @@
 import { useEffect } from "react";
-// import BlogLandingTemplate from "../components/Developer/support/BlogLandingTemplate";
 import BlogsData from "@/components/blog/BlogsData";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Scrollslider from "@/components/home/ScrollSlider";
-import ScrollDownButton from "@/components/common/ScrollDownButton";
 import Footer from "@/components/common/Footer";
 import { NavigationMenuDemo } from "@/components/common/NavigationMenu";
 import BlogsLanding from "@/components/blog/BlogsLanding";
 import useSEO from "@/hooks/useSEO";
-
-
 
 const Blogs = () => {
     useSEO({
@@ -24,16 +19,14 @@ const Blogs = () => {
     }, []);
 
     return (
-        <>
+        <div className="bg-[#F8F9FB] text-[#171717] min-h-screen font-jakarta">
             <NavigationMenuDemo />
-            <Scrollslider />
-            {/* <BlogLandingTemplate data-aos="fade-up" /> */}
-            <BlogsLanding />
-            <ScrollDownButton />
-            <BlogsData />
+            <div className="max-w-[1280px] mx-auto px-6 py-8">
+                <BlogsLanding />
+                <BlogsData />
+            </div>
             <Footer color={undefined} />
-
-        </>
+        </div>
     )
 };
 

@@ -27,7 +27,7 @@ const adProducts: AdProduct[] = [
     discount: "31% OFF",
     rating: 4.8,
     reviews: 142,
-    image: "/assets/trekking_boots.png",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
     features: ["Waterproof", "Vibram Sole", "Ankle Guard"],
     affiliateUrl: "https://www.decathlon.in"
   },
@@ -41,7 +41,7 @@ const adProducts: AdProduct[] = [
     discount: "34% OFF",
     rating: 4.9,
     reviews: 98,
-    image: "/assets/camping_tent.png",
+    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80",
     features: ["Windproof", "4-Person Capacity", "Dual Layer"],
     affiliateUrl: "https://www.decathlon.in"
   },
@@ -55,7 +55,7 @@ const adProducts: AdProduct[] = [
     discount: "33% OFF",
     rating: 4.7,
     reviews: 215,
-    image: "/assets/trekking_backpack.png",
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80",
     features: ["65L Capacity", "Rain Cover Incl.", "Hydration Slot"],
     affiliateUrl: "https://www.decathlon.in"
   }
@@ -63,43 +63,44 @@ const adProducts: AdProduct[] = [
 
 const BlogsDataRight: React.FC = () => {
   return (
-    <div className="BlogsContainerRight w-full md:w-[30%] p-6 bg-slate-100/70 border-t md:border-t-0 md:border-l border-slate-200/50 flex flex-col h-[calc(100vh-5rem)] md:h-screen overflow-y-auto">
+    <aside className="w-full lg:w-[32%] font-jakarta">
       {/* Sidebar Header */}
-      <div className="mb-6 flex justify-between items-center">
+      <div className="mb-6 flex justify-between items-center bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
         <div className="flex items-center gap-2">
-          <FiTag className="text-green-700" size={18} />
-          <h3 className="text-lg font-bold text-gray-800">Essential Trekking Gear</h3>
+          <FiTag className="text-[#3A8DFF]" size={18} />
+          <h3 className="text-base font-bold text-[#171717]">Essential Trek Gear</h3>
         </div>
-        <span className="text-[10px] font-bold text-gray-400 border border-gray-200 px-1.5 py-0.5 rounded tracking-widest uppercase bg-white">
+        <span className="text-[10px] font-bold text-gray-400 border border-gray-200 px-2 py-0.5 rounded-full uppercase bg-gray-50">
           Sponsored
         </span>
       </div>
 
       {/* Ads List */}
-      <div className="space-y-6 flex-grow pr-1">
+      <div className="space-y-6">
         {adProducts.map((product) => (
           <div
             key={product.id}
-            className="bg-white border border-gray-150 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="bg-white border border-gray-200 rounded-[24px] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
           >
             {/* Product Image */}
-            <div className="relative h-48 bg-gray-50 overflow-hidden group">
+            <div className="relative h-44 bg-gray-50 overflow-hidden group">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+              <span className="absolute top-3 left-3 bg-[#111827] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
                 {product.discount}
               </span>
-              <span className="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">
+              <span className="absolute bottom-3 right-3 bg-white/90 text-[#171717] text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-sm border border-gray-200">
                 {product.category}
               </span>
             </div>
 
             {/* Product Body */}
-            <div className="p-4">
-              <h4 className="font-bold text-gray-800 text-sm leading-snug mb-1 hover:text-green-700 transition-colors">
+            <div className="p-5">
+              <h4 className="font-bold text-[#171717] text-sm leading-snug mb-1 hover:text-[#3A8DFF] transition-colors">
                 {product.name}
               </h4>
               
@@ -114,30 +115,30 @@ const BlogsDataRight: React.FC = () => {
                 <span className="text-xs text-gray-400">({product.reviews})</span>
               </div>
 
-              <p className="text-xs text-gray-500 leading-normal mb-3 line-clamp-2">
+              <p className="text-xs text-gray-500 leading-relaxed mb-3 line-clamp-2 font-medium">
                 {product.description}
               </p>
 
               {/* Tags / Features */}
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {product.features.map((feature, i) => (
-                  <span key={i} className="text-[10px] font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                  <span key={i} className="text-[10px] font-semibold text-gray-700 bg-gray-100 px-2 py-0.5 rounded-md border border-gray-200">
                     {feature}
                   </span>
                 ))}
               </div>
 
               {/* Price & Buy Button */}
-              <div className="flex items-center justify-between border-t border-gray-50 pt-3">
+              <div className="flex items-center justify-between border-t border-gray-100 pt-3">
                 <div>
-                  <span className="text-base font-extrabold text-gray-900">{product.price}</span>
+                  <span className="text-base font-extrabold text-[#171717]">{product.price}</span>
                   <span className="text-xs text-gray-400 line-through ml-1.5">{product.originalPrice}</span>
                 </div>
                 <a
                   href={product.affiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 hover:bg-green-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold transition duration-200 flex items-center gap-1 shadow-sm hover:shadow"
+                  className="bg-[#111827] hover:bg-[#1F2937] text-white px-4 py-2 rounded-full text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
                 >
                   <FiShoppingCart size={12} />
                   Shop Now
@@ -149,36 +150,32 @@ const BlogsDataRight: React.FC = () => {
       </div>
 
       {/* Promotional Banner Widget */}
-      <div className="mt-8 bg-gradient-to-br from-green-800 to-green-950 text-white p-5 rounded-2xl relative overflow-hidden shadow-md">
-        <div className="relative z-10">
-          <span className="text-[10px] font-bold text-green-300 uppercase tracking-widest bg-green-900/50 px-2 py-0.5 rounded border border-green-700/50 inline-block mb-2">
-            Special Offer
+      <div className="mt-6 bg-[#111827] text-white p-6 rounded-[24px] border border-gray-800 shadow-sm">
+        <span className="text-[10px] font-bold text-[#3A8DFF] uppercase tracking-widest bg-white/10 px-2.5 py-1 rounded-full inline-block mb-3 border border-white/10">
+          Special Offer
+        </span>
+        <h4 className="font-extrabold text-lg leading-snug mb-2">Gear Up For Your Next Trek</h4>
+        <p className="text-xs text-gray-300 mb-4 leading-relaxed font-medium">
+          Get an extra 15% off on high-quality adventure and camping rentals.
+        </p>
+        <div className="flex justify-between items-center bg-white/10 border border-white/15 p-3 rounded-xl">
+          <span className="text-xs font-mono font-bold tracking-wider text-white">
+            Promo: ADVENTURER15
           </span>
-          <h4 className="font-extrabold text-base leading-snug mb-1">Gear Up For Your Next Trek</h4>
-          <p className="text-xs text-green-100/80 mb-4 leading-normal">
-            Get an extra 15% off on high-quality adventure and camping rentals.
-          </p>
-          <div className="flex justify-between items-center bg-green-900/30 border border-green-700/30 p-2.5 rounded-xl">
-            <span className="text-xs font-mono font-bold tracking-wider text-green-200">
-              Promo: ADVENTURER15
-            </span>
-            <span className="text-[11px] font-bold text-white underline cursor-pointer hover:text-green-200">
-              Apply
-            </span>
-          </div>
+          <span className="text-xs font-bold text-[#3A8DFF] hover:underline cursor-pointer">
+            Apply
+          </span>
         </div>
-        {/* Background Decorative Circle */}
-        <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-green-700/20 rounded-full blur-xl"></div>
       </div>
 
       {/* Info Notice */}
-      <div className="mt-6 flex items-start gap-1.5 text-[10px] text-gray-400 leading-normal px-1">
-        <FiInfo size={12} className="flex-shrink-0 mt-0.5" />
+      <div className="mt-6 flex items-start gap-1.5 text-[11px] text-gray-400 leading-normal px-1 font-medium">
+        <FiInfo size={13} className="flex-shrink-0 mt-0.5 text-gray-400" />
         <span>
-          Purchases made through these sponsored links may earn Adventurer a small affiliate commission at no extra cost to you.
+          Purchases made through affiliate links support Adventurer at no extra cost to you.
         </span>
       </div>
-    </div>
+    </aside>
   );
 };
 

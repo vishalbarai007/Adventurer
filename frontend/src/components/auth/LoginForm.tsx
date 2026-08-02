@@ -72,7 +72,7 @@ const InputField: React.FC<{
 }> = ({ label, icon, field, type = "text", placeholder, error, register, rules, eyeToggle }) => (
   <div style={{ marginBottom: 14 }}>
     <label style={{
-      display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+      display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
       letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 6
     }}>
       {label}
@@ -80,7 +80,7 @@ const InputField: React.FC<{
     <div style={{ position: "relative" }}>
       <span style={{
         position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)",
-        color: error ? "#E05252" : "rgba(141,212,160,0.6)", fontSize: 14, pointerEvents: "none"
+        color: error ? "#EF4444" : "#9CA3AF", fontSize: 14, pointerEvents: "none"
       }}>
         {icon}
       </span>
@@ -95,13 +95,13 @@ const InputField: React.FC<{
           style={{
             position: "absolute", right: 13, top: "50%", transform: "translateY(-50%)",
             background: "none", border: "none", cursor: "pointer",
-            color: "rgba(141,212,160,0.6)", fontSize: 15, lineHeight: 1
+            color: "#9CA3AF", fontSize: 15, lineHeight: 1
           }}>
           {eyeToggle.show ? <FaEyeSlash /> : <FaEye />}
         </button>
       )}
     </div>
-    {error && <p style={{ color: "#E05252", fontSize: 11, margin: "4px 0 0", fontWeight: 500 }}>⚠ {error}</p>}
+    {error && <p style={{ color: "#EF4444", fontSize: 11, margin: "4px 0 0", fontWeight: 500 }}>⚠ {error}</p>}
   </div>
 );
 
@@ -114,10 +114,10 @@ const RangeSlider: React.FC<{
 }> = ({ label, min, max, step = 1, value, onChange, fmt }) => (
   <div style={{ marginBottom: 18 }}>
     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
-      <label style={{ fontSize: 10, fontWeight: 700, color: "#8DD4A0", letterSpacing: 1.1, textTransform: "uppercase" }}>
+      <label style={{ fontSize: 11, fontWeight: 700, color: "#0B3A7E", letterSpacing: 1.1, textTransform: "uppercase" }}>
         {label}
       </label>
-      <span style={{ fontSize: 14, fontWeight: 800, color: "#35A855" }}>
+      <span style={{ fontSize: 14, fontWeight: 800, color: "#3A8DFF" }}>
         {fmt ? fmt(value) : value}
       </span>
     </div>
@@ -125,7 +125,7 @@ const RangeSlider: React.FC<{
       onChange={e => onChange(+e.target.value)} />
     <div style={{
       display: "flex", justifyContent: "space-between",
-      fontSize: 10, color: "rgba(141,212,160,0.4)", marginTop: 4, fontWeight: 500
+      fontSize: 11, color: "#9CA3AF", marginTop: 4, fontWeight: 500
     }}>
       <span>{fmt ? fmt(min) : min}</span>
       <span>{fmt ? fmt(max) : max}+</span>
@@ -301,13 +301,13 @@ const LoginForm: React.FC = () => {
           <Link to="/welcome" style={{ textDecoration: "none" }}>
             <h1 style={{
               fontSize: "clamp(28px,4vw,46px)", fontWeight: 900, letterSpacing: -1,
-              color: "#ffaa1c", textAlign: "center", margin: "0 0 6px",
+              color: "#FFFFFF", textAlign: "center", margin: "0 0 6px",
             }}
             >
               ADVENTURER
             </h1>
             <p style={{
-              fontSize: 13, color: "rgba(141,212,160,0.55)",
+              fontSize: 14, color: "rgba(255,255,255,0.75)",
               textAlign: "center", margin: "0 0 24px", fontStyle: "italic"
             }}>
               "Plan your destination with Adventurer."
@@ -327,12 +327,12 @@ const LoginForm: React.FC = () => {
             <Link to="/welcome" style={{ textDecoration: "none" }}>
               <h1 style={{
                 fontSize: "clamp(24px, 6vw, 32px)", fontWeight: 900, letterSpacing: -1,
-                color: "#ffaa1c", textAlign: "center", margin: "0 0 4px",
+                color: "#0B3A7E", textAlign: "center", margin: "0 0 4px",
               }}>
                 ADVENTURER
               </h1>
               <p style={{
-                fontSize: 12, color: "rgba(141,212,160,0.55)",
+                fontSize: 12, color: "#6B7280",
                 textAlign: "center", margin: "0 0 20px", fontStyle: "italic"
               }}>
                 "Plan your destination with Adventurer."
@@ -342,21 +342,21 @@ const LoginForm: React.FC = () => {
 
           {/* ── Mode toggle pill ─────────────────────────────────────── */}
           <div style={{
-            display: "flex", background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(168,213,181,0.12)",
+            display: "flex", background: "#F3F4F6",
+            border: "1px solid #E5E7EB",
             borderRadius: 50, padding: 4, marginBottom: 28,
           }}>
             {(["SignIn", "SignUp"] as const).map(m => (
               <button key={m} type="button" onClick={() => switchMode(m)}
                 style={{
-                  flex: 1, padding: "9px 0", borderRadius: 50, border: "none",
+                  flex: 1, padding: "10px 0", borderRadius: 50, border: "none",
                   fontSize: 13, fontWeight: 700, cursor: "pointer",
-                  transition: "all .22s",
+                  transition: "all .22s ease",
                   background: mode === m
-                    ? "linear-gradient(to right,#ffaa1c,#ff7757)"
+                    ? "linear-gradient(135deg, #0B3A7E 0%, #3A8DFF 100%)"
                     : "transparent",
-                  color: mode === m ? "#012c18" : "rgba(141,212,160,0.55)",
-                  boxShadow: mode === m ? "0 2px 14px rgba(255,170,28,0.25)" : "none",
+                  color: mode === m ? "#FFFFFF" : "#6B7280",
+                  boxShadow: mode === m ? "0 4px 14px rgba(58, 141, 255, 0.3)" : "none",
                 }}>
                 {m === "SignIn" ? "Sign In" : "Sign Up"}
               </button>
@@ -374,21 +374,21 @@ const LoginForm: React.FC = () => {
                         className={step === s.n ? "sp-pulse" : ""}
                         style={{
                           width: 30, height: 30, borderRadius: "50%",
-                          border: `2px solid ${step >= s.n ? "#35A855" : "rgba(168,213,181,0.2)"}`,
+                          border: `2px solid ${step >= s.n ? "#3A8DFF" : "#E5E7EB"}`,
                           background: step > s.n
-                            ? "#35A855"
+                            ? "#3A8DFF"
                             : step === s.n
-                              ? "rgba(53,168,85,0.15)"
+                              ? "#EEF5FF"
                               : "transparent",
                           display: "flex", alignItems: "center", justifyContent: "center",
                           fontSize: 12, fontWeight: 800, transition: "all .35s",
-                          color: step > s.n ? "#fff" : step === s.n ? "#35A855" : "rgba(168,213,181,0.3)",
+                          color: step > s.n ? "#fff" : step === s.n ? "#3A8DFF" : "#9CA3AF",
                         }}>
                         {step > s.n ? <FaCheck size={11} /> : s.n}
                       </div>
                       <span className="adv-step-label" style={{
                         fontSize: 9, fontWeight: step === s.n ? 700 : 500, letterSpacing: .5,
-                        color: step >= s.n ? "rgba(192,232,204,0.8)" : "rgba(141,212,160,0.25)",
+                        color: step >= s.n ? "#0B3A7E" : "#9CA3AF",
                         textTransform: "uppercase", whiteSpace: "nowrap",
                       }}>
                         {s.label}
@@ -397,11 +397,11 @@ const LoginForm: React.FC = () => {
                     {i < stepMeta.length - 1 && (
                       <div style={{
                         flex: 1, height: 2, margin: "0 6px 18px",
-                        background: "rgba(168,213,181,0.12)", borderRadius: 1, position: "relative", overflow: "hidden"
+                        background: "#E5E7EB", borderRadius: 1, position: "relative", overflow: "hidden"
                       }}>
                         <div style={{
                           position: "absolute", inset: 0,
-                          background: "linear-gradient(to right,#35A855,#58C470)",
+                          background: "linear-gradient(to right,#0B3A7E,#3A8DFF)",
                           transform: `scaleX(${step > s.n ? 1 : 0})`,
                           transformOrigin: "left",
                           transition: "transform .45s cubic-bezier(.4,0,.2,1)",
@@ -412,10 +412,10 @@ const LoginForm: React.FC = () => {
                 ))}
               </div>
               {/* thin pct bar */}
-              <div style={{ height: 3, background: "rgba(168,213,181,0.1)", borderRadius: 2 }}>
+              <div style={{ height: 3, background: "#E5E7EB", borderRadius: 2 }}>
                 <div style={{
                   height: "100%", width: `${pct}%`, borderRadius: 2,
-                  background: "linear-gradient(to right,#1B6630,#58C470)",
+                  background: "linear-gradient(to right,#0B3A7E,#3A8DFF)",
                   transition: "width .5s cubic-bezier(.4,0,.2,1)"
                 }} />
               </div>
@@ -425,9 +425,9 @@ const LoginForm: React.FC = () => {
           {/* ── API error banner ──────────────────────────────────────── */}
           {apiError && (
             <div style={{
-              background: "rgba(224,82,82,0.1)", border: "1px solid rgba(224,82,82,0.3)",
+              background: "#FEF2F2", border: "1px solid #FCA5A5",
               borderRadius: 10, padding: "10px 13px", marginBottom: 16,
-              fontSize: 12, color: "#E05252", fontWeight: 500,
+              fontSize: 12, color: "#EF4444", fontWeight: 500,
             }}>
               ⚠ {apiError}
             </div>
@@ -442,10 +442,10 @@ const LoginForm: React.FC = () => {
               <>
                 {/* Heading */}
                 <div style={{ marginBottom: 22 }}>
-                  <h2 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: "0 0 4px", letterSpacing: -.4 }}>
+                  <h2 style={{ fontSize: 22, fontWeight: 900, color: "#171717", margin: "0 0 4px", letterSpacing: -.4 }}>
                     {mode === "SignIn" ? "Welcome back Adventurer" : "Create account"}
                   </h2>
-                  <p style={{ fontSize: 12, color: "rgba(141,212,160,0.55)", margin: 0 }}>
+                  <p style={{ fontSize: 13, color: "#6B7280", margin: 0 }}>
                     {mode === "SignIn"
                       ? "Sign in to continue your adventure"
                       : "Join thousands of adventurers today"}
@@ -485,7 +485,7 @@ const LoginForm: React.FC = () => {
                 {mode === "SignIn" && (
                   <div style={{ textAlign: "right", marginBottom: 20, marginTop: -6 }}>
                     <Link to="/forgot-password"
-                      style={{ fontSize: 11, color: "rgba(141,212,160,0.55)", textDecoration: "none", fontWeight: 600 }}>
+                      style={{ fontSize: 12, color: "#3A8DFF", textDecoration: "none", fontWeight: 600 }}>
                       Forgot password?
                     </Link>
                   </div>
@@ -495,7 +495,7 @@ const LoginForm: React.FC = () => {
                 {mode === "SignUp" && (
                   <div style={{ marginBottom: 22 }}>
                     <label style={{
-                      display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                      display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                       letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 10
                     }}>
                       I am a…
@@ -513,7 +513,7 @@ const LoginForm: React.FC = () => {
                               height: "100%",
                               objectFit: "cover",
                               transition: "all 0.3s ease",
-                              opacity: role === r.id ? 1 : 0.7,
+                              opacity: role === r.id ? 1 : 0.75,
                             }}
                           />
                           {role === r.id && (
@@ -521,19 +521,19 @@ const LoginForm: React.FC = () => {
                               position: "absolute",
                               top: 10,
                               right: 10,
-                              background: "#35A855",
+                              background: "#3A8DFF",
                               color: "#fff",
                               borderRadius: "50%",
-                              width: 28,
-                              height: 28,
+                              width: 26,
+                              height: 26,
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
+                              boxShadow: "0 4px 12px rgba(58,141,255,0.4)",
                               border: "2px solid #fff",
                               zIndex: 10,
                             }}>
-                              <FaCheck size={12} />
+                              <FaCheck size={11} />
                             </div>
                           )}
                           <div style={{
@@ -541,7 +541,7 @@ const LoginForm: React.FC = () => {
                             bottom: 0,
                             left: 0,
                             right: 0,
-                            background: "rgba(0,0,0,0.65)",
+                            background: "rgba(11,58,126,0.85)",
                             backdropFilter: "blur(4px)",
                             padding: "8px 4px",
                             textAlign: "center",
@@ -549,7 +549,7 @@ const LoginForm: React.FC = () => {
                             fontSize: "13px",
                             fontWeight: 700,
                             letterSpacing: "0.5px",
-                            borderTop: "1px solid rgba(255,255,255,0.1)",
+                            borderTop: "1px solid rgba(255,255,255,0.15)",
                             transition: "background 0.3s ease",
                           }}>
                             {r.label}
@@ -582,13 +582,13 @@ const LoginForm: React.FC = () => {
                 </div>
 
                 {/* Switch mode link */}
-                <p style={{ fontSize: 12, textAlign: "center", color: "rgba(141,212,160,0.45)", margin: 0 }}>
+                <p style={{ fontSize: 13, textAlign: "center", color: "#6B7280", margin: 0 }}>
                   {mode === "SignIn" ? "Don't have an account? " : "Already have an account? "}
                   <button type="button"
                     onClick={() => switchMode(mode === "SignIn" ? "SignUp" : "SignIn")}
                     style={{
-                      background: "none", border: "none", color: "#58C470",
-                      fontWeight: 700, cursor: "pointer", fontSize: 12
+                      background: "none", border: "none", color: "#3A8DFF",
+                      fontWeight: 700, cursor: "pointer", fontSize: 13
                     }}>
                     {mode === "SignIn" ? "Sign Up" : "Sign In"}
                   </button>
@@ -602,10 +602,10 @@ const LoginForm: React.FC = () => {
             {step === 2 && (
               <>
                 <div style={{ marginBottom: 20 }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: "#fff", margin: "0 0 4px", letterSpacing: -.3 }}>
+                  <h2 style={{ fontSize: 20, fontWeight: 900, color: "#171717", margin: "0 0 4px", letterSpacing: -.3 }}>
                     Profile Metrics
                   </h2>
-                  <p style={{ fontSize: 12, color: "rgba(141,212,160,0.55)", margin: 0 }}>
+                  <p style={{ fontSize: 13, color: "#6B7280", margin: 0 }}>
                     {role === "traveler" && "Tell us about your travel style"}
                     {role === "organizer" && "Your business numbers"}
                     {role === "guide" && "Your guide expertise"}
@@ -617,7 +617,7 @@ const LoginForm: React.FC = () => {
                   <>
                     <div style={{ marginBottom: 18 }}>
                       <label style={{
-                        display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                        display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                         letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 9
                       }}>
                         Travel Style
@@ -640,7 +640,7 @@ const LoginForm: React.FC = () => {
 
                     <div style={{ marginBottom: 8 }}>
                       <label style={{
-                        display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                        display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                         letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 9
                       }}>
                         Preferred Duration
@@ -695,7 +695,7 @@ const LoginForm: React.FC = () => {
                       register={register} rules={{}} />
                     <div style={{ marginBottom: 18 }}>
                       <label style={{
-                        display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                        display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                         letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 9
                       }}>
                         Availability
@@ -724,9 +724,9 @@ const LoginForm: React.FC = () => {
                 </div>
                 <button type="button" onClick={() => setStep(1)}
                   style={{
-                    display: "block", margin: "10px auto 0", background: "none",
-                    border: "none", color: "rgba(141,212,160,0.35)", fontSize: 11,
-                    cursor: "pointer", fontWeight: 500
+                    display: "block", margin: "14px auto 0", background: "none",
+                    border: "none", color: "#6B7280", fontSize: 12,
+                    cursor: "pointer", fontWeight: 600
                   }}>
                   ← Back to Credentials
                 </button>
@@ -739,10 +739,10 @@ const LoginForm: React.FC = () => {
             {step === 3 && (
               <>
                 <div style={{ marginBottom: 20 }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 900, color: "#fff", margin: "0 0 4px", letterSpacing: -.3 }}>
+                  <h2 style={{ fontSize: 20, fontWeight: 900, color: "#171717", margin: "0 0 4px", letterSpacing: -.3 }}>
                     Setup Preferences
                   </h2>
-                  <p style={{ fontSize: 12, color: "rgba(141,212,160,0.55)", margin: 0 }}>
+                  <p style={{ fontSize: 13, color: "#6B7280", margin: 0 }}>
                     {role === "traveler" ? "Pick what excites you" : "Define your expertise"}
                   </p>
                 </div>
@@ -751,11 +751,11 @@ const LoginForm: React.FC = () => {
                 {role === "traveler" && (
                   <div style={{ marginBottom: 18 }}>
                     <label style={{
-                      display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                      display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                       letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 10
                     }}>
                       Travel Interests
-                      <span style={{ color: "rgba(141,212,160,0.4)", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
+                      <span style={{ color: "#9CA3AF", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
                         · {watchTags.length} selected
                       </span>
                     </label>
@@ -767,12 +767,12 @@ const LoginForm: React.FC = () => {
                           <span style={{ fontSize: 20, flexShrink: 0 }}>{t.e}</span>
                           <span style={{
                             fontSize: 13, fontWeight: watchTags.includes(t.l) ? 700 : 500,
-                            color: watchTags.includes(t.l) ? "#C0E8CC" : "rgba(141,212,160,0.65)"
+                            color: watchTags.includes(t.l) ? "#0B3A7E" : "#4B5563"
                           }}>
                             {t.l}
                           </span>
                           {watchTags.includes(t.l) && (
-                            <FaCheck size={10} style={{ color: "#35A855", marginLeft: "auto", flexShrink: 0 }} />
+                            <FaCheck size={11} style={{ color: "#3A8DFF", marginLeft: "auto", flexShrink: 0 }} />
                           )}
                         </button>
                       ))}
@@ -786,11 +786,11 @@ const LoginForm: React.FC = () => {
                     {/* States */}
                     <div style={{ marginBottom: 18 }}>
                       <label style={{
-                        display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                        display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                         letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 9
                       }}>
                         State Coverage
-                        <span style={{ color: "rgba(141,212,160,0.4)", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
+                        <span style={{ color: "#9CA3AF", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
                           · {watchStates.length} selected
                         </span>
                       </label>
@@ -808,11 +808,11 @@ const LoginForm: React.FC = () => {
                     {/* Specialty tiles */}
                     <div style={{ marginBottom: 18 }}>
                       <label style={{
-                        display: "block", fontSize: 10, fontWeight: 700, color: "#8DD4A0",
+                        display: "block", fontSize: 11, fontWeight: 700, color: "#0B3A7E",
                         letterSpacing: 1.1, textTransform: "uppercase", marginBottom: 9
                       }}>
                         Specialty Tags
-                        <span style={{ color: "rgba(141,212,160,0.4)", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
+                        <span style={{ color: "#9CA3AF", fontWeight: 500, textTransform: "none", marginLeft: 6 }}>
                           · {watchTags.length} selected
                         </span>
                       </label>
@@ -824,12 +824,12 @@ const LoginForm: React.FC = () => {
                             <span style={{ fontSize: 18 }}>{t.e}</span>
                             <span style={{
                               fontSize: 12, fontWeight: watchTags.includes(t.l) ? 700 : 500,
-                              color: watchTags.includes(t.l) ? "#C0E8CC" : "rgba(141,212,160,0.65)"
+                              color: watchTags.includes(t.l) ? "#0B3A7E" : "#4B5563"
                             }}>
                               {t.l}
                             </span>
                             {watchTags.includes(t.l) && (
-                              <FaCheck size={9} style={{ color: "#35A855", marginLeft: "auto" }} />
+                              <FaCheck size={9} style={{ color: "#3A8DFF", marginLeft: "auto" }} />
                             )}
                           </button>
                         ))}

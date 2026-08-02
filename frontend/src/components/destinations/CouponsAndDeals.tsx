@@ -16,17 +16,21 @@ const CouponCard = ({ title, description, code, logo }: Coupon) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-md p-4 w-full">
-      <div className="h-32 w-full mb-2">
-        <img src={logo} alt={`${title} logo`} className="w-full h-full object-contain" />
+    <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm flex flex-col justify-between h-full font-jakarta">
+      <div>
+        <div className="h-24 w-full mb-3 flex items-center justify-center p-2 bg-gray-50 rounded-xl">
+          <img src={logo} alt={title} className="max-h-full max-w-full object-contain" />
+        </div>
+        <div className="text-base font-bold text-[#171717] mb-1">{title}</div>
+        <p className="text-xs text-gray-500 mb-4 leading-relaxed font-medium">{description}</p>
       </div>
-      <div className="text-sm font-bold mb-1">{title}</div>
-      <div className="text-xs mb-3">{description}</div>
-      <div className="flex justify-between items-center">
-        <span className="text-gray-500 text-xs">Code</span>
-        <div className="font-bold text-blue-600 text-xs">{code}</div>
-        <button onClick={handleCopy} className="flex gap-2 text-blue-600 text-xs underline">
-          <FaCopy /> Copy
+
+      <div className="flex justify-between items-center pt-3 border-t border-gray-100 mt-auto">
+        <div className="bg-gray-100 px-3 py-1 rounded-lg text-xs font-mono font-bold text-[#111827]">
+          {code}
+        </div>
+        <button onClick={handleCopy} className="flex items-center gap-1.5 text-xs font-bold text-[#3A8DFF] hover:text-[#111827] transition-colors">
+          <FaCopy size={12} /> Copy
         </button>
       </div>
     </div>
@@ -44,9 +48,9 @@ const CouponsAndDeals = () => {
       if (carouselRef.current) {
         const containerWidth = carouselRef.current.offsetWidth;
         let newVisibleCards = 1;
-        if (containerWidth >= 1024) newVisibleCards = 6;
-        else if (containerWidth >= 768) newVisibleCards = 4;
-        else if (containerWidth >= 640) newVisibleCards = 3;
+        if (containerWidth >= 1024) newVisibleCards = 4;
+        else if (containerWidth >= 768) newVisibleCards = 3;
+        else if (containerWidth >= 640) newVisibleCards = 2;
         setVisibleCards(newVisibleCards);
         setCardWidth(containerWidth / newVisibleCards);
       }
@@ -68,16 +72,20 @@ const CouponsAndDeals = () => {
   };
 
   return (
-    <div className="Coupons&Deals bg-[#1F3D3B] p-4 sm:p-6 md:p-8 rounded-t-[50px] sm:rounded-t-[75px] md:rounded-t-[100px]" style={{ boxShadow: "0 -5px 40px black" }} data-aos="fade-up">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 sm:mb-6 text-center capitalize text-white p-4 sm:p-6 md:p-10">Coupons & Deals</h2>
-      <div className="relative">
+    <section className="bg-[#111827] text-white p-8 md:p-12 rounded-[32px] font-jakarta shadow-sm border border-gray-800" data-aos="fade-up">
+      <div className="text-center mb-8">
+        <span className="text-[#3A8DFF] font-bold text-xs uppercase tracking-wider mb-2 block">Exclusive Offers</span>
+        <h2 className="text-[32px] md:text-[40px] font-extrabold text-white">Coupons & Deals</h2>
+      </div>
+
+      <div className="relative px-4">
         <div
           ref={carouselRef}
-          className="grid grid-flow-col auto-cols-max gap-4 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
-          style={{ gridAutoColumns: `${cardWidth}px` }}
+          className="grid grid-flow-col auto-cols-max gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
+          style={{ gridAutoColumns: `${cardWidth - 18}px` }}
         >
           {items.map((item, index) => (
-            <div key={index} className="w-full snap-start">
+            <div key={index} className="w-full">
               <CouponCard
                 title={item.title}
                 logo={item.logo}
@@ -91,26 +99,25 @@ const CouponsAndDeals = () => {
         {/* Navigation Buttons */}
         <button
           onClick={() => slideCards(-1)}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-zinc-900 p-2 rounded-full hover:text-black hover:bg-white z-10 text-white"
+          className="absolute -left-2 top-1/2 -translate-y-1/2 bg-white text-[#111827] p-3 rounded-full hover:bg-gray-200 transition-colors shadow-md z-10"
           aria-label="Previous"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <button
           onClick={() => slideCards(1)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-zinc-900 p-2 rounded-full hover:text-black hover:bg-white z-10 text-white"
+          className="absolute -right-2 top-1/2 -translate-y-1/2 bg-white text-[#111827] p-3 rounded-full hover:bg-gray-200 transition-colors shadow-md z-10"
           aria-label="Next"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default CouponsAndDeals;
-

@@ -15,17 +15,17 @@ const About_us: React.FC = () => {
   });
 
   return (
-    <div className="bg-[rgb(149,113,79)] min-h-screen font-sans selection:bg-[#233115]/30 selection:text-white">
+    <div className="bg-[#F8F9FB] text-[#171717] min-h-screen font-jakarta">
       {/* Navigation */}
       <NavigationMenuDemo />
 
       {/* Header / Title Section */}
-      <div className="container mx-auto px-6 pt-16 pb-8">
+      <div className="max-w-[1280px] mx-auto px-6 pt-12 pb-6">
         <AboutUsTitle />
       </div>
 
       {/* Main Narrative Content */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-10 md:gap-16 items-center py-8">
         {/* Right Section - Styled Brand/Team Profile */}
         <div className="order-1 md:order-2">
           <AboutUsContentRight />
@@ -37,10 +37,12 @@ const About_us: React.FC = () => {
       </div>
 
       {/* Highlights / Features Grid */}
-      <AboutUsFeatures />
+      <div className="max-w-[1280px] mx-auto px-6 py-8">
+        <AboutUsFeatures />
+      </div>
 
       {/* Footer */}
-      <Footer color="#233115" />
+      <Footer color={undefined} />
     </div>
   );
 };

@@ -1,43 +1,32 @@
-import Scrollslider from '@/components/home/ScrollSlider'
-import Parallax from '@/components/parallax/Parallax'
-import Footer from '@/components/common/Footer'
-import { NavigationMenuDemo } from '@/components/common/NavigationMenu'
-import { InfiniteMovingCardsDemo } from '@/components/home/InfiniteMovingCardsDemo'
-import HeroCTA from '@/components/home/HeroCTA'
-import HowItWorks from '@/components/home/HowItWorks'
-import AdventureGallery from '@/components/destinations/AdventureGallery'
-import AppShowcase from '@/components/home/AppShowcase'
-import StatsCounter from '@/components/home/StatsCounter'
-import FeatureShowcase from '@/components/home/FeatureShowcase'
-import useSEO from '@/hooks/useSEO'
-
-// const FeatureShowcase = lazy(() => import('@/components/home/FeatureShowcase'))
+import useSEO from '@/hooks/useSEO';
+import { LandingNavbar, HeroSection, FeaturedDestinations } from '@/components/landing/LandingSections';
+import { DestinationHighlight, StatisticsSection, VideoShowcase } from '@/components/landing/LandingSections2';
+import { LifestyleGallery, TestimonialsGrid, FAQSection } from '@/components/landing/LandingSections3';
+import { AdventuresGallery, FinalCTA, LandingFooter } from '@/components/landing/LandingSections4';
 
 const Pre_login_homepage = () => {
   useSEO({
-    title: 'Welcome to Adventurer | Ultimate Trek & Travel Platform',
+    title: 'ADVENTURER | Ultimate Trek & Travel Platform',
     description: 'Adventurer connects passionate travelers with local verified trekking guides and organizers. Enjoy safe escrow payments and unforgettable hikes.',
-    keywords: 'adventure travel, trekking routes, travel escrows, local tour guides, hiking platform'
+    keywords: 'adventure travel, trekking routes, travel escrows, local tour guides, hiking platform, premium travel'
   });
 
   return (
-    <>
-      <NavigationMenuDemo />
-      <Scrollslider />
-      <Parallax />
-      <HeroCTA />
-      {/* <Preloginlanding /> */}
-      <HowItWorks />
-      {/* <Suspense fallback={<div className="flex justify-center items-center py-24 bg-[#000a05]"><LargeSuccessLoader /></div>}> */}
-      <FeatureShowcase />
-      {/* </Suspense> */}
-      <AdventureGallery />
-      <InfiniteMovingCardsDemo />
-      <AppShowcase />
-      <StatsCounter />
-      <Footer color={undefined} />
-    </>
-  )
-}
+    <div className="bg-[#FFFFFF] min-h-screen font-jakarta w-full overflow-x-hidden">
+      <LandingNavbar />
+      <HeroSection />
+      <FeaturedDestinations />
+      <DestinationHighlight />
+      <StatisticsSection />
+      <VideoShowcase />
+      <LifestyleGallery />
+      <TestimonialsGrid />
+      <FAQSection />
+      <AdventuresGallery />
+      <FinalCTA />
+      <LandingFooter />
+    </div>
+  );
+};
 
-export default Pre_login_homepage
+export default Pre_login_homepage;

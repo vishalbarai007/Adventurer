@@ -21,30 +21,30 @@ const AboutUsFeatures: React.FC = () => {
   ];
 
   return (
-    <div className="mt-20 max-w-6xl mx-auto px-6 mb-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-serif font-extrabold text-[#EADED0]">
-          Why Choose <span className="text-[#233115]">Adventurer</span>?
+    <div className="mt-12 max-w-[1280px] mx-auto px-6 mb-16 font-jakarta">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-extrabold text-[#171717]">
+          Why Choose <span className="text-[#3A8DFF]">Adventurer</span>?
         </h2>
-        <div className="w-16 h-1 bg-[#233115] mx-auto mt-4 rounded-full opacity-60" />
+        <div className="w-16 h-1 bg-[#3A8DFF] mx-auto mt-3 rounded-full opacity-80" />
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className="group relative p-8 rounded-3xl bg-[#EADED0]/5 border border-[#EADED0]/10 hover:border-[#233115]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#233115]/5 flex flex-col items-center text-center hover:-translate-y-1"
+            className="group relative p-8 rounded-3xl bg-white border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-gray-300 transition-all duration-300"
           >
             {/* Icon Container */}
-            <div className="p-4 bg-white/10 rounded-2xl border border-white/15 text-[#233115] mb-6 group-hover:bg-[#233115] group-hover:text-white transition-all duration-300 shadow-md">
-              <feature.icon className="w-8 h-8" />
+            <div className="p-4 bg-gray-100 rounded-2xl text-[#111827] mb-6 group-hover:bg-[#111827] group-hover:text-white transition-all duration-300 shadow-sm">
+              <feature.icon className="w-7 h-7" />
             </div>
 
-            <h3 className="text-xl font-bold text-[#233115] mb-3">
+            <h3 className="text-xl font-bold text-[#171717] mb-3">
               {feature.title}
             </h3>
             
-            <p className="text-[#D4D9D1] text-sm leading-relaxed font-light">
+            <p className="text-gray-500 text-sm leading-relaxed font-medium">
               {feature.description}
             </p>
           </div>

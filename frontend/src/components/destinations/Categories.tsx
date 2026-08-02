@@ -1,106 +1,39 @@
-// import axios from "axios"
-// import { useState, useEffect } from "react"
-
-// interface TravelCategory {
-//   heading: string
-//   image: string
-// }
-
-// const TravelCategories = () => {
-//   const [loading, setLoading] = useState(true)
-//   const [data, setData] = useState<TravelCategory[]>([])
-
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:5000/travelcategories")
-//       .then((response) => {
-//         console.log("Fetched travel categories data:", response.data)
-//         // Convert the object of objects to an array of objects
-//         const categoriesArray = Object.values(response.data) as TravelCategory[]
-//         setData(categoriesArray)
-//         setLoading(false)
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching Travel Categories data:", error)
-//         setLoading(false)
-//       })
-//   }, [])
-
-//   if (loading) return <p className="text-center py-8">Loading...</p>
-
-//   return (
-//     <div className="px-4 py-8 sm:px-6 md:px-8 lg:px-16">
-//       <h1
-//         className="text-3xl sm:text-4xl md:text-5xl font-light text-center capitalize pt-6 sm:pt-8 md:pt-10"
-//         data-aos="fade-up"
-//       >
-//         Your Travel Categories
-//       </h1>
-//       <p
-//         className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mx-auto mt-4 sm:mt-6 md:mt-8 text-center leading-[25px] opacity-60"
-//         data-aos="fade-up"
-//       >
-//         Discover your next adventure with our curated selection of travel categories. Explore diverse destinations and
-//         unique experiences.
-//       </p>
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 md:p-8 mx-auto max-w-7xl">
-//         {data.map((item, index) => (
-//           <div key={index} className="rounded-xl relative w-full h-64 sm:h-56 md:h-64 bg-zinc-700" data-aos="fade-up">
-//             <div className="overflow-hidden rounded-xl w-full h-full inset-0 bg-black bg-opacity-50">
-//               <img
-//                 src={item.image || "https://res.cloudinary.com/djk32h7rn/image/upload/q_auto,f_auto/v1778055954/adventurer_assets_migration/images/Bg_jd7hi7.webp"}
-//                 alt={`Image ${index + 1}`}
-//                 title={item.heading}
-//                 className="w-full h-full object-cover rounded-xl transition-transform duration-1000 hover:scale-110"
-//               />
-//             </div>
-//             <h2 className="text-center text-xl sm:text-2xl font-bold absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-stroke">
-//               {item.heading}
-//             </h2>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default TravelCategories
-
-
 import data from '@/data/CatagoriesData.json'
 
 const TravelCategories = () => {
   return (
-    <div className="px-4 py-8 sm:px-6 md:px-8 lg:px-16" id='adventure-activities'>
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-center capitalize pt-6 sm:pt-8 md:pt-10" data-aos="fade-up">Your Travel Categories</h1>
-      <p className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mx-auto mt-4 sm:mt-6 md:mt-8 text-center leading-[25px] opacity-60" data-aos="fade-up">
-        Discover your next adventure with our curated selection of travel categories.  Explore diverse destinations and unique experiences.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 md:p-8 mx-auto max-w-7xl">
+    <section className="py-8 font-jakarta" id='adventure-activities'>
+      <div className="text-center mb-8">
+        <span className="text-[#3A8DFF] font-bold text-xs uppercase tracking-wider mb-2 block">Categories</span>
+        <h2 className="text-[32px] md:text-[40px] font-extrabold text-[#171717]" data-aos="fade-up">Your Travel Categories</h2>
+        <p className="max-w-2xl mx-auto mt-3 text-gray-500 font-medium text-base leading-relaxed" data-aos="fade-up">
+          Discover your next adventure with our curated selection of travel categories. Explore diverse destinations and unique experiences.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {data.map((item, index) => (
           <div
             key={index}
-            className="rounded-xl relative w-full h-64 sm:h-56 md:h-64 bg-zinc-700"
+            className="rounded-[24px] relative w-full h-64 overflow-hidden shadow-sm border border-gray-200 bg-white group cursor-pointer"
             data-aos="fade-up"
           >
-            <div className="overflow-hidden rounded-xl w-full h-full inset-0 bg-black bg-opacity-50">
-              <img
-                src={item.image}
-                alt={`Image ${index + 1}`}
-                title={item.heading}
-                className="w-full h-full object-cover rounded-xl transition-transform duration-1000 hover:scale-110"
-              />
-            </div>
-            <h2 className="text-center text-xl sm:text-2xl font-bold absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-stroke">
+            <img
+              src={item.image}
+              alt={item.heading}
+              title={item.heading}
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <h3 className="text-center text-xl font-bold absolute bottom-6 left-6 right-6 text-white leading-tight">
               {item.heading}
-            </h2>
+            </h3>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
 export default TravelCategories;
-
-

@@ -76,7 +76,11 @@ const OnboardingWrapper: React.FC<{ children: React.ReactNode }> = ({ children }
 	return <>{children}</>;
 };
 
+import { useBackendHealthCheck } from '@/utils/validateEndpoints';
+
 const App = () => {
+  // Run health check on app startup
+  useBackendHealthCheck();
 	return (
 		<GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
 			<AuthProvider>

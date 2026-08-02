@@ -58,81 +58,75 @@ const packingLists: Record<string, PackingList> = {
         description: "Must-have items for day hikes",
         items: [
             "Comfortable hiking shoes",
-            "Daypack",
-            "Sun protection",
-            "Light jacket",
+            "Daypack (15-25 liters)",
+            "Water reservoir or bottles",
             "Trail snacks",
-            "Basic first aid",
-            "Water bottle",
-            "Trail map"
+            "Sun protection (hat, sunglasses, sunscreen)",
+            "Basic first aid supplies",
+            "Light jacket or windbreaker"
         ]
     },
-    cycling: {
-        title: "Cycling Equipment",
-        description: "Essential gear for cycling adventures",
+    camping: {
+        title: "Overnight Camping",
+        description: "Gear needed for a successful camping trip",
         items: [
-            "Helmet",
-            "Repair kit & spare tube",
-            "Cycling shorts & jersey",
-            "Water bottles",
-            "Energy bars",
-            "Bike lights",
-            "Lock",
-            "Weather gear"
+            "Tent with rainfly & stakes",
+            "Sleeping bag & sleeping pad",
+            "Camp stove & fuel",
+            "Cookware & eating utensils",
+            "Headlamp/lantern & extra batteries",
+            "Trash bags (Leave No Trace)",
+            "Personal hygiene items"
         ]
     },
-    stargazing: {
-        title: "Stargazing Kit",
-        description: "Items for the perfect night under the stars",
+    winter: {
+        title: "Winter Expedition",
+        description: "Specialized gear for cold weather conditions",
         items: [
-            "Warm clothing layers",
-            "Red light flashlight",
-            "Star chart or app",
-            "Camping chair",
-            "Blanket",
-            "Hot drinks thermos",
-            "Binoculars",
-            "Camera equipment"
+            "Insulated waterproof boots",
+            "Thermal base layers",
+            "Insulated jacket & waterproof shell",
+            "Winter sleeping bag (-10°C or lower)",
+            "Four-season tent",
+            "Snowshoes or microspikes",
+            "Hand & foot warmers"
         ]
     }
 };
 
 const locationTips: LocationTip[] = [
     {
-        location: "Mountain Regions",
-        description: "High-altitude adventures and scenic views",
+        location: "Mountain Trails",
+        description: "Western Ghats & Himalayan Passes",
         tips: [
-            "Acclimatize gradually to prevent altitude sickness",
-            "Check weather forecasts frequently",
-            "Inform others of your route",
-            "Carry emergency supplies",
-            "Start early to avoid afternoon storms"
+            "Acclimatize properly and ascend slowly",
+            "Check weather forecasts and avalanche risk",
+            "Carry extra warm layers even in summer",
+            "Stay hydrated and maintain high energy intake"
         ],
-        bestTime: "Spring and Fall"
+        bestTime: "September to May"
     },
     {
-        location: "Coastal Areas",
-        description: "Beach and oceanside activities",
+        location: "Coastal Routes",
+        description: "Konkan & South Coast Hikes",
         tips: [
-            "Check tide schedules",
-            "Bring sun protection",
-            "Stay hydrated",
-            "Watch for marine life",
-            "Be aware of rip currents"
+            "Time your hike with tide tables",
+            "Carry ample fresh water and electrolyte mixes",
+            "Protect equipment from salt water corrosion",
+            "Wear quick-drying footwear with rock traction"
         ],
-        bestTime: "Summer"
+        bestTime: "November to February"
     },
     {
-        location: "Desert Landscapes",
-        description: "Exploring arid environments",
+        location: "Desert Treks",
+        description: "Arid Fort Trails & Sand Dunes",
         tips: [
-            "Carry extra water",
-            "Protect from sun exposure",
-            "Travel during cooler hours",
-            "Know where shelter is",
-            "Watch for wildlife"
+            "Hike during early morning and late afternoon",
+            "Carry double your normal water capacity",
+            "Wear lightweight UV-rated long sleeves",
+            "Use sand gaiters to protect boots"
         ],
-        bestTime: "Winter and Spring"
+        bestTime: "October to March"
     }
 ];
 
@@ -148,64 +142,60 @@ const TravelTipsPage = () => {
     });
 
     return (
-        <div className="min-h-screen bg-white font-jakarta">
-            <header className="bg-brand-green text-white py-16 relative overflow-hidden">
-                {/* Abstract background elements */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
-                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }} className="absolute -top-20 -left-20 text-brand-gold">
-                        <Compass size={400} />
-                    </motion.div>
-                </div>
-                
-                <div className="container mx-auto px-4 relative z-10 flex flex-col items-center text-center">
+        <div className="min-h-screen bg-[#F8F9FB] font-jakarta text-[#171717]">
+            {/* Top Navigation */}
+            <NavigationMenuDemo />
+
+            {/* Clean Hero */}
+            <header className="bg-[#111827] text-white py-16 px-6 relative overflow-hidden">
+                <div className="max-w-[1280px] mx-auto text-center flex flex-col items-center">
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[#3A8DFF] font-bold text-sm tracking-wider uppercase mb-3">
+                        Travel Essentials
+                    </motion.span>
                     <motion.h1 
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-6xl font-serif text-brand-gold font-bold mb-4"
+                        className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight"
                     >
                         Adventure Playbook
                     </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-xl md:text-2xl text-gray-200 max-w-2xl"
+                        transition={{ delay: 0.1 }}
+                        className="text-lg md:text-xl text-gray-300 max-w-2xl font-medium leading-relaxed"
                     >
                         Gear up, stay safe, and master the wild with our curated travel essentials.
                     </motion.p>
                 </div>
             </header>
-            
-            <NavigationMenuDemo />
 
-            <main className="container mx-auto px-4 py-16 space-y-24">
-                
-                {/* Custom AI Concierge Section */}
+            <main className="max-w-[1280px] mx-auto px-6 py-16 space-y-20">
+                {/* AI Concierge Section - Clean Solid Styling */}
                 <motion.section 
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={cardVariants}
-                    className="relative rounded-3xl overflow-hidden bg-brand-green text-white shadow-2xl"
+                    className="relative rounded-3xl overflow-hidden bg-white border border-gray-200 text-[#171717] p-8 md:p-12 shadow-sm"
                 >
-                    <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
-                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
-                        <div className="flex-1 space-y-4">
-                            <div className="flex items-center gap-3 text-brand-gold">
-                                <BotMessageSquare className="w-8 h-8" />
-                                <h2 className="text-3xl font-serif font-bold">Need Custom Itineraries?</h2>
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="flex-1 space-y-3">
+                            <div className="flex items-center gap-3 text-[#111827]">
+                                <BotMessageSquare className="w-7 h-7 text-[#3A8DFF]" />
+                                <h2 className="text-2xl md:text-3xl font-extrabold">Need Custom Itineraries?</h2>
                             </div>
-                            <p className="text-lg text-gray-300 leading-relaxed max-w-2xl">
+                            <p className="text-base text-gray-500 leading-relaxed max-w-2xl font-medium">
                                 Skip the generic advice. Talk to our AI Concierge and get a hyper-personalized travel plan tailored to your budget, style, and wildest dreams.
                             </p>
                         </div>
                         <div className="flex-shrink-0">
                             <button 
                                 onClick={() => navigate('/login?redirect=/assistant')}
-                                className="group relative inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-green px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(255,170,28,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:-translate-y-1"
+                                className="inline-flex items-center justify-center gap-2 bg-[#111827] text-white px-8 py-4 rounded-full font-bold text-base hover:bg-[#1F2937] transition-colors shadow-sm"
                             >
                                 Ask Trekky
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-5 h-5" />
                             </button>
                         </div>
                     </div>
@@ -218,10 +208,10 @@ const TravelTipsPage = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={cardVariants}
-                        className="mb-10 flex items-center justify-center gap-3 text-brand-green"
+                        className="mb-8 flex items-center gap-3 text-[#171717]"
                     >
-                        <Backpack className="w-8 h-8" />
-                        <h2 className="text-4xl font-serif font-bold">Activity Checklists</h2>
+                        <Backpack className="w-7 h-7 text-[#3A8DFF]" />
+                        <h2 className="text-3xl font-extrabold">Activity Checklists</h2>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -232,21 +222,21 @@ const TravelTipsPage = () => {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 variants={{
-                                    hidden: { opacity: 0, y: 20 },
-                                    visible: { opacity: 1, y: 0, transition: { delay: idx * 0.1 } }
+                                    hidden: { opacity: 0, y: 15 },
+                                    visible: { opacity: 1, y: 0, transition: { delay: idx * 0.08 } }
                                 }}
-                                className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-6 border border-gray-100 transition-shadow duration-300 flex flex-col"
+                                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col hover:border-gray-300 transition-all"
                             >
                                 <div className="flex-1">
-                                    <h3 className="text-2xl font-serif font-semibold text-brand-green mb-2">{activity.title}</h3>
-                                    <p className="text-gray-600 mb-6">{activity.description}</p>
+                                    <h3 className="text-xl font-bold text-[#171717] mb-2">{activity.title}</h3>
+                                    <p className="text-gray-500 text-sm mb-6 leading-relaxed">{activity.description}</p>
                                 </div>
                                 <button
                                     onClick={() => setSelectedActivity(selectedActivity === key ? null : key)}
-                                    className="flex items-center justify-between w-full mt-4 text-brand-gold hover:text-yellow-600 font-semibold transition-colors"
+                                    className="flex items-center justify-between w-full mt-4 text-[#111827] font-bold text-sm hover:text-[#3A8DFF] transition-colors"
                                 >
                                     <span>{selectedActivity === key ? 'Hide List' : 'View List'}</span>
-                                    {selectedActivity === key ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                                    {selectedActivity === key ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                 </button>
                                 
                                 <AnimatePresence>
@@ -258,10 +248,10 @@ const TravelTipsPage = () => {
                                             variants={dropdownVariants}
                                             className="overflow-hidden mt-4 pt-4 border-t border-gray-100"
                                         >
-                                            <ul className="space-y-3 text-gray-700">
+                                            <ul className="space-y-2.5 text-sm text-gray-600 font-medium">
                                                 {activity.items.map((item, index) => (
-                                                    <li key={index} className="flex items-start gap-3">
-                                                        <div className="w-2 h-2 mt-2 rounded-full bg-brand-gold flex-shrink-0" />
+                                                    <li key={index} className="flex items-start gap-2.5">
+                                                        <div className="w-1.5 h-1.5 mt-2 rounded-full bg-[#3A8DFF] flex-shrink-0" />
                                                         <span>{item}</span>
                                                     </li>
                                                 ))}
@@ -281,13 +271,13 @@ const TravelTipsPage = () => {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={cardVariants}
-                        className="mb-10 flex items-center justify-center gap-3 text-brand-green"
+                        className="mb-8 flex items-center gap-3 text-[#171717]"
                     >
-                        <Map className="w-8 h-8" />
-                        <h2 className="text-4xl font-serif font-bold">Terrain Tactics</h2>
+                        <Map className="w-7 h-7 text-[#3A8DFF]" />
+                        <h2 className="text-3xl font-extrabold">Terrain Tactics</h2>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {locationTips.map((location, idx) => (
                             <motion.div 
                                 key={location.location} 
@@ -295,21 +285,21 @@ const TravelTipsPage = () => {
                                 whileInView="visible"
                                 viewport={{ once: true }}
                                 variants={{
-                                    hidden: { opacity: 0, scale: 0.95 },
-                                    visible: { opacity: 1, scale: 1, transition: { delay: idx * 0.1 } }
+                                    hidden: { opacity: 0, scale: 0.98 },
+                                    visible: { opacity: 1, scale: 1, transition: { delay: idx * 0.08 } }
                                 }}
-                                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+                                className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200"
                             >
                                 <button
-                                    className="w-full px-8 py-6 bg-brand-green text-white flex justify-between items-center group transition-colors hover:bg-[#0c352b]"
+                                    className="w-full px-6 py-5 bg-[#111827] text-white flex justify-between items-center text-left hover:bg-[#1F2937] transition-colors"
                                     onClick={() => setExpandedLocation(expandedLocation === location.location ? null : location.location)}
                                 >
-                                    <div className="text-left">
-                                        <h3 className="text-2xl font-serif font-bold text-brand-gold mb-1">{location.location}</h3>
-                                        <p className="text-gray-300 text-sm">{location.description}</p>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-white mb-1">{location.location}</h3>
+                                        <p className="text-gray-400 text-xs">{location.description}</p>
                                     </div>
-                                    <div className="bg-white/10 p-2 rounded-full group-hover:bg-brand-gold group-hover:text-brand-green transition-colors">
-                                        {expandedLocation === location.location ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                                    <div className="p-1.5 rounded-full bg-white/10 text-white">
+                                        {expandedLocation === location.location ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                     </div>
                                 </button>
                                 
@@ -322,18 +312,18 @@ const TravelTipsPage = () => {
                                             variants={dropdownVariants}
                                             className="overflow-hidden"
                                         >
-                                            <div className="p-8 bg-gray-50">
-                                                <h4 className="font-bold text-brand-green mb-4 text-lg border-b border-gray-200 pb-2">Survival Protocol</h4>
-                                                <ul className="space-y-4 text-gray-700 mb-6">
+                                            <div className="p-6 bg-white border-t border-gray-100">
+                                                <h4 className="font-bold text-[#171717] mb-3 text-sm border-b border-gray-100 pb-2">Survival Protocol</h4>
+                                                <ul className="space-y-3 text-sm text-gray-600 mb-6 font-medium">
                                                     {location.tips.map((tip, index) => (
-                                                        <li key={index} className="flex items-start gap-3">
-                                                            <Compass className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
+                                                        <li key={index} className="flex items-start gap-2.5">
+                                                            <Compass className="w-4 h-4 text-[#3A8DFF] flex-shrink-0 mt-0.5" />
                                                             <span className="leading-relaxed">{tip}</span>
                                                         </li>
                                                     ))}
                                                 </ul>
-                                                <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-lg font-medium text-sm">
-                                                    <span className="uppercase tracking-wider text-xs text-green-600 font-bold">Prime Time:</span> 
+                                                <div className="inline-flex items-center gap-2 bg-gray-100 text-gray-800 px-3 py-1.5 rounded-lg font-semibold text-xs border border-gray-200">
+                                                    <span className="uppercase tracking-wider text-[10px] text-gray-500 font-bold">Prime Time:</span> 
                                                     {location.bestTime}
                                                 </div>
                                             </div>
